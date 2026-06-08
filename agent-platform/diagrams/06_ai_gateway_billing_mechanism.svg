@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; fill: #111827; }
+    .title { font-size: 24px; font-weight: 700; }
+    .label { font-size: 14px; font-weight: 700; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .small { font-size: 11px; fill: #6b7280; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker>
+    <marker id="arrow-rx" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker>
+    <marker id="arrow-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#0d9488"/></marker>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/></marker>
+    <marker id="arrow-yellow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ca8a04"/></marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.08"/></filter>
+  </defs>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="600.0" y="42" text-anchor="middle" class="title">Token 计费机制：从 usage 到成本指标</text>
+  <rect x="70" y="120" width="170" height="70" rx="12" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="155.0" y="145" text-anchor="middle" class="label">ai-statistics</text>
+  <text x="155.0" y="168" text-anchor="middle" class="sub">input_token</text>
+  <text x="155.0" y="186" text-anchor="middle" class="sub">output_token / cached</text>
+  <rect x="300" y="120" width="170" height="70" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="385.0" y="145" text-anchor="middle" class="label">VictoriaMetrics</text>
+  <text x="385.0" y="168" text-anchor="middle" class="sub">保存原始累计值</text>
+  <text x="385.0" y="186" text-anchor="middle" class="sub">按标签维度查询</text>
+  <rect x="530" y="120" width="190" height="70" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="625.0" y="145" text-anchor="middle" class="label">MetricCollector</text>
+  <text x="625.0" y="168" text-anchor="middle" class="sub">每 30 秒拉取</text>
+  <text x="625.0" y="186" text-anchor="middle" class="sub">计算 delta</text>
+  <polygon points="835,116.0 915.0,155 835,194.0 755.0,155" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="835" y="151" text-anchor="middle" class="label">delta &lt; 0?</text>
+  <text x="835" y="171" text-anchor="middle" class="sub">计数器重置</text>
+  <rect x="990" y="120" width="150" height="70" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="1065.0" y="145" text-anchor="middle" class="label">本轮增量</text>
+  <text x="1065.0" y="168" text-anchor="middle" class="sub">使用 current</text>
+  <text x="1065.0" y="186" text-anchor="middle" class="sub">或 current-last</text>
+  <rect x="300" y="300" width="170" height="70" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="385.0" y="325" text-anchor="middle" class="label">标签清洗</text>
+  <text x="385.0" y="348" text-anchor="middle" class="sub">ai_cluster</text>
+  <text x="385.0" y="366" text-anchor="middle" class="sub">ai_model / service</text>
+  <rect x="530" y="300" width="190" height="70" rx="12" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="625.0" y="325" text-anchor="middle" class="label">价格匹配</text>
+  <text x="625.0" y="348" text-anchor="middle" class="sub">精确匹配</text>
+  <text x="625.0" y="366" text-anchor="middle" class="sub">正则匹配</text>
+  <rect x="770" y="300" width="190" height="70" rx="12" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="865.0" y="325" text-anchor="middle" class="label">缓存折扣</text>
+  <text x="865.0" y="348" text-anchor="middle" class="sub">cached &lt;= input</text>
+  <text x="865.0" y="366" text-anchor="middle" class="sub">cache_discount</text>
+  <rect x="520" y="500" width="190" height="70" rx="12" fill="#fef2f2" stroke="#fecaca" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="615.0" y="525" text-anchor="middle" class="label">成本公式</text>
+  <text x="615.0" y="548" text-anchor="middle" class="sub">input + output</text>
+  <text x="615.0" y="566" text-anchor="middle" class="sub">cached 折扣</text>
+  <rect x="780" y="500" width="190" height="70" rx="12" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="875.0" y="525" text-anchor="middle" class="label">Prometheus 指标</text>
+  <text x="875.0" y="548" text-anchor="middle" class="sub">input_cost</text>
+  <text x="875.0" y="566" text-anchor="middle" class="sub">total_cost</text>
+  <path d="M 240,155 L 300,155" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="243.0" y="132.0" width="54" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+  <text x="270.0" y="147.0" text-anchor="middle" class="small">累计值</text>
+  <path d="M 470,155 L 530,155" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="470.0" y="132.0" width="60" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+  <text x="500.0" y="147.0" text-anchor="middle" class="small">query</text>
+  <path d="M 720,155 L 755,155" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 915,155 L 990,155" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 605,190 L 605,240 L 385,240 L 385,300" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#arrow-gray)"/>
+  <rect x="349.0" y="269" width="72" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+  <text x="385" y="284" text-anchor="middle" class="small">labels</text>
+  <path d="M 470,335 L 530,335" stroke="#9333ea" stroke-width="2.2" fill="none" marker-end="url(#arrow-purple)"/>
+  <rect x="422.0" y="312.0" width="156" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+  <text x="500.0" y="327.0" text-anchor="middle" class="small">cluster+model</text>
+  <path d="M 720,335 L 770,335" stroke="#ea580c" stroke-width="2.2" fill="none" marker-end="url(#arrow-orange)"/>
+  <rect x="715.0" y="312.0" width="60" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+  <text x="745.0" y="327.0" text-anchor="middle" class="small">cache</text>
+  <path d="M 865,370 L 615,500" stroke="#dc2626" stroke-width="2.2" fill="none" marker-end="url(#arrow-rx)"/>
+  <rect x="713.0" y="412.0" width="54" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+  <text x="740.0" y="427.0" text-anchor="middle" class="small">单价</text>
+  <path d="M 710,535 L 780,535" stroke="#0d9488" stroke-width="2.2" fill="none" marker-end="url(#arrow-teal)"/>
+  <rect x="709.0" y="512.0" width="72" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+  <text x="745.0" y="527.0" text-anchor="middle" class="small">export</text>
+</svg>

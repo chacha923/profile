@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" width="1440" height="980">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { font-size: 25px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 13px; fill: #6b7280; }
+    .lane-title { font-size: 13px; font-weight: 700; fill: #374151; }
+    .label { font-size: 14px; font-weight: 700; fill: #111827; }
+    .small { font-size: 12px; fill: #4b5563; }
+    .tiny { font-size: 11px; fill: #6b7280; }
+    .decision { font-size: 13px; font-weight: 700; fill: #111827; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/></marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#111827" flood-opacity="0.11"/></filter>
+  </defs>
+  <rect width="1440" height="980" fill="#ffffff"/>
+  <text x="720" y="42" text-anchor="middle" class="title">search_service 服务拓扑排查流程</text>
+  <text x="720" y="66" text-anchor="middle" class="subtitle">按 domain.py 的逻辑从域名反推 Ingress / HTTPRoute / Service，再识别贝联 externalName / staticAddress 迁移链路</text>
+  <rect x="48" y="92" width="1344" height="126" rx="8" fill="#f9fafb" stroke="#e5e7eb" stroke-dasharray="6,4"/>
+  <text x="68" y="118" class="lane-title">输入与分类</text>
+  <polygon points="120,132 290,132 270,196 100,196" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="195.0" y="160" text-anchor="middle" class="label">domain.yaml</text>
+  <text x="195.0" y="182" text-anchor="middle" class="small">domains: 域名[:端口]</text>
+  <rect x="360" y="132" width="210" height="64" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="465.0" y="160" text-anchor="middle" class="label">parse_line()</text>
+  <text x="465.0" y="182" text-anchor="middle" class="small">拆分 domain / port</text>
+  <rect x="650" y="124" width="240" height="82" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="770.0" y="152" text-anchor="middle" class="label">域名分类</text>
+  <text x="770.0" y="174" text-anchor="middle" class="small">jinhua-cloud / 内部域名</text>
+  <text x="770.0" y="190" text-anchor="middle" class="small">外部域名</text>
+  <path d="M 290,164 L 360,164" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="306.0" y="139" width="38" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="325" y="154" text-anchor="middle" class="tiny">读取</text>
+  <path d="M 570,164 L 650,164" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="591.0" y="139" width="38" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="610" y="154" text-anchor="middle" class="tiny">解析</text>
+  <rect x="64" y="252" width="360" height="560" rx="8" fill="#f0fdf4" fill-opacity="0.45" stroke="#bbf7d0" stroke-dasharray="6,4"/>
+  <text x="82" y="280" class="lane-title">贝联 RPC 直连</text>
+  <rect x="500" y="252" width="420" height="560" rx="8" fill="#eff6ff" fill-opacity="0.45" stroke="#bfdbfe" stroke-dasharray="6,4"/>
+  <text x="518" y="280" class="lane-title">内部域名分支</text>
+  <rect x="996" y="252" width="380" height="560" rx="8" fill="#faf5ff" fill-opacity="0.45" stroke="#ddd6fe" stroke-dasharray="6,4"/>
+  <text x="1014" y="280" class="lane-title">外部域名分支</text>
+  <rect x="120" y="310" width="250" height="72" rx="8" fill="#ffffff" stroke="#86efac" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="245.0" y="338" text-anchor="middle" class="label">匹配 jinhua-cloud</text>
+  <text x="245.0" y="360" text-anchor="middle" class="small">*.jinhua-cloud.soulapp-inc.cn</text>
+  <rect x="120" y="450" width="250" height="86" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="245.0" y="478" text-anchor="middle" class="label">deduce_beilian_service()</text>
+  <text x="245.0" y="500" text-anchor="middle" class="small">去掉域名后缀</text>
+  <text x="245.0" y="516" text-anchor="middle" class="small">-1246-rpc -> 服务名</text>
+  <rect x="112" y="660" width="266" height="72" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="245.0" y="688" text-anchor="middle" class="label">输出：贝联 RPC 服务</text>
+  <text x="245.0" y="710" text-anchor="middle" class="small">直接得到贝联侧服务名</text>
+  <rect x="548" y="300" width="260" height="82" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="678.0" y="328" text-anchor="middle" class="label">内部服务定位</text>
+  <text x="678.0" y="350" text-anchor="middle" class="small">service.namespace</text>
+  <text x="678.0" y="366" text-anchor="middle" class="small">缺省 ns=soul-ml-dev</text>
+  <rect x="548" y="430" width="260" height="82" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="678.0" y="458" text-anchor="middle" class="label">kubectl get httproute</text>
+  <text x="678.0" y="480" text-anchor="middle" class="small">匹配 spec.hostnames</text>
+  <text x="678.0" y="496" text-anchor="middle" class="small">读取 backendRefs</text>
+  <polygon points="678,532 803,590 678,648 553,590" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="678" y="586" text-anchor="middle" class="decision">backend 是 beilian?</text>
+  <text x="678" y="604" text-anchor="middle" class="tiny">name 包含 beilian</text>
+  <rect x="526" y="708" width="220" height="74" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="636.0" y="736" text-anchor="middle" class="label">查 VirtualService</text>
+  <text x="636.0" y="758" text-anchor="middle" class="small">ports[0].staticAddress</text>
+  <rect x="760" y="708" width="130" height="74" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="825.0" y="736" text-anchor="middle" class="label">查 Service</text>
+  <text x="825.0" y="758" text-anchor="middle" class="small">校验端口</text>
+  <rect x="1050" y="300" width="270" height="82" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1185.0" y="328" text-anchor="middle" class="label">kubectl get ingress</text>
+  <text x="1185.0" y="350" text-anchor="middle" class="small">--all-namespaces</text>
+  <text x="1185.0" y="366" text-anchor="middle" class="small">host 精确匹配</text>
+  <rect x="1050" y="430" width="270" height="82" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1185.0" y="458" text-anchor="middle" class="label">读取 Ingress backends</text>
+  <text x="1185.0" y="480" text-anchor="middle" class="small">backend Service:port</text>
+  <polygon points="1185,532 1310,590 1185,648 1060,590" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1185" y="586" text-anchor="middle" class="decision">迁移特征?</text>
+  <text x="1185" y="604" text-anchor="middle" class="tiny">31581 或 beilian</text>
+  <rect x="1040" y="708" width="250" height="74" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1165.0" y="736" text-anchor="middle" class="label">查 beilian Service</text>
+  <text x="1165.0" y="758" text-anchor="middle" class="small">spec.externalName</text>
+  <text x="1165.0" y="774" text-anchor="middle" class="small">反推贝联服务名</text>
+  <rect x="1300" y="708" width="54" height="74" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1327.0" y="736" text-anchor="middle" class="label">无匹配</text>
+  <text x="1327" y="753" text-anchor="middle" class="tiny">缺失</text>
+  <path d="M 720,206 L 720,236 L 245,236 L 245,310" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="361.0" y="213" width="86" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="404" y="228" text-anchor="middle" class="tiny">jinhua</text>
+  <path d="M 770,206 L 770,236 L 678,236 L 678,300" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="699.0" y="213" width="38" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="718" y="228" text-anchor="middle" class="tiny">内部</text>
+  <path d="M 840,206 L 840,236 L 1185,236 L 1185,300" fill="none" stroke="#9333ea" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <rect x="1001.0" y="213" width="38" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="1020" y="228" text-anchor="middle" class="tiny">外部</text>
+  <path d="M 245,382 L 245,450" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <path d="M 245,536 L 245,660" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <path d="M 678,382 L 678,430" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <path d="M 678,512 L 678,532" fill="none" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <path d="M 678,648 L 636,708" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="612.0" y="669" width="36" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="630" y="684" text-anchor="middle" class="tiny">是</text>
+  <path d="M 760,590 L 825,590 L 825,708" fill="none" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <rect x="808.0" y="657" width="36" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="826" y="672" text-anchor="middle" class="tiny">否</text>
+  <path d="M 1185,382 L 1185,430" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <path d="M 1185,512 L 1185,532" fill="none" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <path d="M 1120,590 L 1085,590 L 1085,708" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="1069.0" y="657" width="36" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="1087" y="672" text-anchor="middle" class="tiny">是</text>
+  <path d="M 1260,590 L 1327,590 L 1327,708" fill="none" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <rect x="1310.0" y="657" width="36" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="1328" y="672" text-anchor="middle" class="tiny">无</text>
+  <rect x="48" y="842" width="1344" height="86" rx="8" fill="#fff7ed" fill-opacity="0.70" stroke="#fed7aa" stroke-dasharray="6,4"/>
+  <text x="68" y="870" class="lane-title">排查结论</text>
+  <rect x="150" y="862" width="230" height="48" rx="8" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="265.0" y="890" text-anchor="middle" class="label">贝联 RPC 直连</text>
+  <rect x="510" y="862" width="250" height="48" rx="8" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="635.0" y="890" text-anchor="middle" class="label">贝联迁移链路</text>
+  <rect x="800" y="862" width="230" height="48" rx="8" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="915.0" y="890" text-anchor="middle" class="label">普通 Service 链路</text>
+  <rect x="1008" y="862" width="230" height="48" rx="8" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1123.0" y="890" text-anchor="middle" class="label">普通 Ingress 链路</text>
+  <rect x="1280" y="862" width="96" height="48" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1328.0" y="890" text-anchor="middle" class="label">缺失</text>
+  <path d="M 245,732 L 245,862" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <path d="M 636,782 L 636,862" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <path d="M 1085,782 L 1085,830 L 636,830 L 636,862" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <path d="M 825,782 L 825,862" fill="none" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <path d="M 1185,648 L 1185,680 L 1296,680 L 1296,832 L 1123,832 L 1123,862" fill="none" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <rect x="1280.0" y="744" width="36" height="21" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="1298" y="759" text-anchor="middle" class="tiny">否</text>
+  <path d="M 1327,782 L 1327,862" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <rect x="72" y="748" width="330" height="48" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="237.0" y="776" text-anchor="middle" class="label">查询来源：prod-kubeflow-k8s</text>
+  <text x="237.0" y="798" text-anchor="middle" class="small">Ingress / HTTPRoute / Service / VirtualService</text>
+  <g transform="translate(82,944)">
+    <line x1="0" y1="8" x2="38" y2="8" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/><text x="48" y="12" class="tiny">常规查询</text>
+    <line x1="150" y1="8" x2="188" y2="8" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/><text x="198" y="12" class="tiny">贝联反推</text>
+    <line x1="320" y1="8" x2="358" y2="8" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/><text x="368" y="12" class="tiny">迁移判断</text>
+    <line x1="500" y1="8" x2="538" y2="8" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow-gray)"/><text x="548" y="12" class="tiny">普通 / 否</text>
+  </g>
+</svg>

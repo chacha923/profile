@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 700" width="1080" height="700">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="700" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">可观测数据底座：AIOps 的地基</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">RCA Agent 取证的前提是有高质量、可关联、带实体语义的数据；没有底座，上层都是空中楼阁</text>
+
+  <rect x="40" y="95" width="220" height="120" rx="8" class="box blue"/>
+  <text x="150" y="123" text-anchor="middle" class="h">Metrics 指标</text>
+  <text x="60" y="148" class="s">· 时序、聚合、低成本</text>
+  <text x="60" y="168" class="s">· SLO/告警/趋势</text>
+  <text x="60" y="188" class="s">· 答"有没有问题"</text>
+  <text x="60" y="208" class="s">Prometheus / OTLP</text>
+
+  <rect x="280" y="95" width="220" height="120" rx="8" class="box green"/>
+  <text x="390" y="123" text-anchor="middle" class="h">Logs 日志</text>
+  <text x="300" y="148" class="s">· 离散事件、细节</text>
+  <text x="300" y="168" class="s">· 错误栈、上下文</text>
+  <text x="300" y="188" class="s">· 答"发生了什么"</text>
+  <text x="300" y="208" class="s">结构化 + 模板化</text>
+
+  <rect x="520" y="95" width="220" height="120" rx="8" class="box amber"/>
+  <text x="630" y="123" text-anchor="middle" class="h">Traces 链路</text>
+  <text x="540" y="148" class="s">· 跨服务调用链</text>
+  <text x="540" y="168" class="s">· 上下游、延迟分解</text>
+  <text x="540" y="188" class="s">· 答"在哪一环"</text>
+  <text x="540" y="208" class="s">TraceId 串联</text>
+
+  <rect x="760" y="95" width="280" height="120" rx="8" class="box cyan"/>
+  <text x="900" y="123" text-anchor="middle" class="h">Profiling 性能剖析</text>
+  <text x="780" y="148" class="s">· 第四支柱（持续剖析）</text>
+  <text x="780" y="168" class="s">· CPU/内存/锁 火焰图</text>
+  <text x="780" y="188" class="s">· 答"代码哪一行慢/吃资源"</text>
+  <text x="780" y="208" class="s">eBPF Continuous Profiling</text>
+
+  <rect x="80" y="255" width="920" height="90" rx="8" class="box violet"/>
+  <text x="110" y="283" class="h">关联键（让三/四支柱不再各看各的）</text>
+  <text x="110" y="308" class="s">· TraceId / SpanId 把 Logs、Traces、Profiling 串到同一次请求；Exemplar 把 Metrics 跳转到具体 Trace；</text>
+  <text x="110" y="330" class="s">· 统一时间戳和资源标签（service.name / pod / host），是跨支柱关联和 RCA 取证的前提。</text>
+
+  <rect x="80" y="375" width="920" height="100" rx="8" class="box green"/>
+  <text x="110" y="403" class="h">实体语义层（AIOps 的关键差异点）</text>
+  <text x="110" y="428" class="s">· 光有 Metrics/Logs/Traces 不够，要把它们挂到 服务/实例/Pod/主机/DB/MQ/依赖/变更 的实体图上；</text>
+  <text x="110" y="450" class="s">· 来源：CMDB + 调用链 + 部署系统 + K8s 元数据融合；</text>
+  <text x="110" y="470" class="s">· 没有实体语义，Agent 知道"延迟高"，但不知道"谁调用它、影响哪条业务、下游是不是真因"。</text>
+
+  <rect x="80" y="505" width="920" height="90" rx="8" class="box amber"/>
+  <text x="110" y="533" class="h">数据质量治理（最容易被忽略）</text>
+  <text x="110" y="558" class="s">· 采样导致 Trace 缺失 → 日志兜底；时间不对齐 → 关联错位；标签不规范 → 实体对不上；</text>
+  <text x="110" y="580" class="s">· 高基数 Metrics 爆炸成本；日志无结构无法统计。质量问题会直接传导成 Agent 误判。</text>
+
+  <rect x="80" y="625" width="920" height="60" rx="8" class="box blue"/>
+  <text x="110" y="653" class="h">面试落点</text>
+  <text x="110" y="675" class="s">三支柱不是终点，关联键 + 实体语义 + 数据质量才是 AIOps 能不能定位的分水岭，瓶颈常在数据不在模型。</text>
+</svg>

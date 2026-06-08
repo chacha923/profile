@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 920" width="1200" height="920">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { fill: #111827; font-size: 25px; font-weight: 700; }
+    .subtitle { fill: #6b7280; font-size: 13px; }
+    .lane { fill: #374151; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; }
+    .node-title { fill: #111827; font-size: 16px; font-weight: 700; }
+    .node-subtitle { fill: #4b5563; font-size: 12px; }
+    .mono { fill: #374151; font-size: 12px; font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; }
+    .small { fill: #6b7280; font-size: 11px; }
+    .label { fill: #374151; font-size: 12px; font-weight: 700; }
+    .pill-text { fill: #374151; font-size: 11.5px; font-weight: 600; }
+  </style>
+
+  <defs>
+    <marker id="arrow-blue" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#9333ea"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#ea580c"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="920" fill="#ffffff"/>
+  <text x="44" y="42" class="title">基于 BuildKit 构建镜像的运行环境</text>
+  <text x="44" y="66" class="subtitle">TaskRun Pod 只发起 buildctl 请求；同节点 buildkitd 通过宿主机 containerd 完成构建、缓存复用与 Harbor 拉推</text>
+
+  <rect x="52" y="92" width="1096" height="550" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.6" stroke-dasharray="8,5"/>
+  <text x="76" y="120" class="lane">PIPELINE 节点 / 宿主机</text>
+
+  <rect x="94" y="148" width="388" height="204" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.6"/>
+  <rect x="118" y="174" width="340" height="64" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.4"/>
+  <text x="288" y="198" text-anchor="middle" class="node-title">Tekton TaskRun Pod</text>
+  <text x="288" y="218" text-anchor="middle" class="node-subtitle">docker-build step / buildctl 客户端</text>
+  <text x="122" y="267" class="mono">image: harbor.soulapp-inc.cn/sae/nerdctl:v2.1.6</text>
+  <text x="122" y="290" class="mono">command: buildctl build ...</text>
+  <text x="122" y="315" class="node-subtitle">输入：源码工作区、Dockerfile、构建上下文</text>
+  <text x="122" y="334" class="small">职责：发送构建请求，不直接执行 Dockerfile 构建</text>
+
+  <rect x="700" y="148" width="420" height="204" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.6"/>
+  <text x="910" y="178" text-anchor="middle" class="node-title">关键 hostPath 挂载</text>
+  <rect x="738" y="198" width="344" height="26" rx="7" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+  <text x="910" y="216" text-anchor="middle" class="mono">/run/buildkit</text>
+  <rect x="738" y="234" width="344" height="26" rx="7" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+  <text x="910" y="252" text-anchor="middle" class="mono">/var/lib/container/buildkit</text>
+  <rect x="738" y="270" width="344" height="26" rx="7" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+  <text x="910" y="288" text-anchor="middle" class="mono">/run/containerd/containerd.sock</text>
+  <rect x="738" y="306" width="344" height="26" rx="7" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+  <text x="910" y="324" text-anchor="middle" class="mono">/var/lib/containerd</text>
+  <text x="738" y="344" class="small">这些目录来自宿主机，不是通过 Kubernetes Service 通信</text>
+
+  <rect x="292" y="392" width="470" height="152" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.6"/>
+  <text x="527" y="424" text-anchor="middle" class="node-title">buildkitd DaemonSet Pod</text>
+  <text x="527" y="445" text-anchor="middle" class="node-subtitle">真正执行 Dockerfile 构建的 BuildKit 服务端</text>
+  <text x="322" y="480" class="mono">command: buildkitd</text>
+  <text x="322" y="503" class="mono">config: /etc/buildkit/buildkitd.toml</text>
+  <text x="322" y="526" class="mono">worker.containerd.address = /run/containerd/containerd.sock</text>
+
+  <rect x="126" y="574" width="404" height="48" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="328" y="595" text-anchor="middle" class="node-title">宿主机 containerd</text>
+  <text x="328" y="613" text-anchor="middle" class="node-subtitle">snapshot / layer / runtime 数据与镜像操作后端</text>
+
+  <rect x="640" y="574" width="420" height="48" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="850" y="595" text-anchor="middle" class="node-title">Registry 配置</text>
+  <text x="850" y="613" text-anchor="middle" class="mono">/etc/containerd/certs.d/&lt;registry&gt;/hosts.toml</text>
+
+  <ellipse cx="600" cy="812" rx="238" ry="23" fill="#ede9fe" stroke="#d8b4fe" stroke-width="1.6"/>
+  <rect x="362" y="812" width="476" height="34" fill="#ede9fe" stroke="none"/>
+  <line x1="362" y1="812" x2="362" y2="846" stroke="#d8b4fe" stroke-width="1.6"/>
+  <line x1="838" y1="812" x2="838" y2="846" stroke="#d8b4fe" stroke-width="1.6"/>
+  <ellipse cx="600" cy="846" rx="238" ry="23" fill="#ddd6fe" stroke="#d8b4fe" stroke-width="1.6"/>
+  <text x="600" y="828" text-anchor="middle" class="node-title">Harbor</text>
+  <text x="600" y="848" text-anchor="middle" class="node-subtitle">harbor.soulapp-inc.cn / harbor-test.soulapp-inc.cn</text>
+
+  <path d="M482 250 C555 250 630 250 700 250" fill="none" stroke="#16a34a" stroke-width="1.7" stroke-dasharray="7,5" marker-end="url(#arrow-green)"/>
+  <text x="600" y="238" text-anchor="middle" class="pill-text">hostPath 注入 socket 与缓存目录</text>
+
+  <path d="M288 352 L288 392 C288 430 292 468 292 468" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="122" y="367" width="250" height="28" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="247" y="386" text-anchor="middle" class="pill-text">通过 /run/buildkit socket 发起构建</text>
+
+  <path d="M527 544 L527 574 C527 598 530 598 530 598" fill="none" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <rect x="548" y="552" width="224" height="28" rx="14" fill="#ffffff" stroke="#fed7aa" stroke-width="1"/>
+  <text x="660" y="571" text-anchor="middle" class="pill-text">访问 containerd.sock</text>
+
+  <path d="M530 598 L640 598" fill="none" stroke="#9333ea" stroke-width="1.8" stroke-dasharray="6,5" marker-end="url(#arrow-purple)"/>
+
+  <path d="M514 622 C514 690 552 742 582 795" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="464" y="704" width="286" height="29" rx="14.5" fill="#ffffff" stroke="#d8b4fe" stroke-width="1"/>
+  <text x="607" y="724" text-anchor="middle" class="pill-text">HTTPS pull 基础镜像 / push 目标镜像</text>
+
+  <g transform="translate(78, 758)">
+    <rect x="0" y="0" width="280" height="72" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.3"/>
+    <text x="18" y="24" class="label">一句话理解</text>
+    <text x="18" y="44" class="small">TaskRun Pod 只发起请求；</text>
+    <text x="18" y="62" class="small">buildkitd + containerd 才执行构建。</text>
+  </g>
+
+  <g transform="translate(880, 758)">
+    <line x1="0" y1="0" x2="34" y2="0" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+    <text x="42" y="4" class="small">构建请求 / 镜像流</text>
+    <line x1="0" y1="22" x2="34" y2="22" stroke="#16a34a" stroke-width="1.8" stroke-dasharray="7,5" marker-end="url(#arrow-green)"/>
+    <text x="42" y="26" class="small">hostPath / 配置共享</text>
+    <line x1="0" y1="44" x2="34" y2="44" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+    <text x="42" y="48" class="small">containerd 调用</text>
+  </g>
+</svg>

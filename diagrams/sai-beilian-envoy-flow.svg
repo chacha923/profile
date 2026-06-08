@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 920" width="2200" height="1840">
+  <style>
+    .t { font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #111827; }
+    .st { font-family: "PingFang SC", "Microsoft YaHei", Helvetica, Arial, sans-serif; fill: #6b7280; font-size: 10.5px; }
+    .title { font-size: 17px; font-weight: 600; }
+    .lbl { font-size: 11.5px; font-weight: 600; }
+    .kind { font-size: 9px; fill: #4338ca; font-weight: 600; }
+    .lane { font-size: 11.5px; font-weight: 600; fill: #1e3a8a; }
+    .boxtitle { font-size: 11px; font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="m" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="mv" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/></marker>
+    <marker id="mo" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+  </defs>
+  <rect width="1100" height="920" fill="#ffffff"/>
+  <text x="550" y="30" text-anchor="middle" class="t title">ACK 与贝联：流量转移 gateway/mesh 与协议 gRPC 为主</text>
+  <text x="550" y="50" text-anchor="middle" class="st">贝联推理为 Triton Server、gRPC 为主；部分自定义 HTTP 服务为推测项</text>
+  <rect x="18" y="64" width="1064" height="168" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="32" y="86" class="lane">gateway：改 Ingress + Service（非 gRPC 与 HTTP 二选一）</text>
+  <rect x="32" y="88" width="168" height="68" rx="7" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.3"/>
+  <text x="38" y="102" class="kind">networking.k8s.io</text>
+  <text x="116.0" y="122" text-anchor="middle" class="lbl">Ingress</text>
+  <text x="116.0" y="140" text-anchor="middle" class="st">Host personal-attack-onnx.soulapp-inc.cn</text>
+  <rect x="218" y="88" width="228" height="68" rx="7" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.3"/>
+  <text x="224" y="102" class="kind">v1/Service</text>
+  <text x="332.0" y="122" text-anchor="middle" class="lbl">beilian-gw</text>
+  <text x="332.0" y="140" text-anchor="middle" class="st">31581 portName=grpc</text>
+  <rect x="462" y="88" width="248" height="68" rx="7" fill="#fde68a" stroke="#d97706" stroke-width="1.3"/>
+  <text x="468" y="102" class="kind">v1/Service</text>
+  <text x="586.0" y="122" text-anchor="middle" class="lbl">externalName</text>
+  <text x="586.0" y="140" text-anchor="middle" class="st">jinhua-cloud FQDN</text>
+  <rect x="726" y="88" width="140" height="68" rx="7" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.3"/>
+  <text x="732" y="102" class="kind">出站</text>
+  <text x="796.0" y="122" text-anchor="middle" class="lbl">ACK to beilian</text>
+  <text x="796.0" y="140" text-anchor="middle" class="st">gRPC Triton</text>
+  <line x1="200" y1="122" x2="218" y2="122" stroke="#2563eb" stroke-width="2" marker-end="url(#m)"/>
+  <line x1="446" y1="122" x2="462" y2="122" stroke="#2563eb" stroke-width="2" marker-end="url(#m)"/>
+  <line x1="710" y1="122" x2="726" y2="122" stroke="#2563eb" stroke-width="2" marker-end="url(#m)"/>
+  <text x="32" y="188" class="st">权重 0~10000 落在 Ingress 后端：原 tritoninferenceserver 与目标 beilian-gw 之间切流</text>
+  <rect x="18" y="246" width="1064" height="158" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="32" y="268" class="lane">mesh：改 HTTPRoute + VirtualService（协议仍可 gRPC）</text>
+  <rect x="32" y="270" width="150" height="68" rx="7" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.3"/>
+  <text x="38" y="284" class="kind">HTTPRoute</text>
+  <text x="107.0" y="304" text-anchor="middle" class="lbl">backendRefs</text>
+  <text x="107.0" y="322" text-anchor="middle" class="st">weight</text>
+  <rect x="198" y="270" width="168" height="68" rx="7" fill="#fce7f3" stroke="#f472b6" stroke-width="1.3"/>
+  <text x="204" y="284" class="kind">VirtualService</text>
+  <text x="282.0" y="304" text-anchor="middle" class="lbl">route</text>
+  <text x="282.0" y="322" text-anchor="middle" class="st">destination.weight</text>
+  <rect x="382" y="270" width="160" height="68" rx="7" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.3"/>
+  <text x="388" y="284" class="kind">Service</text>
+  <text x="462.0" y="304" text-anchor="middle" class="lbl">beilian</text>
+  <text x="462.0" y="322" text-anchor="middle" class="st">集群内</text>
+  <rect x="558" y="270" width="308" height="68" rx="7" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.3"/>
+  <text x="564" y="284" class="kind">出站</text>
+  <text x="712.0" y="304" text-anchor="middle" class="lbl">贝联 FQDN</text>
+  <text x="712.0" y="322" text-anchor="middle" class="st">staticAddress 等</text>
+  <line x1="182" y1="304" x2="198" y2="304" stroke="#7c3aed" stroke-width="2" marker-end="url(#mv)"/>
+  <line x1="366" y1="304" x2="382" y2="304" stroke="#7c3aed" stroke-width="2" marker-end="url(#mv)"/>
+  <line x1="542" y1="304" x2="558" y2="304" stroke="#7c3aed" stroke-width="2" marker-end="url(#mv)"/>
+  <text x="32" y="388" class="st">mesh 与 gateway 表示改哪些对象；端口名 grpc/http 仅为接口命名</text>
+  <rect x="18" y="412" width="1064" height="138" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="32" y="434" class="lane">不经 Ingress：Pod 到 beilian ExternalName</text>
+  <rect x="32" y="436" width="220" height="72" rx="7" fill="#fef9c3" stroke="#eab308" stroke-width="1.3"/>
+  <text x="38" y="450" class="kind">Service</text>
+  <text x="142.0" y="470" text-anchor="middle" class="lbl">beilian Svc</text>
+  <text x="142.0" y="488" text-anchor="middle" class="st">Cluster DNS</text>
+  <rect x="268" y="436" width="280" height="72" rx="7" fill="#fde047" stroke="#ca8a04" stroke-width="1.3"/>
+  <text x="274" y="450" class="kind">externalName</text>
+  <text x="408.0" y="470" text-anchor="middle" class="lbl">FQDN</text>
+  <text x="408.0" y="488" text-anchor="middle" class="st">jinhua-cloud</text>
+  <rect x="564" y="436" width="200" height="72" rx="7" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.3"/>
+  <text x="570" y="450" class="kind">kube-proxy</text>
+  <text x="664.0" y="470" text-anchor="middle" class="lbl">出站</text>
+  <text x="664.0" y="488" text-anchor="middle" class="st">—</text>
+  <line x1="252" y1="472" x2="268" y2="472" stroke="#ea580c" stroke-width="2" marker-end="url(#mo)"/>
+  <line x1="548" y1="472" x2="564" y2="472" stroke="#ea580c" stroke-width="2" marker-end="url(#mo)"/>
+  <rect x="18" y="568" width="1064" height="200" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="36" y="596" class="lane" fill="#14532d">贝联网络</text>
+  <rect x="36" y="612" width="340" height="76" rx="7" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.3"/>
+  <text x="42" y="626" class="kind">主路径</text>
+  <text x="206.0" y="646" text-anchor="middle" class="lbl">Triton Server</text>
+  <text x="206.0" y="664" text-anchor="middle" class="st">gRPC 推理</text>
+  <rect x="392" y="612" width="320" height="76" rx="7" fill="#fef3c7" stroke="#fbbf24" stroke-width="1.3"/>
+  <text x="398" y="626" class="kind">待确认</text>
+  <text x="552.0" y="646" text-anchor="middle" class="lbl">自定义 HTTP ?</text>
+  <text x="552.0" y="664" text-anchor="middle" class="st">管理面或旁路服务</text>
+  <line x1="376" y1="650" x2="392" y2="650" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+  <text x="384" y="644" class="st">可选</text>
+  <text x="36" y="706" class="st">示例 FQDN：personal-attack-onnx-arena-soul-triton-1246-rpc.jinhua-cloud.soulapp-inc.cn</text>
+  <text x="36" y="726" class="st">search_service：Ingress 查 beilian 31581 externalName；集群内查 HTTPRoute 与 VirtualService.staticAddress</text>
+  <path d="M 796 156 L 796 520 L 200 568" stroke="#2563eb" stroke-width="1.2" fill="none" stroke-dasharray="4 3" opacity="0.65"/>
+  <path d="M 710 338 L 710 540 L 356 612" stroke="#7c3aed" stroke-width="1.2" fill="none" stroke-dasharray="4 3" opacity="0.65"/>
+  <path d="M 664 508 L 664 560 L 200 612" stroke="#ea580c" stroke-width="1.2" fill="none" stroke-dasharray="4 3" opacity="0.55"/>
+  <rect x="18" y="788" width="1064" height="112" rx="8" fill="#fafafa" stroke="#e5e7eb"/>
+  <text x="32" y="814" class="boxtitle">图例</text>
+  <line x1="32" y1="830" x2="62" y2="830" stroke="#2563eb" stroke-width="2" marker-end="url(#m)"/>
+  <text x="72" y="834" class="st">蓝：gateway Ingress 链</text>
+  <line x1="32" y1="852" x2="62" y2="852" stroke="#7c3aed" stroke-width="2" marker-end="url(#mv)"/>
+  <text x="72" y="856" class="st">紫：mesh HTTPRoute 链</text>
+  <line x1="32" y1="874" x2="62" y2="874" stroke="#ea580c" stroke-width="2" marker-end="url(#mo)"/>
+  <text x="72" y="878" class="st">橙：集群内 ExternalName</text>
+</svg>

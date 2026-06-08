@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 440" width="1180" height="440">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="arr-g" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="arr-b" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arr-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/></marker>
+    <marker id="arr-p" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker>
+    <marker id="arr-o" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="arr-r" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1180" height="440" fill="#ffffff"/>
+  <text x="590" y="40" font-size="18" fill="#111827" text-anchor="middle" font-weight="600">隔离强度谱系：容器 → gVisor → Kata → Firecracker</text>
+  <rect x="30" y="90" width="260" height="180" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="160" y="122" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">普通容器 (runc)</text>
+  <text x="50" y="152" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 共享宿主内核</text>
+  <text x="50" y="178" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 冷启动 ~50ms</text>
+  <text x="50" y="204" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 隔离最弱 / 密度最高</text>
+  <text x="50" y="244" font-size="12" fill="#15803d" text-anchor="start" font-weight="600">适用：可信代码</text>
+  <rect x="320" y="90" width="260" height="180" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="450" y="122" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">gVisor</text>
+  <text x="340" y="152" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 用户态内核拦截</text>
+  <text x="340" y="178" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 缩小宿主攻击面</text>
+  <text x="340" y="204" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 进程级逃逸风险</text>
+  <text x="340" y="244" font-size="12" fill="#15803d" text-anchor="start" font-weight="600">适用：要比容器强 + 高密度</text>
+  <rect x="610" y="90" width="260" height="180" rx="8" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.5"/>
+  <text x="740" y="122" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">Kata Containers</text>
+  <text x="630" y="152" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 独立 guest 内核</text>
+  <text x="630" y="178" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 标准容器 / OCI 接口</text>
+  <text x="630" y="204" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• K8s RuntimeClass</text>
+  <text x="630" y="244" font-size="12" fill="#15803d" text-anchor="start" font-weight="600">适用：K8s 体系拿 VM 隔离</text>
+  <rect x="900" y="90" width="260" height="180" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="1030" y="122" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">Firecracker microVM</text>
+  <text x="920" y="152" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 硬件虚拟化隔离</text>
+  <text x="920" y="178" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• 启动 ~125ms</text>
+  <text x="920" y="204" font-size="12" fill="#374151" text-anchor="start" font-weight="400">• Snapshot 秒级恢复</text>
+  <text x="920" y="244" font-size="12" fill="#15803d" text-anchor="start" font-weight="600">适用：高频多租户不可信代码</text>
+  <line x1="290" y1="180" x2="320" y2="180" stroke="#6b7280" stroke-width="2" marker-end="url(#arr-gray)"/>
+  <line x1="580" y1="180" x2="610" y2="180" stroke="#6b7280" stroke-width="2" marker-end="url(#arr-gray)"/>
+  <line x1="870" y1="180" x2="900" y2="180" stroke="#6b7280" stroke-width="2" marker-end="url(#arr-gray)"/>
+  <line x1="40" y1="330" x2="1150" y2="330" stroke="#6b7280" stroke-width="2.5" marker-end="url(#arr-gray)"/>
+  <text x="50" y="358" font-size="13" fill="#6b7280" text-anchor="start" font-weight="400">隔离弱 / 启动快</text>
+  <text x="1140" y="358" font-size="13" fill="#6b7280" text-anchor="end" font-weight="400">隔离强 / 启动重</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 780" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <marker id="ag" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><path d="M0,0 L10,3.5 L0,7 Z" fill="#059669"/></marker>
+    <marker id="ao" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><path d="M0,0 L10,3.5 L0,7 Z" fill="#ea580c"/></marker>
+    <filter id="sh2" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.12"/></filter>
+  </defs>
+  <rect width="980" height="780" fill="#ffffff"/>
+  <text x="40" y="40" font-size="22" font-weight="700" fill="#0f172a">案例一 · 排查路径与止血流程</text>
+  <text x="40" y="63" font-size="13" fill="#64748b">左：把内核进程树翻译成调度任务、收敛到瞬时并发 · 右：受阻于非标环境，最终靠限流止血</text>
+  <rect x="40" y="84" width="430" height="34" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="255" y="106" font-size="15" font-weight="700" fill="#047857" text-anchor="middle">排查定位</text>
+  <rect x="510" y="84" width="430" height="34" rx="8" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="725" y="106" font-size="15" font-weight="700" fill="#c2410c" text-anchor="middle">应急止血</text>
+  <rect x="40" y="130" width="430" height="64" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="56" y="155" font-size="13.5" font-weight="600" fill="#065f46">① 排除重试实例，统一口径</text>
+  <text x="56" y="175" font-size="11.5" fill="#475569">trigger_type NOT IN (30,40)</text>
+  <line x1="255.0" y1="194" x2="255.0" y2="216" stroke="#059669" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="40" y="216" width="430" height="64" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="56" y="241" font-size="13.5" font-weight="600" fill="#065f46">② 对比 8/9 号同窗任务</text>
+  <text x="56" y="261" font-size="11.5" fill="#475569">task 数均 43、job_id 集合一致</text>
+  <line x1="255.0" y1="280" x2="255.0" y2="302" stroke="#059669" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="40" y="302" width="430" height="64" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="56" y="327" font-size="13.5" font-weight="600" fill="#065f46">③ 证伪「多接任务」假设</text>
+  <text x="56" y="347" font-size="11.5" fill="#475569">总量一致 ≠ 瞬时并发一致</text>
+  <line x1="255.0" y1="366" x2="255.0" y2="388" stroke="#059669" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="40" y="388" width="430" height="64" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="56" y="413" font-size="13.5" font-weight="600" fill="#065f46">④ 内核进程树 16 个 bash</text>
+  <text x="56" y="433" font-size="11.5" fill="#475569">回查 pepsi_task 仅 9 个有 pid</text>
+  <line x1="255.0" y1="452" x2="255.0" y2="474" stroke="#059669" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="40" y="474" width="430" height="64" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="56" y="499" font-size="13.5" font-weight="600" fill="#065f46">⑤ 7 个 pid 未写回库</text>
+  <text x="56" y="519" font-size="11.5" fill="#475569">拉起即被 kill，结合两天日志还原 16 任务</text>
+  <line x1="255.0" y1="538" x2="255.0" y2="560" stroke="#059669" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="40" y="560" width="430" height="64" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="56" y="585" font-size="13.5" font-weight="600" fill="#065f46">⑥ 8 vs 9 号启动时间对比</text>
+  <text x="56" y="605" font-size="11.5" fill="#475569">定位 00:36:44 多任务集中提前调度</text>
+  <rect x="510" y="130" width="430" height="64" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="526" y="155" font-size="13.5" font-weight="600" fill="#b91c1c">尝试扩容 Worker</text>
+  <text x="526" y="175" font-size="11.5" fill="#475569">受阻：非标 Hadoop 环境 / OS 版本无法工单</text>
+  <line x1="725.0" y1="194" x2="725.0" y2="216" stroke="#ea580c" stroke-width="2" marker-end="url(#ao)"/>
+  <rect x="510" y="216" width="430" height="64" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="526" y="241" font-size="13.5" font-weight="600" fill="#b91c1c">重启 Worker</text>
+  <text x="526" y="261" font-size="11.5" fill="#475569">受阻：堆积任务太多，启动阶段再次崩溃</text>
+  <line x1="725.0" y1="280" x2="725.0" y2="302" stroke="#ea580c" stroke-width="2" marker-end="url(#ao)"/>
+  <rect x="510" y="302" width="430" height="64" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="526" y="327" font-size="13.5" font-weight="600" fill="#c2410c">暂停部分小时级任务</text>
+  <text x="526" y="347" font-size="11.5" fill="#475569">给恢复腾出内存空间</text>
+  <line x1="725.0" y1="366" x2="725.0" y2="388" stroke="#ea580c" stroke-width="2" marker-end="url(#ao)"/>
+  <rect x="510" y="388" width="430" height="64" rx="10" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="526" y="413" font-size="13.5" font-weight="600" fill="#c2410c">单机并发 25 → 10 限流</text>
+  <text x="526" y="433" font-size="11.5" fill="#475569">Worker 启动阶段不再 OOM（当晚真正生效）</text>
+  <line x1="725.0" y1="452" x2="725.0" y2="474" stroke="#ea580c" stroke-width="2" marker-end="url(#ao)"/>
+  <rect x="510" y="474" width="430" height="64" rx="10" fill="#ecfdf5" stroke="#34d399" stroke-width="1.5" filter="url(#sh2)"/>
+  <text x="526" y="499" font-size="13.5" font-weight="600" fill="#047857">05:00 Worker 成功启动稳定 ✓</text>
+  <text x="526" y="519" font-size="11.5" fill="#475569">止血完成，08:33 宽表产出</text>
+  <rect x="40" y="700" width="900" height="56" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="60" y="724" font-size="13.5" font-weight="700" fill="#1d4ed8">复盘闭环</text>
+  <text x="60" y="744" font-size="12" fill="#334155">补 Worker 进程存活告警（最大盲区） · Hadoop 环境标准化一键安装 · 资源隔离 + 上限管控 + 容器化（推进中）</text>
+</svg>

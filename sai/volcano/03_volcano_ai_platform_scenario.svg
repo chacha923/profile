@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111827; }
+    .title { font-size: 18px; font-weight: 700; }
+    .label { font-size: 14px; font-weight: 600; }
+    .sub { font-size: 12px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; rx: 8; }
+    .blue { fill: #eff6ff; stroke: #bfdbfe; }
+    .green { fill: #f0fdf4; stroke: #bbf7d0; }
+    .orange { fill: #fff7ed; stroke: #fed7aa; }
+    .purple { fill: #faf5ff; stroke: #e9d5ff; }
+    .lane { fill: #f9fafb; stroke: #d1d5db; stroke-dasharray: 7 5; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16a34a"/></marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#9333ea"/></marker>
+  </defs>
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="32" y="38" class="title">AI Infra 场景：训练平台如何把 Volcano 用成资源治理与批量调度能力</text>
+
+  <rect x="40" y="82" width="190" height="410" class="lane"/>
+  <text x="58" y="110" class="sub">平台入口</text>
+  <rect x="64" y="138" width="140" height="52" class="box blue"/><text x="134" y="160" text-anchor="middle" class="label">SAI Console</text><text x="134" y="178" text-anchor="middle" class="sub">提交训练任务</text>
+  <rect x="64" y="226" width="140" height="52" class="box blue"/><text x="134" y="248" text-anchor="middle" class="label">Job API</text><text x="134" y="266" text-anchor="middle" class="sub">队列 / 优先级</text>
+  <rect x="64" y="314" width="140" height="52" class="box blue"/><text x="134" y="336" text-anchor="middle" class="label">观测面</text><text x="134" y="354" text-anchor="middle" class="sub">状态 / 事件 / 指标</text>
+
+  <rect x="280" y="82" width="260" height="410" class="lane"/>
+  <text x="298" y="110" class="sub">Volcano 批调度层</text>
+  <rect x="318" y="138" width="180" height="52" class="box green"/><text x="408" y="160" text-anchor="middle" class="label">VolcanoJob</text><text x="408" y="178" text-anchor="middle" class="sub">master + workers</text>
+  <rect x="318" y="226" width="180" height="52" class="box green"/><text x="408" y="248" text-anchor="middle" class="label">PodGroup</text><text x="408" y="266" text-anchor="middle" class="sub">Gang / minAvailable</text>
+  <rect x="318" y="314" width="180" height="52" class="box green"/><text x="408" y="336" text-anchor="middle" class="label">Queue</text><text x="408" y="354" text-anchor="middle" class="sub">多租户份额</text>
+  <rect x="318" y="402" width="180" height="52" class="box green"/><text x="408" y="424" text-anchor="middle" class="label">Plugins</text><text x="408" y="442" text-anchor="middle" class="sub">DRF / Binpack / Topology</text>
+
+  <rect x="590" y="82" width="330" height="410" class="lane"/>
+  <text x="608" y="110" class="sub">异构资源池</text>
+  <rect x="622" y="138" width="120" height="52" class="box purple"/><text x="682" y="160" text-anchor="middle" class="label">GPU Node</text><text x="682" y="178" text-anchor="middle" class="sub">A100 / H100</text>
+  <rect x="770" y="138" width="120" height="52" class="box purple"/><text x="830" y="160" text-anchor="middle" class="label">vGPU / MIG</text><text x="830" y="178" text-anchor="middle" class="sub">共享或隔离</text>
+  <rect x="622" y="250" width="120" height="52" class="box purple"/><text x="682" y="272" text-anchor="middle" class="label">IB / RoCE</text><text x="682" y="290" text-anchor="middle" class="sub">通信性能</text>
+  <rect x="770" y="250" width="120" height="52" class="box purple"/><text x="830" y="272" text-anchor="middle" class="label">HyperNode</text><text x="830" y="290" text-anchor="middle" class="sub">网络拓扑域</text>
+  <rect x="622" y="362" width="268" height="52" class="box orange"/><text x="756" y="384" text-anchor="middle" class="label">任务结果</text><text x="756" y="402" text-anchor="middle" class="sub">更少碎片 / 更稳准入 / 可解释排队</text>
+
+  <path d="M204 164 L318 164" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M204 252 L318 252" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M498 164 L622 164" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M498 252 C560 252 560 276 622 276" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M498 340 C580 340 600 388 622 388" stroke="#16a34a" stroke-width="1.8" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M742 164 L770 164" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M742 276 L770 276" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M756 414 C690 535 244 535 134 366" stroke="#6b7280" stroke-width="1.5" fill="none" stroke-dasharray="6 4" marker-end="url(#arrow-blue)"/>
+
+  <text x="54" y="558" class="sub">安全表达：可以说 Volcano 适合承接训练平台的批量调度、队列治理、异构资源和拓扑感知，不要声称已完整落地所有插件能力。</text>
+</svg>

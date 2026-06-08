@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 640" width="1080" height="640">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="640" fill="#ffffff"/>
+  <text x="540" y="42" text-anchor="middle" class="title">告警降噪收敛流水线</text>
+  <text x="540" y="70" text-anchor="middle" class="sub">原始告警海 → 去重 → 聚合 → 抑制 → 关联 → 风暴熔断 → 少量高质量事件</text>
+
+  <rect x="40" y="110" width="150" height="90" rx="8" class="box red"/>
+  <text x="115" y="150" text-anchor="middle" class="h">原始告警</text>
+  <text x="115" y="174" text-anchor="middle" class="s">海量 / 重复</text>
+  <text x="115" y="192" text-anchor="middle" class="s">真假混杂</text>
+
+  <rect x="225" y="110" width="150" height="90" rx="8" class="box blue"/>
+  <text x="300" y="143" text-anchor="middle" class="h">去重</text>
+  <text x="300" y="166" text-anchor="middle" class="t">指纹/规则去重</text>
+  <text x="300" y="188" text-anchor="middle" class="s">同对象同规则合并</text>
+
+  <rect x="410" y="110" width="150" height="90" rx="8" class="box green"/>
+  <text x="485" y="143" text-anchor="middle" class="h">聚合</text>
+  <text x="485" y="166" text-anchor="middle" class="t">时间/空间窗口</text>
+  <text x="485" y="188" text-anchor="middle" class="s">同集群/同服务归组</text>
+
+  <rect x="595" y="110" width="150" height="90" rx="8" class="box amber"/>
+  <text x="670" y="143" text-anchor="middle" class="h">抑制</text>
+  <text x="670" y="166" text-anchor="middle" class="t">父子/依赖抑制</text>
+  <text x="670" y="188" text-anchor="middle" class="s">维护期/已知静默</text>
+
+  <rect x="780" y="110" width="150" height="90" rx="8" class="box violet"/>
+  <text x="855" y="143" text-anchor="middle" class="h">关联</text>
+  <text x="855" y="166" text-anchor="middle" class="t">Apriori/FP-Growth</text>
+  <text x="855" y="188" text-anchor="middle" class="s">共现规则挖掘</text>
+
+  <path d="M190 155 L225 155" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ar)"/>
+  <path d="M375 155 L410 155" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ar)"/>
+  <path d="M560 155 L595 155" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ar)"/>
+  <path d="M745 155 L780 155" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ar)"/>
+
+  <rect x="300" y="250" width="200" height="90" rx="8" class="box red"/>
+  <text x="400" y="283" text-anchor="middle" class="h">风暴熔断</text>
+  <text x="400" y="306" text-anchor="middle" class="t">频率/阈值熔断</text>
+  <text x="400" y="328" text-anchor="middle" class="s">大面积故障防刷屏</text>
+
+  <rect x="580" y="250" width="200" height="90" rx="8" class="box green"/>
+  <text x="680" y="283" text-anchor="middle" class="h">分级路由</text>
+  <text x="680" y="306" text-anchor="middle" class="t">级别/值班/升级</text>
+  <text x="680" y="328" text-anchor="middle" class="s">送对人 + 通知收敛</text>
+
+  <path d="M855 200 L855 295 L500 295" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+  <path d="M500 295 L580 295" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ar)"/>
+
+  <rect x="820" y="250" width="220" height="90" rx="8" class="box cyan"/>
+  <text x="930" y="283" text-anchor="middle" class="h">高质量事件</text>
+  <text x="930" y="306" text-anchor="middle" class="t">交给 RCA Agent</text>
+  <text x="930" y="328" text-anchor="middle" class="s">少量、可调查</text>
+  <path d="M780 295 L820 295" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ar)"/>
+
+  <rect x="80" y="385" width="445" height="220" rx="8" class="box amber"/>
+  <text x="110" y="413" class="h">核心算法：关联规则挖掘</text>
+  <text x="110" y="438" class="s">把"哪些告警总是一起出现"挖成规则：</text>
+  <text x="110" y="460" class="t">· Support(支持度)：A、B 共现频率</text>
+  <text x="110" y="482" class="t">· Confidence(置信度)：出现 A 时出现 B 的概率</text>
+  <text x="110" y="504" class="t">· Lift(提升度)：A、B 是否真相关而非巧合</text>
+  <text x="110" y="528" class="s">Apriori 逐层剪枝；FP-Growth 用 FP-Tree 避免</text>
+  <text x="110" y="548" class="s">候选爆炸，大数据量更快。</text>
+  <text x="110" y="576" class="s">用途：把根因告警和衍生告警分开，只通知根因。</text>
+
+  <rect x="555" y="385" width="445" height="220" rx="8" class="box violet"/>
+  <text x="585" y="413" class="h">衡量指标 + 面试落点</text>
+  <text x="585" y="438" class="s">· 压缩比 = 原始告警数 / 收敛后事件数</text>
+  <text x="585" y="460" class="s">· 通知量下降率、误抑制率(真告警被压掉)</text>
+  <text x="585" y="482" class="s">· MTTA/MTTR 是否改善</text>
+  <text x="585" y="510" class="t">关键权衡：收敛越狠越安静，但有漏掉真</text>
+  <text x="585" y="530" class="t">故障的风险 → 抑制要可回溯、可解除。</text>
+  <text x="585" y="560" class="s">一句话：降噪不是删告警，是"把噪声折叠成</text>
+  <text x="585" y="580" class="s">一条可解释事件"，让人和 Agent 都不被淹没。</text>
+</svg>

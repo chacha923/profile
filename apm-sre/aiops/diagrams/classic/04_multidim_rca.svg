@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 700" width="1080" height="700">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .mono { font-family: "SF Mono", Menlo, monospace; font-size: 12px; fill: #374151; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="700" fill="#ffffff"/>
+  <text x="540" y="42" text-anchor="middle" class="title">多维根因定位：从总量异常下钻到维度组合</text>
+  <text x="540" y="70" text-anchor="middle" class="sub">总量指标(如成功率)跌了，到底是哪个 省份 × 运营商 × 接口 × 版本 的组合在拖累？</text>
+
+  <rect x="60" y="100" width="260" height="80" rx="8" class="box red"/>
+  <text x="190" y="132" text-anchor="middle" class="h">总量异常</text>
+  <text x="190" y="156" text-anchor="middle" class="t">支付成功率 99.5% → 96%</text>
+  <text x="190" y="174" text-anchor="middle" class="s">知道"坏了"，不知道"谁坏了"</text>
+
+  <rect x="410" y="100" width="260" height="80" rx="8" class="box amber"/>
+  <text x="540" y="128" text-anchor="middle" class="h">维度爆炸</text>
+  <text x="540" y="152" text-anchor="middle" class="s">省份 × 运营商 × 设备 × 版本</text>
+  <text x="540" y="172" text-anchor="middle" class="s">组合数十万，无法人工枚举</text>
+
+  <rect x="760" y="100" width="260" height="80" rx="8" class="box green"/>
+  <text x="890" y="128" text-anchor="middle" class="h">目标</text>
+  <text x="890" y="152" text-anchor="middle" class="s">找到最小、最能解释整体</text>
+  <text x="890" y="172" text-anchor="middle" class="s">下跌的维度组合(根因集)</text>
+
+  <path d="M320 140 L410 140" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ar)"/>
+  <path d="M670 140 L760 140" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ar)"/>
+
+  <rect x="60" y="215" width="300" height="240" rx="8" class="box blue"/>
+  <text x="80" y="243" class="h">Adtributor</text>
+  <text x="80" y="267" class="s">思路：用每个维度元素对总量变化的</text>
+  <text x="80" y="285" class="s">"解释力"排序。</text>
+  <text x="80" y="312" class="t">· Explanatory Power(EP)：</text>
+  <text x="92" y="332" class="mono">实际变化 / 预测变化</text>
+  <text x="80" y="356" class="t">· Surprise(JS 散度)：分布偏移程度</text>
+  <text x="80" y="380" class="t">· 在单维度内找 Top 贡献元素</text>
+  <text x="80" y="408" class="s">优点：可解释、计算快</text>
+  <text x="80" y="430" class="s">局限：偏单维，跨维交叉弱</text>
+
+  <rect x="390" y="215" width="300" height="240" rx="8" class="box violet"/>
+  <text x="410" y="243" class="h">HotSpot</text>
+  <text x="410" y="267" class="s">思路：把维度组合看成搜索空间，</text>
+  <text x="410" y="285" class="s">用蒙特卡洛树搜索(MCTS)找根因集。</text>
+  <text x="410" y="312" class="t">· Ripple Effect：根因变化如何</text>
+  <text x="422" y="332" class="t">传导到各叶子</text>
+  <text x="410" y="356" class="t">· Potential Score 衡量组合解释力</text>
+  <text x="410" y="380" class="t">· 支持多维交叉根因</text>
+  <text x="410" y="408" class="s">优点：能找跨维组合</text>
+  <text x="410" y="430" class="s">局限：搜索成本高、需剪枝</text>
+
+  <rect x="720" y="215" width="300" height="240" rx="8" class="box cyan"/>
+  <text x="740" y="243" class="h">Squeeze</text>
+  <text x="740" y="267" class="s">思路：先按"广义涟漪效应"把叶子</text>
+  <text x="740" y="285" class="s">聚类，再在簇内定位根因。</text>
+  <text x="740" y="312" class="t">· Bottom-up 聚类降低搜索空间</text>
+  <text x="740" y="336" class="t">· GPS(广义势能)排序候选</text>
+  <text x="740" y="360" class="t">· 对多根因、部分维度更鲁棒</text>
+  <text x="740" y="408" class="s">优点：效率与多根因兼顾</text>
+  <text x="740" y="430" class="s">局限：实现复杂、调参敏感</text>
+
+  <rect x="80" y="485" width="920" height="80" rx="8" class="box amber"/>
+  <text x="110" y="513" class="h">共同范式</text>
+  <text x="110" y="537" class="s">① 先对每个维度组合建立"正常应该是多少"的预测基线 → ② 比较实际 vs 预测的偏差 →</text>
+  <text x="110" y="557" class="s">③ 用解释力/势能给组合打分排序 → ④ 输出能解释整体异常的最小根因集。本质是"带剪枝的归因搜索"。</text>
+
+  <rect x="80" y="585" width="920" height="95" rx="8" class="box green"/>
+  <text x="110" y="613" class="h">和 LLM Agent 的关系(面试落点)</text>
+  <text x="110" y="637" class="s">多维下钻擅长"在结构化指标里定位维度组合"，但讲不清"为什么"。LLM Agent 把它当一个定位工具：</text>
+  <text x="110" y="659" class="s">Agent 调用多维下钻拿到嫌疑维度(如"某省某运营商") → 再去查日志/链路/变更补证据 → 输出可解释根因。</text>
+</svg>

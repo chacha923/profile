@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" width="1100" height="640">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="ag" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="agr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9ca3af"/></marker>
+  </defs>
+  <rect width="1100" height="640" fill="#ffffff"/>
+  <text x="550" y="40" font-size="19" fill="#111827" text-anchor="middle" font-weight="600">经验边界：三块拼图 → 大数据平台 AIOps RCA Agent</text>
+  <text x="550" y="64" font-size="12" fill="#6b7280" text-anchor="middle">两块硬生产经验 + 一块相邻经验，缺的只是「拼成 AIOps Agent」这一步</text>
+  <rect x="40" y="100" width="320" height="240" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="200.0" y="130" font-size="16" fill="#111827" text-anchor="middle" font-weight="600">大数据平台运维</text>
+  <text x="200.0" y="152" font-size="11.5" fill="#15803d" text-anchor="middle" font-weight="600">真实生产经验｜Soda Pepsi（生产负责）</text>
+  <text x="64" y="184" font-size="12" fill="#374151" text-anchor="start">• 调度状态机闭环</text>
+  <text x="64" y="212" font-size="12" fill="#374151" text-anchor="start">• Worker 容灾 / Yarn App 跟踪</text>
+  <text x="64" y="240" font-size="12" fill="#374151" text-anchor="start">• 华为云 MRS/Yarn/Kerberos 迁移</text>
+  <text x="64" y="268" font-size="12" fill="#374151" text-anchor="start">• WorkerGroup 并行度 / 队列治理</text>
+  <line x1="200.0" y1="340" x2="200.0" y2="450" stroke="#16a34a" stroke-width="2.2" marker-end="url(#ag)"/>
+  <rect x="390" y="100" width="320" height="240" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="550.0" y="130" font-size="16" fill="#111827" text-anchor="middle" font-weight="600">变更与稳定性</text>
+  <text x="550.0" y="152" font-size="11.5" fill="#15803d" text-anchor="middle" font-weight="600">真实生产经验｜riskfree / ONES / reddog（生产）</text>
+  <text x="414" y="184" font-size="12" fill="#374151" text-anchor="start">• 11 变更系统 + 6 观测系统关联</text>
+  <text x="414" y="212" font-size="12" fill="#374151" text-anchor="start">• 1k+ 红线 / 灰度 / 封网</text>
+  <text x="414" y="240" font-size="12" fill="#374151" text-anchor="start">• 灰度发布回滚 / 预案</text>
+  <line x1="550.0" y1="340" x2="550.0" y2="450" stroke="#16a34a" stroke-width="2.2" marker-end="url(#ag)"/>
+  <rect x="740" y="100" width="320" height="240" rx="10" fill="#f9fafb" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="900.0" y="130" font-size="16" fill="#111827" text-anchor="middle" font-weight="600">Agent 工程化</text>
+  <text x="900.0" y="152" font-size="11.5" fill="#4b5563" text-anchor="middle" font-weight="600">相邻经验 + 对标｜Bigeyes / Moss / SAE Skills</text>
+  <text x="764" y="184" font-size="12" fill="#374151" text-anchor="start">• 告警事件聚合 + 状态机</text>
+  <text x="764" y="212" font-size="12" fill="#374151" text-anchor="start">• Moss MCP 工具编排</text>
+  <text x="764" y="240" font-size="12" fill="#374151" text-anchor="start">• SAE 运维操作封装成 Skill</text>
+  <line x1="900.0" y1="340" x2="900.0" y2="450" stroke="#9ca3af" stroke-width="2.2" stroke-dasharray="6,4" marker-end="url(#agr)"/>
+  <rect x="190.0" y="458" width="720" height="120" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <text x="550" y="494" font-size="17" fill="#1d4ed8" text-anchor="middle" font-weight="600">目标：大数据平台 AIOps RCA Agent（落地设计，非亲历项目）</text>
+  <text x="550" y="524" font-size="12.5" fill="#374151" text-anchor="middle">证据驱动取证 · 动作分级受控 · 场景化 SOP · 先 Copilot 后自动处置 · AgentOps 评估</text>
+  <text x="550" y="552" font-size="12" fill="#6b7280" text-anchor="middle">面试口径：懂真实故障形态 + 懂证据驱动与受控，这正是把 AIOps 做对、而不是做成聊天机器人的关键</text>
+  <line x1="40" y1="612" x2="74" y2="612" stroke="#16a34a" stroke-width="2.2" marker-end="url(#ag)"/>
+  <text x="82" y="616" font-size="12" fill="#6b7280" text-anchor="start">真实生产经验（可平移）</text>
+  <line x1="320" y1="612" x2="354" y2="612" stroke="#9ca3af" stroke-width="2.2" stroke-dasharray="6,4" marker-end="url(#agr)"/>
+  <text x="362" y="616" font-size="12" fill="#6b7280" text-anchor="start">相邻经验 + 理论对标（不包装成亲历 AIOps 平台）</text>
+</svg>

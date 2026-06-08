@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 460" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2563eb"/></marker></defs>
+<rect x="0" y="0" width="1500" height="460" fill="#ffffff"/>
+<text x="750.0" y="40.0" text-anchor="middle" fill="#475569" font-size="22" font-weight="700">容量管理闭环主流程</text>
+<rect x="40.0" y="120.0" width="185.0" height="80.0" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="132.5" y="145.0" text-anchor="middle" fill="#2563eb" font-size="16" font-weight="700">采集指标</text>
+<line x1="225.0" y1="160.0" x2="239.0" y2="160.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="239.0" y="120.0" width="185.0" height="80.0" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="331.5" y="145.0" text-anchor="middle" fill="#0891b2" font-size="16" font-weight="700">建容量基线</text>
+<line x1="424.0" y1="160.0" x2="438.0" y2="160.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="438.0" y="120.0" width="185.0" height="80.0" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="530.5" y="145.0" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">压测定上限</text>
+<line x1="623.0" y1="160.0" x2="637.0" y2="160.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="637.0" y="120.0" width="185.0" height="80.0" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="729.5" y="145.0" text-anchor="middle" fill="#7c3aed" font-size="16" font-weight="700">算水位/瓶颈</text>
+<line x1="822.0" y1="160.0" x2="836.0" y2="160.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="836.0" y="120.0" width="185.0" height="80.0" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="928.5" y="145.0" text-anchor="middle" fill="#7c3aed" font-size="16" font-weight="700">出容量结论</text>
+<line x1="1021.0" y1="160.0" x2="1035.0" y2="160.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="1035.0" y="120.0" width="185.0" height="80.0" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="1127.5" y="145.0" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">执行扩缩/配额</text>
+<line x1="1220.0" y1="160.0" x2="1234.0" y2="160.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="1234.0" y="120.0" width="185.0" height="80.0" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1326.5" y="145.0" text-anchor="middle" fill="#0891b2" font-size="16" font-weight="700">容量预测</text>
+<path d="M 1326.5,200.0 C 1326.5,290.0 132.5,290.0 132.5,200.0" fill="none" stroke="#475569" stroke-width="2.4" stroke-dasharray="6,5" marker-end="url(#ah)"/>
+<text x="750.0" y="315.0" text-anchor="middle" fill="#475569" font-size="15" font-weight="600">反馈复盘 → 修正基线与阈值（持续闭环）</text>
+<text x="750.0" y="360.0" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">推理场景找瓶颈优先看：GPU 显存（KV Cache）与排队延迟，而非只看 QPS / CPU</text>
+<text x="750.0" y="442.0" text-anchor="middle" fill="#475569" font-size="14" font-weight="600">纯理论对标，无直接项目落地经验；「压测定上限」为方法论环节</text>
+</svg>

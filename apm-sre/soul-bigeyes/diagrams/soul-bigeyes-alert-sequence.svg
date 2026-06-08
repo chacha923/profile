@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 720" width="1180" height="720">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 700; fill: #111827; }
+    .head { font-size: 14px; font-weight: 700; fill: #111827; }
+    .msg { font-size: 12px; fill: #374151; }
+    .note { font-size: 11px; fill: #6b7280; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="1180" height="720" fill="#ffffff"/>
+  <text x="40" y="42" class="title">Soul-Bigeyes 告警消费与通知时序</text>
+
+  <g transform="translate(40,80)">
+    <rect x="0" y="0" width="118" height="42" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="59" y="26" text-anchor="middle" class="head">老网关</text>
+    <rect x="158" y="0" width="118" height="42" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="217" y="26" text-anchor="middle" class="head">RocketMQ</text>
+    <rect x="316" y="0" width="128" height="42" rx="8" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="380" y="26" text-anchor="middle" class="head">Consumer</text>
+    <rect x="484" y="0" width="136" height="42" rx="8" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="552" y="26" text-anchor="middle" class="head">Repository</text>
+    <rect x="660" y="0" width="118" height="42" rx="8" fill="#ecfeff" stroke="#a5f3fc"/>
+    <text x="719" y="26" text-anchor="middle" class="head">MySQL</text>
+    <rect x="818" y="0" width="128" height="42" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="882" y="26" text-anchor="middle" class="head">NotifySender</text>
+    <rect x="986" y="0" width="114" height="42" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="1043" y="26" text-anchor="middle" class="head">Piper/飞书</text>
+
+    <g stroke="#d1d5db" stroke-dasharray="6,5">
+      <line x1="59" y1="42" x2="59" y2="600"/>
+      <line x1="217" y1="42" x2="217" y2="600"/>
+      <line x1="380" y1="42" x2="380" y2="600"/>
+      <line x1="552" y1="42" x2="552" y2="600"/>
+      <line x1="719" y1="42" x2="719" y2="600"/>
+      <line x1="882" y1="42" x2="882" y2="600"/>
+      <line x1="1043" y1="42" x2="1043" y2="600"/>
+    </g>
+
+    <line x1="59" y1="86" x2="217" y2="86" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="138" y="78" text-anchor="middle" class="msg">发送 AlertEventMqMessage</text>
+    <line x1="217" y1="132" x2="380" y2="132" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="298" y="124" text-anchor="middle" class="msg">投递消息</text>
+    <rect x="366" y="138" width="28" height="58" rx="4" fill="#ede9fe" stroke="#c4b5fd"/>
+    <line x1="380" y1="170" x2="552" y2="170" stroke="#9333ea" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="466" y="162" text-anchor="middle" class="msg">发布 ConsumedEvent</text>
+    <rect x="538" y="176" width="28" height="116" rx="4" fill="#ede9fe" stroke="#c4b5fd"/>
+    <line x1="552" y1="220" x2="719" y2="220" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="635" y="212" text-anchor="middle" class="msg">按 fingerprint 查活跃事件</text>
+    <line x1="719" y1="260" x2="552" y2="260" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="635" y="252" text-anchor="middle" class="msg">返回 firing / muted / none</text>
+
+    <rect x="470" y="310" width="330" height="70" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-dasharray="7,4"/>
+    <text x="486" y="334" class="note">alt 聚合分支</text>
+    <text x="486" y="356" class="note">有 firing：alert_count + 1；静默：suppressed_count + 1；无活跃：新建聚合事件</text>
+    <text x="486" y="374" class="note">recovered=true：当前实现只增加 recover_count 并写 auto_recover 日志</text>
+
+    <line x1="552" y1="408" x2="719" y2="408" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="635" y="400" text-anchor="middle" class="msg">INSERT IGNORE alarm_record</text>
+    <line x1="552" y1="454" x2="882" y2="454" stroke="#9333ea" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="717" y="446" text-anchor="middle" class="msg">非 suppressed 发布 AggregatedEvent</text>
+    <rect x="868" y="462" width="28" height="88" rx="4" fill="#fed7aa" stroke="#fdba74"/>
+    <line x1="882" y1="494" x2="719" y2="494" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="800" y="486" text-anchor="middle" class="msg">二次静默检查 / 写发送记录</text>
+    <line x1="882" y1="536" x2="1043" y2="536" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
+    <text x="962" y="528" text-anchor="middle" class="msg">Piper 多渠道推送</text>
+
+    <rect x="790" y="580" width="320" height="46" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="950" y="602" text-anchor="middle" class="note">发送前执行灰度、接收人/群限流；飞书群成功后按 alarmType 触发 AI 异步分析</text>
+  </g>
+</svg>

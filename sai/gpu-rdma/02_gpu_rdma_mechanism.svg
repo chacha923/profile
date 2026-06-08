@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" font-family="Helvetica, Arial, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9ca3af"/></marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="600" fill="#111827">GPUDirect RDMA zero-copy vs CPU staging</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#6b7280">RNIC DMA directly to GPU HBM, bypass host memory copy</text>
+  <text x="120" y="92" font-size="14" font-weight="600" fill="#2563eb">Zero-copy path</text>
+  <rect x="60" y="110" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="125" y="142" text-anchor="middle" font-size="13" fill="#111827">GPU A HBM</text>
+  <rect x="250" y="110" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="315" y="142" text-anchor="middle" font-size="13" fill="#111827">RNIC A</text>
+  <rect x="440" y="110" width="130" height="52" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="505" y="142" text-anchor="middle" font-size="13" fill="#111827">RDMA Net</text>
+  <rect x="630" y="110" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="695" y="142" text-anchor="middle" font-size="13" fill="#111827">RNIC B</text>
+  <rect x="820" y="110" width="100" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="870" y="142" text-anchor="middle" font-size="13" fill="#111827">GPU B</text>
+  <path d="M190 136 L250 136" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ab)"/>
+  <path d="M380 136 L440 136" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ab)"/>
+  <path d="M570 136 L630 136" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ab)"/>
+  <path d="M760 136 L820 136" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ab)"/>
+  <text x="120" y="210" font-size="14" font-weight="600" fill="#9ca3af">Legacy path (high overhead)</text>
+  <rect x="60" y="228" width="130" height="52" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="125" y="260" text-anchor="middle" font-size="13" fill="#6b7280">GPU HBM</text>
+  <rect x="220" y="228" width="150" height="52" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="295" y="260" text-anchor="middle" font-size="12" fill="#6b7280">Host Pin Mem</text>
+  <rect x="400" y="228" width="130" height="52" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="465" y="260" text-anchor="middle" font-size="13" fill="#6b7280">Socket/TCP</text>
+  <rect x="560" y="228" width="130" height="52" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="625" y="260" text-anchor="middle" font-size="13" fill="#6b7280">Remote Host</text>
+  <rect x="720" y="228" width="150" height="52" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="795" y="260" text-anchor="middle" font-size="12" fill="#6b7280">Remote GPU</text>
+  <path d="M190 254 L220 254" stroke="#9ca3af" stroke-width="1.5" fill="none" marker-end="url(#ag)"/>
+  <path d="M370 254 L400 254" stroke="#9ca3af" stroke-width="1.5" fill="none" marker-end="url(#ag)"/>
+  <path d="M530 254 L560 254" stroke="#9ca3af" stroke-width="1.5" fill="none" marker-end="url(#ag)"/>
+  <path d="M690 254 L720 254" stroke="#9ca3af" stroke-width="1.5" fill="none" marker-end="url(#ag)"/>
+  <rect x="60" y="310" width="840" height="180" rx="8" fill="#fafafa" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="80" y="338" font-size="14" font-weight="600" fill="#111827">Key mechanisms</text>
+  <text x="80" y="368" font-size="13" fill="#374151">1. Memory Registration: GPU pages registered as RDMA MR (nvidia-peermem)</text>
+  <text x="80" y="394" font-size="13" fill="#374151">2. Topology: GPU and RNIC should be PIX/PXB, not SYS (nvidia-smi topo -m)</text>
+  <text x="80" y="420" font-size="13" fill="#374151">3. NCCL picks IB/RDMA transport; falls back to Socket if RDMA unavailable</text>
+  <text x="80" y="446" font-size="13" fill="#374151">4. Trade-off: driver/firmware deps, topology sensitive; benefit: near line-rate comm</text>
+</svg>

@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 900" width="1500" height="900">
+  <style>
+    text {
+      font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif;
+    }
+    .title { font-size: 30px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 18px; fill: #4b5563; }
+    .node-title { font-size: 18px; font-weight: 700; fill: #111827; }
+    .node-text { font-size: 14px; fill: #374151; }
+    .branch-title { font-size: 20px; font-weight: 700; fill: #111827; }
+    .branch-text { font-size: 15px; fill: #374151; }
+    .note-title { font-size: 19px; font-weight: 700; fill: #111827; }
+    .note-text { font-size: 15px; fill: #374151; }
+  </style>
+
+  <defs>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect width="1500" height="900" fill="#f8fafc"/>
+
+  <text x="60" y="62" class="title">排障路径：1000 节点集群异常定位闭环</text>
+  <text x="60" y="96" class="subtitle">图里只放排障阶段，命令和指标解释放在正文，避免把面试回答变成命令背诵。</text>
+
+  <g transform="translate(50,165)">
+    <rect x="0" y="0" width="160" height="120" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+    <text x="80" y="30" text-anchor="middle" class="node-title">症状</text>
+    <text x="80" y="58" text-anchor="middle" class="node-text">Pod Pending</text>
+    <text x="80" y="82" text-anchor="middle" class="node-text">DNS 慢 / 发布卡住</text>
+    <text x="80" y="106" text-anchor="middle" class="node-text">节点 NotReady</text>
+  </g>
+
+  <g transform="translate(260,165)">
+    <rect x="0" y="0" width="160" height="120" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="80" y="30" text-anchor="middle" class="node-title">假设</text>
+    <text x="80" y="58" text-anchor="middle" class="node-text">控制面压力</text>
+    <text x="80" y="82" text-anchor="middle" class="node-text">DNS / CNI / CSI</text>
+    <text x="80" y="106" text-anchor="middle" class="node-text">镜像 / 资源不足</text>
+  </g>
+
+  <g transform="translate(470,165)">
+    <rect x="0" y="0" width="160" height="120" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="80" y="30" text-anchor="middle" class="node-title">验证</text>
+    <text x="80" y="58" text-anchor="middle" class="node-text">describe / events</text>
+    <text x="80" y="82" text-anchor="middle" class="node-text">metrics / logs</text>
+    <text x="80" y="106" text-anchor="middle" class="node-text">etcdctl / apiserver</text>
+  </g>
+
+  <g transform="translate(680,165)">
+    <rect x="0" y="0" width="160" height="120" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <text x="80" y="30" text-anchor="middle" class="node-title">指标</text>
+    <text x="80" y="58" text-anchor="middle" class="node-text">latency / rejected</text>
+    <text x="80" y="82" text-anchor="middle" class="node-text">fsync / QPS</text>
+    <text x="80" y="106" text-anchor="middle" class="node-text">conntrack / image pull</text>
+  </g>
+
+  <g transform="translate(890,165)">
+    <rect x="0" y="0" width="160" height="120" rx="14" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="80" y="30" text-anchor="middle" class="node-title">结论</text>
+    <text x="80" y="58" text-anchor="middle" class="node-text">控制面 / 网络</text>
+    <text x="80" y="82" text-anchor="middle" class="node-text">DNS / 存储</text>
+    <text x="80" y="106" text-anchor="middle" class="node-text">或 workload 自身</text>
+  </g>
+
+  <g transform="translate(1100,165)">
+    <rect x="0" y="0" width="160" height="120" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="80" y="30" text-anchor="middle" class="node-title">优化</text>
+    <text x="80" y="58" text-anchor="middle" class="node-text">限流 / 扩容</text>
+    <text x="80" y="82" text-anchor="middle" class="node-text">降噪 / 缓存</text>
+    <text x="80" y="106" text-anchor="middle" class="node-text">节点隔离 / 参数调整</text>
+  </g>
+
+  <g transform="translate(1310,165)">
+    <rect x="0" y="0" width="140" height="120" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="70" y="30" text-anchor="middle" class="node-title">复测</text>
+    <text x="70" y="58" text-anchor="middle" class="node-text">压测回放</text>
+    <text x="70" y="82" text-anchor="middle" class="node-text">灰度发布</text>
+    <text x="70" y="106" text-anchor="middle" class="node-text">长尾 / 错误率</text>
+  </g>
+
+  <path d="M210 225 L250 225" stroke="#6b7280" stroke-width="2.2" fill="none" marker-end="url(#arrow-gray)"/>
+  <path d="M420 225 L460 225" stroke="#6b7280" stroke-width="2.2" fill="none" marker-end="url(#arrow-gray)"/>
+  <path d="M630 225 L670 225" stroke="#6b7280" stroke-width="2.2" fill="none" marker-end="url(#arrow-gray)"/>
+  <path d="M840 225 L880 225" stroke="#6b7280" stroke-width="2.2" fill="none" marker-end="url(#arrow-gray)"/>
+  <path d="M1050 225 L1090 225" stroke="#6b7280" stroke-width="2.2" fill="none" marker-end="url(#arrow-gray)"/>
+  <path d="M1260 225 L1300 225" stroke="#6b7280" stroke-width="2.2" fill="none" marker-end="url(#arrow-gray)"/>
+
+  <path d="M550 292 C520 360, 290 390, 250 470" stroke="#6b7280" stroke-width="2" fill="none" marker-end="url(#arrow-gray)"/>
+  <path d="M550 292 C560 360, 555 400, 555 470" stroke="#6b7280" stroke-width="2" fill="none" marker-end="url(#arrow-gray)"/>
+  <path d="M550 292 C620 362, 850 390, 885 470" stroke="#6b7280" stroke-width="2" fill="none" marker-end="url(#arrow-gray)"/>
+  <path d="M550 292 C745 350, 1190 390, 1245 470" stroke="#6b7280" stroke-width="2" fill="none" marker-end="url(#arrow-gray)"/>
+
+  <g transform="translate(100,480)">
+    <rect width="300" height="140" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <text x="150" y="34" text-anchor="middle" class="branch-title">控制面分支</text>
+    <text x="150" y="66" text-anchor="middle" class="branch-text">apiserver request duration</text>
+    <text x="150" y="92" text-anchor="middle" class="branch-text">APF rejected / webhook latency</text>
+    <text x="150" y="118" text-anchor="middle" class="branch-text">watch / list 异常</text>
+  </g>
+
+  <g transform="translate(445,480)">
+    <rect width="300" height="140" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="150" y="34" text-anchor="middle" class="branch-title">etcd 分支</text>
+    <text x="150" y="66" text-anchor="middle" class="branch-text">wal fsync / backend commit</text>
+    <text x="150" y="92" text-anchor="middle" class="branch-text">leader changes</text>
+    <text x="150" y="118" text-anchor="middle" class="branch-text">proposal pending / DB size</text>
+  </g>
+
+  <g transform="translate(790,480)">
+    <rect width="300" height="140" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="150" y="34" text-anchor="middle" class="branch-title">网络 / DNS 分支</text>
+    <text x="150" y="66" text-anchor="middle" class="branch-text">CoreDNS latency / QPS</text>
+    <text x="150" y="92" text-anchor="middle" class="branch-text">NodeLocal cache / EndpointSlice</text>
+    <text x="150" y="118" text-anchor="middle" class="branch-text">conntrack / CNI</text>
+  </g>
+
+  <g transform="translate(1135,480)">
+    <rect width="300" height="140" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="150" y="34" text-anchor="middle" class="branch-title">节点 / 运行时分支</text>
+    <text x="150" y="66" text-anchor="middle" class="branch-text">kubelet / containerd</text>
+    <text x="150" y="92" text-anchor="middle" class="branch-text">image pull / DiskPressure</text>
+    <text x="150" y="118" text-anchor="middle" class="branch-text">CSI attach / CNI 创建</text>
+  </g>
+
+  <g transform="translate(360,720)">
+    <rect width="780" height="86" rx="16" fill="#ffffff" stroke="#9ca3af" stroke-width="2"/>
+    <text x="390" y="33" text-anchor="middle" class="note-title">面试表达重点</text>
+    <text x="390" y="62" text-anchor="middle" class="note-text">先按症状建立假设，再用指标验证；不要一上来就说“扩容 apiserver”或“重启 CoreDNS”。</text>
+  </g>
+
+  <path d="M1380 286 C1480 430, 1490 820, 1350 840 L170 840 C80 840, 70 700, 230 628" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="760" y="684" text-anchor="middle" class="node-text">复测失败时回到症状和假设，重新收敛范围</text>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; }</style>
+  <defs>
+    <marker id="ar-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="ar-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker>
+    <marker id="ar-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="ar-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="20" font-weight="600" fill="#111827">Spot 任务抢占式弹性治理 · 状态机</text>
+  <circle cx="60" cy="120" r="9" fill="#111827"/>
+  <text x="60" y="155" text-anchor="middle" font-size="11" fill="#6b7280">提交</text>
+  <rect x="110" y="95" width="130" height="56" rx="10" ry="10" fill="#fff7ed" stroke="#fb923c" stroke-width="1.6"/>
+  <text x="175.0" y="120.0" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">Bidding</text>
+  <text x="175.0" y="136.0" text-anchor="middle" font-size="11" fill="#6b7280">竞价中</text>
+  <rect x="300" y="95" width="130" height="56" rx="10" ry="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.6"/>
+  <text x="365.0" y="120.0" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">PreAllocation</text>
+  <text x="365.0" y="136.0" text-anchor="middle" font-size="11" fill="#6b7280">资源准备</text>
+  <rect x="490" y="95" width="130" height="56" rx="10" ry="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.6"/>
+  <text x="555.0" y="120.0" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">Running</text>
+  <text x="555.0" y="136.0" text-anchor="middle" font-size="11" fill="#6b7280">训练中</text>
+  <rect x="680" y="50" width="130" height="50" rx="10" ry="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+  <text x="745.0" y="72.0" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">Succeeded</text>
+  <text x="745.0" y="88.0" text-anchor="middle" font-size="11" fill="#6b7280">正常结束</text>
+  <rect x="680" y="50" width="130" height="50" rx="10" ry="10" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <rect x="680" y="145" width="130" height="50" rx="10" ry="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+  <text x="745.0" y="167.0" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">Failed</text>
+  <text x="745.0" y="183.0" text-anchor="middle" font-size="11" fill="#6b7280">失败终态</text>
+  <rect x="680" y="145" width="130" height="50" rx="10" ry="10" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+  <rect x="490" y="250" width="130" height="56" rx="10" ry="10" fill="#fff7ed" stroke="#fb923c" stroke-width="1.6"/>
+  <text x="555.0" y="275.0" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">Pod Preempted</text>
+  <text x="555.0" y="291.0" text-anchor="middle" font-size="11" fill="#6b7280">节点被抢占</text>
+  <rect x="280" y="250" width="170" height="56" rx="10" ry="10" fill="#faf5ff" stroke="#a78bfa" stroke-width="1.6"/>
+  <text x="365.0" y="275.0" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">Auto Rebuild</text>
+  <text x="365.0" y="291.0" text-anchor="middle" font-size="11" fill="#6b7280">ops 重新提交 + 放宽折扣</text>
+  <path d="M70,120 L108,120" stroke="#2563eb" stroke-width="1.6" fill="none" marker-end="url(#ar-blue)"/>
+  <path d="M240,123 L298,123" stroke="#2563eb" stroke-width="1.6" fill="none" marker-end="url(#ar-blue)"/>
+  <rect x="249.0" y="105" width="40" height="16" rx="3" fill="#ffffff" opacity="0.95"/>
+  <text x="269" y="117" text-anchor="middle" font-size="11" fill="#2563eb">出价命中</text>
+  <path d="M430,123 L488,123" stroke="#2563eb" stroke-width="1.6" fill="none" marker-end="url(#ar-blue)"/>
+  <path d="M620,110 L678,80" stroke="#16a34a" stroke-width="1.6" fill="none" marker-end="url(#ar-green)"/>
+  <rect x="632.0" y="78" width="40" height="16" rx="3" fill="#ffffff" opacity="0.95"/>
+  <text x="652" y="90" text-anchor="middle" font-size="11" fill="#16a34a">正常完成</text>
+  <path d="M620,138 L678,165" stroke="#dc2626" stroke-width="1.6" fill="none" marker-end="url(#ar-red)"/>
+  <rect x="632.0" y="147" width="40" height="16" rx="3" fill="#ffffff" opacity="0.95"/>
+  <text x="652" y="159" text-anchor="middle" font-size="11" fill="#dc2626">异常退出</text>
+  <path d="M240,145 C320,205 600,205 680,168" stroke="#dc2626" stroke-width="1.4" fill="none" marker-end="url(#ar-red)" stroke-dasharray="5,4"/>
+  <rect x="412.5" y="190" width="75" height="16" rx="3" fill="#ffffff" opacity="0.95"/>
+  <text x="450" y="202" text-anchor="middle" font-size="11" fill="#dc2626">竞价超时 8min</text>
+  <path d="M555,151 L555,248" stroke="#9333ea" stroke-width="1.6" fill="none" marker-end="url(#ar-purple)"/>
+  <rect x="594.5" y="189" width="61" height="16" rx="3" fill="#ffffff" opacity="0.95"/>
+  <text x="625" y="201" text-anchor="middle" font-size="11" fill="#9333ea">Pod 被抢占</text>
+  <path d="M488,278 L452,278" stroke="#9333ea" stroke-width="1.6" fill="none" marker-end="url(#ar-purple)"/>
+  <rect x="432.5" y="260" width="75" height="16" rx="3" fill="#ffffff" opacity="0.95"/>
+  <text x="470" y="272" text-anchor="middle" font-size="11" fill="#9333ea">Rebuild()</text>
+  <path d="M280,260 C160,260 100,200 130,151" stroke="#9333ea" stroke-width="1.6" fill="none" marker-end="url(#ar-purple)"/>
+  <rect x="125.5" y="219" width="89" height="16" rx="3" fill="#ffffff" opacity="0.95"/>
+  <text x="170" y="231" text-anchor="middle" font-size="11" fill="#9333ea">继承参数 + 折扣放宽</text>
+  <rect x="40" y="345" width="880" height="56" rx="8" fill="#fafafa" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="60" y="365" font-size="12" font-weight="600" fill="#111827">护栏规则（spot/scripts/request_init.py · Init）</text>
+  <text x="60" y="383" font-size="11" fill="#6b7280">· 节点数：DLC ≤ 8 / Spot ≤ 4（白名单用户上限 32）   · 运行时长：DLC ≤ 7 天 / Spot ≤ 3 天</text>
+  <text x="60" y="397" font-size="11" fill="#6b7280">· 出价折扣首次：H800≤0.15  A800≤0.25     · 抢占重建后放宽：H800≤0.20  A800≤0.35（一次性）</text>
+  <g transform="translate(620, 360)">
+    <line x1="0" y1="6" x2="22" y2="6" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ar-blue)"/>
+    <text x="28" y="10" font-size="11" fill="#6b7280">正常流转</text>
+    <line x1="100" y1="6" x2="122" y2="6" stroke="#9333ea" stroke-width="1.5" marker-end="url(#ar-purple)"/>
+    <text x="128" y="10" font-size="11" fill="#6b7280">抢占自愈</text>
+    <line x1="200" y1="6" x2="222" y2="6" stroke="#dc2626" stroke-width="1.5" marker-end="url(#ar-red)"/>
+    <text x="228" y="10" font-size="11" fill="#6b7280">失败 / 终态</text>
+  </g>
+</svg>

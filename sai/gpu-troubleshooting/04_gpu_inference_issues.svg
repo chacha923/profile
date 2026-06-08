@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 640" width="1020" height="640">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .label { font-size: 15px; font-weight: 600; fill: #111827; }
+    .clabel { font-size: 14px; font-weight: 600; fill: #111827; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .tag { font-size: 12px; font-weight: 600; fill: #1f2937; }
+    .edge { font-size: 11px; fill: #6b7280; }
+    .cmd { font-family: 'SF Mono','Menlo','Consolas',monospace; font-size: 11px; fill: #1f2937; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1020" height="640" fill="#ffffff"/>
+  <text x="40" y="46" class="title">GPU 推理服务常见问题与处置</text>
+  <text x="40" y="74" class="sub">六类高频问题，覆盖加载、显存、延迟、吞吐、降频与扩缩容。</text>
+  <rect x="40" y="98" width="300" height="222" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="56" y="128" class="clabel">① 启动慢 / 不 Ready</text>
+  <line x1="56" y1="140" x2="324" y2="140" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="56" y="164" class="sub">• 模型权重加载进显存慢</text>
+  <text x="56" y="187" class="sub">• readiness 太严被当 CrashLoop</text>
+  <text x="56" y="210" class="sub">→ 调 initialDelay / failureThreshold</text>
+  <text x="56" y="233" class="sub">• 多云 Ready 语义需对齐</text>
+  <rect x="360" y="98" width="300" height="222" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="376" y="128" class="clabel">② 显存 OOM</text>
+  <line x1="376" y1="140" x2="644" y2="140" stroke="#fed7aa" stroke-width="1"/>
+  <text x="376" y="164" class="sub">• 压力 = 模型权重 + KV Cache</text>
+  <text x="376" y="187" class="sub">• 并发 / 上下文变长打爆显存</text>
+  <text x="376" y="210" class="sub">→ 限并发 / 限序列长度</text>
+  <text x="376" y="233" class="sub">→ PD 分离单独治理 Decode</text>
+  <rect x="680" y="98" width="300" height="222" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+  <text x="696" y="128" class="clabel">③ TTFT / TPOT 高</text>
+  <line x1="696" y1="140" x2="964" y2="140" stroke="#e9d5ff" stroke-width="1"/>
+  <text x="696" y="164" class="sub">• TTFT：Router / Prefill 排队</text>
+  <text x="696" y="187" class="sub">  prompt 长度 / Prefill 算力</text>
+  <text x="696" y="210" class="sub">• TPOT：Decode / KV Cache / 显存</text>
+  <text x="696" y="233" class="sub">→ 分阶段定位与扩容</text>
+  <rect x="40" y="348" width="300" height="222" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="56" y="378" class="clabel">④ 吞吐低 / 利用率低</text>
+  <line x1="56" y1="390" x2="324" y2="390" stroke="#fed7aa" stroke-width="1"/>
+  <text x="56" y="414" class="sub">• batch 攒不起（请求稀疏）</text>
+  <text x="56" y="437" class="sub">• 序列短 / 显存限并发</text>
+  <text x="56" y="460" class="sub">• CPU 预处理 / 网络出口瓶颈</text>
+  <text x="56" y="483" class="sub">→ 看 QPS / batch / 队列深度</text>
+  <rect x="360" y="348" width="300" height="222" rx="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="376" y="378" class="clabel">⑤ 降频抖动</text>
+  <line x1="376" y1="390" x2="644" y2="390" stroke="#fecaca" stroke-width="1"/>
+  <text x="376" y="414" class="sub">• 延迟周期性抖动，时钟下降</text>
+  <text x="376" y="437" class="sub">• Thermal Slowdown = 温度墙</text>
+  <text x="376" y="460" class="sub">• Power Cap = 功耗墙</text>
+  <text x="376" y="483" class="sub">→ throttle reason，接告警</text>
+  <rect x="680" y="348" width="300" height="222" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="696" y="378" class="clabel">⑥ 扩缩容异常</text>
+  <line x1="696" y1="390" x2="964" y2="390" stroke="#d1d5db" stroke-width="1"/>
+  <text x="696" y="414" class="sub">• 扩不出：GPU 池无空闲卡</text>
+  <text x="696" y="437" class="sub">• 冷启动慢，扩容来不及</text>
+  <text x="696" y="460" class="sub">• 毛刺导致频繁扩缩</text>
+  <text x="696" y="483" class="sub">→ 调稳定窗口 / 多云对齐</text>
+</svg>

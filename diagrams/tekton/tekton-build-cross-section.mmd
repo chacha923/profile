@@ -1,0 +1,39 @@
+flowchart LR
+
+  bg["ACK 升级后不再依赖 Docker Runtime<br/>构建链路天然走 containerd"]
+
+  subgraph sameNode["同一个 pipeline 节点"]
+    subgraph leftPod["Tekton TaskRun Pod"]
+      taskrun["docker-build step<br/>buildctl client + source context"]
+    end
+
+    bridge["共享 hostPath"]
+
+    subgraph rightPod["buildkitd DaemonSet Pod"]
+      daemon["buildkitd<br/>节点上的构建守护进程"]
+    end
+
+    subgraph host["宿主机运行时"]
+      source["源码 / Dockerfile / Workspace"]
+      ctr["宿主机 containerd<br/>真正执行拉取 / 缓存 / 推送"]
+      cfg["buildkitd.toml<br/>containerd.sock / buildkit namespace"]
+      cache["BuildKit Cache<br/>/var/lib/container/buildkit"]
+      sock["containerd.sock<br/>/run/containerd"]
+      hosts["hosts.toml<br/>registry mirror / auth"]
+    end
+  end
+
+  harbor["Harbor Registry<br/>基础镜像拉取 + 目标镜像推送"]
+  summary["链路说明<br/>TaskRun Pod 只负责发起 buildctl<br/>真正干活的是 buildkitd + 宿主机 containerd"]
+
+  bg --> taskrun
+  source --> taskrun
+  taskrun --> bridge
+  bridge --> daemon
+  cfg --> daemon
+  daemon --> ctr
+  ctr --> sock
+  ctr --> cache
+  hosts --> ctr
+  ctr --> harbor
+  harbor -. 链路说明 .-> summary

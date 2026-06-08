@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { fill: #111827; font-size: 24px; font-weight: 700; }
+    .subtitle { fill: #6b7280; font-size: 13px; }
+    .label { fill: #111827; font-size: 15px; font-weight: 600; }
+    .sub { fill: #6b7280; font-size: 11px; }
+    .edge { fill: #4b5563; font-size: 12px; }
+    .group-title { fill: #374151; font-size: 13px; font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/></marker>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#111827" flood-opacity="0.08"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="#ffffff"/>
+  <text x="600" y="34" class="title" text-anchor="middle">Spring Boot 启动流程图</text>
+  <text x="600" y="56" class="subtitle" text-anchor="middle">从 main() 到 ApplicationReadyEvent 的核心链路</text>
+  <rect x="120" y="255" width="960" height="135" rx="12" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+  <text x="140" y="278" class="group-title">启动准备阶段</text>
+  <rect x="120" y="505" width="960" height="265" rx="12" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+  <text x="140" y="528" class="group-title">容器刷新与服务启动</text>
+  <path d="M 600 134 L 600 170" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="608" y="138" width="54" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="635" y="153" class="edge" text-anchor="middle">run</text>
+  <path d="M 600 242 L 600 290" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="598" y="255" width="100" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="648" y="270" class="edge" text-anchor="middle">prepare</text>
+  <path d="M 500 326 L 380 326" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow-orange)"/>
+  <rect x="396" y="299" width="88" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="440" y="314" class="edge" text-anchor="middle">events</text>
+  <path d="M 600 362 L 600 410" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="603" y="377" width="100" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="653" y="392" class="edge" text-anchor="middle">context</text>
+  <path d="M 700 446 L 820 446" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <rect x="698" y="419" width="124" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="760" y="434" class="edge" text-anchor="middle">customize</text>
+  <path d="M 920 482 L 920 510 L 700 510 L 700 540" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <rect x="774" y="483" width="76" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="812" y="498" class="edge" text-anchor="middle">apply</text>
+  <path d="M 600 482 L 600 540" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="602" y="503" width="100" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="652" y="518" class="edge" text-anchor="middle">refresh</text>
+  <path d="M 500 576 L 390 576" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <rect x="363" y="549" width="160" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="443" y="564" class="edge" text-anchor="middle">post-process</text>
+  <path d="M 600 612 L 600 670" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="606" y="633" width="88" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="650" y="648" class="edge" text-anchor="middle">create</text>
+  <path d="M 700 706 L 820 706" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="704" y="679" width="112" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="760" y="694" class="edge" text-anchor="middle">embedded</text>
+  <path d="M 600 742 L 600 790" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="600" y="756" width="100" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="650" y="771" class="edge" text-anchor="middle">runners</text>
+  <path d="M 180 362 L 180 825 L 480 825" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow-orange)"/>
+  <rect x="211" y="798" width="148" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="285" y="813" class="edge" text-anchor="middle">ready event</text>
+  <path d="M 720 826 L 780 826" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow-orange)"/>
+  <rect x="700" y="799" width="100" height="22" rx="4" fill="#ffffff" opacity="0.96"/>
+  <text x="750" y="814" class="edge" text-anchor="middle">publish</text>
+  <g id="node-main">
+    <rect x="500" y="70" width="200" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="600" y="97" class="label" text-anchor="middle">main()</text>
+    <text x="600" y="121" class="sub" text-anchor="middle">SpringApplication.run()</text>
+  </g>
+  <g id="node-app">
+    <rect x="500" y="170" width="200" height="72" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="600" y="197" class="label" text-anchor="middle">创建 SpringApplication</text>
+    <text x="600" y="218" class="sub" text-anchor="middle">推断 Web 类型 / 加载 Initializer</text>
+    <text x="600" y="233" class="sub" text-anchor="middle">Listener</text>
+  </g>
+  <g id="node-prepare">
+    <rect x="500" y="290" width="200" height="72" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="600" y="317" class="label" text-anchor="middle">准备 Environment</text>
+    <text x="600" y="341" class="sub" text-anchor="middle">命令行参数 / Profile / 配置文件</text>
+  </g>
+  <g id="node-listeners">
+    <rect x="180" y="290" width="200" height="72" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="280" y="317" class="label" text-anchor="middle">发布启动事件</text>
+    <text x="280" y="341" class="sub" text-anchor="middle">starting / environmentPrepared</text>
+  </g>
+  <g id="node-context">
+    <rect x="500" y="410" width="200" height="72" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="600" y="437" class="label" text-anchor="middle">创建 ApplicationContext</text>
+    <text x="600" y="458" class="sub" text-anchor="middle">Servlet / Reactive</text>
+    <text x="600" y="473" class="sub" text-anchor="middle">Non-web</text>
+  </g>
+  <g id="node-post">
+    <rect x="820" y="410" width="200" height="72" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="920" y="437" class="label" text-anchor="middle">应用上下文后处理</text>
+    <text x="920" y="461" class="sub" text-anchor="middle">BeanNameGenerator / ResourceLoader</text>
+  </g>
+  <g id="node-refresh">
+    <rect x="500" y="540" width="200" height="72" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="600" y="567" class="label" text-anchor="middle">refreshContext()</text>
+    <text x="600" y="591" class="sub" text-anchor="middle">进入 Spring 容器刷新</text>
+  </g>
+  <g id="node-beanfactory">
+    <rect x="180" y="540" width="210" height="72" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="285" y="567" class="label" text-anchor="middle">BeanFactory 准备</text>
+    <text x="285" y="591" class="sub" text-anchor="middle">BeanDefinition / 后置处理器</text>
+  </g>
+  <g id="node-beans">
+    <rect x="500" y="670" width="200" height="72" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="600" y="697" class="label" text-anchor="middle">实例化单例 Bean</text>
+    <text x="600" y="721" class="sub" text-anchor="middle">依赖注入 / Aware / 初始化</text>
+  </g>
+  <g id="node-webserver">
+    <rect x="820" y="670" width="200" height="72" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="920" y="697" class="label" text-anchor="middle">启动 WebServer</text>
+    <text x="920" y="721" class="sub" text-anchor="middle">Tomcat / Jetty / Netty</text>
+  </g>
+  <g id="node-runner">
+    <rect x="480" y="790" width="240" height="72" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="600" y="817" class="label" text-anchor="middle">执行 Runner</text>
+    <text x="600" y="839" class="sub" text-anchor="middle">ApplicationRunner</text>
+    <text x="600" y="854" class="sub" text-anchor="middle">CommandLineRunner</text>
+  </g>
+  <g id="node-ready">
+    <rect x="780" y="802" width="220" height="48" rx="24" ry="24" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+    <text x="890" y="823" class="label" text-anchor="middle">ApplicationReadyEvent</text>
+    <text x="890" y="841" class="sub" text-anchor="middle">应用可接收请求</text>
+  </g>
+  <g transform="translate(40, 835)">
+    <rect x="0" y="0" width="265" height="45" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+    <line x1="16" y1="16" x2="46" y2="16" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+    <text x="55" y="20" class="edge">主启动链路</text>
+    <line x1="16" y1="32" x2="46" y2="32" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow-orange)"/>
+    <text x="55" y="36" class="edge">事件发布</text>
+    <line x1="155" y1="16" x2="185" y2="16" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-purple)"/>
+    <text x="194" y="20" class="edge">扩展点</text>
+  </g>
+</svg>

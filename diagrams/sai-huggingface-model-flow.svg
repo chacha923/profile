@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 780" width="1920" height="1440">
+  <style>
+    .t { font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #111827; }
+    .st { font-family: "PingFang SC", "Microsoft YaHei", Helvetica, Arial, sans-serif; fill: #6b7280; font-size: 10.5px; }
+    .title { font-size: 17px; font-weight: 600; }
+    .lbl { font-size: 11.5px; font-weight: 600; }
+    .note { font-size: 10px; fill: #4b5563; }
+  </style>
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="g" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#059669"/></marker>
+  </defs>
+  <rect width="1040" height="780" fill="#ffffff"/>
+  <text x="520" y="32" text-anchor="middle" class="t title">SAI-Console：Hugging Face 模型端到端流程</text>
+  <text x="520" y="52" text-anchor="middle" class="st">搜索走 hf-mirror；下载为显式 Job；推理挂载 PVC 子路径 huggingface/{ModelName}</text>
+  <text x="28" y="78" class="lbl" fill="#1d4ed8">① 发现模型</text>
+  <rect x="28" y="88" width="200" height="56" rx="8" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.3"/>
+  <text x="128.0" y="114" text-anchor="middle" class="lbl">用户 / 前端</text>
+  <text x="128.0" y="132" text-anchor="middle" class="st">选型、搜索关键词</text>
+  <rect x="252" y="88" width="240" height="56" rx="8" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.3"/>
+  <text x="372.0" y="114" text-anchor="middle" class="lbl">sai-console API</text>
+  <text x="372.0" y="132" text-anchor="middle" class="st">GET /api/v1/huggingface/*</text>
+  <rect x="516" y="88" width="240" height="56" rx="8" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.3"/>
+  <text x="636.0" y="114" text-anchor="middle" class="lbl">hf-mirror.com</text>
+  <text x="636.0" y="132" text-anchor="middle" class="st">models-json / quicksearch / full-text</text>
+  <rect x="780" y="88" width="232" height="56" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.3"/>
+  <text x="896.0" y="114" text-anchor="middle" class="lbl">JSON 结果</text>
+  <text x="896.0" y="132" text-anchor="middle" class="st">模型列表与元数据</text>
+  <line x1="228" y1="116" x2="252" y2="116" stroke="#2563eb" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="492" y1="116" x2="516" y2="116" stroke="#2563eb" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="756" y1="116" x2="780" y2="116" stroke="#2563eb" stroke-width="2" marker-end="url(#a)"/>
+  <text x="28" y="168" class="lbl" fill="#1d4ed8">② 登记模型</text>
+  <rect x="28" y="178" width="320" height="56" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.3"/>
+  <text x="188.0" y="204" text-anchor="middle" class="lbl">POST /api/v1/model/create</text>
+  <text x="188.0" y="222" text-anchor="middle" class="st">写入 huggingface_name 等</text>
+  <rect x="372" y="178" width="320" height="56" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1.3"/>
+  <text x="532.0" y="204" text-anchor="middle" class="lbl">DB：model 表</text>
+  <text x="532.0" y="222" text-anchor="middle" class="st">huggingface_name = HF repo id</text>
+  <line x1="348" y1="206" x2="372" y2="206" stroke="#2563eb" stroke-width="2" marker-end="url(#a)"/>
+  <text x="28" y="258" class="lbl" fill="#1d4ed8">③ 拉取权重（显式触发）</text>
+  <rect x="28" y="268" width="280" height="68" rx="8" fill="#fce7f3" stroke="#f472b6" stroke-width="1.3"/>
+  <text x="168.0" y="294" text-anchor="middle" class="lbl">POST .../job/huggingface-download/create</text>
+  <text x="168.0" y="312" text-anchor="middle" class="st">cluster / namespace / model_name [token]</text>
+  <rect x="328" y="268" width="300" height="68" rx="8" fill="#fce7f3" stroke="#ec4899" stroke-width="1.3"/>
+  <text x="478.0" y="294" text-anchor="middle" class="lbl">HuggingfaceDownloadJob</text>
+  <text x="478.0" y="312" text-anchor="middle" class="st">用 model_name 查库覆盖 HuggingfaceName</text>
+  <rect x="652" y="268" width="360" height="68" rx="8" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.3"/>
+  <text x="832.0" y="294" text-anchor="middle" class="lbl">K8s Job</text>
+  <text x="832.0" y="312" text-anchor="middle" class="st">image huggingface:cli /hfd.sh + aria2c -x4</text>
+  <line x1="308" y1="302" x2="328" y2="302" stroke="#2563eb" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="628" y1="302" x2="652" y2="302" stroke="#2563eb" stroke-width="2" marker-end="url(#a)"/>
+  <text x="28" y="358" class="lbl" fill="#1d4ed8">④ 落盘</text>
+  <rect x="28" y="368" width="480" height="72" rx="8" fill="#ecfdf5" stroke="#34d399" stroke-width="1.3"/>
+  <text x="268.0" y="394" text-anchor="middle" class="lbl">PVC（claimName = namespace）</text>
+  <text x="268.0" y="412" text-anchor="middle" class="st">SubPath: huggingface/ &lt;repo 短名&gt; 由 hfd 默认 LOCAL_DIR</text>
+  <rect x="528" y="368" width="484" height="72" rx="8" fill="#d1fae5" stroke="#10b981" stroke-width="1.3"/>
+  <text x="770.0" y="394" text-anchor="middle" class="lbl">hfd.sh（HF_ENDPOINT=hf-mirror）</text>
+  <text x="770.0" y="412" text-anchor="middle" class="st">git clone / LFS / aria2c 分片下载</text>
+  <line x1="652" y1="336" x2="600" y2="368" stroke="#059669" stroke-width="1.8" marker-end="url(#g)"/>
+  <line x1="652" y1="336" x2="360" y2="368" stroke="#059669" stroke-width="1.8" marker-end="url(#g)"/>
+  <text x="28" y="462" class="lbl" fill="#1d4ed8">⑤ 状态与排障</text>
+  <rect x="28" y="472" width="480" height="52" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.3"/>
+  <text x="268.0" y="498" text-anchor="middle" class="lbl">GET /api/v1/model/job/list · job/pods</text>
+  <text x="268.0" y="516" text-anchor="middle" class="st">同步 K8s Job 完成/失败状态</text>
+  <rect x="528" y="472" width="484" height="52" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="1.3"/>
+  <text x="770.0" y="498" text-anchor="middle" class="lbl">可选 retry=true</text>
+  <text x="770.0" y="516" text-anchor="middle" class="st">删同名 Job 后重建</text>
+  <text x="28" y="542" class="lbl" fill="#1d4ed8">⑥ 推理服务</text>
+  <rect x="28" y="552" width="320" height="64" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.3"/>
+  <text x="188.0" y="578" text-anchor="middle" class="lbl">Create InferenceService</text>
+  <text x="188.0" y="596" text-anchor="middle" class="st">trigger 仅自动 OSS 非 HF</text>
+  <rect x="368" y="552" width="320" height="64" rx="8" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="1.3"/>
+  <text x="528.0" y="578" text-anchor="middle" class="lbl">Predictor：HuggingFace</text>
+  <text x="528.0" y="596" text-anchor="middle" class="st">MODEL_REPOSITORY=/mnt/models</text>
+  <rect x="708" y="552" width="304" height="64" rx="8" fill="#bae6fd" stroke="#0369a1" stroke-width="1.3"/>
+  <text x="860.0" y="578" text-anchor="middle" class="lbl">VolumeMount SubPath</text>
+  <text x="860.0" y="596" text-anchor="middle" class="st">huggingface/{ModelName}</text>
+  <line x1="348" y1="584" x2="368" y2="584" stroke="#2563eb" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="688" y1="584" x2="708" y2="584" stroke="#2563eb" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M 508 404 L 508 520 L 268 552" stroke="#9ca3af" stroke-width="1.2" fill="none" stroke-dasharray="5 3" marker-end="url(#a)"/>
+  <text x="518" y="488" class="note">PVC 数据供推理挂载</text>
+  <rect x="28" y="632" width="984" height="132" rx="8" fill="#fafafa" stroke="#e5e7eb"/>
+  <text x="44" y="658" class="lbl">要点</text>
+  <text x="44" y="682" class="note">1. 创建推理服务不会自动拉 HF；仅 OSS 有 trigger.DownloadModel。</text>
+  <text x="44" y="702" class="note">2. hfd 默认目录为 repo id 斜杠后段；推理 SubPath 为 huggingface/ + ModelName，需与命名约定一致。</text>
+  <text x="44" y="722" class="note">3. 私有模型在 Job 请求体传 username/token，注入为 --hf_username / --hf_token。</text>
+  <text x="44" y="742" class="note">4. Job 容忍 app_type=ml-dev-cpu；BackoffLimit=4。</text>
+</svg>

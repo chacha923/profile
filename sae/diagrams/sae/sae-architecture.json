@@ -1,0 +1,706 @@
+{
+  "template_type": "architecture",
+  "style": 1,
+  "width": 1600,
+  "height": 1120,
+  "title": "SAE 应用交付与运行治理架构图",
+  "subtitle": "结合 sae-console 与 sae-api 源码：同步控制面、CRD 资源契约、异步状态面与多集群运行底座",
+  "containers": [
+    {
+      "x": 60,
+      "y": 120,
+      "width": 1480,
+      "height": 130,
+      "side_label": "入口与产品层",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 285,
+      "width": 1480,
+      "height": 230,
+      "side_label": "sae-console 同步控制面",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 550,
+      "width": 1480,
+      "height": 205,
+      "side_label": "状态面与资源契约",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 790,
+      "width": 1480,
+      "height": 230,
+      "side_label": "多集群运行底座",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "user",
+      "kind": "user_avatar",
+      "x": 105,
+      "y": 155,
+      "width": 180,
+      "height": 66,
+      "label": "研发 / 运维",
+      "sublabel": "应用、发布、排障",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "fe",
+      "kind": "double_rect",
+      "x": 365,
+      "y": 145,
+      "width": 220,
+      "height": 82,
+      "label": "sae-fe / 控制台",
+      "type_label": "产品入口",
+      "sublabel": "应用详情、发布、日志",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "agent",
+      "kind": "rect",
+      "x": 655,
+      "y": 145,
+      "width": 230,
+      "height": 82,
+      "label": "OpenAPI / MCP / Agent",
+      "type_label": "自动化入口",
+      "sublabel": "查询、批量操作、助手调用",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "flat": true
+    },
+    {
+      "id": "saectl",
+      "kind": "rect",
+      "x": 960,
+      "y": 148,
+      "width": 205,
+      "height": 76,
+      "label": "saectl / 辅助 CLI",
+      "type_label": "运维工具",
+      "sublabel": "集群纳管、批处理",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "gitlab",
+      "kind": "rect",
+      "x": 1240,
+      "y": 148,
+      "width": 220,
+      "height": 76,
+      "label": "GitLab / Webhook",
+      "type_label": "代码事件",
+      "sublabel": "分支、Tag、Commit、触发",
+      "fill": "#fff7ed",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "gateway",
+      "kind": "double_rect",
+      "x": 105,
+      "y": 333,
+      "width": 245,
+      "height": 92,
+      "label": "console main",
+      "type_label": "统一 HTTP API",
+      "sublabel": "Gin / CAS / Audit / OTel",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "controllers",
+      "kind": "rect",
+      "x": 430,
+      "y": 325,
+      "width": 270,
+      "height": 108,
+      "label": "业务 Controllers",
+      "type_label": "业务编排",
+      "sublabel": "app / rollout / pipeline / workload",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "pkgsae",
+      "kind": "rect",
+      "x": 775,
+      "y": 325,
+      "width": 280,
+      "height": 108,
+      "label": "pkg/sae 编排层",
+      "type_label": "内部 SDK",
+      "sublabel": "ClusterManager / Verber / Pipeline",
+      "fill": "#faf5ff",
+      "stroke": "#7c3aed",
+      "flat": true
+    },
+    {
+      "id": "dashboard",
+      "kind": "rect",
+      "x": 1130,
+      "y": 325,
+      "width": 225,
+      "height": 108,
+      "label": "workload / dashboard",
+      "type_label": "运行查询",
+      "sublabel": "Pod / Log / Event / WebShell",
+      "fill": "#f0fdfa",
+      "stroke": "#14b8a6",
+      "flat": true
+    },
+    {
+      "id": "policy",
+      "kind": "rect",
+      "x": 1400,
+      "y": 335,
+      "width": 105,
+      "height": 88,
+      "label": "治理",
+      "type_label": "守卫",
+      "sublabel": "质量 / 审批 / 白名单",
+      "fill": "#fff7ed",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "mysql",
+      "kind": "cylinder",
+      "x": 105,
+      "y": 600,
+      "width": 210,
+      "height": 112,
+      "label": "MySQL",
+      "sublabel": "应用元数据、发布单、事件、构建历史",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a"
+    },
+    {
+      "id": "redis",
+      "kind": "cylinder",
+      "x": 365,
+      "y": 600,
+      "width": 165,
+      "height": 112,
+      "label": "Redis",
+      "sublabel": "缓存、会话、限流辅助",
+      "fill": "#fef2f2",
+      "stroke": "#ef4444"
+    },
+    {
+      "id": "watcher",
+      "kind": "double_rect",
+      "x": 585,
+      "y": 585,
+      "width": 245,
+      "height": 122,
+      "label": "watcher",
+      "type_label": "异步状态面",
+      "sublabel": "Event / Replicas / PipelineRun / RolloutNotify",
+      "fill": "#faf5ff",
+      "stroke": "#7c3aed"
+    },
+    {
+      "id": "job",
+      "kind": "rect",
+      "x": 890,
+      "y": 590,
+      "width": 200,
+      "height": 112,
+      "label": "saejob",
+      "type_label": "定时补偿",
+      "sublabel": "recheck、sync、引用修复",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "saeapi",
+      "kind": "double_rect",
+      "x": 1160,
+      "y": 570,
+      "width": 330,
+      "height": 150,
+      "label": "sae-api",
+      "type_label": "CRD + Controller + Client",
+      "sublabel": "CRD types / generated client / controllers",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "clusters",
+      "kind": "circle_cluster",
+      "x": 100,
+      "y": 848,
+      "width": 215,
+      "height": 130,
+      "label": "多集群 Kubernetes",
+      "sublabel": "prod / gray / qa / algorithm",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8"
+    },
+    {
+      "id": "appcr",
+      "kind": "document",
+      "x": 380,
+      "y": 850,
+      "width": 215,
+      "height": 118,
+      "label": "SAE CRDs",
+      "sublabel": "Application / Cluster",
+      "fill": "#ffffff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "k8sres",
+      "kind": "rect",
+      "x": 665,
+      "y": 840,
+      "width": 245,
+      "height": 138,
+      "label": "K8s 工作负载",
+      "type_label": "运行态",
+      "sublabel": "Deployment / Service / Ingress / HPA",
+      "fill": "#f0fdfa",
+      "stroke": "#14b8a6",
+      "flat": true
+    },
+    {
+      "id": "rollouts",
+      "kind": "document",
+      "x": 970,
+      "y": 850,
+      "width": 220,
+      "height": 118,
+      "label": "Rollout CR",
+      "sublabel": "灰度、promote、abort、rollback",
+      "fill": "#faf5ff",
+      "stroke": "#7c3aed"
+    },
+    {
+      "id": "tekton",
+      "kind": "rect",
+      "x": 1250,
+      "y": 848,
+      "width": 170,
+      "height": 124,
+      "label": "Tekton",
+      "type_label": "构建底座",
+      "sublabel": "PipelineRun / TaskRun",
+      "fill": "#fff7ed",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "observability",
+      "kind": "rect",
+      "x": 1425,
+      "y": 848,
+      "width": 115,
+      "height": 124,
+      "label": "观测通知",
+      "type_label": "反馈",
+      "sublabel": "Event / Metrics / Feishu",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "flat": true
+    }
+  ],
+  "arrows": [
+    {
+      "source": "user",
+      "target": "fe",
+      "flow": "control",
+      "label": "页面操作"
+    },
+    {
+      "source": "fe",
+      "target": "gateway",
+      "flow": "control",
+      "label": "/api/v1"
+    },
+    {
+      "source": "agent",
+      "target": "gateway",
+      "flow": "control",
+      "label": "/open/api/v1 / /mcp/v1"
+    },
+    {
+      "source": "saectl",
+      "target": "gateway",
+      "flow": "control",
+      "label": "辅助调用"
+    },
+    {
+      "source": "gitlab",
+      "target": "controllers",
+      "flow": "data",
+      "label": "Webhook / Repo 元数据"
+    },
+    {
+      "source": "gateway",
+      "target": "controllers",
+      "flow": "control",
+      "label": "路由分发"
+    },
+    {
+      "source": "controllers",
+      "target": "pkgsae",
+      "flow": "control",
+      "label": "业务编排"
+    },
+    {
+      "source": "controllers",
+      "target": "policy",
+      "flow": "data",
+      "label": "准入校验",
+      "route_points": [
+        [
+          700,
+          300
+        ],
+        [
+          1370,
+          300
+        ]
+      ]
+    },
+    {
+      "source": "pkgsae",
+      "target": "dashboard",
+      "flow": "read",
+      "label": "资源读写封装"
+    },
+    {
+      "source": "controllers",
+      "target": "mysql",
+      "flow": "write",
+      "label": "业务状态落库",
+      "route_points": [
+        [
+          565,
+          470
+        ],
+        [
+          210,
+          470
+        ]
+      ]
+    },
+    {
+      "source": "gateway",
+      "target": "redis",
+      "flow": "read",
+      "label": "cache/session",
+      "route_points": [
+        [
+          228,
+          485
+        ],
+        [
+          448,
+          485
+        ]
+      ]
+    },
+    {
+      "source": "pkgsae",
+      "target": "saeapi",
+      "flow": "write",
+      "label": "typed client / informer",
+      "route_points": [
+        [
+          915,
+          475
+        ],
+        [
+          1325,
+          475
+        ]
+      ]
+    },
+    {
+      "source": "watcher",
+      "target": "mysql",
+      "flow": "async",
+      "label": "状态回写",
+      "dashed": true
+    },
+    {
+      "source": "job",
+      "target": "mysql",
+      "flow": "async",
+      "label": "补偿写入",
+      "dashed": true,
+      "route_points": [
+        [
+          990,
+          735
+        ],
+        [
+          210,
+          735
+        ]
+      ]
+    },
+    {
+      "source": "pkgsae",
+      "target": "appcr",
+      "flow": "write",
+      "label": "创建 / Patch Application",
+      "route_points": [
+        [
+          915,
+          500
+        ],
+        [
+          488,
+          500
+        ]
+      ]
+    },
+    {
+      "source": "saeapi",
+      "target": "appcr",
+      "flow": "read",
+      "label": "watch / reconcile",
+      "route_points": [
+        [
+          1325,
+          770
+        ],
+        [
+          488,
+          770
+        ]
+      ]
+    },
+    {
+      "source": "saeapi",
+      "target": "k8sres",
+      "flow": "write",
+      "label": "生成 Deployment / Service / Ingress"
+    },
+    {
+      "source": "pkgsae",
+      "target": "rollouts",
+      "flow": "write",
+      "label": "灰度发布操作",
+      "route_points": [
+        [
+          915,
+          500
+        ],
+        [
+          1125,
+          500
+        ],
+        [
+          1125,
+          805
+        ],
+        [
+          1080,
+          805
+        ]
+      ]
+    },
+    {
+      "source": "pkgsae",
+      "target": "tekton",
+      "flow": "write",
+      "label": "触发构建",
+      "route_points": [
+        [
+          915,
+          500
+        ],
+        [
+          1520,
+          500
+        ],
+        [
+          1520,
+          805
+        ],
+        [
+          1335,
+          805
+        ]
+      ]
+    },
+    {
+      "source": "dashboard",
+      "target": "clusters",
+      "flow": "read",
+      "label": "Pod / Log / Event 查询",
+      "route_points": [
+        [
+          1240,
+          495
+        ],
+        [
+          208,
+          495
+        ]
+      ]
+    },
+    {
+      "source": "watcher",
+      "target": "appcr",
+      "flow": "async",
+      "label": "watch CR",
+      "dashed": true
+    },
+    {
+      "source": "watcher",
+      "target": "rollouts",
+      "flow": "async",
+      "label": "watch Rollout / replicas",
+      "dashed": true
+    },
+    {
+      "source": "watcher",
+      "target": "tekton",
+      "flow": "async",
+      "label": "watch PipelineRun",
+      "dashed": true,
+      "route_points": [
+        [
+          708,
+          785
+        ],
+        [
+          1335,
+          785
+        ]
+      ]
+    },
+    {
+      "source": "job",
+      "target": "clusters",
+      "flow": "async",
+      "label": "定时重检",
+      "dashed": true,
+      "route_points": [
+        [
+          990,
+          765
+        ],
+        [
+          208,
+          765
+        ]
+      ]
+    },
+    {
+      "source": "clusters",
+      "target": "appcr",
+      "flow": "neutral",
+      "label": "承载"
+    },
+    {
+      "source": "appcr",
+      "target": "k8sres",
+      "flow": "write",
+      "label": "期望态"
+    },
+    {
+      "source": "rollouts",
+      "target": "k8sres",
+      "flow": "control",
+      "label": "副本 / 流量推进"
+    },
+    {
+      "source": "tekton",
+      "target": "observability",
+      "flow": "feedback",
+      "label": "构建结果"
+    },
+    {
+      "source": "k8sres",
+      "target": "observability",
+      "flow": "feedback",
+      "label": "事件 / 指标 / 日志",
+      "route_points": [
+        [
+          788,
+          1010
+        ],
+        [
+          1495,
+          1010
+        ]
+      ]
+    },
+    {
+      "source": "observability",
+      "target": "watcher",
+      "flow": "feedback",
+      "label": "通知与状态反馈",
+      "dashed": true,
+      "route_points": [
+        [
+          1495,
+          780
+        ],
+        [
+          708,
+          780
+        ]
+      ]
+    }
+  ],
+  "legend": [
+    {
+      "label": "同步请求 / 控制动作",
+      "flow": "control"
+    },
+    {
+      "label": "资源写入 / 期望态",
+      "flow": "write"
+    },
+    {
+      "label": "查询读取",
+      "flow": "read"
+    },
+    {
+      "label": "异步 watch / 补偿",
+      "flow": "async",
+      "dashed": true
+    },
+    {
+      "label": "事件反馈",
+      "flow": "feedback",
+      "dashed": true
+    }
+  ],
+  "legend_position": "bottom-left",
+  "footer": "源码依据：sae-console cmd/console、cmd/watcher、cmd/job、pkg/sae；sae-api apis、controllers、client、pkg/apps。图中 sae-api 指 CRD/controller/client 契约层，不是面向前端的 Console HTTP API。"
+}

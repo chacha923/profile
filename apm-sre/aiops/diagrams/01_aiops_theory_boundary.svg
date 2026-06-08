@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 23px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 16px; font-weight: 700; fill: #111827; }
+    .t { font-size: 13px; fill: #374151; }
+    .s { font-size: 12px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.6; rx: 8; ry: 8; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="42" text-anchor="middle" class="title">AIOps 技术点的面试边界</text>
+  <text x="480" y="70" text-anchor="middle" class="sub">相邻生产经验可以连接，内部样本只能用于理论对标，不能包装成亲历项目</text>
+
+  <rect x="45" y="120" width="255" height="365" class="box green"/>
+  <text x="172" y="154" text-anchor="middle" class="h">可以安全连接</text>
+  <text x="172" y="182" text-anchor="middle" class="s">真实相邻经验</text>
+  <rect x="75" y="220" width="195" height="46" class="box"/>
+  <text x="172" y="248" text-anchor="middle" class="t">APM / 可观测</text>
+  <rect x="75" y="286" width="195" height="46" class="box"/>
+  <text x="172" y="314" text-anchor="middle" class="t">告警治理 / 事件流转</text>
+  <rect x="75" y="352" width="195" height="46" class="box"/>
+  <text x="172" y="380" text-anchor="middle" class="t">K8s 运维排障</text>
+  <rect x="75" y="418" width="195" height="46" class="box"/>
+  <text x="172" y="446" text-anchor="middle" class="t">SOP / 知识沉淀</text>
+
+  <rect x="352" y="105" width="255" height="395" class="box blue"/>
+  <text x="480" y="139" text-anchor="middle" class="h">技术点准备范围</text>
+  <text x="480" y="167" text-anchor="middle" class="s">理论对标 + 行业方案 + 落地设计</text>
+  <rect x="382" y="210" width="195" height="46" class="box"/>
+  <text x="480" y="238" text-anchor="middle" class="t">告警结构化</text>
+  <rect x="382" y="276" width="195" height="46" class="box"/>
+  <text x="480" y="304" text-anchor="middle" class="t">工具取证和证据链</text>
+  <rect x="382" y="342" width="195" height="46" class="box"/>
+  <text x="480" y="370" text-anchor="middle" class="t">假设验证和 Unknown</text>
+  <rect x="382" y="408" width="195" height="46" class="box"/>
+  <text x="480" y="436" text-anchor="middle" class="t">AgentOps 和评估</text>
+
+  <rect x="660" y="120" width="255" height="365" class="box red"/>
+  <text x="788" y="154" text-anchor="middle" class="h">不能声称</text>
+  <text x="788" y="182" text-anchor="middle" class="s">避免被追问击穿</text>
+  <rect x="690" y="232" width="195" height="48" class="box"/>
+  <text x="788" y="253" text-anchor="middle" class="t">我开发了该项目</text>
+  <text x="788" y="271" text-anchor="middle" class="s">事实边界不符</text>
+  <rect x="690" y="310" width="195" height="48" class="box"/>
+  <text x="788" y="331" text-anchor="middle" class="t">自行处置生产故障</text>
+  <text x="788" y="349" text-anchor="middle" class="s">高风险且无证据</text>
+  <rect x="690" y="388" width="195" height="48" class="box"/>
+  <text x="788" y="409" text-anchor="middle" class="t">准确率和收益数据</text>
+  <text x="788" y="427" text-anchor="middle" class="s">没有评测支撑</text>
+
+  <path d="M300 305 C328 305 328 305 352 305" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M607 305 C634 305 634 305 660 305" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="245" y="525" width="470" height="52" class="box amber"/>
+  <text x="480" y="548" text-anchor="middle" class="h">面试定位</text>
+  <text x="480" y="568" text-anchor="middle" class="s">具备相邻生产经验，能做技术选型、方案设计、排障路径和风险边界表达</text>
+</svg>

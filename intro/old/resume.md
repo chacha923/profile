@@ -3,15 +3,15 @@
 
 ### 个人信息
 
-目前就职于小红书基础技术部，高可用平台组
+现就职于 Soul APP 基础技术模块，平台保障组
 
 - 求职意向：后端工程师
-- 工作年限：6年
+- 工作年限：9年
 - base：上海
 - 出生年月：1992.01
 - 联系方式
 	- 手机: 17621156403
-	- Email: mamori23@dingtalk.com
+	- Email: zhuangzhewei09@dingtalk.com
 
 ### 个人经历
 #### 教育经历
@@ -32,6 +32,23 @@
 </div>
 
 #### 工作经历
+<div style="display:flex">
+<p style="width:20%"><b>Soul APP</b></p>
+<p style="width:20%">2023.08 - 至今</p>
+<p style="width:20%">基础技术模块</p>
+<p style="width:30%">平台保障组</p>
+</div>
+
+当前主要负责 Soul APP 基础技术模块的三条平台线：CICD（业务迭代交付）、数据中台和稳定性治理，分别覆盖研发交付与运行托管、数据分析与调度、告警治理与故障处置。
+
+- SAE 云原生 CICD 平台的项目负责人，负责 Soul 内部研发交付链路的核心控制面建设，将底层拆成基于 Argo Rollouts 的服务发版能力和基于 Tekton 的构建发布流水线，统一封装多集群 Kubernetes、GitLab、Harbor 等底座能力，承接应用接入、持续发布、回滚与日志排障等场景，支撑 5000+ 个内部服务的标准化交付和变更治理。
+- SAI 推荐平台项目负责人，面向 AI / 算法场景承接 TFJob、CronJob、NuclioFunction 等工作负载及贝联、PAI 等第三方推理服务托管，推动多云场景下的统一接入、发布、伸缩、状态同步和运行治理链路落地，支撑 600+ 个推理服务，包含贝联云、阿里云 PAI EAS、火山云等云厂商，300+ NuclioFunction serverless 服务，500+ TFJob 训练任务，100+ faiss build 任务的稳定托管与运维收口。
+- Soul-Bigeyes 新一代报警中心研发，负责替换老报警网关通知职责，建设告警聚合、抖动抑制、限流分发与飞书交互闭环能力，推动 XXL-JOB 等直推飞书场景统一接入平台治理并通过 SDK 开放接入，收敛重复告警与通知风暴问题。
+- Soul 数据中台后端研发，负责大数据门户下的查询与调度两条主链路建设：Soda Coca hive查询平台和 Soda Pepsi 调度平台的研发与维护
+  - Soda Coca hive查询平台承载公司所有离线 hive 查询，日均查询量 2000+，整体成功率 85%
+  - Soda Pepsi 调度平台承载公司所有 10000+ 大数据离线作业、日均约 5 万调度实例，整体成功率 99.5%；负责调度控制面与 Worker 执行面能力建设（Quartz 集群、DAG/依赖、状态机、多 Yarn 集群与 Kerberos、K8S 任务形态及配套 submitter），并与 SQL Scan、变更审批等治理流程打通
+- soul-moss-compose 一站式 agent 开发平台研发，基于 Coze Studio `v0.2.3` 推进私有化改造，完成企业登录、权限、空间、MCP 工具接入和工作流运行调试链路建设，并通过 MCP / Skills 把 SAE 能力开放给 OpenClaw 等 Agent 环境，支撑内部大模型应用编排和组合发布落地。
+
 <div style="display:flex">
 <p style="width:20%"><b>小红书</b></p>
 <p style="width:20%">2020.08 - 2023.05</p>
@@ -94,6 +111,52 @@
 - 公司商城主页的后端开发和维护工作
 
 ## 项目经历
+
+### 云原生发布系统 SAE
+###### 2023.08 - 至今
+Soul 内部研发交付与运行平台，面向全公司提供 Kubernetes 工作负载的持续管理、持续发布、回滚和排障能力，承担研发交付控制面的标准化建设。
+● 围绕 console、api、watcher、job 四个核心模块拆分应用管理、工作负载查询、灰度发布、回滚和日志排障链路，将平台能力切成控制面、运行面、异步监听和定时治理四条主线，支撑 5000+ 云原生应用的标准化交付。
+● 基于 Argo Rollouts v1.1.23 二开，修复 rolling gray、status、scale check 等边界问题，补齐定时重启、canary testcase 和灰度 pause HPA 等本地化能力，适配 Soul 的服务发版流程。
+● sae-api 负责工作负载初始化、状态同步和内部元信息 CRD 建模，维护 Application / Cluster / Zone / Tenant 等资源对象，为上层发版和运行控制提供基础资源对象。
+● 围绕 Tekton Pipelines 维护 Go、Java/Maven、Python、Node.js 四类主语言/生态发布流水线，并覆盖算法推理发布场景，沉淀多语言流水线能力。基于 buildx、containerd、nerdctl 持续优化构建链路，补齐私有镜像源、GOPRIVATE、时区、代理和缓存配置，并结合 `scan-code` 子项目做 jar 包合法性扫描和生产扫描管控。
+● 基于 MCP 和 Skills 将 SAE 的发版、查询、回滚、Pod 排障等能力开放给 OpenClaw 等 Agent 环境，支持组合发布和自动化运维，成为 AI 时代的统一操作入口。
+
+### Soul AI Platform
+###### 2024.04 - 至今
+面向 AI / 算法场景的作业与服务托管平台，独立于 SAE 但复用其控制面与底座编排能力，承接算法工作负载和第三方服务的统一托管与治理。核心控制面后端以 `sai-console` 为主模块（Go/Gin），配套异步 `watcher`、模型相关 Job 等进程，与 SAE 底座协同。
+- 通过 `sai-console` 统一对外暴露 HTTP API，并用 provider interface 对接 PAI、火山、贝联等厂商能力，沉淀通用 Kubernetes 动作抽象，把推理服务管理能力收口到一套控制面里。
+- 通过 `cmd/watcher` 监听 TFJob、Cron、FAISS CronJob 等集群事件并驱动平台状态，定时触发元数据同步等后台治理任务，保证控制面和集群态一致，减少人工兜底。
+- 梳理 Arena / Kubeflow 类工作负载的模型映射、元信息表达、发布入口和伸缩方式，推进 TFJob 存储挂载、代码同步和运行环境平台化，降低算法场景接入门槛。
+- 在主模块里编排 `batch/v1 Job` 承接 Hugging Face 模型拉取到工作区 PVC/NAS 等重任务，负责创建、状态落库和失败重试，与后续推理和训练挂载路径对齐，提升任务托管稳定性。
+- 通过 Envoy 控制面和 SAE 开放能力打通贝联服务的流量调度，并补齐日志、监控、状态管理与操作入口，推动第三方推理和训练向统一托管体系收敛。
+
+Soul 数据中台（Soda Coca / Soda Pepsi）
+2025.05 - 至今
+Soul 大数据门户的核心后端平台，覆盖 Soda Coca 统一查询入口和 Soda Pepsi 离线调度平台。近一年接手后，重点负责查询 Worker 弹性化、调度 Worker 标准化、跨云基础设施适配和生产变更治理；平台承载公司离线 Hive 查询 2000+，10000+ 离线作业和日均约 5 万调度实例，调度整体成功率 99.5%。
+● Soda Coca 查询平台：统一接入 Presto/Trino、Hive、Spark 等多引擎查询入口，前置权限、SQL 规则和队列路由校验，将长查询从 API 链路拆到 Worker 异步执行、结果落盘和 WebSocket 日志回传链路，降低控制面阻塞风险，支撑数据分析与报表查询场景。
+● 推进 Coca Worker 弹性化改造，围绕查询任务拆分提交、执行、日志、结果文件和下载等职责，补齐 Worker 并发控制、超时回收、重试、连接清理和关键路径观测；通过多集群、队列、连接池和 Kerberos 适配，使查询执行面具备按负载水平扩缩和故障隔离能力。
+● 围绕阿里云到华为云切换完成查询链路和调度链路适配，落地华为云 MRS/Yarn/Kerberos、OBS 日志与脚本存储、ResourceManager REST/SPNEGO Kill、多 YarnCluster/队列资源模型等能力，并推动 Delta、Jindo 等厂商绑定能力清退，保证新旧基础设施双跑、回放、回滚和最终切换可控。
+● Soda Pepsi 调度平台：梳理 Webserver、Scheduler、Worker、Alarm、Service/DAO/Common 多模块边界，Webserver 承接作业配置、DAG、补数、重跑、Kill、日志和 OpenAPI；Scheduler 负责 Quartz 触发、ZK Leader 选主、依赖判断、状态机和任务分发；Worker 负责脚本落盘、进程执行、日志采集、Yarn appId 追踪和状态回报。
+● 推进 Pepsi Worker 标准化和运行时容器化，统一 Shell/Python/Spark SQL/SeaTunnel/K8S runner 等任务类型的执行抽象、日志目录、状态回报、失败处理和资源清理协议；接入华为云 CCE 空闲资源做弹性承载，缓解本地 Worker 压力，并试点 Spark on K8s，将部分任务从 Yarn 迁出，带来阶段性提速和降本收益。
+● 完善调度状态机和 Worker 容灾闭环，将任务从 TRIGGERED、WAITING_DEPENDENCY、WAITING_DISPATCH 推进到 DISPATCHED、RECEIVED、RUNNING 及 SUCCESS/FAIL/KILLED/FAILOVER 等终态，通过 TaskStateService 做乱序事件过滤、终态保护、失败告警和运维动作收口；Worker 下线时由 Leader 清理 Yarn App、标记 FAILOVER 并重新入队，降低长任务资源泄漏和状态不一致风险。
+● 打通在线任务变更治理，接入 GitLab MR、SQL Scan/AI Review、作业审批、Hive 权限检查、队列权限审批和 default 队列白名单，把调度任务配置和资源使用纳入可审计、可回滚的生产变更流程。
+
+
+### Soul-Bigeyes 新一代报警中心
+###### 2026.01 - 至今
+Soul 内部统一告警治理平台，负责替换老报警网关通知职责，统一承接告警聚合、通知分发、飞书交互和事件运营链路。
+- 负责 `soul-bigeyes-schedule`、`soul-bigeyes-admin` 和 `soul-bigeyes-client` 核心能力建设，打通告警从 MQ 消费、事件聚合、发送分发到后台查询运营的完整链路。
+- 设计并落地 fingerprint 聚合、事件状态机、告警抖动抑制（reopen）和多渠道限流治理机制，减少重复事件与告警风暴，提升高峰期通知稳定性与可解释性。
+- 推动老报警网关向 Bigeyes 分阶段迁移，基于部门灰度完成通知接管，收敛重复通知和漏通知风险，保障迁移过程可回滚、可观测。
+- 将 XXL-JOB 等历史直推飞书的平台逐步纳入统一告警平台治理，并提供 SDK 接入能力，降低业务侧接入和维护成本，统一模板、路由与审计口径。
+- 建设飞书卡片 ACK/屏蔽/误报/拉群等交互闭环，操作日志统一沉淀，提升故障处理协同效率和事件复盘能力。
+
+### soul-moss-compose
+###### 2025.08 - 2026.01
+Soul 内部大模型应用编排平台，基于 Coze Studio 开源版本 `v0.2.3` fork 开发，用于承接内部 Agent、Workflow、MCP 工具、模型配置、OpenAPI 调用和企业权限治理。项目在开源能力基础上补齐 Soul 内部登录、空间、模型、运行时、可观测和部署链路，支撑大模型应用从搭建、调试到发布运行的闭环。
+- 负责企业权限与开放接口相关私有化改造，落地 `name` 登录、默认用户初始化、团队/个人空间字段、插件授权模型、OpenAPI JWT 鉴权与鉴权文档，增强插件访问权限校验和资源搜索逻辑，为内部应用、插件和工作流调用建立统一身份与空间边界。
+- 推进模型与工具接入能力建设，补充 OpenAI/Ark JSON 规范返回、`response_format` 透传、通义千问等模型配置、MCP 服务管理和工具选择能力，支持工作流按 MCP 工具维度配置用户覆盖，降低内部模型和工具接入成本。
+- 参与工作流运行与调试链路建设，补齐执行元数据、运行历史、工具调用、Token、思考过程及按用户/空间/`execute_id`/关键词过滤等查询能力，并配合远程 coderunner、Python runner、Workflow RPC、Dubbo 节点等运行时改造，提升复杂工作流的可调试性与可观测性。
 
 ### 变更风控平台 riskfree
 ###### 2022.09 - 2023.05
@@ -183,35 +246,16 @@
 - 对观测系统抽象，实现数据源可扩展性，可通过多种非 Prometheus 数据源产生报警，如 MySQL（TiDB），ElasticSearch 查询表达式的报警能力
 - 参与制定小红书容器与中间件核心指标的报警规范，S0 S1服务实现核心报警覆盖率 100%
 
-
-### 个人技能
+## 个人技能
 - 熟悉 Golang 语言
 - 熟悉基于 Kubernetes 的云原生持续交付过程，了解 DevOps 开发模式
-- 掌握 MySQL，Prometheus 中间件的使用
+- 掌握 MySQL、Prometheus 等中间件的使用
 - 了解 VictoriaMetric 分布式时序数据库
 - 对分布式系统架构有一定了解，具有项目架构设计能力
 
-### 开源项目
+## 开源项目
 
-#### Crane
-Crane 是一个基于 FinOps 的云资源分析与成本优化平台。它的愿景是在保证客户应用运行质量的前提下实现极致的降本。
-小红书为了实现降本与核心服务稳定性，与开源社区共建Crane项目，并在生产环境落地 Crane 的以下能力：
-- QoS 混部增强（qos ensured），当较高优先级的 Pod 受到资源竞争的影响时，Disable Schedule、Throttle 以及 Evict 将应用于低优先级的 Pod，以保证节点整体的稳定。
-- 通过 cpuset 增强旁路能力，使用的 cpuset 策略为 share 模式，提升绑核后的 CPU 使用率，只针对业务容器开启绑核
-- Dynamic Scheduler，使用 crane scheduler 代替原生调度器，根据资源负载动态调度 POD，实现资源的最优利用，减少集群的资源碎片，目前小红书整体资源利用率达到 30%。
-- 基于 Effective HPA 实现在离线混部，支持更丰富的弹性触发策略（预测，观测，周期），让弹性更加高效，并保障了服务的质量。
-
-2022.03 修复Crane agent QOS混部模块一些指标度量的bug
-
-#### TiDB
-2019.09 成为 TiDB, TiKV contributor，贡献了一些 PR，包括：
-- 实现部分 TiDB SQL 函数的计算下推，提升 SQL 执行效率
-
-
-
-## 获奖
-2021.12 小红书技术部双月最佳效率提升奖 Ones2.0  
-2019.11 参与 TiDB Performance Challenge 性能挑战赛优秀奖
-
-
-
+#### Arena
+参与阿里云基于 Kubeflow Arena 的二开算法套件问题治理（公开 fork：https://github.com/AliyunContainerService/arena，社区主仓：https://github.com/kubeflow/arena）。
+- 持续跟进 Arena 在 KServe、TFJob、cron-operator 等方向的公开演进，结合内部算法平台使用场景参与问题梳理、原因分析与修复建议设计，推动相关能力在阿里云内部落地完善。
+- 重点围绕 Cron TFJob / cron-operator 的 cron 表达式、时区处理与状态治理问题推进修复，协助完善训练和推理场景的兼容性、可用性与异常处理能力。

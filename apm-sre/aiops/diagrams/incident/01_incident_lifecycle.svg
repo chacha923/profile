@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 700" width="1080" height="700">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="700" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">事件协同处置全生命周期</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">从告警到复盘，每个阶段有明确动作、角色和计时点（MTTA / MTTR 的分解）</text>
+
+  <rect x="30" y="110" width="135" height="80" rx="8" class="box blue"/>
+  <text x="97" y="138" text-anchor="middle" class="h">① 检测</text>
+  <text x="97" y="160" text-anchor="middle" class="s">告警/SLO燃尽</text>
+  <text x="97" y="178" text-anchor="middle" class="s">去重富化</text>
+
+  <rect x="185" y="110" width="135" height="80" rx="8" class="box cyan"/>
+  <text x="252" y="138" text-anchor="middle" class="h">② 路由</text>
+  <text x="252" y="160" text-anchor="middle" class="s">按服务/严重度</text>
+  <text x="252" y="178" text-anchor="middle" class="s">找到 on-call</text>
+
+  <rect x="340" y="110" width="135" height="80" rx="8" class="box green"/>
+  <text x="407" y="138" text-anchor="middle" class="h">③ 响应 Ack</text>
+  <text x="407" y="160" text-anchor="middle" class="s">认领/升级</text>
+  <text x="407" y="178" text-anchor="middle" class="s">MTTA 计时</text>
+
+  <rect x="495" y="110" width="135" height="80" rx="8" class="box amber"/>
+  <text x="562" y="138" text-anchor="middle" class="h">④ 定级组队</text>
+  <text x="562" y="160" text-anchor="middle" class="s">定 Sev / 建 IC</text>
+  <text x="562" y="178" text-anchor="middle" class="s">拉协同空间</text>
+
+  <rect x="650" y="110" width="135" height="80" rx="8" class="box violet"/>
+  <text x="717" y="138" text-anchor="middle" class="h">⑤ 诊断</text>
+  <text x="717" y="160" text-anchor="middle" class="s">RCA Agent</text>
+  <text x="717" y="178" text-anchor="middle" class="s">取证定位</text>
+
+  <rect x="805" y="110" width="135" height="80" rx="8" class="box red"/>
+  <text x="872" y="138" text-anchor="middle" class="h">⑥ 止损</text>
+  <text x="872" y="160" text-anchor="middle" class="s">回滚/限流/扩容</text>
+  <text x="872" y="178" text-anchor="middle" class="s">受控执行</text>
+
+  <path d="M165 150 L185 150" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M320 150 L340 150" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M475 150 L495 150" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M630 150 L650 150" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M785 150 L805 150" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="300" y="225" width="240" height="80" rx="8" class="box green"/>
+  <text x="420" y="253" text-anchor="middle" class="h">⑦ 恢复 Resolve</text>
+  <text x="420" y="275" text-anchor="middle" class="s">确认指标回归 / 关闭事件</text>
+  <text x="420" y="293" text-anchor="middle" class="s">MTTR 计时终点</text>
+
+  <rect x="600" y="225" width="240" height="80" rx="8" class="box blue"/>
+  <text x="720" y="253" text-anchor="middle" class="h">⑧ 复盘 Postmortem</text>
+  <text x="720" y="275" text-anchor="middle" class="s">无指责 / 时间线 / 行动项</text>
+  <text x="720" y="293" text-anchor="middle" class="s">沉淀 SOP + 评测样本</text>
+
+  <path d="M872 190 C872 215 560 220 540 250" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <path d="M540 265 L600 265" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M720 305 C720 360 250 360 97 195" stroke="#2563eb" stroke-width="1.6" fill="none" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+  <text x="380" y="350" class="s">复盘回灌：改进检测/路由/预案，下次更快</text>
+
+  <rect x="60" y="400" width="440" height="130" rx="8" class="box amber"/>
+  <text x="90" y="428" class="h">关键计时点（协同的 KPI）</text>
+  <text x="90" y="453" class="s">· MTTA：检测→响应，考验路由和 on-call 触达</text>
+  <text x="90" y="475" class="s">· MTTM：响应→止损，考验诊断和预案</text>
+  <text x="90" y="497" class="s">· MTTR：检测→恢复，端到端总时长</text>
+  <text x="90" y="519" class="s">· 协同优化的是"人和流程的时间"，不只是诊断</text>
+
+  <rect x="540" y="400" width="460" height="130" rx="8" class="box violet"/>
+  <text x="570" y="428" class="h">核心角色</text>
+  <text x="570" y="453" class="s">· IC（Incident Commander）：总指挥，只协调不亲自敲</text>
+  <text x="570" y="475" class="s">· Ops/Resolver：实际操作止损的人</text>
+  <text x="570" y="497" class="s">· Comms/Scribe：对外沟通 + 记录时间线</text>
+  <text x="570" y="519" class="s">· 角色分离避免"一个人又指挥又救火又汇报"</text>
+
+  <rect x="60" y="550" width="940" height="120" rx="8" class="box green"/>
+  <text x="90" y="578" class="h">协同处置 vs 单纯诊断（这份文档的定位）</text>
+  <text x="90" y="603" class="s">· 前6本解决"怎么找到根因"；这本解决"故障来了，人和流程怎么被组织起来快速止损"；</text>
+  <text x="90" y="625" class="s">· PagerDuty 类工具的本质：把检测→路由→升级→协同→复盘做成标准化、可计时、可审计的流程引擎；</text>
+  <text x="90" y="647" class="s">· AIOps 不替代协同，而是嵌入每一环（富化、降噪、IC 副驾、纪要、复盘），缩短人和流程的时间。</text>
+</svg>

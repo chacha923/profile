@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 660" width="1080" height="660">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+    .orange { fill: #fff7ed; stroke: #fdba74; }
+  </style>
+  <rect width="1080" height="660" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">严重度分级与协同响应规格</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">不是所有故障都拉全员；用 Severity 决定"叫谁、多快、要不要 IC、要不要对外通报"</text>
+
+  <rect x="60" y="95" width="960" height="70" rx="8" class="box red"/>
+  <text x="90" y="123" class="h">Sev1 — 重大（核心业务大面积不可用 / 资损 / 数据风险）</text>
+  <text x="90" y="148" class="s">立即响应 · 必设 IC + Comms + Scribe · 拉战时协同空间 · 对外状态页通报 · 主管/高层知会 · 全程记录</text>
+
+  <rect x="60" y="180" width="960" height="65" rx="8" class="box orange"/>
+  <text x="90" y="207" class="h">Sev2 — 严重（部分功能受损 / 重要客户影响）</text>
+  <text x="90" y="231" class="s">分钟级响应 · 指定 IC · 团队内协同空间 · 关键干系人知会 · 需要止损预案</text>
+
+  <rect x="60" y="260" width="960" height="65" rx="8" class="box amber"/>
+  <text x="90" y="287" class="h">Sev3 — 一般（轻微降级 / 有规避手段）</text>
+  <text x="90" y="311" class="s">on-call 自行处理 · 无需 IC · 记录事件 · 工作时间跟进即可</text>
+
+  <rect x="60" y="340" width="960" height="60" rx="8" class="box green"/>
+  <text x="90" y="367" class="h">Sev4/5 — 低（单点抖动 / 噪声 / 可延后）</text>
+  <text x="90" y="389" class="s">合并降噪 · 进工单池 · 批量处理 · 不打扰 on-call</text>
+
+  <rect x="60" y="425" width="455" height="200" rx="8" class="box violet"/>
+  <text x="90" y="453" class="h">IC（Incident Commander）职责</text>
+  <text x="90" y="478" class="s">· 总指挥：定节奏、分工、做决策，不亲自敲键盘</text>
+  <text x="90" y="500" class="s">· 维护单一事实源（当前状态/假设/动作）</text>
+  <text x="90" y="522" class="s">· 控制协同空间，避免七嘴八舌和重复操作</text>
+  <text x="90" y="544" class="s">· 决定升级、拉人、对外通报的时机</text>
+  <text x="90" y="566" class="s">· 宣布止损/恢复，启动复盘</text>
+  <text x="90" y="596" class="s">关键：IC 是角色不是职级，谁都可担任</text>
+
+  <rect x="535" y="425" width="485" height="200" rx="8" class="box blue"/>
+  <text x="565" y="453" class="h">为什么要分级 + 角色（面试落点）</text>
+  <text x="565" y="478" class="s">· 不分级 → 要么小事惊动全员(疲劳)，要么大事</text>
+  <text x="582" y="498" class="s">没人重视(漏处置)；分级是注意力的分配</text>
+  <text x="565" y="522" class="s">· 不设 IC → 一个人又指挥又救火又汇报，必乱</text>
+  <text x="565" y="544" class="s">· 角色分离让"指挥/操作/沟通"并行不打架</text>
+  <text x="565" y="566" class="s">· Sev 决定响应规格，是协同的"流量分级"，</text>
+  <text x="582" y="586" class="s">和告警降噪、AIOps 路由是同一套思路</text>
+  <text x="565" y="612" class="s">· 定级要有客观标准，避免凭感觉拉高/压低</text>
+</svg>

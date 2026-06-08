@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 700" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2563eb"/></marker></defs>
+<rect x="0" y="0" width="1500" height="700" fill="#ffffff"/>
+<text x="750.0" y="40.0" text-anchor="middle" fill="#475569" font-size="22" font-weight="700">如果让我设计：容量管理体系（5 层）</text>
+<text x="179.0" y="108.0" text-anchor="middle" fill="#2563eb" font-size="17" font-weight="700">数据采集层</text>
+<rect x="40.0" y="124.0" width="278.0" height="66.0" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="179.0" y="149.0" text-anchor="middle" fill="#2563eb" font-size="16" font-weight="700">golden signals</text>
+<text x="179.0" y="172.0" text-anchor="middle" fill="#1f2937" font-size="15">QPS·成功率·P99</text>
+<rect x="40.0" y="200.0" width="278.0" height="66.0" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="179.0" y="225.0" text-anchor="middle" fill="#2563eb" font-size="16" font-weight="700">推理指标</text>
+<text x="179.0" y="248.0" text-anchor="middle" fill="#1f2937" font-size="15">TTFT·TPS·queue latency</text>
+<rect x="40.0" y="276.0" width="278.0" height="66.0" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="179.0" y="301.0" text-anchor="middle" fill="#2563eb" font-size="16" font-weight="700">资源指标</text>
+<text x="179.0" y="324.0" text-anchor="middle" fill="#1f2937" font-size="15">GPU利用率·显存·副本</text>
+<rect x="40.0" y="352.0" width="278.0" height="66.0" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="179.0" y="377.0" text-anchor="middle" fill="#2563eb" font-size="16" font-weight="700">容量基线快照</text>
+<text x="179.0" y="400.0" text-anchor="middle" fill="#1f2937" font-size="15">卡数·规格·算力表</text>
+<line x1="318.0" y1="240.0" x2="330.0" y2="240.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<text x="469.0" y="108.0" text-anchor="middle" fill="#0891b2" font-size="17" font-weight="700">容量建模层</text>
+<rect x="330.0" y="124.0" width="278.0" height="66.0" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="469.0" y="149.0" text-anchor="middle" fill="#0891b2" font-size="16" font-weight="700">建容量基线</text>
+<text x="469.0" y="172.0" text-anchor="middle" fill="#1f2937" font-size="15">按服务/资源池</text>
+<rect x="330.0" y="200.0" width="278.0" height="66.0" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="469.0" y="225.0" text-anchor="middle" fill="#0891b2" font-size="16" font-weight="700">单实例上限</text>
+<text x="469.0" y="248.0" text-anchor="middle" fill="#1f2937" font-size="15">压测找SLO拐点·理论对标</text>
+<rect x="330.0" y="276.0" width="278.0" height="66.0" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="469.0" y="301.0" text-anchor="middle" fill="#0891b2" font-size="16" font-weight="700">水位模型</text>
+<text x="469.0" y="324.0" text-anchor="middle" fill="#1f2937" font-size="15">健康/告警/触顶三档</text>
+<line x1="608.0" y1="240.0" x2="620.0" y2="240.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<text x="759.0" y="108.0" text-anchor="middle" fill="#7c3aed" font-size="17" font-weight="700">决策层</text>
+<rect x="620.0" y="124.0" width="278.0" height="66.0" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="759.0" y="149.0" text-anchor="middle" fill="#7c3aed" font-size="16" font-weight="700">容量评估</text>
+<text x="759.0" y="172.0" text-anchor="middle" fill="#1f2937" font-size="15">当前水位+余量</text>
+<rect x="620.0" y="200.0" width="278.0" height="66.0" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="759.0" y="225.0" text-anchor="middle" fill="#7c3aed" font-size="16" font-weight="700">容量预测</text>
+<text x="759.0" y="248.0" text-anchor="middle" fill="#1f2937" font-size="15">趋势外推未来需求</text>
+<rect x="620.0" y="276.0" width="278.0" height="66.0" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="759.0" y="301.0" text-anchor="middle" fill="#7c3aed" font-size="16" font-weight="700">弹性阈值</text>
+<text x="759.0" y="324.0" text-anchor="middle" fill="#1f2937" font-size="15">上限×水位反推+冷却</text>
+<line x1="898.0" y1="240.0" x2="910.0" y2="240.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<text x="1049.0" y="108.0" text-anchor="middle" fill="#ea580c" font-size="17" font-weight="700">执行层</text>
+<rect x="910.0" y="124.0" width="278.0" height="66.0" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="1049.0" y="149.0" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">自动扩缩容</text>
+<text x="1049.0" y="172.0" text-anchor="middle" fill="#1f2937" font-size="15">按水位信号</text>
+<rect x="910.0" y="200.0" width="278.0" height="66.0" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="1049.0" y="225.0" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">配额 admission</text>
+<text x="1049.0" y="248.0" text-anchor="middle" fill="#1f2937" font-size="15">超配拦截</text>
+<rect x="910.0" y="276.0" width="278.0" height="66.0" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="1049.0" y="301.0" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">采购选型</text>
+<text x="1049.0" y="324.0" text-anchor="middle" fill="#1f2937" font-size="15">单位算力成本对比</text>
+<line x1="1188.0" y1="240.0" x2="1200.0" y2="240.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<text x="1339.0" y="108.0" text-anchor="middle" fill="#059669" font-size="17" font-weight="700">反馈层</text>
+<rect x="1200.0" y="124.0" width="278.0" height="66.0" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="1339.0" y="149.0" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">水位大盘</text>
+<text x="1339.0" y="172.0" text-anchor="middle" fill="#1f2937" font-size="15">余量可见</text>
+<rect x="1200.0" y="200.0" width="278.0" height="66.0" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="1339.0" y="225.0" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">触顶预测</text>
+<text x="1339.0" y="248.0" text-anchor="middle" fill="#1f2937" font-size="15">提前预警</text>
+<rect x="1200.0" y="276.0" width="278.0" height="66.0" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="1339.0" y="301.0" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">闲置识别</text>
+<text x="1339.0" y="324.0" text-anchor="middle" fill="#1f2937" font-size="15">可缩容下线</text>
+<rect x="1200.0" y="352.0" width="278.0" height="66.0" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="1339.0" y="377.0" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">故障复盘</text>
+<text x="1339.0" y="400.0" text-anchor="middle" fill="#1f2937" font-size="15">修正基线/阈值</text>
+<text x="750.0" y="650.0" text-anchor="middle" fill="#ea580c" font-size="15" font-weight="700">设计原则：留 headroom（可承诺=总量−故障冗余−安全余量）· 与云托管弹性兼容 · 阈值灰度+人工兜底</text>
+<text x="750.0" y="682.0" text-anchor="middle" fill="#475569" font-size="14" font-weight="600">纯理论对标，无直接项目落地经验；橙字「压测」为方法论，未亲手做</text>
+</svg>

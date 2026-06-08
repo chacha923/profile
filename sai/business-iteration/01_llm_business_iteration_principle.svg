@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 720" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#475569"/></marker></defs>
+<rect x="0" y="0" width="1500" height="720" fill="#ffffff"/>
+<text x="750.0" y="40.0" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">SAI 给用户提供什么能力 · 三层分工</text>
+<rect x="80.0" y="80.0" width="1340.0" height="180.0" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<text x="100.0" y="114.0" text-anchor="start" fill="#dc2626" font-size="17" font-weight="700">业务 / 算法层（业务线负责，平台不碰）</text>
+<rect x="108.0" y="138.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="208.3" y="188.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">数据配比</text>
+<rect x="324.7" y="138.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="425.0" y="188.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">模型选型</text>
+<rect x="541.3" y="138.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="641.7" y="188.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">SFT/LoRA 超参</text>
+<rect x="758.0" y="138.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="858.3" y="188.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">loss 收敛</text>
+<rect x="974.7" y="138.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="1075.0" y="188.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">评测指标设计</text>
+<rect x="1191.3" y="138.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="1291.7" y="188.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">prompt / RLHF</text>
+<rect x="80.0" y="280.0" width="1340.0" height="180.0" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="100.0" y="314.0" text-anchor="start" fill="#2563eb" font-size="17" font-weight="700">运行托管层（平台控制面 · 我主要负责）</text>
+<rect x="108.0" y="338.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="208.3" y="388.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">训练/微调任务生命周期</text>
+<rect x="324.7" y="338.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="425.0" y="388.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">模型制品异步处理</text>
+<rect x="541.3" y="338.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="641.7" y="388.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">多云推理服务托管</text>
+<rect x="758.0" y="338.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="858.3" y="388.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">PD分离多组件托管</text>
+<rect x="974.7" y="338.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="1075.0" y="388.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">watcher/Sync 状态一致性</text>
+<rect x="1191.3" y="338.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="1291.7" y="388.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">统一灰度/回滚/扩缩容</text>
+<rect x="80.0" y="480.0" width="1340.0" height="180.0" rx="14" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="100.0" y="514.0" text-anchor="start" fill="#059669" font-size="17" font-weight="700">基础设施 / 资源层（平台治理，用户无感）</text>
+<rect x="108.0" y="538.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="208.3" y="588.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">GPU 异构资源池</text>
+<rect x="324.7" y="538.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="425.0" y="588.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">NodePool/ResourceGroup</text>
+<rect x="541.3" y="538.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="641.7" y="588.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">ACK</text>
+<rect x="758.0" y="538.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="858.3" y="588.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">PAI</text>
+<rect x="974.7" y="538.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="1075.0" y="588.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">火山</text>
+<rect x="1191.3" y="538.0" width="200.7" height="90.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="1291.7" y="588.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">贝联</text>
+<text x="750.0" y="702.0" text-anchor="middle" fill="#64748b" font-size="15" font-weight="400">用户视角：选资源池规格、提交任务、一键部署——不写 PodSpec、不碰多云差异</text>
+</svg>

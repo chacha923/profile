@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" width="1600" height="980">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; fill: #111827; }
+    .title { font-size: 34px; font-weight: 700; }
+    .subtitle { font-size: 17px; fill: #6b7280; }
+    .node-title { font-size: 17px; font-weight: 700; }
+    .node-sub { font-size: 13px; fill: #475569; }
+    .small { font-size: 12px; fill: #64748b; }
+    .edge-label { font-size: 12px; font-weight: 700; fill: #334155; }
+    .badge { font-size: 13px; font-weight: 700; fill: #334155; }
+    .legend { font-size: 12px; fill: #64748b; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#9333ea"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#f97316"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="980" fill="#ffffff"/>
+  <text x="70" y="66" class="title">SAE 运行治理闭环</text>
+  <text x="70" y="98" class="subtitle">把“我深度参与的平台价值”讲清楚：不仅能发布，还能把集群事实、事件、指标、通知、诊断和补偿治理串成持续闭环</text>
+
+  <ellipse cx="800" cy="512" rx="470" ry="298" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="9 7"/>
+  <text x="800" y="508" text-anchor="middle" class="badge">核心闭环</text>
+  <text x="800" y="531" text-anchor="middle" class="small">集群事实 -> 平台状态 -> 用户决策 -> 编排修复 -> 新事实</text>
+
+  <g transform="translate(665,160)">
+    <rect width="270" height="96" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <text x="135" y="32" text-anchor="middle" class="node-title">K8s / Rollouts / Tekton</text>
+    <text x="135" y="57" text-anchor="middle" class="node-sub">Pod、Event、PipelineRun、Rollout</text>
+    <text x="135" y="76" text-anchor="middle" class="small">真实运行态与执行结果</text>
+  </g>
+  <g transform="translate(1080,290)">
+    <rect width="270" height="104" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="2"/>
+    <text x="135" y="32" text-anchor="middle" class="node-title">watcher 状态面</text>
+    <text x="135" y="58" text-anchor="middle" class="node-sub">Event / Replicas / PipelineRun</text>
+    <text x="135" y="78" text-anchor="middle" class="small">过滤、归类、单调推进、提醒</text>
+  </g>
+  <g transform="translate(1070,600)">
+    <rect width="290" height="104" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <text x="145" y="32" text-anchor="middle" class="node-title">SAE 状态库</text>
+    <text x="145" y="58" text-anchor="middle" class="node-sub">MySQL、事件表、发布记录</text>
+    <text x="145" y="78" text-anchor="middle" class="small">页面可查、可聚合、可追溯</text>
+  </g>
+  <g transform="translate(665,748)">
+    <rect width="270" height="104" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="135" y="32" text-anchor="middle" class="node-title">控制台 / OpenAPI</text>
+    <text x="135" y="58" text-anchor="middle" class="node-sub">发布进度、日志、事件、指标</text>
+    <text x="135" y="78" text-anchor="middle" class="small">把底层复杂度产品化</text>
+  </g>
+  <g transform="translate(250,600)">
+    <rect width="290" height="104" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.7"/>
+    <text x="145" y="32" text-anchor="middle" class="node-title">研发 / 运维决策</text>
+    <text x="145" y="58" text-anchor="middle" class="node-sub">继续放量、回滚、扩缩容、排障</text>
+    <text x="145" y="78" text-anchor="middle" class="small">从平台视角做确定动作</text>
+  </g>
+  <g transform="translate(250,290)">
+    <rect width="290" height="104" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="145" y="32" text-anchor="middle" class="node-title">console 编排修复</text>
+    <text x="145" y="58" text-anchor="middle" class="node-sub">Rollout、Deployment、HPA、配置</text>
+    <text x="145" y="78" text-anchor="middle" class="small">同步请求只做可控编排</text>
+  </g>
+
+  <path d="M935 206 C1065 220 1128 255 1215 290" stroke="#9333ea" stroke-width="2.5" fill="none" marker-end="url(#arrow-purple)"/>
+  <text x="1070" y="222" class="edge-label">watch 事实</text>
+  <path d="M1218 394 C1260 470 1254 535 1220 600" stroke="#16a34a" stroke-width="2.5" fill="none" marker-end="url(#arrow-green)"/>
+  <text x="1268" y="496" class="edge-label">状态回写</text>
+  <path d="M1070 668 C982 737 942 760 935 792" stroke="#16a34a" stroke-width="2.5" fill="none" marker-end="url(#arrow-green)"/>
+  <text x="982" y="726" class="edge-label">查询聚合</text>
+  <path d="M665 801 C566 770 500 730 455 704" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="532" y="774" class="edge-label">定位问题</text>
+  <path d="M395 600 C360 510 360 455 395 394" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="288" y="506" class="edge-label">选择动作</text>
+  <path d="M540 338 C620 270 650 245 665 222" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="548" y="270" class="edge-label">写入期望状态</text>
+
+  <g transform="translate(80,165)">
+    <rect width="285" height="78" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.7"/>
+    <text x="142" y="30" text-anchor="middle" class="node-title">saejob 补偿面</text>
+    <text x="142" y="54" text-anchor="middle" class="node-sub">周期重检、同步、引用修复</text>
+  </g>
+  <path d="M222 243 C235 350 245 470 395 600" stroke="#f97316" stroke-width="2.3" stroke-dasharray="7 5" fill="none" marker-end="url(#arrow-orange)"/>
+  <text x="146" y="408" class="edge-label">定时治理</text>
+
+  <g transform="translate(1235,160)">
+    <rect width="285" height="82" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.7"/>
+    <text x="142" y="31" text-anchor="middle" class="node-title">飞书通知 / 事件订阅</text>
+    <text x="142" y="56" text-anchor="middle" class="node-sub">失败、卡住、订阅命中、长时间进度</text>
+  </g>
+  <path d="M1350 342 C1425 320 1432 260 1378 242" stroke="#9333ea" stroke-width="2.3" stroke-dasharray="7 5" fill="none" marker-end="url(#arrow-purple)"/>
+  <text x="1424" y="304" class="edge-label">提醒</text>
+
+  <g transform="translate(1220,760)">
+    <rect width="300" height="90" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="150" y="32" text-anchor="middle" class="node-title">指标 / 日志 / APM</text>
+    <text x="150" y="58" text-anchor="middle" class="node-sub">Prometheus、ARMS、JVM、Ingress</text>
+  </g>
+  <path d="M1220 796 C1120 785 1015 778 935 800" stroke="#16a34a" stroke-width="2.3" stroke-dasharray="7 5" fill="none" marker-end="url(#arrow-green)"/>
+  <text x="1076" y="820" class="edge-label">诊断上下文</text>
+
+  <g transform="translate(80,760)">
+    <rect width="300" height="90" rx="10" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.7"/>
+    <text x="150" y="32" text-anchor="middle" class="node-title">专项诊断能力</text>
+    <text x="150" y="58" text-anchor="middle" class="node-sub">火焰图、健康分、Pod AI 诊断</text>
+  </g>
+  <path d="M380 806 C482 822 555 820 665 802" stroke="#14b8a6" stroke-width="2.3" stroke-dasharray="7 5" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="458" y="844" class="edge-label">排障工具化</text>
+
+  <g transform="translate(103,912)">
+    <line x1="0" y1="8" x2="42" y2="8" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+    <text x="52" y="12" class="legend">同步编排与用户动作</text>
+    <line x1="230" y1="8" x2="272" y2="8" stroke="#9333ea" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#arrow-purple)"/>
+    <text x="282" y="12" class="legend">异步监听与通知</text>
+    <line x1="460" y1="8" x2="502" y2="8" stroke="#16a34a" stroke-width="2.4" marker-end="url(#arrow-green)"/>
+    <text x="512" y="12" class="legend">状态沉淀与观测</text>
+    <line x1="670" y1="8" x2="712" y2="8" stroke="#f97316" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#arrow-orange)"/>
+    <text x="722" y="12" class="legend">定时补偿治理</text>
+  </g>
+</svg>

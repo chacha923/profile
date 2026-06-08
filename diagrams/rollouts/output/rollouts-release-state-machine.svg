@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1080" width="1600" height="1080">
+  <defs>
+    <marker id="arrowA" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowB" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+    <marker id="arrowC" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowE" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f97316"/>
+    </marker>
+    <marker id="arrowF" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowH" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+    <filter id="shadowSoft" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <filter id="shadowGlass" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#020617" flood-opacity="0.28"/>
+    </filter>
+    <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { font-size: 30px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 14px; font-weight: 500; fill: #6b7280; }
+    .section { font-size: 13px; font-weight: 700; fill: #2563eb; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #94a3b8; }
+    .node-title { font-size: 18px; font-weight: 700; fill: #111827; }
+    .node-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .node-type { font-size: 12px; font-weight: 700; fill: #9ca3af; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #94a3b8; }
+    </style>
+  </defs>
+  <rect width="1600.0" height="1080.0" fill="#ffffff"/>
+  <text x="800.0" y="56" text-anchor="middle" class="title">一次发版的完整状态机</text>
+  <text x="800.0" y="82" text-anchor="middle" class="subtitle">覆盖灰度、暂停、HPA、CronHPA、回滚、重启、状态收敛</text>
+  <rect x="60.0" y="130.0" width="1480.0" height="130.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="20.0" y="195.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">发现与建模</text>
+  <rect x="60.0" y="290.0" width="1480.0" height="210.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="20.0" y="395.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">渐进发布主链路</text>
+  <rect x="60.0" y="530.0" width="1480.0" height="210.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="20.0" y="635.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">扰动与异常处理</text>
+  <rect x="60.0" y="770.0" width="1480.0" height="190.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="20.0" y="865.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">收敛与完成</text>
+  <path d="M 280.0,200.0 L 400.0,200.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 620.0,200.0 L 760.0,200.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 960.0,200.0 L 1110.0,200.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 1230.0,238.0 L 1230.0,320.0 L 270.0,320.0 L 270.0,360.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 380.0,397.0 L 500.0,397.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 750.0,397.0 L 900.0,397.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 1120.0,397.0 L 1240.0,397.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 340.0,641.0 L 360.4,641.0 L 360.4,576.0 L 739.6,576.0 L 739.6,641.0 L 760.0,641.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)" stroke-dasharray="6,4"/>
+  <path d="M 640.0,641.0 L 760.0,641.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)" stroke-dasharray="6,4"/>
+  <path d="M 1010.0,434.0 L 1010.0,454.4 L 880.0,583.6 L 880.0,604.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <path d="M 880.0,604.0 L 880.0,520.0 L 1350.0,520.0 L 1350.0,444.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 625.0,444.0 L 620.0,444.0 L 620.0,560.0 L 1190.0,560.0 L 1190.0,604.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <path d="M 1010.0,434.0 L 1010.0,454.4 L 1190.0,583.6 L 1190.0,604.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <path d="M 1350.0,444.0 L 1350.0,560.0 L 1210.0,560.0 L 1210.0,604.0 L 1190.0,604.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <path d="M 1280.0,641.0 L 1360.0,641.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)"/>
+  <path d="M 1435.0,594.0 L 1435.0,540.0 L 620.0,540.0 L 620.0,444.0 L 625.0,444.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 1350.0,444.0 L 1350.0,790.0 L 290.0,790.0 L 290.0,830.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 400.0,867.0 L 540.0,867.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 740.0,867.0 L 880.0,867.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)"/>
+  <path d="M 1100.0,867.0 L 1240.0,867.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 1435.0,688.0 L 1435.0,780.0 L 990.0,780.0 L 990.0,830.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <rect x="120.0" y="170.0" width="160.0" height="60.0" rx="10.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+  <text x="200.0" y="188.0" text-anchor="middle" class="node-type">初始</text>
+  <text x="200.0" y="206.0" text-anchor="middle" class="node-title">稳定态</text>
+  <rect x="400.0" y="162.0" width="220.0" height="76.0" rx="10.0" fill="#eff6ff" stroke="#2563eb" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="406.0" y="168.0" width="208.0" height="64.0" rx="7.0" fill="none" stroke="#2563eb" stroke-width="1.2" opacity="0.65"/>
+  <text x="510.0" y="180.0" text-anchor="middle" class="node-type">事件</text>
+  <text x="510.0" y="206.0" text-anchor="middle" class="node-title">发现模板变更</text>
+  <text x="510.0" y="228.0" text-anchor="middle" class="node-sub">Deployment 模板更新 / 新版本进入</text>
+  <rect x="760.0" y="170.0" width="200.0" height="60.0" rx="10.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+  <text x="860.0" y="188.0" text-anchor="middle" class="node-type">同步</text>
+  <text x="860.0" y="206.0" text-anchor="middle" class="node-title">同步模板与 Selector</text>
+  <rect x="1110.0" y="162.0" width="240.0" height="76.0" rx="10.0" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="1116.0" y="168.0" width="228.0" height="64.0" rx="7.0" fill="none" stroke="#7c3aed" stroke-width="1.2" opacity="0.65"/>
+  <text x="1230.0" y="180.0" text-anchor="middle" class="node-type">RS</text>
+  <text x="1230.0" y="206.0" text-anchor="middle" class="node-title">匹配或创建 newRS</text>
+  <text x="1230.0" y="228.0" text-anchor="middle" class="node-sub">按 hash 找到新版本 RS</text>
+  <rect x="160.0" y="360.0" width="220.0" height="74.0" rx="10.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+  <text x="270.0" y="378.0" text-anchor="middle" class="node-type">Step 0</text>
+  <text x="270.0" y="403.0" text-anchor="middle" class="node-title">初始化灰度副本</text>
+  <rect x="500.0" y="350.0" width="250.0" height="94.0" rx="10.0" fill="#eff6ff" stroke="#2563eb" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="506.0" y="356.0" width="238.0" height="82.0" rx="7.0" fill="none" stroke="#2563eb" stroke-width="1.2" opacity="0.65"/>
+  <text x="625.0" y="368.0" text-anchor="middle" class="node-type">运行</text>
+  <text x="625.0" y="403.0" text-anchor="middle" class="node-title">灰度运行中</text>
+  <text x="625.0" y="425.0" text-anchor="middle" class="node-sub">newRS 启动，oldRS 仍承接主流量</text>
+  <rect x="900.0" y="360.0" width="220.0" height="74.0" rx="10.0" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+  <text x="1010.0" y="378.0" text-anchor="middle" class="node-type">Pause</text>
+  <text x="1010.0" y="403.0" text-anchor="middle" class="node-title">灰度暂停 / 验证</text>
+  <rect x="1240.0" y="350.0" width="220.0" height="94.0" rx="10.0" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="1246.0" y="356.0" width="208.0" height="82.0" rx="7.0" fill="none" stroke="#7c3aed" stroke-width="1.2" opacity="0.65"/>
+  <text x="1350.0" y="368.0" text-anchor="middle" class="node-type">Step N</text>
+  <text x="1350.0" y="403.0" text-anchor="middle" class="node-title">继续推进下一步</text>
+  <text x="1350.0" y="425.0" text-anchor="middle" class="node-sub">扩 newRS、缩 oldRS、调整流量</text>
+  <path d="M 162.0 600.0 L 318.0 600.0 L 340.0 641.0 L 318.0 682.0 L 162.0 682.0 L 140.0 641.0 Z" fill="#ffffff" stroke="#f97316" stroke-width="2.0"/>
+  <text x="240.0" y="618.0" text-anchor="middle" class="node-type">指标驱动</text>
+  <text x="240.0" y="647.0" text-anchor="middle" class="node-title">HPA 触发</text>
+  <path d="M 442.0 600.0 L 618.0 600.0 L 640.0 641.0 L 618.0 682.0 L 442.0 682.0 L 420.0 641.0 Z" fill="#ffffff" stroke="#f97316" stroke-width="2.0"/>
+  <text x="530.0" y="618.0" text-anchor="middle" class="node-type">定时驱动</text>
+  <text x="530.0" y="647.0" text-anchor="middle" class="node-title">CronHPA 触发</text>
+  <rect x="760.0" y="604.0" width="240.0" height="74.0" rx="10.0" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+  <text x="880.0" y="622.0" text-anchor="middle" class="node-type">扩缩容处理</text>
+  <text x="880.0" y="647.0" text-anchor="middle" class="node-title">副本重平衡</text>
+  <rect x="1100.0" y="604.0" width="180.0" height="74.0" rx="10.0" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+  <text x="1190.0" y="622.0" text-anchor="middle" class="node-type">异常</text>
+  <text x="1190.0" y="647.0" text-anchor="middle" class="node-title">超时 / 中止 / 失败</text>
+  <rect x="1360.0" y="594.0" width="150.0" height="94.0" rx="10.0" fill="#fef2f2" stroke="#dc2626" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="1366.0" y="600.0" width="138.0" height="82.0" rx="7.0" fill="none" stroke="#dc2626" stroke-width="1.2" opacity="0.65"/>
+  <text x="1435.0" y="612.0" text-anchor="middle" class="node-type">恢复</text>
+  <text x="1435.0" y="647.0" text-anchor="middle" class="node-title">回滚 / 重启 / 恢复</text>
+  <text x="1435.0" y="669.0" text-anchor="middle" class="node-sub">控制动作进入恢复路径</text>
+  <rect x="180.0" y="830.0" width="220.0" height="74.0" rx="10.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="290.0" y="848.0" text-anchor="middle" class="node-type">最终切流</text>
+  <text x="290.0" y="873.0" text-anchor="middle" class="node-title">新版本接管全部流量</text>
+  <rect x="540.0" y="830.0" width="200.0" height="74.0" rx="10.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="640.0" y="848.0" text-anchor="middle" class="node-type">清理</text>
+  <text x="640.0" y="873.0" text-anchor="middle" class="node-title">缩容 oldRS</text>
+  <rect x="880.0" y="830.0" width="220.0" height="74.0" rx="10.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="990.0" y="848.0" text-anchor="middle" class="node-type">completedAt / step close</text>
+  <text x="990.0" y="873.0" text-anchor="middle" class="node-title">状态收敛</text>
+  <rect x="1240.0" y="820.0" width="220.0" height="94.0" rx="10.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="1246.0" y="826.0" width="208.0" height="82.0" rx="7.0" fill="none" stroke="#16a34a" stroke-width="1.2" opacity="0.65"/>
+  <text x="1350.0" y="838.0" text-anchor="middle" class="node-type">稳定</text>
+  <text x="1350.0" y="873.0" text-anchor="middle" class="node-title">完成态</text>
+  <text x="1350.0" y="895.0" text-anchor="middle" class="node-sub">newRS 稳定，oldRS 退出，状态关闭</text>
+  <rect x="32.0" y="1006.0" width="198" height="112" rx="10" fill="#ffffff" opacity="0.88"/>
+  <line x1="42.0" y1="1020.0" x2="72.0" y2="1020.0" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <text x="82.0" y="1024.0" class="legend">状态推进 / 控制动作</text>
+  <line x1="42.0" y1="1042.0" x2="72.0" y2="1042.0" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <text x="82.0" y="1046.0" class="legend">副本或流量变更</text>
+  <line x1="42.0" y1="1064.0" x2="72.0" y2="1064.0" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)"/>
+  <text x="82.0" y="1068.0" class="legend">健康反馈 / 超时 / 回滚反馈</text>
+  <line x1="42.0" y1="1086.0" x2="72.0" y2="1086.0" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <text x="82.0" y="1090.0" class="legend">HPA / CronHPA 外部扰动</text>
+</svg>

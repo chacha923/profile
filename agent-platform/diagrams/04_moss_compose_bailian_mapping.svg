@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; fill: #111827; }
+    .title { font-size: 24px; font-weight: 700; }
+    .center { font-size: 18px; font-weight: 700; }
+    .centerText { font-size: 18px; font-weight: 700; fill: #ffffff; }
+    .centerSub { font-size: 12px; fill: #d1d5db; }
+    .label { font-size: 15px; font-weight: 700; }
+    .sub { font-size: 12px; fill: #4b5563; }
+  </style>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.08"/></filter>
+  </defs>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="600" y="42" text-anchor="middle" class="title">moss-compose 和百炼能力映射</text>
+  <path d="M 600,380 C 425.0,380 425.0,170 250,170" stroke="#bfdbfe" stroke-width="3" fill="none" opacity="0.85"/>
+  <path d="M 600,380 C 600.0,380 600.0,145 600,145" stroke="#fed7aa" stroke-width="3" fill="none" opacity="0.85"/>
+  <path d="M 600,380 C 775.0,380 775.0,170 950,170" stroke="#bbf7d0" stroke-width="3" fill="none" opacity="0.85"/>
+  <path d="M 600,380 C 790.0,380 790.0,380 980,380" stroke="#fecaca" stroke-width="3" fill="none" opacity="0.85"/>
+  <path d="M 600,380 C 775.0,380 775.0,590 950,590" stroke="#e9d5ff" stroke-width="3" fill="none" opacity="0.85"/>
+  <path d="M 600,380 C 600.0,380 600.0,625 600,625" stroke="#99f6e4" stroke-width="3" fill="none" opacity="0.85"/>
+  <path d="M 600,380 C 425.0,380 425.0,590 250,590" stroke="#cbd5e1" stroke-width="3" fill="none" opacity="0.85"/>
+  <path d="M 600,380 C 410.0,380 410.0,380 220,380" stroke="#fde68a" stroke-width="3" fill="none" opacity="0.85"/>
+  <rect x="460" y="322" width="280" height="116" rx="24" fill="#111827" stroke="#111827" filter="url(#shadow)"/>
+  <text x="600" y="368" text-anchor="middle" class="centerText">百炼面试关注点</text>
+  <text x="600" y="396" text-anchor="middle" class="centerSub">项目经历 - 百炼面试表达</text>
+  <rect x="145.0" y="122.0" width="210" height="96" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="250" y="148" text-anchor="middle" class="label">Agent 应用</text>
+  <text x="250" y="172" text-anchor="middle" class="sub">Prompt</text>
+  <text x="250" y="190" text-anchor="middle" class="sub">Knowledge</text>
+  <text x="250" y="208" text-anchor="middle" class="sub">Tool / MCP</text>
+  <rect x="495.0" y="97.0" width="210" height="96" rx="16" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="600" y="123" text-anchor="middle" class="label">Workflow</text>
+  <text x="600" y="147" text-anchor="middle" class="sub">节点编排</text>
+  <text x="600" y="165" text-anchor="middle" class="sub">条件分支</text>
+  <text x="600" y="183" text-anchor="middle" class="sub">异常处理</text>
+  <rect x="845.0" y="122.0" width="210" height="96" rx="16" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="950" y="148" text-anchor="middle" class="label">RAG / 知识库</text>
+  <text x="950" y="172" text-anchor="middle" class="sub">检索 / 重排</text>
+  <text x="950" y="190" text-anchor="middle" class="sub">权限过滤</text>
+  <text x="950" y="208" text-anchor="middle" class="sub">引用与评测</text>
+  <rect x="875.0" y="332.0" width="210" height="96" rx="16" fill="#fef2f2" stroke="#fecaca" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="980" y="358" text-anchor="middle" class="label">MCP / 工具</text>
+  <text x="980" y="382" text-anchor="middle" class="sub">Schema</text>
+  <text x="980" y="400" text-anchor="middle" class="sub">鉴权审计</text>
+  <text x="980" y="418" text-anchor="middle" class="sub">高危动作控制</text>
+  <rect x="845.0" y="542.0" width="210" height="96" rx="16" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="950" y="568" text-anchor="middle" class="label">模型 Provider</text>
+  <text x="950" y="592" text-anchor="middle" class="sub">OpenAI / Ark</text>
+  <text x="950" y="610" text-anchor="middle" class="sub">response_format</text>
+  <text x="950" y="628" text-anchor="middle" class="sub">能力差异</text>
+  <rect x="495.0" y="577.0" width="210" height="96" rx="16" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="600" y="603" text-anchor="middle" class="label">应用观测</text>
+  <text x="600" y="627" text-anchor="middle" class="sub">Trace</text>
+  <text x="600" y="645" text-anchor="middle" class="sub">Token / Cost</text>
+  <text x="600" y="663" text-anchor="middle" class="sub">Latency / Error</text>
+  <rect x="145.0" y="542.0" width="210" height="96" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="250" y="568" text-anchor="middle" class="label">企业治理</text>
+  <text x="250" y="592" text-anchor="middle" class="sub">SSO / JWT</text>
+  <text x="250" y="610" text-anchor="middle" class="sub">Team / Space</text>
+  <text x="250" y="628" text-anchor="middle" class="sub">权限 / 审计</text>
+  <rect x="115.0" y="332.0" width="210" height="96" rx="16" fill="#fefce8" stroke="#fde68a" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="220" y="358" text-anchor="middle" class="label">平台工程</text>
+  <text x="220" y="382" text-anchor="middle" class="sub">控制面</text>
+  <text x="220" y="400" text-anchor="middle" class="sub">执行链路</text>
+  <text x="220" y="418" text-anchor="middle" class="sub">版本 / 灰度</text>
+</svg>

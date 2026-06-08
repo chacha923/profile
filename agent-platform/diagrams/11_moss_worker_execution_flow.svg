@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111827; }
+    .title { font-size: 28px; font-weight: 700; }
+    .label { font-size: 16px; font-weight: 700; }
+    .sub { font-size: 13px; fill: #4b5563; }
+    .small { font-size: 12px; fill: #6b7280; }
+  </style>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="arrow-rx" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="600" y="52" text-anchor="middle" class="title">Worker 路由与 Python Runner 执行链路</text>
+
+  <rect x="70" y="120" width="190" height="76" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="165" y="150" text-anchor="middle" class="label">Workflow 请求</text>
+  <text x="165" y="174" text-anchor="middle" class="sub">create / save / debug / run</text>
+
+  <rect x="330" y="120" width="190" height="76" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="425" y="150" text-anchor="middle" class="label">权限校验</text>
+  <text x="425" y="174" text-anchor="middle" class="sub">user / space / API auth</text>
+
+  <rect x="590" y="120" width="210" height="76" rx="10" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="695" y="150" text-anchor="middle" class="label">ShouldUseRemoteRPC</text>
+  <text x="695" y="174" text-anchor="middle" class="sub">workgroup reference</text>
+
+  <rect x="870" y="120" width="220" height="76" rx="10" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="980" y="150" text-anchor="middle" class="label">远程 Worker</text>
+  <text x="980" y="174" text-anchor="middle" class="sub">JSON RPC / local service</text>
+
+  <rect x="210" y="310" width="210" height="76" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="315" y="340" text-anchor="middle" class="label">Code Node</text>
+  <text x="315" y="364" text-anchor="middle" class="sub">Python only / import check</text>
+
+  <rect x="505" y="310" width="210" height="76" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="610" y="340" text-anchor="middle" class="label">RemotePythonCmdRun</text>
+  <text x="610" y="364" text-anchor="middle" class="sub">PYRUNNER_SERVICE_URL</text>
+
+  <rect x="805" y="310" width="220" height="76" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="915" y="340" text-anchor="middle" class="label">/run/python</text>
+  <text x="915" y="364" text-anchor="middle" class="sub">code size / concurrency</text>
+
+  <rect x="235" y="500" width="220" height="86" rx="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="345" y="530" text-anchor="middle" class="label">子进程隔离</text>
+  <text x="345" y="554" text-anchor="middle" class="sub">temp/cache script</text>
+  <text x="345" y="574" text-anchor="middle" class="sub">stdin args_json / killpg</text>
+
+  <rect x="535" y="500" width="220" height="86" rx="10" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="645" y="530" text-anchor="middle" class="label">结果回传</text>
+  <text x="645" y="554" text-anchor="middle" class="sub">stdout JSON -> result</text>
+  <text x="645" y="574" text-anchor="middle" class="sub">stderr / timeout / canceled</text>
+
+  <rect x="835" y="500" width="220" height="86" rx="10" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="945" y="530" text-anchor="middle" class="label">观测与治理</text>
+  <text x="945" y="554" text-anchor="middle" class="sub">trace / runner_outcome</text>
+  <text x="945" y="574" text-anchor="middle" class="sub">QPS / RT / 5xx / busy</text>
+
+  <path d="M 260,158 L 330,158" stroke="#2563eb" stroke-width="2.3" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M 520,158 L 590,158" stroke="#2563eb" stroke-width="2.3" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M 800,158 L 870,158" stroke="#9333ea" stroke-width="2.3" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M 980,196 L 980,245 L 315,245 L 315,310" stroke="#16a34a" stroke-width="2.3" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 420,348 L 505,348" stroke="#ea580c" stroke-width="2.3" fill="none" marker-end="url(#arrow-orange)"/>
+  <path d="M 715,348 L 805,348" stroke="#ea580c" stroke-width="2.3" fill="none" marker-end="url(#arrow-orange)"/>
+  <path d="M 915,386 L 915,440 L 345,440 L 345,500" stroke="#dc2626" stroke-width="2.3" fill="none" marker-end="url(#arrow-rx)"/>
+  <path d="M 455,543 L 535,543" stroke="#16a34a" stroke-width="2.3" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 755,543 L 835,543" stroke="#9333ea" stroke-width="2.3" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M 945,500 L 945,445 L 610,445 L 610,386" stroke="#2563eb" stroke-width="2.3" fill="none" marker-end="url(#arrow-blue)"/>
+</svg>

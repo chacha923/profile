@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 720" width="1120" height="720">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12px; fill: #374151; }
+    .s { font-size: 11px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; rx: 8; ry: 8; }
+    .p1 { fill: #eff6ff; stroke: #93c5fd; }
+    .p2 { fill: #ecfdf5; stroke: #86efac; }
+    .p3 { fill: #fffbeb; stroke: #fcd34d; }
+    .p4 { fill: #ecfeff; stroke: #67e8f9; }
+    .p5 { fill: #f5f3ff; stroke: #c4b5fd; }
+    .p6 { fill: #fef2f2; stroke: #fca5a5; }
+    .rail { stroke: #6b7280; stroke-width: 3; fill: none; }
+    .dot { fill: #ffffff; stroke: #374151; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+  </defs>
+  <rect width="1120" height="720" fill="#ffffff"/>
+  <text x="560" y="42" text-anchor="middle" class="title">AIOps 从 RCA MVP 到 AgentOps 的 Roadmap</text>
+  <text x="560" y="70" text-anchor="middle" class="sub">先把诊断做可信，再把 Agent 做可观测、可评估、可治理，最后进入受控执行</text>
+
+  <path d="M100 160 L1020 160" class="rail" marker-end="url(#arrow)"/>
+  <circle cx="130" cy="160" r="12" class="dot"/>
+  <circle cx="300" cy="160" r="12" class="dot"/>
+  <circle cx="470" cy="160" r="12" class="dot"/>
+  <circle cx="640" cy="160" r="12" class="dot"/>
+  <circle cx="810" cy="160" r="12" class="dot"/>
+  <circle cx="980" cy="160" r="12" class="dot"/>
+
+  <rect x="55" y="215" width="150" height="245" class="box p1"/>
+  <text x="130" y="245" text-anchor="middle" class="h">1. RCA MVP</text>
+  <text x="130" y="270" text-anchor="middle" class="s">先做只读诊断</text>
+  <text x="75" y="304" class="t">告警解释</text>
+  <text x="75" y="330" class="t">多源取证</text>
+  <text x="75" y="356" class="t">知识引用</text>
+  <text x="75" y="382" class="t">报告模板</text>
+  <text x="75" y="408" class="t">人工复核</text>
+
+  <rect x="225" y="215" width="150" height="245" class="box p2"/>
+  <text x="300" y="245" text-anchor="middle" class="h">2. 标准化取证</text>
+  <text x="300" y="270" text-anchor="middle" class="s">让输入稳定</text>
+  <text x="245" y="304" class="t">告警 schema</text>
+  <text x="245" y="330" class="t">实体模型</text>
+  <text x="245" y="356" class="t">统一时间窗口</text>
+  <text x="245" y="382" class="t">证据对象</text>
+  <text x="245" y="408" class="t">脱敏审计</text>
+
+  <rect x="395" y="215" width="150" height="245" class="box p3"/>
+  <text x="470" y="245" text-anchor="middle" class="h">3. 假设验证</text>
+  <text x="470" y="270" text-anchor="middle" class="s">避免乱归因</text>
+  <text x="415" y="304" class="t">候选根因</text>
+  <text x="415" y="330" class="t">支持证据</text>
+  <text x="415" y="356" class="t">反证检查</text>
+  <text x="415" y="382" class="t">置信度</text>
+  <text x="415" y="408" class="t">Unknown 输出</text>
+
+  <rect x="565" y="215" width="150" height="245" class="box p4"/>
+  <text x="640" y="245" text-anchor="middle" class="h">4. AgentOps</text>
+  <text x="640" y="270" text-anchor="middle" class="s">看清过程</text>
+  <text x="585" y="304" class="t">Trajectory Trace</text>
+  <text x="585" y="330" class="t">Tool 调用</text>
+  <text x="585" y="356" class="t">检索和模型 span</text>
+  <text x="585" y="382" class="t">成本和时延</text>
+  <text x="585" y="408" class="t">回放评估</text>
+
+  <rect x="735" y="215" width="150" height="245" class="box p5"/>
+  <text x="810" y="245" text-anchor="middle" class="h">5. 知识资产化</text>
+  <text x="810" y="270" text-anchor="middle" class="s">沉淀组织经验</text>
+  <text x="755" y="304" class="t">SOP / Skill</text>
+  <text x="755" y="330" class="t">故障案例</text>
+  <text x="755" y="356" class="t">服务拓扑</text>
+  <text x="755" y="382" class="t">变更影响</text>
+  <text x="755" y="408" class="t">知识保鲜</text>
+
+  <rect x="905" y="215" width="150" height="245" class="box p6"/>
+  <text x="980" y="245" text-anchor="middle" class="h">6. 受控执行</text>
+  <text x="980" y="270" text-anchor="middle" class="s">高风险必须可控</text>
+  <text x="925" y="304" class="t">规则草案</text>
+  <text x="925" y="330" class="t">静默建议</text>
+  <text x="925" y="356" class="t">审批确认</text>
+  <text x="925" y="382" class="t">审计回滚</text>
+  <text x="925" y="408" class="t">人工接管</text>
+
+  <rect x="105" y="530" width="910" height="118" class="box"/>
+  <text x="135" y="562" class="h">路线原则</text>
+  <text x="135" y="592" class="t">- 不把“更自由的 Agent”作为目标，目标是更可信、更可观测、更可评估、更可控。</text>
+  <text x="135" y="620" class="t">- 先做 Copilot 和证据报告，再做 AgentOps 和评估回归，最后才讨论执行能力。</text>
+  <text x="135" y="648" class="t">- 面试表达要强调边界：内部样本只能用于理论对标，不能包装成自己负责的生产项目。</text>
+</svg>

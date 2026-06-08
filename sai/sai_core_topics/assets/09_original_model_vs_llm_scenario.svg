@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" width="1100" height="680">
+<style>text{font-family:Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif}.title{font-size:28px;font-weight:700;fill:#111827}.sub{font-size:14px;fill:#6b7280}.h{font-size:16px;font-weight:700;fill:#111827}.s{font-size:12px;fill:#4b5563}</style>
+<rect width="1100" height="680" fill="#ffffff"/>
+<text x="550" y="42" text-anchor="middle" class="title">传统模型到 LLM 的典型业务场景</text>
+<text x="550" y="68" text-anchor="middle" class="sub">同一平台入口下，不同模型形态需要不同 Runtime 和治理能力</text>
+<rect x="70" y="115" width="960" height="90" rx="14" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+<text x="110" y="150" class="h">SAI Console / OpenAPI</text><text x="110" y="176" class="s">统一提交、发布、日志、事件、状态、权限和资源入口</text>
+<g>
+<rect x="70" y="270" width="180" height="130" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="160" y="308" text-anchor="middle" class="h">推荐排序产物</text><text x="160" y="338" text-anchor="middle" class="s">模型文件 / embedding</text><text x="160" y="360" text-anchor="middle" class="s">FAISS / 特征配置</text>
+<rect x="275" y="270" width="180" height="130" rx="12" fill="#f0fdf4" stroke="#bbf7d0"/>
+<text x="365" y="308" text-anchor="middle" class="h">LLM Chat</text><text x="365" y="338" text-anchor="middle" class="s">Gateway</text><text x="365" y="360" text-anchor="middle" class="s">Streaming API</text>
+<rect x="480" y="270" width="180" height="130" rx="12" fill="#fff7ed" stroke="#fed7aa"/>
+<text x="570" y="308" text-anchor="middle" class="h">RAG / Agent</text><text x="570" y="338" text-anchor="middle" class="s">检索 / 工具调用</text><text x="570" y="360" text-anchor="middle" class="s">生成链路拆分</text>
+<rect x="685" y="270" width="180" height="130" rx="12" fill="#f5f3ff" stroke="#ddd6fe"/>
+<text x="775" y="308" text-anchor="middle" class="h">LoRA 多租户</text><text x="775" y="338" text-anchor="middle" class="s">Base + Adapter</text><text x="775" y="360" text-anchor="middle" class="s">版本校验</text>
+<rect x="890" y="270" width="140" height="130" rx="12" fill="#ecfeff" stroke="#a5f3fc"/>
+<text x="960" y="308" text-anchor="middle" class="h">热点扩容</text><text x="960" y="338" text-anchor="middle" class="s">模型缓存</text><text x="960" y="360" text-anchor="middle" class="s">Warmup</text>
+</g>
+<rect x="205" y="510" width="690" height="70" rx="14" fill="#fef2f2" stroke="#fecaca"/>
+<text x="550" y="540" text-anchor="middle" class="h">平台关注点变化</text>
+<text x="550" y="565" text-anchor="middle" class="s">从训练产物交付扩展到 Runtime 托管、Token 指标、显存治理和发布预热</text>
+</svg>

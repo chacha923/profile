@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" width="1100" height="700">
+<style>text{font-family:Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif}.title{font-size:28px;font-weight:700;fill:#111827}.sub{font-size:14px;fill:#6b7280}.h{font-size:16px;font-weight:700;fill:#111827}.s{font-size:12px;fill:#4b5563}</style>
+<defs><marker id="a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker></defs>
+<rect width="1100" height="700" fill="#ffffff"/>
+<text x="550" y="42" text-anchor="middle" class="title">训推平台向 LLM 演进的关键机制</text>
+<text x="550" y="68" text-anchor="middle" class="sub">不是重做平台，而是在控制面上补 LLM Runtime 与治理能力</text>
+<rect x="75" y="120" width="950" height="82" rx="14" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+<text x="110" y="154" class="h">SAI 控制面基础</text>
+<text x="110" y="180" class="s">资源规格 / 镜像 / 存储挂载 / 生命周期 / 日志事件 / Provider / 模型产物</text>
+<g>
+<rect x="75" y="285" width="170" height="120" rx="12" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="2"/>
+<text x="160" y="322" text-anchor="middle" class="h">LLMRuntimeProvider</text><text x="160" y="352" text-anchor="middle" class="s">vLLM / TGI / TRT-LLM</text><text x="160" y="374" text-anchor="middle" class="s">创建 / 状态 / 扩缩容</text>
+<rect x="285" y="285" width="170" height="120" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+<text x="370" y="322" text-anchor="middle" class="h">ModelCache</text><text x="370" y="352" text-anchor="middle" class="s">本地缓存 / 预热</text><text x="370" y="374" text-anchor="middle" class="s">调度感知缓存命中</text>
+<rect x="495" y="285" width="170" height="120" rx="12" fill="#fff7ed" stroke="#fed7aa" stroke-width="2"/>
+<text x="580" y="322" text-anchor="middle" class="h">Ready / Warmup</text><text x="580" y="352" text-anchor="middle" class="s">ModelLoaded</text><text x="580" y="374" text-anchor="middle" class="s">WarmupPassed</text>
+<rect x="705" y="285" width="170" height="120" rx="12" fill="#ecfeff" stroke="#a5f3fc" stroke-width="2"/>
+<text x="790" y="322" text-anchor="middle" class="h">Token Metrics</text><text x="790" y="352" text-anchor="middle" class="s">TTFT / TPOT</text><text x="790" y="374" text-anchor="middle" class="s">tokens/s / queue</text>
+<rect x="915" y="285" width="110" height="120" rx="12" fill="#fef2f2" stroke="#fecaca" stroke-width="2"/>
+<text x="970" y="322" text-anchor="middle" class="h">产物治理</text><text x="970" y="352" text-anchor="middle" class="s">LoRA</text><text x="970" y="374" text-anchor="middle" class="s">Tokenizer</text>
+</g>
+<line x1="160" y1="202" x2="160" y2="285" stroke="#2563eb" stroke-width="2.5" marker-end="url(#a)"/>
+<line x1="370" y1="202" x2="370" y2="285" stroke="#2563eb" stroke-width="2.5" marker-end="url(#a)"/>
+<line x1="580" y1="202" x2="580" y2="285" stroke="#2563eb" stroke-width="2.5" marker-end="url(#a)"/>
+<line x1="790" y1="202" x2="790" y2="285" stroke="#2563eb" stroke-width="2.5" marker-end="url(#a)"/>
+<line x1="970" y1="202" x2="970" y2="285" stroke="#2563eb" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="210" y="500" width="680" height="80" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<text x="550" y="532" text-anchor="middle" class="h">统一 LLM 服务画像</text>
+<text x="550" y="558" text-anchor="middle" class="s">model + runtime + cache + readiness + token metrics + rollout policy</text>
+<line x1="550" y1="405" x2="550" y2="500" stroke="#2563eb" stroke-width="2.5" marker-end="url(#a)"/>
+</svg>

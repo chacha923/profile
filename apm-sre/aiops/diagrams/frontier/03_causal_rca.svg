@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 640" width="1080" height="640">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+    .node { fill: #eff6ff; stroke: #2563eb; stroke-width: 1.8; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="640" fill="#ffffff"/>
+  <text x="540" y="42" text-anchor="middle" class="title">因果推断 RCA：从"相关"到"因果"</text>
+  <text x="540" y="70" text-anchor="middle" class="sub">相关性会把"一起报错"当根因；因果推断回答"如果当时没发生 X，故障还会不会发生"</text>
+
+  <rect x="40" y="100" width="480" height="230" rx="8" class="box red"/>
+  <text x="60" y="128" class="h">只看相关性的陷阱</text>
+  <text x="60" y="154" class="s">· A、B 告警总同时出现 → 误判 A 是 B 的根因</text>
+  <text x="60" y="176" class="s">· 共同原因 C 同时引发 A 和 B(混杂因子)</text>
+  <text x="60" y="198" class="s">· 时间先后 ≠ 因果(巧合/季节)</text>
+  <circle cx="140" cy="250" r="26" class="node"/>
+  <text x="140" y="255" text-anchor="middle" class="t">C</text>
+  <circle cx="260" cy="295" r="26" class="node"/>
+  <text x="260" y="300" text-anchor="middle" class="t">A</text>
+  <circle cx="380" cy="295" r="26" class="node"/>
+  <text x="380" y="300" text-anchor="middle" class="t">B</text>
+  <path d="M155 270 L245 290" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M160 262 L365 290" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="430" y="270" class="s">C 是混杂因子</text>
+
+  <rect x="560" y="100" width="480" height="230" rx="8" class="box green"/>
+  <text x="580" y="128" class="h">因果推断怎么做</text>
+  <text x="580" y="154" class="s">· 因果图(DAG)：用拓扑/依赖/变更先验建因果结构</text>
+  <text x="580" y="176" class="s">· do-演算：估计"干预 X"对结果的影响</text>
+  <text x="580" y="198" class="s">· 反事实：若无此变更，故障概率是否下降</text>
+  <text x="580" y="220" class="s">· 方法：PC/GES 结构学习、Granger 因果(时序)</text>
+  <circle cx="660" cy="280" r="26" class="node"/>
+  <text x="660" y="285" text-anchor="middle" class="t">变更</text>
+  <circle cx="800" cy="280" r="26" class="node"/>
+  <text x="800" y="285" text-anchor="middle" class="t">延迟</text>
+  <circle cx="940" cy="280" r="26" class="node"/>
+  <text x="940" y="285" text-anchor="middle" class="t">故障</text>
+  <path d="M686 280 L774 280" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M826 280 L914 280" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="80" y="365" width="440" height="150" rx="8" class="box blue"/>
+  <text x="110" y="393" class="h">在 AIOps 里的现实用法</text>
+  <text x="110" y="418" class="s">· 多数生产并不做严格因果，而是用</text>
+  <text x="110" y="438" class="s">  "拓扑 + 时序先后 + 变更关联"近似因果</text>
+  <text x="110" y="458" class="s">· 因果图常由 CMDB/调用链/部署系统先验给出</text>
+  <text x="110" y="478" class="s">· LLM 负责生成假设，因果证据负责证伪</text>
+  <text x="110" y="500" class="s">· 严格因果推断仍是前沿，数据和先验要求高</text>
+
+  <rect x="560" y="365" width="440" height="150" rx="8" class="box violet"/>
+  <text x="590" y="393" class="h">面试落点</text>
+  <text x="590" y="418" class="s">· 能说清"相关 ≠ 因果"和混杂因子，已超多数候选人</text>
+  <text x="590" y="438" class="s">· 强调工程上用拓扑/变更/时序做"可证伪的因果近似"</text>
+  <text x="590" y="458" class="s">· 不要吹"我们用 do-演算上线了因果根因"</text>
+  <text x="590" y="478" class="s">· 安全表达：理解因果方向，能设计反事实校验</text>
+  <text x="590" y="500" class="s">· 和假设-验证闭环天然契合：假设=因果边，验证=证伪</text>
+
+  <rect x="80" y="545" width="920" height="70" rx="8" class="box amber"/>
+  <text x="110" y="573" class="h">一句话</text>
+  <text x="110" y="597" class="s">RCA 的下一步不是更会"猜"，而是更会"证伪"：用因果结构约束假设空间，让 Agent 不把相关性当因果。</text>
+</svg>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111827; }
+    .title { font-size: 28px; font-weight: 700; }
+    .layer { font-size: 15px; font-weight: 700; fill: #374151; }
+    .label { font-size: 16px; font-weight: 700; }
+    .sub { font-size: 13px; fill: #4b5563; }
+    .small { font-size: 12px; fill: #6b7280; }
+  </style>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/>
+    </marker>
+    <marker id="arrow-rx" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="600" y="52" text-anchor="middle" class="title">moss-compose Worker 拆分与 Serverless 化原理</text>
+
+  <rect x="45" y="110" width="1110" height="105" rx="10" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="70" y="138" class="layer">控制面入口</text>
+  <rect x="115" y="155" width="190" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="210" y="184" text-anchor="middle" class="label">Console / OpenAPI</text>
+  <rect x="405" y="155" width="190" height="48" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="500" y="184" text-anchor="middle" class="label">Master API</text>
+  <rect x="695" y="155" width="190" height="48" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="790" y="184" text-anchor="middle" class="label">Workgroup Router</text>
+
+  <rect x="45" y="275" width="1110" height="150" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="70" y="303" class="layer">资源归属与远程访问</text>
+  <rect x="115" y="330" width="210" height="64" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="220" y="356" text-anchor="middle" class="label">Workgroup 表</text>
+  <text x="220" y="378" text-anchor="middle" class="sub">cluster / namespace / host</text>
+  <rect x="405" y="330" width="210" height="64" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="510" y="356" text-anchor="middle" class="label">Reference 表</text>
+  <text x="510" y="378" text-anchor="middle" class="sub">space / workflow -> workgroup</text>
+  <rect x="715" y="330" width="210" height="64" rx="8" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="820" y="356" text-anchor="middle" class="label">JSON RPC</text>
+  <text x="820" y="378" text-anchor="middle" class="sub">/rpc + trace + metrics</text>
+
+  <rect x="45" y="485" width="1110" height="190" rx="10" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="70" y="513" class="layer">执行面 Worker / 独立 Runner</text>
+  <rect x="100" y="545" width="210" height="84" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="205" y="573" text-anchor="middle" class="label">Worker A</text>
+  <text x="205" y="596" text-anchor="middle" class="sub">workflow / space shard</text>
+  <text x="205" y="616" text-anchor="middle" class="sub">RPC endpoint</text>
+  <rect x="365" y="545" width="210" height="84" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="470" y="573" text-anchor="middle" class="label">Worker B</text>
+  <text x="470" y="596" text-anchor="middle" class="sub">workflow / space shard</text>
+  <text x="470" y="616" text-anchor="middle" class="sub">RPC endpoint</text>
+  <rect x="645" y="545" width="220" height="84" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="755" y="573" text-anchor="middle" class="label">Python Runner</text>
+  <text x="755" y="596" text-anchor="middle" class="sub">/run/python</text>
+  <text x="755" y="616" text-anchor="middle" class="sub">timeout / busy / metrics</text>
+  <rect x="930" y="545" width="180" height="84" rx="8" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="1020" y="573" text-anchor="middle" class="label">Serverless 平台</text>
+  <text x="1020" y="596" text-anchor="middle" class="sub">独立扩缩容</text>
+  <text x="1020" y="616" text-anchor="middle" class="sub">按负载治理</text>
+
+  <path d="M 305,179 L 405,179" stroke="#2563eb" stroke-width="2.3" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M 595,179 L 695,179" stroke="#2563eb" stroke-width="2.3" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M 790,203 L 790,255 L 510,255 L 510,330" stroke="#16a34a" stroke-width="2.3" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 615,362 L 715,362" stroke="#9333ea" stroke-width="2.3" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M 790,394 L 790,462 L 470,462 L 470,545" stroke="#9333ea" stroke-width="2.3" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M 790,394 L 790,462 L 205,462 L 205,545" stroke="#9333ea" stroke-width="2.3" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M 575,587 L 645,587" stroke="#ea580c" stroke-width="2.3" fill="none" marker-end="url(#arrow-orange)"/>
+  <path d="M 865,587 L 930,587" stroke="#dc2626" stroke-width="2.3" fill="none" marker-end="url(#arrow-rx)"/>
+</svg>

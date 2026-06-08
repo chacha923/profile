@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .label { font-size: 15px; font-weight: 600; fill: #111827; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .small { font-size: 11px; fill: #6b7280; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="40" y="48" class="title">PD 分离核心原理：Prefill 与 Decode 解耦</text>
+  <text x="40" y="76" class="sub">重点理解阶段职责、KV Cache 传输、TTFT / TPOT 分别优化，不绑定具体工程实现。</text>
+
+  <rect x="40" y="150" width="140" height="86" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="110" y="181" text-anchor="middle" class="label">Client</text>
+  <text x="110" y="205" text-anchor="middle" class="sub">Prompt + sampling</text>
+
+  <rect x="240" y="138" width="150" height="110" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="315" y="171" text-anchor="middle" class="label">Router</text>
+  <text x="315" y="196" text-anchor="middle" class="sub">请求路由</text>
+  <text x="315" y="216" text-anchor="middle" class="sub">负载均衡</text>
+
+  <rect x="460" y="100" width="175" height="135" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="547" y="133" text-anchor="middle" class="label">Prefill Workers</text>
+  <text x="547" y="160" text-anchor="middle" class="sub">处理输入上下文</text>
+  <text x="547" y="181" text-anchor="middle" class="sub">生成 KV Cache</text>
+  <text x="547" y="202" text-anchor="middle" class="small">目标：降低 TTFT</text>
+
+  <rect x="460" y="335" width="175" height="135" rx="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+  <text x="547" y="368" text-anchor="middle" class="label">Decode Workers</text>
+  <text x="547" y="395" text-anchor="middle" class="sub">逐 token 生成</text>
+  <text x="547" y="416" text-anchor="middle" class="sub">消费 KV Cache</text>
+  <text x="547" y="437" text-anchor="middle" class="small">目标：降低 TPOT</text>
+
+  <rect x="725" y="207" width="155" height="140" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="802" y="242" text-anchor="middle" class="label">KV Transfer</text>
+  <text x="802" y="269" text-anchor="middle" class="sub">跨 worker 传输</text>
+  <text x="802" y="290" text-anchor="middle" class="sub">元数据 + KV 块</text>
+  <text x="802" y="314" text-anchor="middle" class="small">成本：网络 / 显存 / 协议</text>
+
+  <path d="M180 193 L238 193" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M390 174 C420 150, 430 146, 458 151" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M635 168 C678 170, 699 205, 724 244" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M725 311 C695 355, 675 395, 637 405" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M460 405 C400 402, 382 305, 315 248" stroke="#9333ea" stroke-width="2" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M240 223 C180 300, 154 368, 114 454" stroke="#9333ea" stroke-width="2" fill="none" marker-end="url(#arrow-purple)"/>
+
+  <text x="207" y="178" class="small">请求</text>
+  <text x="407" y="139" class="small">分配 Prefill</text>
+  <text x="660" y="202" class="small">写入 / 传输 KV</text>
+  <text x="663" y="378" class="small">读取 KV</text>
+  <text x="321" y="344" class="small">流式 token</text>
+
+  <rect x="58" y="402" width="150" height="96" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="133" y="433" text-anchor="middle" class="label">Response</text>
+  <text x="133" y="458" text-anchor="middle" class="sub">first token</text>
+  <text x="133" y="479" text-anchor="middle" class="sub">then token stream</text>
+
+  <rect x="40" y="535" width="450" height="34" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+  <line x1="60" y1="552" x2="94" y2="552" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="104" y="556" class="small">请求流</text>
+  <line x1="180" y1="552" x2="214" y2="552" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="224" y="556" class="small">KV Cache</text>
+  <line x1="330" y1="552" x2="364" y2="552" stroke="#9333ea" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <text x="374" y="556" class="small">Token stream</text>
+</svg>

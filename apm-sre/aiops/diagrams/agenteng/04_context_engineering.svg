@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 640" width="1080" height="640">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+  </style>
+  <rect width="1080" height="640" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">上下文工程：在有限窗口里只放高信号</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">RCA 一轮会产生海量证据，塞满上下文会"中间遗忘"且贵；要主动管理而不是全堆进去</text>
+
+  <rect x="60" y="100" width="440" height="220" rx="8" class="box amber"/>
+  <text x="90" y="128" class="h">问题：上下文不是越多越好</text>
+  <text x="90" y="154" class="s">· 窗口有限，工具返回会迅速撑满</text>
+  <text x="90" y="176" class="s">· Lost-in-the-middle：中间内容易被忽略</text>
+  <text x="90" y="198" class="s">· Token 越多越慢越贵</text>
+  <text x="90" y="220" class="s">· 噪声证据稀释关键证据</text>
+  <text x="90" y="242" class="s">· 多轮对话历史无限增长</text>
+  <text x="90" y="270" class="t">核心矛盾：</text>
+  <text x="90" y="292" class="s">取证要全 ←→ 上下文要省，必须主动裁剪。</text>
+
+  <rect x="540" y="100" width="460" height="220" rx="8" class="box green"/>
+  <text x="570" y="128" class="h">五种上下文管理手段</text>
+  <text x="570" y="154" class="s">① 压缩：工具原始输出 → 结构化摘要再入上下文</text>
+  <text x="570" y="176" class="s">② 裁剪：只保留与当前假设相关的证据</text>
+  <text x="570" y="198" class="s">③ 外置记忆：长历史存外部，按需检索回来</text>
+  <text x="570" y="220" class="s">④ 分段：按 Phase 隔离上下文，阶段间只传摘要</text>
+  <text x="570" y="242" class="s">⑤ 结构化引用：证据存库，上下文只放 ID + 摘要</text>
+  <text x="570" y="270" class="t">目标：</text>
+  <text x="570" y="292" class="s">让模型每一步只看到该步需要的高信号信息。</text>
+
+  <rect x="60" y="345" width="940" height="120" rx="8" class="box blue"/>
+  <text x="90" y="373" class="h">在 RCA 里的具体做法</text>
+  <text x="90" y="398" class="s">· 工具返回先做"证据对象化"(来源/时间/实体/关键值)，不把整页日志塞进去；</text>
+  <text x="90" y="420" class="s">· 按告警分诊 Phase 隔离上下文：上下文层、画像层、取证层、归因层，各 Phase 只把结论摘要传下游；</text>
+  <text x="90" y="442" class="s">· 证据全量存编排报告(供 AgentOps 回放)，上下文里只保留引用，兼顾"取证全"和"窗口省"。</text>
+
+  <rect x="60" y="490" width="940" height="120" rx="8" class="box violet"/>
+  <text x="90" y="518" class="h">面试落点</text>
+  <text x="90" y="543" class="s">· "上下文工程"是当前 Agent 工程最核心的能力之一，能讲清楚比只说"用了长上下文模型"高级；</text>
+  <text x="90" y="565" class="s">· 强调 lost-in-the-middle 和成本，说明为什么要压缩/裁剪/外置记忆而不是无脑堆；</text>
+  <text x="90" y="587" class="s">· 把"证据对象化 + Phase 隔离 + 引用而非全文"作为 RCA 上下文工程的三板斧。</text>
+</svg>

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 620" width="1080" height="620">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="620" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">OpenTelemetry 采集架构</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">统一标准（SDK / 自动埋点 / eBPF）→ Collector 处理 → 多后端，避免厂商锁定</text>
+
+  <text x="150" y="105" text-anchor="middle" class="h">数据产生</text>
+  <rect x="40" y="120" width="220" height="60" rx="8" class="box blue"/>
+  <text x="150" y="145" text-anchor="middle" class="t">SDK 手动埋点</text>
+  <text x="150" y="166" text-anchor="middle" class="s">业务关键 span / 指标</text>
+
+  <rect x="40" y="195" width="220" height="60" rx="8" class="box green"/>
+  <text x="150" y="220" text-anchor="middle" class="t">自动埋点 Agent</text>
+  <text x="150" y="241" text-anchor="middle" class="s">Java Agent / 字节码增强</text>
+
+  <rect x="40" y="270" width="220" height="60" rx="8" class="box amber"/>
+  <text x="150" y="295" text-anchor="middle" class="t">eBPF 无侵入</text>
+  <text x="150" y="316" text-anchor="middle" class="s">内核态采集，零改码</text>
+
+  <rect x="340" y="170" width="220" height="110" rx="8" class="box violet"/>
+  <text x="450" y="198" text-anchor="middle" class="h">OTel Collector</text>
+  <text x="360" y="222" class="s">· Receiver 接收 OTLP</text>
+  <text x="360" y="242" class="s">· Processor 批处理/采样/脱敏</text>
+  <text x="360" y="262" class="s">· Exporter 多后端导出</text>
+
+  <path d="M260 150 C300 160 310 190 340 200" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <path d="M260 225 L340 225" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M260 300 C300 290 310 260 340 250" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <rect x="640" y="120" width="200" height="56" rx="8" class="box blue"/>
+  <text x="740" y="145" text-anchor="middle" class="t">Metrics 后端</text>
+  <text x="740" y="165" text-anchor="middle" class="s">Prometheus / VM</text>
+
+  <rect x="640" y="197" width="200" height="56" rx="8" class="box green"/>
+  <text x="740" y="222" text-anchor="middle" class="t">Logs 后端</text>
+  <text x="740" y="242" text-anchor="middle" class="s">Loki / ES</text>
+
+  <rect x="640" y="274" width="200" height="56" rx="8" class="box amber"/>
+  <text x="740" y="299" text-anchor="middle" class="t">Traces 后端</text>
+  <text x="740" y="319" text-anchor="middle" class="s">Tempo / Jaeger</text>
+
+  <path d="M560 200 L640 150" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M560 225 L640 225" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M560 250 L640 300" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="880" y="170" width="160" height="110" rx="8" class="box cyan"/>
+  <text x="960" y="198" text-anchor="middle" class="h">AIOps</text>
+  <text x="900" y="222" class="s">· RCA 取证工具</text>
+  <text x="900" y="242" class="s">· 异常检测</text>
+  <text x="900" y="262" class="s">· 实体关联</text>
+  <path d="M840 225 L880 225" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="80" y="370" width="440" height="130" rx="8" class="box green"/>
+  <text x="110" y="398" class="h">为什么用 OTel</text>
+  <text x="110" y="423" class="s">· 统一三支柱的 SDK、协议(OTLP)、语义约定</text>
+  <text x="110" y="443" class="s">· 厂商中立，后端可换不锁定</text>
+  <text x="110" y="463" class="s">· Resource 语义约定统一 service.name 等标签</text>
+  <text x="110" y="483" class="s">· Collector 集中做采样/脱敏/路由</text>
+
+  <rect x="555" y="370" width="445" height="130" rx="8" class="box amber"/>
+  <text x="585" y="398" class="h">关键决策点</text>
+  <text x="585" y="423" class="s">· 采样策略：头采省成本但可能丢故障 trace；</text>
+  <text x="585" y="443" class="s">  尾采(基于错误/延迟)保留有价值 trace 但更重</text>
+  <text x="585" y="463" class="s">· 语义约定要强制，否则实体对不上</text>
+  <text x="585" y="483" class="s">· Collector 是脱敏和成本控制的关键卡点</text>
+
+  <rect x="80" y="520" width="920" height="80" rx="8" class="box blue"/>
+  <text x="110" y="548" class="h">面试落点</text>
+  <text x="110" y="572" class="s">· 能讲 SDK/自动埋点/eBPF 三种接入和 Collector 的处理职责；</text>
+  <text x="110" y="592" class="s">· 强调采样策略对 RCA 的影响：故障 trace 被采样丢掉，Agent 就只能靠日志兜底。</text>
+</svg>

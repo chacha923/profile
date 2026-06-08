@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 720" width="1080" height="720">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; rx: 8; ry: 8; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="720" fill="#ffffff"/>
+  <text x="540" y="42" text-anchor="middle" class="title">AIOps RCA Agent 原理模型</text>
+  <text x="540" y="70" text-anchor="middle" class="sub">告警结构化 → 多源取证 → 假设验证 → 报告协同 → AgentOps 回放评估</text>
+
+  <rect x="45" y="115" width="140" height="80" class="box green"/>
+  <text x="115" y="145" text-anchor="middle" class="h">事件接入</text>
+  <text x="115" y="168" text-anchor="middle" class="t">告警 / 巡检 / 工单</text>
+  <text x="115" y="186" text-anchor="middle" class="s">统一入口</text>
+
+  <rect x="225" y="115" width="150" height="80" class="box blue"/>
+  <text x="300" y="145" text-anchor="middle" class="h">上下文标准化</text>
+  <text x="300" y="168" text-anchor="middle" class="t">对象 / 时间 / 规则</text>
+  <text x="300" y="186" text-anchor="middle" class="s">实体补齐</text>
+
+  <rect x="415" y="105" width="165" height="100" class="box amber"/>
+  <text x="498" y="135" text-anchor="middle" class="h">假设-验证 Agent</text>
+  <text x="498" y="160" text-anchor="middle" class="t">候选根因</text>
+  <text x="498" y="178" text-anchor="middle" class="s">证据 / 反证 / Unknown</text>
+
+  <rect x="620" y="115" width="150" height="80" class="box cyan"/>
+  <text x="695" y="145" text-anchor="middle" class="h">分析报告</text>
+  <text x="695" y="168" text-anchor="middle" class="t">事实 / 推断 / 建议</text>
+  <text x="695" y="186" text-anchor="middle" class="s">可审计输出</text>
+
+  <rect x="810" y="115" width="150" height="80" class="box violet"/>
+  <text x="885" y="145" text-anchor="middle" class="h">人工协同</text>
+  <text x="885" y="168" text-anchor="middle" class="t">确认 / 采纳 / 纠错</text>
+  <text x="885" y="186" text-anchor="middle" class="s">反馈回灌</text>
+
+  <path d="M185 155 L225 155" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M375 155 L415 155" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M580 155 L620 155" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M770 155 L810 155" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="80" y="275" width="920" height="210" class="box"/>
+  <text x="110" y="308" class="h">只读取证层</text>
+  <text x="110" y="330" class="s">Agent 不凭空判断，先查询真实系统状态；所有证据需要来源、时间窗口、实体和原始链接</text>
+
+  <rect x="120" y="365" width="120" height="58" class="box blue"/>
+  <text x="180" y="390" text-anchor="middle" class="t">Metrics</text>
+  <text x="180" y="409" text-anchor="middle" class="s">趋势 / 基线 / 水位</text>
+
+  <rect x="260" y="365" width="120" height="58" class="box green"/>
+  <text x="320" y="390" text-anchor="middle" class="t">Logs</text>
+  <text x="320" y="409" text-anchor="middle" class="s">错误 / 关键上下文</text>
+
+  <rect x="400" y="365" width="120" height="58" class="box amber"/>
+  <text x="460" y="390" text-anchor="middle" class="t">Traces</text>
+  <text x="460" y="409" text-anchor="middle" class="s">调用链 / 上下游</text>
+
+  <rect x="540" y="365" width="120" height="58" class="box cyan"/>
+  <text x="600" y="390" text-anchor="middle" class="t">Events</text>
+  <text x="600" y="409" text-anchor="middle" class="s">调度 / 重启 / 异常</text>
+
+  <rect x="680" y="365" width="120" height="58" class="box violet"/>
+  <text x="740" y="390" text-anchor="middle" class="t">Changes</text>
+  <text x="740" y="409" text-anchor="middle" class="s">发布 / 配置 / 回滚</text>
+
+  <rect x="820" y="365" width="120" height="58" class="box red"/>
+  <text x="880" y="390" text-anchor="middle" class="t">Knowledge</text>
+  <text x="880" y="409" text-anchor="middle" class="s">SOP / Skill / 案例</text>
+
+  <path d="M498 205 L498 275" stroke="#059669" stroke-width="2.2" fill="none" marker-end="url(#arrow2)"/>
+  <path d="M520 275 L520 205" stroke="#059669" stroke-width="2.2" fill="none" marker-end="url(#arrow2)"/>
+  <text x="545" y="246" class="s">取证循环</text>
+
+  <rect x="150" y="555" width="220" height="86" class="box amber"/>
+  <text x="260" y="586" text-anchor="middle" class="h">质量控制</text>
+  <text x="260" y="611" text-anchor="middle" class="t">证据闭环 / 不确定输出</text>
+  <text x="260" y="629" text-anchor="middle" class="s">禁止把相关性说成因果</text>
+
+  <rect x="430" y="555" width="220" height="86" class="box cyan"/>
+  <text x="540" y="586" text-anchor="middle" class="h">AgentOps</text>
+  <text x="540" y="611" text-anchor="middle" class="t">Trajectory / Tool / LLM span</text>
+  <text x="540" y="629" text-anchor="middle" class="s">成本 / 时延 / 回放 / 评估</text>
+
+  <rect x="710" y="555" width="220" height="86" class="box green"/>
+  <text x="820" y="586" text-anchor="middle" class="h">反馈飞轮</text>
+  <text x="820" y="611" text-anchor="middle" class="t">人工采纳 / 复盘回灌</text>
+  <text x="820" y="629" text-anchor="middle" class="s">知识和评测集持续更新</text>
+</svg>

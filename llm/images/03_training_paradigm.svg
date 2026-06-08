@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2420 1180" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f4ff"/><stop offset="1" stop-color="#eef2ff"/></linearGradient></defs>
+<rect x="0" y="0" width="2420" height="1180" fill="url(#bg)"/>
+<text x="60.0" y="62.0" font-size="34" fill="#0f172a" font-weight="700" text-anchor="start">训练范式差异：预训练 + 后训练（vs 传统专用监督模型）</text>
+<text x="60.0" y="100.0" font-size="19" fill="#475569" font-weight="400" text-anchor="start">出发点是 LLM：预训练打底子学通用分布，后训练把底子调成“听话、对齐、能用”；左侧传统流程只作对比记忆的锚点。</text>
+<rect x="50" y="140" width="1080" height="900" rx="20" fill="#eff4ff" stroke="#2563eb" stroke-width="2"/>
+<text x="86.0" y="192.0" font-size="26" fill="#2563eb" font-weight="700" text-anchor="start">传统 CNN / DNN 典型流程</text>
+<text x="86.0" y="224.0" font-size="17" fill="#475569" font-weight="400" text-anchor="start">任务先定义，模型再训练（熟悉锚点）</text>
+<rect x="92" y="270" width="215" height="130" rx="13" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="199.5" y="329.0" font-size="19" fill="#1f2937" font-weight="700" text-anchor="middle">业务问题</text>
+<text x="199.5" y="359.0" font-size="16" fill="#475569" font-weight="400" text-anchor="middle">构造数据集</text>
+<path d="M313.0,335.0 L341.0,335.0" stroke="#cbd5e1" stroke-width="3" />
+<path d="M347.0,335.0 l-12,-7 l0,14 Z" fill="#cbd5e1"/>
+<rect x="355" y="270" width="215" height="130" rx="13" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="462.5" y="342.0" font-size="20" fill="#1f2937" font-weight="700" text-anchor="middle">定义标签</text>
+<path d="M576.0,335.0 L604.0,335.0" stroke="#cbd5e1" stroke-width="3" />
+<path d="M610.0,335.0 l-12,-7 l0,14 Z" fill="#cbd5e1"/>
+<rect x="618" y="270" width="215" height="130" rx="13" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="725.5" y="342.0" font-size="20" fill="#1f2937" font-weight="700" text-anchor="middle">监督训练</text>
+<path d="M839.0,335.0 L867.0,335.0" stroke="#cbd5e1" stroke-width="3" />
+<path d="M873.0,335.0 l-12,-7 l0,14 Z" fill="#cbd5e1"/>
+<rect x="881" y="270" width="215" height="130" rx="13" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="988.5" y="329.0" font-size="19" fill="#1f2937" font-weight="700" text-anchor="middle">部署</text>
+<text x="988.5" y="359.0" font-size="16" fill="#475569" font-weight="400" text-anchor="middle">特定任务</text>
+<path d="M92.0,422.0 L92.0,434.0 L1096.0,434.0 L1096.0,422.0" fill="none" stroke="#2563eb" stroke-width="2.4"/>
+<text x="594.0" y="460.0" font-size="19" fill="#2563eb" font-weight="700" text-anchor="middle">一任务一模型 · 标签直接教任务</text>
+<text x="92.0" y="510.0" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">特点</text>
+<circle cx="97.0" cy="544.0" r="5" fill="#2563eb"/>
+<text x="114.0" y="550.0" font-size="19" fill="#1f2937" font-weight="400" text-anchor="start">任务定义清晰，训练目标明确、指标可度量。</text>
+<circle cx="97.0" cy="586.0" r="5" fill="#2563eb"/>
+<text x="114.0" y="592.0" font-size="19" fill="#1f2937" font-weight="400" text-anchor="start">强任务边界：模型通常只做被训练的那个任务。</text>
+<circle cx="97.0" cy="628.0" r="5" fill="#2563eb"/>
+<text x="114.0" y="634.0" font-size="19" fill="#1f2937" font-weight="400" text-anchor="start">标签和业务强绑定，效果清晰、成本可控。</text>
+<circle cx="97.0" cy="670.0" r="5" fill="#2563eb"/>
+<text x="114.0" y="676.0" font-size="19" fill="#1f2937" font-weight="400" text-anchor="start">换任务多要重新构造数据、重新训练。</text>
+<rect x="1290" y="140" width="1080" height="900" rx="20" fill="#f5f1ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1326.0" y="192.0" font-size="26" fill="#7c3aed" font-weight="700" text-anchor="start">LLM / 基础模型典型流程</text>
+<text x="1326.0" y="224.0" font-size="17" fill="#475569" font-weight="400" text-anchor="start">先学通用分布，再对齐成可用模型（主角）</text>
+<rect x="1313" y="270" width="178" height="130" rx="13" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1402.0" y="329.0" font-size="19" fill="#1f2937" font-weight="700" text-anchor="middle">海量语料</text>
+<text x="1402.0" y="359.0" font-size="16" fill="#475569" font-weight="400" text-anchor="middle">文本/代码</text>
+<path d="M1497.0,335.0 L1525.0,335.0" stroke="#cbd5e1" stroke-width="3" />
+<path d="M1531.0,335.0 l-12,-7 l0,14 Z" fill="#cbd5e1"/>
+<rect x="1527" y="270" width="178" height="130" rx="13" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1616.0" y="329.0" font-size="19" fill="#1f2937" font-weight="700" text-anchor="middle">预训练</text>
+<text x="1616.0" y="359.0" font-size="16" fill="#475569" font-weight="400" text-anchor="middle">预测下一个 token</text>
+<path d="M1711.0,335.0 L1739.0,335.0" stroke="#cbd5e1" stroke-width="3" />
+<path d="M1745.0,335.0 l-12,-7 l0,14 Z" fill="#cbd5e1"/>
+<rect x="1741" y="270" width="178" height="130" rx="13" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1830.0" y="329.0" font-size="19" fill="#1f2937" font-weight="700" text-anchor="middle">指令微调</text>
+<text x="1830.0" y="359.0" font-size="16" fill="#475569" font-weight="400" text-anchor="middle">SFT</text>
+<path d="M1925.0,335.0 L1953.0,335.0" stroke="#cbd5e1" stroke-width="3" />
+<path d="M1959.0,335.0 l-12,-7 l0,14 Z" fill="#cbd5e1"/>
+<rect x="1955" y="270" width="178" height="130" rx="13" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="2044.0" y="329.0" font-size="19" fill="#1f2937" font-weight="700" text-anchor="middle">偏好对齐</text>
+<text x="2044.0" y="359.0" font-size="16" fill="#475569" font-weight="400" text-anchor="middle">RLHF / DPO</text>
+<path d="M2139.0,335.0 L2167.0,335.0" stroke="#cbd5e1" stroke-width="3" />
+<path d="M2173.0,335.0 l-12,-7 l0,14 Z" fill="#cbd5e1"/>
+<rect x="2169" y="270" width="178" height="130" rx="13" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="2258.0" y="329.0" font-size="19" fill="#1f2937" font-weight="700" text-anchor="middle">推理部署</text>
+<text x="2258.0" y="359.0" font-size="16" fill="#475569" font-weight="400" text-anchor="middle">RAG / Agent</text>
+<path d="M1313.0,422.0 L1313.0,434.0 L1705.0,434.0 L1705.0,422.0" fill="none" stroke="#0891b2" stroke-width="2.4"/>
+<text x="1509.0" y="460.0" font-size="19" fill="#0891b2" font-weight="700" text-anchor="middle">预训练 · 打能力底子（base model）</text>
+<path d="M1741.0,422.0 L1741.0,434.0 L2133.0,434.0 L2133.0,422.0" fill="none" stroke="#db2777" stroke-width="2.4"/>
+<text x="1937.0" y="460.0" font-size="19" fill="#db2777" font-weight="700" text-anchor="middle">后训练 · 调成听话可用（instruct model）</text>
+<text x="1326.0" y="510.0" font-size="21" fill="#7c3aed" font-weight="700" text-anchor="start">特点</text>
+<circle cx="1331.0" cy="544.0" r="5" fill="#7c3aed"/>
+<text x="1348.0" y="550.0" font-size="19" fill="#1f2937" font-weight="400" text-anchor="start">预训练：海量自监督，决定能力上限，最烧算力。</text>
+<circle cx="1331.0" cy="586.0" r="5" fill="#7c3aed"/>
+<text x="1348.0" y="592.0" font-size="19" fill="#1f2937" font-weight="400" text-anchor="start">后训练：SFT 学按指令回答，对齐学人类偏好。</text>
+<circle cx="1331.0" cy="628.0" r="5" fill="#7c3aed"/>
+<text x="1348.0" y="634.0" font-size="19" fill="#1f2937" font-weight="400" text-anchor="start">后训练一般不教新知识，只激发并约束已有能力。</text>
+<circle cx="1331.0" cy="670.0" r="5" fill="#7c3aed"/>
+<text x="1348.0" y="676.0" font-size="19" fill="#1f2937" font-weight="400" text-anchor="start">一个基础模型适配多任务，而非一任务一模型。</text>
+<rect x="50" y="1050" width="2320" height="86" rx="14" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+<rect x="50" y="1050" width="9" height="86" rx="4" fill="#f59e0b"/>
+<text x="80.0" y="1086.0" font-size="20" fill="#92400e" font-weight="600" text-anchor="start">一句话记：预训练决定“知道什么、会什么”（能力上限），后训练决定“听不听话、对不对齐、安不安全”（好不好用）。</text>
+<text x="80.0" y="1116.0" font-size="20" fill="#92400e" font-weight="600" text-anchor="start">别拿传统监督训练硬类比预训练——预训练不对着某个任务学标签；后训练才有点像“监督 + 对齐”。</text>
+</svg>

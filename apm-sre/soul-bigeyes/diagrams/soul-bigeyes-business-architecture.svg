@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 700; fill: #111827; }
+    .lane { font-size: 12px; font-weight: 700; fill: #374151; letter-spacing: .08em; }
+    .node-title { font-size: 15px; font-weight: 700; fill: #111827; }
+    .node-sub { font-size: 12px; fill: #6b7280; }
+    .small { font-size: 11px; fill: #6b7280; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="40" y="42" class="title">Soul-Bigeyes 新一代报警中心业务架构</text>
+
+  <rect x="32" y="78" width="1136" height="112" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-dasharray="7,4"/>
+  <text x="48" y="102" class="lane">ALERT SOURCES / MIGRATION</text>
+  <rect x="70" y="120" width="150" height="46" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="145" y="140" text-anchor="middle" class="node-title">监控源</text>
+  <text x="145" y="158" text-anchor="middle" class="node-sub">OWL / Log / XXL-JOB</text>
+  <rect x="300" y="120" width="170" height="46" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="385" y="140" text-anchor="middle" class="node-title">老告警网关</text>
+  <text x="385" y="158" text-anchor="middle" class="node-sub">灰度期双写 MQ</text>
+  <rect x="555" y="120" width="170" height="46" rx="23" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="640" y="140" text-anchor="middle" class="node-title">RocketMQ</text>
+  <text x="640" y="158" text-anchor="middle" class="node-sub">AlertEventMqMessage</text>
+  <rect x="830" y="120" width="210" height="46" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="935" y="140" text-anchor="middle" class="node-title">迁移控制</text>
+  <text x="935" y="158" text-anchor="middle" class="node-sub">老网关 migrated = Bigeyes enabled</text>
+
+  <path d="M220 143 L300 143" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M470 143 L555 143" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M830 143 L725 143" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+
+  <rect x="32" y="220" width="1136" height="230" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-dasharray="7,4"/>
+  <text x="48" y="244" class="lane">SCHEDULE CORE PIPELINE</text>
+  <rect x="70" y="282" width="146" height="62" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="143" y="306" text-anchor="middle" class="node-title">AlertConsumer</text>
+  <text x="143" y="326" text-anchor="middle" class="node-sub">消费 JSON</text>
+  <rect x="280" y="282" width="166" height="62" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="363" y="306" text-anchor="middle" class="node-title">Consumed Event</text>
+  <text x="363" y="326" text-anchor="middle" class="node-sub">Spring Event 阶段一</text>
+  <rect x="510" y="282" width="174" height="62" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="597" y="306" text-anchor="middle" class="node-title">AlarmRepository</text>
+  <text x="597" y="326" text-anchor="middle" class="node-sub">fingerprint 聚合</text>
+  <rect x="748" y="282" width="166" height="62" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="831" y="306" text-anchor="middle" class="node-title">Aggregated Event</text>
+  <text x="831" y="326" text-anchor="middle" class="node-sub">Spring Event 阶段二</text>
+  <rect x="978" y="282" width="150" height="62" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="1053" y="306" text-anchor="middle" class="node-title">NotifySender</text>
+  <text x="1053" y="326" text-anchor="middle" class="node-sub">路由 / 限流 / 记录</text>
+  <path d="M216 313 L280 313" stroke="#9333ea" stroke-width="2" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M446 313 L510 313" stroke="#9333ea" stroke-width="2" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M684 313 L748 313" stroke="#9333ea" stroke-width="2" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M914 313 L978 313" stroke="#9333ea" stroke-width="2" fill="none" marker-end="url(#arrow-purple)"/>
+
+  <rect x="250" y="372" width="150" height="42" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="325" y="398" text-anchor="middle" class="node-title">恢复消息分流</text>
+  <rect x="492" y="372" width="210" height="42" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="597" y="398" text-anchor="middle" class="node-title">静默 / 抖动抑制 / 幂等</text>
+  <rect x="948" y="372" width="210" height="42" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="1053" y="398" text-anchor="middle" class="node-title">灰度 / 风暴防御 / AI 触发</text>
+
+  <rect x="32" y="486" width="1136" height="134" rx="10" fill="#f0fdfa" stroke="#ccfbf1" stroke-dasharray="7,4"/>
+  <text x="48" y="510" class="lane">DATA / ADMIN / INTERACTION</text>
+  <path d="M152 542 C152 526, 292 526, 292 542 L292 592 C292 608, 152 608, 152 592 Z" fill="#ffffff" stroke="#d1d5db"/>
+  <ellipse cx="222" cy="542" rx="70" ry="16" fill="#ecfeff" stroke="#d1d5db"/>
+  <text x="222" y="570" text-anchor="middle" class="node-title">MySQL</text>
+  <text x="222" y="588" text-anchor="middle" class="node-sub">agg / record / rule / notify</text>
+  <rect x="390" y="540" width="150" height="58" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="465" y="564" text-anchor="middle" class="node-title">Admin API</text>
+  <text x="465" y="584" text-anchor="middle" class="node-sub">事件 / 规则 / 大盘</text>
+  <rect x="620" y="540" width="150" height="58" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="695" y="564" text-anchor="middle" class="node-title">前端控制台</text>
+  <text x="695" y="584" text-anchor="middle" class="node-sub">个人告警事件</text>
+  <rect x="845" y="540" width="210" height="58" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="950" y="564" text-anchor="middle" class="node-title">飞书卡片回调</text>
+  <text x="950" y="584" text-anchor="middle" class="node-sub">ack / mute / 拉群 / 误报</text>
+
+  <path d="M597 344 L310 535" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M1053 344 C1030 450, 1030 500, 960 540" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+  <path d="M292 570 L390 570" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M540 570 L620 570" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M845 570 C740 642, 480 640, 310 590" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+
+  <rect x="32" y="654" width="1136" height="70" rx="10" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="52" y="682" class="small">蓝色：主告警流；紫色：进程内事件解耦；绿色：数据读写；红色：交互/控制流。</text>
+  <text x="52" y="704" class="small">核心边界：业务告警源只负责发 MQ；schedule 负责聚合、生命周期和通知；admin 负责查询、同步和运营操作。</text>
+</svg>

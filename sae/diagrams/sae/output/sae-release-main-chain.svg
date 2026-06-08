@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1040" width="1600" height="1040">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; fill: #111827; }
+    .title { font-size: 34px; font-weight: 700; }
+    .subtitle { font-size: 17px; fill: #6b7280; }
+    .participant { font-size: 16px; font-weight: 700; }
+    .participant-sub { font-size: 12px; fill: #64748b; }
+    .message { font-size: 13px; font-weight: 600; fill: #334155; }
+    .note-title { font-size: 14px; font-weight: 700; fill: #334155; }
+    .note { font-size: 12px; fill: #64748b; }
+    .frame { font-size: 13px; font-weight: 700; fill: #7c2d12; }
+    .legend { font-size: 12px; fill: #64748b; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#9333ea"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#f97316"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1040" fill="#ffffff"/>
+  <text x="70" y="66" class="title">SAE 发布主链路时序图</text>
+  <text x="70" y="98" class="subtitle">面试里重点讲清楚：console 接住用户动作并落业务状态，pkg/sae 编排 Tekton 与 Rollouts，watcher 把集群事实持续回写到发布视图</text>
+
+  <g transform="translate(80,135)">
+    <rect width="190" height="70" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="95" y="28" text-anchor="middle" class="participant">用户 / Agent</text>
+    <text x="95" y="50" text-anchor="middle" class="participant-sub">发布、查询、回滚</text>
+  </g>
+  <g transform="translate(330,135)">
+    <rect width="205" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="102" y="28" text-anchor="middle" class="participant">console API</text>
+    <text x="102" y="50" text-anchor="middle" class="participant-sub">鉴权、审计、发布单</text>
+  </g>
+  <g transform="translate(595,135)">
+    <rect width="205" height="70" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8"/>
+    <text x="102" y="28" text-anchor="middle" class="participant">pkg/sae</text>
+    <text x="102" y="50" text-anchor="middle" class="participant-sub">多集群编排 SDK</text>
+  </g>
+  <g transform="translate(860,135)">
+    <rect width="210" height="70" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+    <text x="105" y="28" text-anchor="middle" class="participant">Tekton / Harbor</text>
+    <text x="105" y="50" text-anchor="middle" class="participant-sub">构建、镜像、制品</text>
+  </g>
+  <g transform="translate(1130,135)">
+    <rect width="215" height="70" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="107" y="28" text-anchor="middle" class="participant">K8s / Rollouts</text>
+    <text x="107" y="50" text-anchor="middle" class="participant-sub">工作负载、灰度执行</text>
+  </g>
+  <g transform="translate(1405,135)">
+    <rect width="150" height="70" rx="8" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8"/>
+    <text x="75" y="28" text-anchor="middle" class="participant">watcher</text>
+    <text x="75" y="50" text-anchor="middle" class="participant-sub">状态回写</text>
+  </g>
+
+  <line x1="175" y1="205" x2="175" y2="930" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 7"/>
+  <line x1="432" y1="205" x2="432" y2="930" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 7"/>
+  <line x1="697" y1="205" x2="697" y2="930" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 7"/>
+  <line x1="965" y1="205" x2="965" y2="930" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 7"/>
+  <line x1="1237" y1="205" x2="1237" y2="930" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 7"/>
+  <line x1="1480" y1="205" x2="1480" y2="930" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 7"/>
+
+  <rect x="395" y="250" width="74" height="112" rx="4" fill="#dbeafe" stroke="#93c5fd"/>
+  <rect x="660" y="390" width="74" height="260" rx="4" fill="#ede9fe" stroke="#c4b5fd"/>
+  <rect x="928" y="438" width="74" height="108" rx="4" fill="#fed7aa" stroke="#fdba74"/>
+  <rect x="1200" y="575" width="74" height="165" rx="4" fill="#dcfce7" stroke="#86efac"/>
+  <rect x="1445" y="692" width="70" height="160" rx="4" fill="#ede9fe" stroke="#c4b5fd"/>
+
+  <rect x="92" y="222" width="1440" height="150" rx="10" fill="none" stroke="#fed7aa" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <rect x="92" y="382" width="1440" height="180" rx="10" fill="none" stroke="#bfdbfe" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <rect x="92" y="572" width="1440" height="205" rx="10" fill="none" stroke="#bbf7d0" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <rect x="92" y="790" width="1440" height="112" rx="10" fill="none" stroke="#ddd6fe" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="108" y="246" class="frame">提交与校验</text>
+  <text x="108" y="406" class="frame">构建阶段：有构建需求时触发</text>
+  <text x="108" y="596" class="frame">发布阶段：更新工作负载或 Rollout 策略</text>
+  <text x="108" y="814" class="frame">异步状态回写：用户不靠一次 HTTP 请求等待全链路完成</text>
+
+  <line x1="175" y1="270" x2="420" y2="270" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+  <text x="205" y="258" class="message">1. 提交发布申请 / 快速发布</text>
+  <line x1="432" y1="315" x2="432" y2="315" stroke="#2563eb" stroke-width="2.2"/>
+  <path d="M432 315 C505 315 505 350 432 350" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="486" y="309" class="message">2. 鉴权、审计、窗口、质量、白名单校验</text>
+  <line x1="432" y1="382" x2="685" y2="382" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+  <text x="458" y="370" class="message">3. 读取应用、环境、集群、发布策略</text>
+
+  <line x1="697" y1="445" x2="953" y2="445" stroke="#f97316" stroke-width="2.2" marker-end="url(#arrow-orange)"/>
+  <text x="726" y="433" class="message">4. 创建 PipelineRun</text>
+  <path d="M965 488 C1045 488 1045 525 965 525" stroke="#f97316" stroke-width="2.2" fill="none" marker-end="url(#arrow-orange)"/>
+  <text x="1018" y="482" class="message">5. 拉代码、构建镜像、推送 Harbor</text>
+  <line x1="965" y1="555" x2="697" y2="555" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+  <text x="770" y="543" class="message">6. 构建结果进入发布上下文</text>
+
+  <line x1="697" y1="615" x2="1225" y2="615" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+  <text x="744" y="603" class="message">7. 更新 Deployment 镜像 / Rollout 灰度策略</text>
+  <path d="M1237 660 C1320 660 1320 700 1237 700" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)"/>
+  <text x="1292" y="654" class="message">8. 控制副本、流量、revision 与回滚点</text>
+  <line x1="1237" y1="746" x2="1480" y2="746" stroke="#9333ea" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#arrow-purple)"/>
+  <text x="1262" y="734" class="message">9. watch Rollout / Deployment / Event</text>
+
+  <line x1="1480" y1="832" x2="432" y2="832" stroke="#9333ea" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#arrow-purple)"/>
+  <text x="882" y="820" class="message">10. 回写发布状态、副本状态、事件与通知记录</text>
+  <path d="M1480 860 C1538 860 1538 890 1480 890" stroke="#9333ea" stroke-width="2.2" stroke-dasharray="7 5" fill="none" marker-end="url(#arrow-purple)"/>
+  <text x="1236" y="884" class="message">11. 失败 / 卡住触发飞书提醒</text>
+  <line x1="175" y1="922" x2="432" y2="922" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+  <text x="205" y="910" class="message">12. 查询发布进度 / 回滚 / 继续放量</text>
+
+  <g transform="translate(102,952)">
+    <line x1="0" y1="8" x2="42" y2="8" stroke="#2563eb" stroke-width="2.3" marker-end="url(#arrow-blue)"/>
+    <text x="52" y="12" class="legend">同步控制链路</text>
+    <line x1="184" y1="8" x2="226" y2="8" stroke="#f97316" stroke-width="2.3" marker-end="url(#arrow-orange)"/>
+    <text x="236" y="12" class="legend">构建链路</text>
+    <line x1="340" y1="8" x2="382" y2="8" stroke="#16a34a" stroke-width="2.3" marker-end="url(#arrow-green)"/>
+    <text x="392" y="12" class="legend">执行状态</text>
+    <line x1="512" y1="8" x2="554" y2="8" stroke="#9333ea" stroke-width="2.3" stroke-dasharray="7 5" marker-end="url(#arrow-purple)"/>
+    <text x="564" y="12" class="legend">异步回写与通知</text>
+  </g>
+  <g transform="translate(1045,936)">
+    <rect width="450" height="58" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="18" y="23" class="note-title">面试表达重点</text>
+    <text x="18" y="44" class="note">发布不是单点接口，而是“业务校验 + 构建 + Rollout 执行 + watcher 回写”的组合链路。</text>
+  </g>
+</svg>

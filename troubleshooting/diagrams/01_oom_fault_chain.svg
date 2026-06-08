@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 880" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><path d="M0,0 L10,3.5 L0,7 Z" fill="#475569"/></marker>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.12"/></filter>
+  </defs>
+  <rect x="0" y="0" width="980" height="880" fill="#ffffff"/>
+  <text x="40" y="42" font-size="22" font-weight="700" fill="#0f172a">案例一 · Worker OOM 故障因果链</text>
+  <text x="40" y="66" font-size="13" fill="#64748b">2026-02-09 soda-pepsi 调度平台 · 业务现象在最底层，根因在主机内存层</text>
+  <rect x="80" y="90" width="250" height="64" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="205.0" y="116.0" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">研发放量未通知平台</text>
+  <text x="205.0" y="137.0" font-size="12" fill="#475569" text-anchor="middle">Paimon 集群任务 130+</text>
+  <rect x="360" y="90" width="250" height="64" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="485.0" y="116.0" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">00:36:44 多任务</text>
+  <text x="485.0" y="137.0" font-size="12" fill="#475569" text-anchor="middle">集中提前调度（错峰被压平）</text>
+  <line x1="205" y1="154" x2="240" y2="196" stroke="#475569" stroke-width="2"/>
+  <line x1="485" y1="154" x2="300" y2="196" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="80.0" y="200" width="380" height="60" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="270.0" y="224.0" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">单台 Worker 瞬时并发 10 → 16~18</text>
+  <text x="270.0" y="245.0" font-size="12" fill="#475569" text-anchor="middle">同时跑 16 个 Spark SQL 子进程</text>
+  <line x1="270" y1="260" x2="270" y2="296" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="80.0" y="300" width="380" height="64" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="270.0" y="326.0" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">16GB 物理内存 / 无 swap</text>
+  <text x="270.0" y="347.0" font-size="12" fill="#475569" text-anchor="middle">占用约 15.6GB，空闲仅约 0.4GB</text>
+  <line x1="270" y1="364" x2="270" y2="400" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="80.0" y="404" width="380" height="64" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="270.0" y="430.0" font-size="14" font-weight="600" fill="#b91c1c" text-anchor="middle">内核 OOM Killer 触发</text>
+  <text x="270.0" y="451.0" font-size="12" fill="#475569" text-anchor="middle">杀掉内存最大进程 = Worker 主进程 pid 808936（约6GB）</text>
+  <line x1="270" y1="468" x2="270" y2="504" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="80.0" y="508" width="380" height="64" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="270.0" y="534.0" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">节点任务中断 → Failover / 优雅退出</text>
+  <text x="270.0" y="555.0" font-size="12" fill="#475569" text-anchor="middle">finish_time 集中 00:37:34（被中断非完成）</text>
+  <line x1="270" y1="572" x2="270" y2="608" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="80.0" y="612" width="380" height="56" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="270.0" y="640.0" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">上游 Paimon 集群任务整体延迟</text>
+  <line x1="270" y1="668" x2="270" y2="704" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="80.0" y="708" width="380" height="64" rx="10" fill="#fee2e2" stroke="#f87171" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="270.0" y="734.0" font-size="14" font-weight="600" fill="#b91c1c" text-anchor="middle">画像宽表 08:33 晚产出</text>
+  <text x="270.0" y="755.0" font-size="12" fill="#475569" text-anchor="middle">画像平台「天级人群是否计算完成」告警</text>
+  <rect x="640" y="300" width="300" height="280" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="790.0" y="328" font-size="15" font-weight="700" fill="#b45309" text-anchor="middle">放大因素</text>
+  <rect x="656" y="348" width="268" height="62" rx="8" fill="#ffffff" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="668" y="374" font-size="13" font-weight="600" fill="#92400e">① 无 swap 分区兜底</text>
+  <text x="668" y="394" font-size="11.5" fill="#78716c">内存越线即触发 OOM</text>
+  <rect x="656" y="420" width="268" height="62" rx="8" fill="#ffffff" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="668" y="446" font-size="13" font-weight="600" fill="#92400e">② 非标 Hadoop 环境</text>
+  <text x="668" y="466" font-size="11.5" fill="#78716c">手动初始化，无法工单快速扩容</text>
+  <rect x="656" y="492" width="268" height="62" rx="8" fill="#ffffff" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="668" y="518" font-size="13" font-weight="600" fill="#92400e">③ Worker 崩溃无告警</text>
+  <text x="668" y="538" font-size="11.5" fill="#78716c">00:37 崩 → 04:10 才介入</text>
+  <line x1="640" y1="436" x2="650" y2="436" stroke="#f59e0b" stroke-width="0"/>
+</svg>

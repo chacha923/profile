@@ -1,0 +1,55 @@
+flowchart TB
+
+  subgraph entry["研发入口"]
+    developer["研发 / 算法同学<br/>提交代码 / 触发发布"]
+    gitlab["GitLab Repo<br/>源码 / Dockerfile / 流水线参数"]
+    sae["SAE Console / API"]
+    orchestrator["构建发布编排器"]
+    guard["鉴权 / 审计"]
+  end
+
+  subgraph control["Tekton 控制面"]
+    pipeline["Pipeline / TriggerTemplate<br/>流水线定义与参数模板"]
+    tekton["Tekton Pipelines<br/>核心控制器"]
+    pr["PipelineRun<br/>一次构建发布任务实例"]
+    templates["Go / Java Maven / Python / Node / 推理流水线<br/>模板库"]
+  end
+
+  subgraph exec["构建与扫描执行面"]
+    source["源码拉取 / Workspace"]
+    deps["依赖与环境准备<br/>私有源 / GOPRIVATE / 时区 / 代理 / 缓存"]
+    build["buildx / containerd / nerdctl<br/>镜像构建与产物封装"]
+    scan["scan-code<br/>jar 合法性与生产扫描"]
+    taskrun["TaskRun Pods"]
+  end
+
+  subgraph target["制品与发布目标"]
+    harbor["Harbor<br/>镜像仓库 / 制品留存"]
+    handoff["交付 SAE / Rollouts"]
+    clusters["多集群 Kubernetes"]
+    obs["事件 / 日志 / 状态"]
+  end
+
+  developer --> gitlab
+  developer --> sae
+  sae --> orchestrator
+  orchestrator --> guard
+  gitlab --> pipeline
+  orchestrator --> tekton
+  pipeline --> tekton
+  templates --> pr
+  tekton --> pr
+
+  pr --> source
+  source --> deps
+  deps --> build
+  build --> scan
+  pr --> taskrun
+  taskrun -. 状态反馈 .-> build
+
+  scan --> harbor
+  harbor --> handoff
+  handoff --> clusters
+  clusters -. 运行反馈 .-> obs
+  obs -. 状态回传 .-> sae
+  obs -. 状态回传 .-> pr

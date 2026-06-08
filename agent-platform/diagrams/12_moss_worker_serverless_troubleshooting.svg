@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111827; }
+    .title { font-size: 28px; font-weight: 700; }
+    .label { font-size: 16px; font-weight: 700; }
+    .sub { font-size: 13px; fill: #4b5563; }
+  </style>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="arrow-rx" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="600" y="52" text-anchor="middle" class="title">Worker / Runner 异常排障路径</text>
+
+  <rect x="60" y="140" width="180" height="72" rx="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="150" y="170" text-anchor="middle" class="label">症状</text>
+  <text x="150" y="193" text-anchor="middle" class="sub">超时 / 503 / 查不到执行</text>
+
+  <rect x="310" y="140" width="190" height="72" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="405" y="170" text-anchor="middle" class="label">入口确认</text>
+  <text x="405" y="193" text-anchor="middle" class="sub">HTTP / RPC / trace_id</text>
+
+  <rect x="570" y="140" width="210" height="72" rx="10" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="675" y="170" text-anchor="middle" class="label">路由确认</text>
+  <text x="675" y="193" text-anchor="middle" class="sub">workgroup / host / reference</text>
+
+  <rect x="850" y="140" width="220" height="72" rx="10" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="960" y="170" text-anchor="middle" class="label">Worker 确认</text>
+  <text x="960" y="193" text-anchor="middle" class="sub">RPC endpoint / local logs</text>
+
+  <rect x="175" y="350" width="220" height="86" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="285" y="382" text-anchor="middle" class="label">Runner 确认</text>
+  <text x="285" y="406" text-anchor="middle" class="sub">PYRUNNER_SERVICE_URL</text>
+  <text x="285" y="426" text-anchor="middle" class="sub">health / 503 / timeout</text>
+
+  <rect x="490" y="350" width="220" height="86" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="600" y="382" text-anchor="middle" class="label">进程确认</text>
+  <text x="600" y="406" text-anchor="middle" class="sub">child pid / killpg</text>
+  <text x="600" y="426" text-anchor="middle" class="sub">code_len / args_len</text>
+
+  <rect x="805" y="350" width="220" height="86" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="915" y="382" text-anchor="middle" class="label">指标确认</text>
+  <text x="915" y="406" text-anchor="middle" class="sub">QPS / P95 / outcome</text>
+  <text x="915" y="426" text-anchor="middle" class="sub">busy / timeout / 5xx</text>
+
+  <rect x="300" y="570" width="240" height="88" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="420" y="604" text-anchor="middle" class="label">常见修复</text>
+  <text x="420" y="628" text-anchor="middle" class="sub">修正 reference / host</text>
+  <text x="420" y="648" text-anchor="middle" class="sub">扩容 runner / 限制并发</text>
+
+  <rect x="660" y="570" width="240" height="88" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.7" filter="url(#shadow)"/>
+  <text x="780" y="604" text-anchor="middle" class="label">复盘沉淀</text>
+  <text x="780" y="628" text-anchor="middle" class="sub">SLO / 告警 / 灰度</text>
+  <text x="780" y="648" text-anchor="middle" class="sub">冷启动和容量基线</text>
+
+  <path d="M 240,176 L 310,176" stroke="#2563eb" stroke-width="2.3" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M 500,176 L 570,176" stroke="#2563eb" stroke-width="2.3" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M 780,176 L 850,176" stroke="#2563eb" stroke-width="2.3" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M 960,212 L 960,285 L 285,285 L 285,350" stroke="#ea580c" stroke-width="2.3" fill="none" marker-end="url(#arrow-orange)"/>
+  <path d="M 395,393 L 490,393" stroke="#16a34a" stroke-width="2.3" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 710,393 L 805,393" stroke="#16a34a" stroke-width="2.3" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 600,436 L 600,520 L 420,520 L 420,570" stroke="#dc2626" stroke-width="2.3" fill="none" marker-end="url(#arrow-rx)"/>
+  <path d="M 915,436 L 915,520 L 780,520 L 780,570" stroke="#dc2626" stroke-width="2.3" fill="none" marker-end="url(#arrow-rx)"/>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 820" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1480" height="820" fill="#f8fafc"/>
+<text x="40" y="52" fill="#0f172a" font-size="24" font-weight="700">训练 vs 推理：故障形态横向对标（SRE 关注点）</text>
+<rect x="270" y="86" width="580" height="46" rx="10" fill="#1d4ed8" stroke="#1d4ed8" stroke-width="2"/>
+<text x="560" y="117.0" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">训练</text>
+<rect x="870" y="86" width="580" height="46" rx="10" fill="#047857" stroke="#047857" stroke-width="2"/>
+<text x="1160" y="117.0" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">推理</text>
+<rect x="40" y="144" width="210" height="108" rx="9" fill="#334155" stroke="#334155" stroke-width="2"/>
+<text x="145" y="204.5" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">计算</text>
+<rect x="270" y="144" width="580" height="108" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="560" y="204.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">前向+反向+参数更新</text>
+<rect x="870" y="144" width="580" height="108" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+<text x="1160" y="204.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">只前向</text>
+<rect x="40" y="264" width="210" height="108" rx="9" fill="#334155" stroke="#334155" stroke-width="2"/>
+<text x="145" y="324.5" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">显存</text>
+<rect x="270" y="264" width="580" height="108" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="560" y="324.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">激活+梯度+优化器(几倍)</text>
+<rect x="870" y="264" width="580" height="108" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+<text x="1160" y="324.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">只装模型+激活(小)</text>
+<rect x="40" y="384" width="210" height="108" rx="9" fill="#334155" stroke="#334155" stroke-width="2"/>
+<text x="145" y="444.5" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">时长/形态</text>
+<rect x="270" y="384" width="580" height="108" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="560" y="418.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">长任务</text>
+<text x="560" y="444.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">分布式</text>
+<text x="560" y="470.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">多卡</text>
+<rect x="870" y="384" width="580" height="108" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+<text x="1160" y="444.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">常驻服务·并发请求</text>
+<rect x="40" y="504" width="210" height="108" rx="9" fill="#334155" stroke="#334155" stroke-width="2"/>
+<text x="145" y="564.5" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">关键资源</text>
+<rect x="270" y="504" width="580" height="108" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="560" y="538.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">GPU</text>
+<text x="560" y="564.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">NCCL通信</text>
+<text x="560" y="590.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">NAS checkpoint</text>
+<rect x="870" y="504" width="580" height="108" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+<text x="1160" y="538.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">GPU</text>
+<text x="1160" y="564.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">batch</text>
+<text x="1160" y="590.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">CPU预处理</text>
+<rect x="40" y="624" width="210" height="108" rx="9" fill="#334155" stroke="#334155" stroke-width="2"/>
+<text x="145" y="684.5" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">典型故障</text>
+<rect x="270" y="624" width="580" height="108" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="560" y="684.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">Pending/卡死/OOM/慢/慢节点</text>
+<rect x="870" y="624" width="580" height="108" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+<text x="1160" y="684.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">加载失败/延迟高/利用率低</text>
+<rect x="40" y="744" width="210" height="108" rx="9" fill="#334155" stroke="#334155" stroke-width="2"/>
+<text x="145" y="804.5" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">SRE 核心指标</text>
+<rect x="270" y="744" width="580" height="108" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="560" y="778.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">各rank进度</text>
+<text x="560" y="804.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">GPU利用率</text>
+<text x="560" y="830.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">通信</text>
+<rect x="870" y="744" width="580" height="108" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+<text x="1160" y="778.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">P99延迟</text>
+<text x="1160" y="804.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">QPS</text>
+<text x="1160" y="830.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">batch命中</text>
+</svg>

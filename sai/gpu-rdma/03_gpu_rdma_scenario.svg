@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Helvetica, Arial, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="600" fill="#111827">AI Infra scenarios</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#6b7280">Multi-node training / LLM inference KV sync / checkpoint load</text>
+  <rect x="320" y="80" width="320" height="48" rx="8" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.5"/>
+  <text x="480" y="110" text-anchor="middle" font-size="14" fill="#111827">SAI control plane</text>
+  <rect x="280" y="160" width="400" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="480" y="190" text-anchor="middle" font-size="14" fill="#111827">TFJob / PyTorchJob multi-pod</text>
+  <path d="M480 128 L480 160" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ab)"/>
+  <rect x="40" y="250" width="200" height="120" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="140" y="278" text-anchor="middle" font-size="14" font-weight="600" fill="#111827">GPU Node 0</text>
+  <text x="140" y="302" text-anchor="middle" font-size="12" fill="#6b7280">8x GPU + RDMA NIC</text>
+  <text x="140" y="324" text-anchor="middle" font-size="12" fill="#6b7280">NCCL Rank 0-7</text>
+  <text x="140" y="348" text-anchor="middle" font-size="12" fill="#6b7280">AllReduce grad</text>
+  <rect x="720" y="250" width="200" height="120" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="820" y="278" text-anchor="middle" font-size="14" font-weight="600" fill="#111827">GPU Node 1</text>
+  <text x="820" y="302" text-anchor="middle" font-size="12" fill="#6b7280">8x GPU + RDMA NIC</text>
+  <text x="820" y="324" text-anchor="middle" font-size="12" fill="#6b7280">NCCL Rank 8-15</text>
+  <text x="820" y="348" text-anchor="middle" font-size="12" fill="#6b7280">AllReduce grad</text>
+  <path d="M380 208 L140 250" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ab)"/>
+  <path d="M580 208 L820 250" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ab)"/>
+  <rect x="300" y="410" width="360" height="56" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="480" y="444" text-anchor="middle" font-size="14" fill="#111827">RDMA fabric 100/200/400 Gbps</text>
+  <path d="M240 370 L420 410" stroke="#16a34a" stroke-width="2" marker-end="url(#ag)"/>
+  <path d="M720 370 L540 410" stroke="#16a34a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="480" y="395" text-anchor="middle" font-size="12" fill="#16a34a">GPUDirect RDMA / NCCL IB transport</text>
+  <rect x="60" y="490" width="260" height="80" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="190" y="518" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">Distributed training</text>
+  <text x="190" y="542" text-anchor="middle" font-size="11" fill="#6b7280">AllReduce dominates comm</text>
+  <rect x="350" y="490" width="260" height="80" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="480" y="518" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">LLM PD separation</text>
+  <text x="480" y="542" text-anchor="middle" font-size="11" fill="#6b7280">Cross-node KV cache xfer</text>
+  <rect x="640" y="490" width="260" height="80" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="770" y="518" text-anchor="middle" font-size="13" font-weight="600" fill="#111827">Checkpoint load</text>
+  <text x="770" y="542" text-anchor="middle" font-size="11" fill="#6b7280">Storage to GPU direct path</text>

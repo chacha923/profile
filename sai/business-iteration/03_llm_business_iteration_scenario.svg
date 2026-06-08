@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1560 720" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#475569"/></marker></defs>
+<rect x="0" y="0" width="1560" height="720" fill="#ffffff"/>
+<text x="780.0" y="40.0" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">对话 / 陪伴大模型业务线 · 平台侧场景走查</text>
+<rect x="60.0" y="80.0" width="1440.0" height="150.0" rx="12" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+<text x="80.0" y="114.0" text-anchor="start" fill="#2563eb" font-size="17" font-weight="700">A 新模型版本上线</text>
+<rect x="90.0" y="138.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="170.0" y="175.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">提交微调任务</text>
+<rect x="274.0" y="138.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="354.0" y="175.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">制品落盘</text>
+<path d="M 250.0,170.0 L 274.0,170.0" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="458.0" y="138.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="538.0" y="175.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">部署推理(PD分离)</text>
+<path d="M 434.0,170.0 L 458.0,170.0" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="642.0" y="138.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="722.0" y="175.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">5% 灰度</text>
+<path d="M 618.0,170.0 L 642.0,170.0" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="826.0" y="138.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="906.0" y="175.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">指标对比</text>
+<path d="M 802.0,170.0 L 826.0,170.0" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1010.0" y="138.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="1090.0" y="175.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">全量 / 回滚</text>
+<path d="M 986.0,170.0 L 1010.0,170.0" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="60.0" y="242.0" width="1440.0" height="150.0" rx="12" fill="#f8fafc" stroke="#dc2626" stroke-width="2"/>
+<text x="80.0" y="276.0" text-anchor="start" fill="#dc2626" font-size="17" font-weight="700">B 质量下降快速回滚</text>
+<rect x="90.0" y="300.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="170.0" y="337.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">Bigeyes 告警</text>
+<rect x="274.0" y="300.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="354.0" y="337.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">统一观测定位</text>
+<path d="M 250.0,332.0 L 274.0,332.0" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="458.0" y="300.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="538.0" y="337.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">判断模型还是资源</text>
+<path d="M 434.0,332.0 L 458.0,332.0" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="642.0" y="300.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="722.0" y="337.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">Argo Rollouts 回滚</text>
+<path d="M 618.0,332.0 L 642.0,332.0" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="60.0" y="404.0" width="1440.0" height="150.0" rx="12" fill="#f8fafc" stroke="#059669" stroke-width="2"/>
+<text x="80.0" y="438.0" text-anchor="start" fill="#059669" font-size="17" font-weight="700">C 反馈驱动下一轮</text>
+<rect x="90.0" y="462.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="170.0" y="499.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">线上 bad case/反馈</text>
+<rect x="274.0" y="462.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="354.0" y="499.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">回流数据集</text>
+<path d="M 250.0,494.0 L 274.0,494.0" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="458.0" y="462.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="538.0" y="499.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">Soda Pepsi DAG 触发</text>
+<path d="M 434.0,494.0 L 458.0,494.0" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="642.0" y="462.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="722.0" y="499.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">训练状态回传</text>
+<path d="M 618.0,494.0 L 642.0,494.0" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="60.0" y="566.0" width="1440.0" height="150.0" rx="12" fill="#f8fafc" stroke="#d97706" stroke-width="2"/>
+<text x="80.0" y="600.0" text-anchor="start" fill="#d97706" font-size="17" font-weight="700">D 高峰扩容低谷缩容</text>
+<rect x="90.0" y="624.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<text x="170.0" y="661.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">流量波峰波谷</text>
+<rect x="274.0" y="624.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<text x="354.0" y="661.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">统一扩缩容入口</text>
+<path d="M 250.0,656.0 L 274.0,656.0" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="458.0" y="624.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<text x="538.0" y="661.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">资源池避免争抢</text>
+<path d="M 434.0,656.0 L 458.0,656.0" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="642.0" y="624.0" width="160.0" height="64.0" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<text x="722.0" y="661.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">低谷借给训练</text>
+<path d="M 618.0,656.0 L 642.0,656.0" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arr)"/>
+<text x="780.0" y="706.0" text-anchor="middle" fill="#64748b" font-size="14" font-weight="400">业务效果由算法团队负责；这里只画平台侧承接的运行动作</text>
+</svg>

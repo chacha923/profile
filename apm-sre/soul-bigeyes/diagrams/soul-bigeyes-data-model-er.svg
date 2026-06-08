@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 720" width="1180" height="720">
+  <style>text{font-family:'Helvetica Neue',Helvetica,Arial,'PingFang SC','Microsoft YaHei',sans-serif}.title{font-size:22px;font-weight:700;fill:#111827}.entity{font-size:14px;font-weight:700;fill:#111827}.attr{font-size:12px;fill:#4b5563}.card{fill:#fff;stroke:#d1d5db;stroke-width:1.5}.head{fill:#eff6ff;stroke:#bfdbfe}</style>
+  <defs><marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker></defs>
+  <rect width="1180" height="720" fill="#fff"/>
+  <text x="40" y="44" class="title">Bigeyes 核心数据模型 ER</text>
+  <g transform="translate(455,90)">
+    <rect class="card" x="0" y="0" width="260" height="170" rx="10"/><rect class="head" x="0" y="0" width="260" height="36" rx="10"/><rect x="0" y="26" width="260" height="10" fill="#eff6ff"/>
+    <text x="130" y="24" text-anchor="middle" class="entity">alarm_agg_event</text>
+    <text x="18" y="62" class="attr">PK id</text><text x="18" y="84" class="attr">UK event_no</text><text x="18" y="106" class="attr">fingerprint / status</text><text x="18" y="128" class="attr">alert_count / suppressed_count</text><text x="18" y="150" class="attr">recover_count / receiver</text>
+  </g>
+  <g transform="translate(70,330)">
+    <rect class="card" x="0" y="0" width="220" height="140" rx="10"/><rect class="head" x="0" y="0" width="220" height="36" rx="10"/><rect x="0" y="26" width="220" height="10" fill="#eff6ff"/>
+    <text x="110" y="24" text-anchor="middle" class="entity">alarm_record</text>
+    <text x="18" y="62" class="attr">PK id</text><text x="18" y="84" class="attr">UK alert_id</text><text x="18" y="106" class="attr">FK agg_event_id</text><text x="18" y="128" class="attr">rule_id / recovered</text>
+  </g>
+  <g transform="translate(345,330)">
+    <rect class="card" x="0" y="0" width="220" height="140" rx="10"/><rect class="head" x="0" y="0" width="220" height="36" rx="10"/><rect x="0" y="26" width="220" height="10" fill="#eff6ff"/>
+    <text x="110" y="24" text-anchor="middle" class="entity">alarm_agg_event_log</text>
+    <text x="18" y="62" class="attr">PK id</text><text x="18" y="84" class="attr">FK agg_event_id</text><text x="18" y="106" class="attr">action / operator</text><text x="18" y="128" class="attr">detail / create_time</text>
+  </g>
+  <g transform="translate(620,330)">
+    <rect class="card" x="0" y="0" width="220" height="140" rx="10"/><rect class="head" x="0" y="0" width="220" height="36" rx="10"/><rect x="0" y="26" width="220" height="10" fill="#eff6ff"/>
+    <text x="110" y="24" text-anchor="middle" class="entity">alarm_notify_record</text>
+    <text x="18" y="62" class="attr">PK id</text><text x="18" y="84" class="attr">FK agg_event_id</text><text x="18" y="106" class="attr">channel / receiver</text><text x="18" y="128" class="attr">success / error_msg</text>
+  </g>
+  <g transform="translate(895,330)">
+    <rect class="card" x="0" y="0" width="220" height="140" rx="10"/><rect class="head" x="0" y="0" width="220" height="36" rx="10"/><rect x="0" y="26" width="220" height="10" fill="#eff6ff"/>
+    <text x="110" y="24" text-anchor="middle" class="entity">alarm_escalation_record</text>
+    <text x="18" y="62" class="attr">PK id</text><text x="18" y="84" class="attr">UK agg_event_id</text><text x="18" y="106" class="attr">escalated_to</text><text x="18" y="128" class="attr">notify_success</text>
+  </g>
+  <g transform="translate(275,555)">
+    <rect class="card" x="0" y="0" width="220" height="120" rx="10"/><rect class="head" x="0" y="0" width="220" height="36" rx="10"/><rect x="0" y="26" width="220" height="10" fill="#eff6ff"/>
+    <text x="110" y="24" text-anchor="middle" class="entity">alarm_rule</text>
+    <text x="18" y="62" class="attr">source/category/rule_id</text><text x="18" y="84" class="attr">resource / receiver</text><text x="18" y="106" class="attr">sync_hash</text>
+  </g>
+  <g transform="translate(685,555)">
+    <rect class="card" x="0" y="0" width="220" height="120" rx="10"/><rect class="head" x="0" y="0" width="220" height="36" rx="10"/><rect x="0" y="26" width="220" height="10" fill="#eff6ff"/>
+    <text x="110" y="24" text-anchor="middle" class="entity">alarm_ai_analysis</text>
+    <text x="18" y="62" class="attr">FK agg_event_id</text><text x="18" y="84" class="attr">status</text><text x="18" y="106" class="attr">content / error_msg</text>
+  </g>
+  <path d="M455 175L290 330" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="328" y="258" class="attr">1:N</text>
+  <path d="M520 260L480 330" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="493" y="304" class="attr">1:N</text>
+  <path d="M650 260L705 330" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="683" y="304" class="attr">1:N</text>
+  <path d="M715 175L970 330" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="845" y="258" class="attr">1:0..1</text>
+  <path d="M585 260L760 555" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="668" y="450" class="attr">1:N</text>
+  <path d="M275 615C175 590 155 510 180 470" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="145" y="565" class="attr">rule_id</text>
+</svg>

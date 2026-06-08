@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <style>
+      .bg { fill: #f6f2e8; }
+      .title { font: 700 34px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #1f2a2e; }
+      .subtitle { font: 400 16px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #536267; }
+      .lane-title { font: 700 18px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #203136; }
+      .box-title { font: 700 18px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #17262b; }
+      .box-text { font: 400 14px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #34464c; }
+      .small { font: 400 13px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #415257; }
+      .tag { font: 700 13px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #fff; }
+      .lane { fill: rgba(255,255,255,0.58); stroke: #d9cdb7; stroke-width: 1.4; rx: 28; }
+      .web { fill: #eaf6f1; stroke: #4d9f84; stroke-width: 2; rx: 20; }
+      .sched { fill: #eef3ff; stroke: #6b89d6; stroke-width: 2; rx: 20; }
+      .worker { fill: #fff2df; stroke: #d39a3d; stroke-width: 2; rx: 20; }
+      .store { fill: #f2eefb; stroke: #9276c8; stroke-width: 2; rx: 20; }
+      .ops { fill: #fbecec; stroke: #cf6f6f; stroke-width: 2; rx: 20; }
+      .support { fill: #edf3f0; stroke: #8aa79b; stroke-width: 2; rx: 20; }
+      .chip-web { fill: #2e8f73; rx: 10; }
+      .chip-sched { fill: #587bd1; rx: 10; }
+      .chip-worker { fill: #c68026; rx: 10; }
+      .chip-store { fill: #7d62bd; rx: 10; }
+      .chip-ops { fill: #bd5656; rx: 10; }
+      .arrow { stroke: #2d3b40; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .arrow-soft { stroke: #748489; stroke-width: 2; fill: none; marker-end: url(#arrow-soft); stroke-dasharray: 7 7; }
+      .note { fill: #fffdf8; stroke: #ded1b8; stroke-width: 1.4; rx: 16; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d3b40"/>
+    </marker>
+    <marker id="arrow-soft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#748489"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#6a5d45" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="1600"/>
+  <circle cx="1040" cy="120" r="180" fill="#dff0ea" opacity="0.58"/>
+  <circle cx="90" cy="1450" r="240" fill="#f4d9ae" opacity="0.35"/>
+  <path d="M0 310 C240 250 430 360 650 304 C860 250 1020 260 1200 210 L1200 0 L0 0 Z" fill="#fff8ec" opacity="0.8"/>
+
+  <text class="title" x="70" y="72">soda-pepsi 业务架构图</text>
+  <text class="subtitle" x="70" y="104">数据中台任务调度平台：Web 准入与治理 → Scheduler 调度控制 → Worker 执行 → 状态与告警闭环</text>
+
+  <rect class="note" x="70" y="130" width="1060" height="70"/>
+  <text class="small" x="96" y="158">读图方式：从上到下看主链路。左侧关注“用户动作如何被准入和审批”，中间关注“任务如何被调度和分发”，右侧关注“执行结果如何回流”。</text>
+  <text class="small" x="96" y="184">面试时优先讲三条线：权限与 SQL 合规、状态机调度闭环、华为云 OBS/MRS/K8S 迁移适配。</text>
+
+  <rect class="lane" x="50" y="235" width="1100" height="220" filter="url(#shadow)"/>
+  <text class="lane-title" x="76" y="270">1. 入口与 Webserver 控制面</text>
+
+  <rect class="web" x="80" y="300" width="180" height="125" filter="url(#shadow)"/>
+  <rect class="chip-web" x="100" y="318" width="72" height="22"/>
+  <text class="tag" x="116" y="334">入口</text>
+  <text class="box-title" x="100" y="362">用户 / 外部系统</text>
+  <text class="box-text" x="100" y="386">前端、OpenAPI</text>
+  <text class="box-text" x="100" y="407">GitLab Webhook</text>
+
+  <rect class="web" x="310" y="300" width="210" height="125" filter="url(#shadow)"/>
+  <rect class="chip-web" x="330" y="318" width="92" height="22"/>
+  <text class="tag" x="344" y="334">API 层</text>
+  <text class="box-title" x="330" y="362">Controller</text>
+  <text class="box-text" x="330" y="386">Job / Task / DAG</text>
+  <text class="box-text" x="330" y="407">Queue / Resource / Search</text>
+
+  <rect class="web" x="570" y="285" width="250" height="135" filter="url(#shadow)"/>
+  <rect class="chip-web" x="590" y="303" width="96" height="22"/>
+  <text class="tag" x="604" y="319">准入检查</text>
+  <text class="box-title" x="590" y="347">权限与前置校验</text>
+  <text class="box-text" x="590" y="371">认证 / 角色 / 工作区</text>
+  <text class="box-text" x="590" y="392">作业权限 / 队列权限</text>
+  <text class="box-text" x="590" y="413">Hive 表权限 / 参数校验</text>
+
+  <rect class="web" x="870" y="285" width="230" height="135" filter="url(#shadow)"/>
+  <rect class="chip-web" x="890" y="303" width="96" height="22"/>
+  <text class="tag" x="904" y="319">变更治理</text>
+  <text class="box-title" x="890" y="347">CI / SQL 合规</text>
+  <text class="box-text" x="890" y="371">依赖环检查</text>
+  <text class="box-text" x="890" y="392">SQL Scan / Moss AI Review</text>
+  <text class="box-text" x="890" y="413">GitLab MR 审批</text>
+
+  <path class="arrow" d="M260 352 L310 352"/>
+  <path class="arrow" d="M520 352 L570 352"/>
+  <path class="arrow" d="M820 352 L870 352"/>
+
+  <rect class="lane" x="50" y="500" width="1100" height="160" filter="url(#shadow)"/>
+  <text class="lane-title" x="76" y="535">2. 平台存储、索引与资源元数据</text>
+
+  <rect class="store" x="120" y="565" width="255" height="70" filter="url(#shadow)"/>
+  <rect class="chip-store" x="140" y="580" width="78" height="22"/>
+  <text class="tag" x="155" y="596">MySQL</text>
+  <text class="box-text" x="140" y="623">Job / Task / 依赖 / 审批 / 队列</text>
+
+  <rect class="store" x="470" y="565" width="230" height="70" filter="url(#shadow)"/>
+  <rect class="chip-store" x="490" y="580" width="60" height="22"/>
+  <text class="tag" x="506" y="596">ES</text>
+  <text class="box-text" x="490" y="623">作业搜索与 SQL 索引</text>
+
+  <rect class="store" x="790" y="565" width="260" height="70" filter="url(#shadow)"/>
+  <rect class="chip-store" x="810" y="580" width="88" height="22"/>
+  <text class="tag" x="824" y="596">资源模型</text>
+  <text class="box-text" x="810" y="623">Resource / Queue / YarnCluster</text>
+
+  <path class="arrow" d="M985 420 C985 470 248 500 248 565"/>
+  <path class="arrow" d="M985 420 C985 478 585 500 585 565"/>
+  <path class="arrow" d="M695 420 C695 472 920 510 920 565"/>
+
+  <rect class="lane" x="50" y="705" width="1100" height="275" filter="url(#shadow)"/>
+  <text class="lane-title" x="76" y="740">3. Scheduler Leader 调度控制面</text>
+
+  <rect class="sched" x="85" y="775" width="180" height="115" filter="url(#shadow)"/>
+  <rect class="chip-sched" x="105" y="793" width="82" height="22"/>
+  <text class="tag" x="121" y="809">触发</text>
+  <text class="box-title" x="105" y="837">Quartz / 手动</text>
+  <text class="box-text" x="105" y="861">自动周期</text>
+  <text class="box-text" x="105" y="882">补数 / 重跑</text>
+
+  <rect class="sched" x="315" y="775" width="190" height="115" filter="url(#shadow)"/>
+  <rect class="chip-sched" x="335" y="793" width="82" height="22"/>
+  <text class="tag" x="351" y="809">依赖</text>
+  <text class="box-title" x="335" y="837">Dependency / DAG</text>
+  <text class="box-text" x="335" y="861">自依赖 / 父依赖</text>
+  <text class="box-text" x="335" y="882">分区进度</text>
+
+  <rect class="sched" x="555" y="775" width="190" height="115" filter="url(#shadow)"/>
+  <rect class="chip-sched" x="575" y="793" width="82" height="22"/>
+  <text class="tag" x="591" y="809">队列</text>
+  <text class="box-title" x="575" y="837">Dispatch Queue</text>
+  <text class="box-text" x="575" y="861">工作组优先级</text>
+  <text class="box-text" x="575" y="882">紧急 / SHETHON</text>
+
+  <rect class="sched" x="795" y="775" width="190" height="115" filter="url(#shadow)"/>
+  <rect class="chip-sched" x="815" y="793" width="82" height="22"/>
+  <text class="tag" x="831" y="809">资源</text>
+  <text class="box-title" x="815" y="837">ResourceManager</text>
+  <text class="box-text" x="815" y="861">Worker 心跳</text>
+  <text class="box-text" x="815" y="882">并行度 / 黑名单</text>
+
+  <rect class="sched" x="390" y="915" width="420" height="42" filter="url(#shadow)"/>
+  <text class="box-title" x="418" y="942">TaskStateService：TRIGGERED → RUNNING → SUCCESS / FAIL / KILLED / FAILOVER</text>
+
+  <path class="arrow" d="M265 832 L315 832"/>
+  <path class="arrow" d="M505 832 L555 832"/>
+  <path class="arrow" d="M745 832 L795 832"/>
+  <path class="arrow" d="M890 890 C890 930 810 936 810 936"/>
+  <path class="arrow" d="M248 635 C248 690 175 715 175 775"/>
+  <path class="arrow-soft" d="M600 635 C600 684 600 735 600 775"/>
+
+  <rect class="lane" x="50" y="1025" width="1100" height="240" filter="url(#shadow)"/>
+  <text class="lane-title" x="76" y="1060">4. Worker 执行面</text>
+
+  <rect class="worker" x="100" y="1095" width="210" height="125" filter="url(#shadow)"/>
+  <rect class="chip-worker" x="120" y="1113" width="92" height="22"/>
+  <text class="tag" x="135" y="1129">接收</text>
+  <text class="box-title" x="120" y="1157">DispatchController</text>
+  <text class="box-text" x="120" y="1181">/dispatch/task</text>
+  <text class="box-text" x="120" y="1202">/dispatch/command</text>
+
+  <rect class="worker" x="365" y="1095" width="210" height="125" filter="url(#shadow)"/>
+  <rect class="chip-worker" x="385" y="1113" width="92" height="22"/>
+  <text class="tag" x="400" y="1129">排队</text>
+  <text class="box-title" x="385" y="1157">TaskManager</text>
+  <text class="box-text" x="385" y="1181">本地优先级队列</text>
+  <text class="box-text" x="385" y="1202">线程池 / Kill</text>
+
+  <rect class="worker" x="630" y="1095" width="220" height="125" filter="url(#shadow)"/>
+  <rect class="chip-worker" x="650" y="1113" width="92" height="22"/>
+  <text class="tag" x="665" y="1129">执行</text>
+  <text class="box-title" x="650" y="1157">TaskExecutor</text>
+  <text class="box-text" x="650" y="1181">Shell / Python / Spark / Hive</text>
+  <text class="box-text" x="650" y="1202">DataX / SeaTunnel / K8S</text>
+
+  <rect class="worker" x="905" y="1095" width="190" height="125" filter="url(#shadow)"/>
+  <rect class="chip-worker" x="925" y="1113" width="92" height="22"/>
+  <text class="tag" x="940" y="1129">回报</text>
+  <text class="box-title" x="925" y="1157">日志 + AppId</text>
+  <text class="box-text" x="925" y="1181">OBS 上传</text>
+  <text class="box-text" x="925" y="1202">Yarn / K8S 跟踪</text>
+
+  <path class="arrow" d="M310 1147 L365 1147"/>
+  <path class="arrow" d="M575 1147 L630 1147"/>
+  <path class="arrow" d="M850 1147 L905 1147"/>
+  <path class="arrow" d="M985 832 C1100 880 1100 1040 1000 1095"/>
+
+  <rect class="lane" x="50" y="1310" width="1100" height="190" filter="url(#shadow)"/>
+  <text class="lane-title" x="76" y="1345">5. 运行保障与云上迁移支撑</text>
+
+  <rect class="ops" x="115" y="1380" width="220" height="78" filter="url(#shadow)"/>
+  <rect class="chip-ops" x="135" y="1395" width="70" height="22"/>
+  <text class="tag" x="151" y="1411">OBS</text>
+  <text class="box-text" x="135" y="1439">脚本 / 上下文 / 任务日志</text>
+
+  <rect class="ops" x="390" y="1380" width="240" height="78" filter="url(#shadow)"/>
+  <rect class="chip-ops" x="410" y="1395" width="70" height="22"/>
+  <text class="tag" x="426" y="1411">告警</text>
+  <text class="box-text" x="410" y="1439">失败 / 超时 / 升级 / 值班</text>
+
+  <rect class="support" x="685" y="1380" width="210" height="78" filter="url(#shadow)"/>
+  <text class="box-title" x="705" y="1412">Zookeeper</text>
+  <text class="box-text" x="705" y="1439">Leader 选举 / Worker 注册</text>
+
+  <rect class="support" x="945" y="1380" width="150" height="78" filter="url(#shadow)"/>
+  <text class="box-title" x="965" y="1412">MRS / K8S</text>
+  <text class="box-text" x="965" y="1439">Kerberos / Launcher</text>
+
+  <path class="arrow" d="M1000 1200 C1000 1310 225 1320 225 1380"/>
+  <path class="arrow" d="M1000 1200 C1000 1305 510 1320 510 1380"/>
+  <path class="arrow-soft" d="M790 1380 C790 1260 890 1040 890 890"/>
+  <path class="arrow-soft" d="M1020 1380 C1060 1280 1070 1240 1050 1200"/>
+  <path class="arrow" d="M390 1438 L335 1438"/>
+  <text class="small" x="70" y="1540">面试锚点：Web 前置检查与变更治理、Scheduler 状态机调度闭环、Worker 云上执行与 OBS/MRS/K8S 迁移适配。</text>
+</svg>

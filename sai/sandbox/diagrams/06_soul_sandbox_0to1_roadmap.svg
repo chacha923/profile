@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 660" width="1280" height="660">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs><marker id="ab" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 11 4, 0 8" fill="#2563eb"/></marker></defs>
+  <rect width="1280" height="660" fill="#ffffff"/>
+  <text x="640" y="40" font-size="20" fill="#111827" text-anchor="middle" font-weight="600">Soul Sandbox 体系 0 → 1 分阶段建设路线</text>
+  <text x="640" y="65" font-size="12.5" fill="#6b7280" text-anchor="middle">先跑通 → 再隔离 → 再提速 → 再治理 → 再自治；每阶段可独立交付、可灰度、可回退</text>
+  <rect x="24" y="100" width="236" height="410" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+  <rect x="24" y="100" width="236" height="44" rx="12" fill="#2563eb"/>
+  <rect x="24" y="130" width="236" height="14" fill="#2563eb"/>
+  <text x="142.0" y="129" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="700">P0 跑通闭环</text>
+  <text x="38" y="172" font-size="12" fill="#374151" text-anchor="start">在 Hermes 容器上抽统一</text>
+  <text x="38" y="194" font-size="12" fill="#374151" text-anchor="start">Sandbox 控制面 API</text>
+  <text x="38" y="216" font-size="12" fill="#374151" text-anchor="start">（Create/Exec/De</text>
+  <text x="38" y="238" font-size="12" fill="#374151" text-anchor="start">stroy），moss /</text>
+  <text x="38" y="260" font-size="12" fill="#374151" text-anchor="start">soulclaw 下沉到这层</text>
+  <rect x="36" y="360" width="212" height="62" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="142.0" y="382" font-size="11" fill="#2563eb" text-anchor="middle">出口：统一 API 跑通</text>
+  <text x="142.0" y="400" font-size="11" fill="#2563eb" text-anchor="middle">编排→执行→回收</text>
+  <rect x="36" y="438" width="212" height="56" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="142.0" y="454" font-size="9.5" fill="#15803d" text-anchor="middle" font-weight="600">真实经验平移</text>
+  <text x="142.0" y="471" font-size="10.5" fill="#374151" text-anchor="middle">复用 SAE 控制面拆分</text>
+  <line x1="260" y1="122" x2="272" y2="122" stroke="#2563eb" stroke-width="2.5" marker-end="url(#ab)"/>
+  <rect x="272" y="100" width="236" height="410" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+  <rect x="272" y="100" width="236" height="44" rx="12" fill="#16a34a"/>
+  <rect x="272" y="130" width="236" height="14" fill="#16a34a"/>
+  <text x="390.0" y="129" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="700">P1 补强隔离</text>
+  <text x="286" y="172" font-size="12" fill="#374151" text-anchor="start">隔离做成可插拔 Runtime</text>
+  <text x="286" y="194" font-size="12" fill="#374151" text-anchor="start">Class：gVisor/Ka</text>
+  <text x="286" y="216" font-size="12" fill="#374151" text-anchor="start">ta 复用生态，不可信代码评估</text>
+  <text x="286" y="238" font-size="12" fill="#374151" text-anchor="start">Firecracker</text>
+  <rect x="284" y="360" width="212" height="62" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="390.0" y="382" font-size="11" fill="#16a34a" text-anchor="middle">出口：高危落强隔离，可灰度回退</text>
+  <rect x="284" y="438" width="212" height="56" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="390.0" y="454" font-size="9.5" fill="#15803d" text-anchor="middle" font-weight="600">真实经验平移</text>
+  <text x="390.0" y="460" font-size="10.5" fill="#374151" text-anchor="middle">复用 SAI 多云</text>
+  <text x="390.0" y="475" font-size="10.5" fill="#374151" text-anchor="middle">Runtime 抽象</text>
+  <line x1="508" y1="122" x2="520" y2="122" stroke="#2563eb" stroke-width="2.5" marker-end="url(#ab)"/>
+  <rect x="520" y="100" width="236" height="410" rx="12" fill="#fffbeb" stroke="#ca8a04" stroke-width="2.5"/>
+  <rect x="520" y="100" width="236" height="44" rx="12" fill="#ca8a04"/>
+  <rect x="520" y="130" width="236" height="14" fill="#ca8a04"/>
+  <text x="638.0" y="129" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="700">P2 冷启动提速</text>
+  <text x="534" y="172" font-size="12" fill="#374151" text-anchor="start">镜像预热+Lazy Pull</text>
+  <text x="534" y="194" font-size="12" fill="#374151" text-anchor="start">→ Pool → Snapsh</text>
+  <text x="534" y="216" font-size="12" fill="#374151" text-anchor="start">ot，分层组合不全上</text>
+  <rect x="532" y="360" width="212" height="62" rx="6" fill="#ffffff" stroke="#ca8a04" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="638.0" y="382" font-size="11" fill="#ca8a04" text-anchor="middle">出口：常用环境达冷启动 SLO</text>
+  <rect x="532" y="438" width="212" height="56" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="638.0" y="454" font-size="9.5" fill="#15803d" text-anchor="middle" font-weight="600">真实经验平移</text>
+  <text x="638.0" y="460" font-size="10.5" fill="#374151" text-anchor="middle">复用 SAE</text>
+  <text x="638.0" y="475" font-size="10.5" fill="#374151" text-anchor="middle">镜像分发链路</text>
+  <line x1="756" y1="122" x2="768" y2="122" stroke="#2563eb" stroke-width="2.5" marker-end="url(#ab)"/>
+  <rect x="768" y="100" width="236" height="410" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5"/>
+  <rect x="768" y="100" width="236" height="44" rx="12" fill="#dc2626"/>
+  <rect x="768" y="130" width="236" height="14" fill="#dc2626"/>
+  <text x="886.0" y="129" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="700">P3 治理+安全+观测</text>
+  <text x="782" y="172" font-size="12" fill="#374151" text-anchor="start">Quota/FairShare</text>
+  <text x="782" y="194" font-size="12" fill="#374151" text-anchor="start">/快速回收/计费；出站白名单/</text>
+  <text x="782" y="216" font-size="12" fill="#374151" text-anchor="start">禁特权/seccomp；生命周</text>
+  <text x="782" y="238" font-size="12" fill="#374151" text-anchor="start">期 Event</text>
+  <text x="782" y="260" font-size="12" fill="#374151" text-anchor="start">状态机+可解释回写</text>
+  <rect x="780" y="360" width="212" height="62" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="886.0" y="382" font-size="11" fill="#dc2626" text-anchor="middle">出口：单租户不拖垮全局，异常可</text>
+  <text x="886.0" y="400" font-size="11" fill="#dc2626" text-anchor="middle">观测</text>
+  <rect x="780" y="438" width="212" height="56" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="886.0" y="454" font-size="9.5" fill="#15803d" text-anchor="middle" font-weight="600">真实经验平移</text>
+  <text x="886.0" y="460" font-size="10.5" fill="#374151" text-anchor="middle">复用 Bigeyes</text>
+  <text x="886.0" y="475" font-size="10.5" fill="#374151" text-anchor="middle">Event 状态机</text>
+  <line x1="1004" y1="122" x2="1016" y2="122" stroke="#2563eb" stroke-width="2.5" marker-end="url(#ab)"/>
+  <rect x="1016" y="100" width="236" height="410" rx="12" fill="#faf5ff" stroke="#9333ea" stroke-width="2.5"/>
+  <rect x="1016" y="100" width="236" height="44" rx="12" fill="#9333ea"/>
+  <rect x="1016" y="130" width="236" height="14" fill="#9333ea"/>
+  <text x="1134.0" y="129" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="700">P4 会话+自治</text>
+  <text x="1030" y="172" font-size="12" fill="#374151" text-anchor="start">Sleep/Resume</text>
+  <text x="1030" y="194" font-size="12" fill="#374151" text-anchor="start">会话语义；Agent 自主编排</text>
+  <text x="1030" y="216" font-size="12" fill="#374151" text-anchor="start">但动作受控（权限/审计/边界不</text>
+  <text x="1030" y="238" font-size="12" fill="#374151" text-anchor="start">丢）</text>
+  <rect x="1028" y="360" width="212" height="62" rx="6" fill="#ffffff" stroke="#9333ea" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="1134.0" y="382" font-size="11" fill="#9333ea" text-anchor="middle">出口：多轮会话保状态防残留，自</text>
+  <text x="1134.0" y="400" font-size="11" fill="#9333ea" text-anchor="middle">治受控</text>
+  <rect x="1028" y="438" width="212" height="56" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="1134.0" y="454" font-size="9.5" fill="#15803d" text-anchor="middle" font-weight="600">真实经验平移</text>
+  <text x="1134.0" y="471" font-size="10.5" fill="#374151" text-anchor="middle">复用受控自治理念</text>
+  <text x="640" y="545" font-size="12.5" fill="#4b5563" text-anchor="middle">现状盘点：moss-compose / soulclaw = 编排+大脑，Hermes = 现在的「手」（普通容器）；缺 强隔离 / 秒级生命周期 / 会话语义 / 多租户治理 / 可观测</text>
+  <rect x="300" y="568" width="680" height="50" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+  <text x="640" y="590" font-size="12.5" fill="#334155" text-anchor="middle" font-weight="600">核心判断：不要一上来全套 Firecracker；先复用 K8s 生态再谈自建</text>
+  <text x="640" y="610" font-size="11.5" fill="#6b7280" text-anchor="middle">把 sandbox 当一种特殊 Runtime 平台来建 —— 隔离运行时是对标知识，平台工程是真实经验</text>
+</svg>

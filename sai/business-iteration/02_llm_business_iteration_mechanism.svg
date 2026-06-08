@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1640 560" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#475569"/></marker></defs>
+<rect x="0" y="0" width="1640" height="560" fill="#ffffff"/>
+<text x="820.0" y="40.0" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">模型迭代闭环：八步在 SAI 上落地</text>
+<rect x="56.0" y="110.0" width="170.0" height="92.0" rx="10" fill="#f8fafc" stroke="#059669" stroke-width="2"/>
+<text x="141.0" y="150.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">① 数据准备</text>
+<text x="141.0" y="171.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="400">数据进入/落盘/挂载</text>
+<rect x="250.0" y="110.0" width="170.0" height="92.0" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+<text x="335.0" y="150.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">② 训练/微调</text>
+<text x="335.0" y="171.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="400">任务生命周期·资源池</text>
+<path d="M 226.0,156.0 L 250.0,156.0" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="444.0" y="110.0" width="170.0" height="92.0" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+<text x="529.0" y="150.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">③ 模型制品</text>
+<text x="529.0" y="171.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="400">下载/上传/落盘 Job</text>
+<path d="M 420.0,156.0 L 444.0,156.0" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="638.0" y="110.0" width="170.0" height="92.0" rx="10" fill="#f8fafc" stroke="#d97706" stroke-width="2"/>
+<text x="723.0" y="150.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">④ 评测</text>
+<text x="723.0" y="171.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="400">评测任务托管</text>
+<path d="M 614.0,156.0 L 638.0,156.0" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="832.0" y="110.0" width="170.0" height="92.0" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+<text x="917.0" y="150.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">⑤ 推理部署</text>
+<text x="917.0" y="171.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="400">多云·PD分离</text>
+<path d="M 808.0,156.0 L 832.0,156.0" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1026.0" y="110.0" width="170.0" height="92.0" rx="10" fill="#f8fafc" stroke="#7c3aed" stroke-width="2"/>
+<text x="1111.0" y="150.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">⑥ 灰度发布</text>
+<text x="1111.0" y="171.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="400">SAE/Argo Rollouts</text>
+<path d="M 1002.0,156.0 L 1026.0,156.0" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1220.0" y="110.0" width="170.0" height="92.0" rx="10" fill="#f8fafc" stroke="#0891b2" stroke-width="2"/>
+<text x="1305.0" y="150.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">⑦ 线上观测</text>
+<text x="1305.0" y="171.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="400">延迟/GPU/告警Bigeyes</text>
+<path d="M 1196.0,156.0 L 1220.0,156.0" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1414.0" y="110.0" width="170.0" height="92.0" rx="10" fill="#f8fafc" stroke="#dc2626" stroke-width="2"/>
+<text x="1499.0" y="150.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">⑧ 反馈回流</text>
+<text x="1499.0" y="171.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="400">DAG按天触发训练</text>
+<path d="M 1390.0,156.0 L 1414.0,156.0" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M 1499.0,202.0 L 1499.0,272.0 L 141.0,272.0 L 141.0,202.0" fill="none" stroke="#dc2626" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<text x="820.0" y="294.0" text-anchor="middle" fill="#dc2626" font-size="15" font-weight="700">反馈回流闭环：线上 bad case / 用户反馈 → 数据集 → 下一轮迭代</text>
+<text x="56.0" y="352.0" text-anchor="start" fill="#64748b" font-size="14" font-weight="400">蓝=平台控制面我负责   绿=数据/资源   橙=评测(算法定指标)   紫=发布治理   青=观测   红=回流调度</text>
+</svg>

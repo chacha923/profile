@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 620" width="1080" height="620">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+  </style>
+  <rect width="1080" height="620" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">四种评估方法的分工与组合</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">没有单一方法靠谱：规则查硬约束，GT 对标准答案，LLM-Judge 评软质量，人工兜底难例</text>
+
+  <rect x="50" y="100" width="230" height="230" rx="8" class="box blue"/>
+  <text x="165" y="128" text-anchor="middle" class="h">规则检查</text>
+  <text x="70" y="154" class="s">查硬约束：</text>
+  <text x="70" y="176" class="s">· 是否带来源链接</text>
+  <text x="70" y="198" class="s">· 是否触发禁止结论</text>
+  <text x="70" y="220" class="s">· 格式/字段是否完整</text>
+  <text x="70" y="242" class="s">· 是否越权调用工具</text>
+  <text x="70" y="274" class="s">✓ 便宜、确定、可回归</text>
+  <text x="70" y="296" class="s">✗ 只能查可规则化的</text>
+
+  <rect x="295" y="100" width="230" height="230" rx="8" class="box green"/>
+  <text x="410" y="128" text-anchor="middle" class="h">Ground Truth 对标</text>
+  <text x="315" y="154" class="s">对标准答案：</text>
+  <text x="315" y="176" class="s">· 根因是否命中</text>
+  <text x="315" y="198" class="s">· 关键证据是否覆盖</text>
+  <text x="315" y="220" class="s">· 工具选择是否正确</text>
+  <text x="315" y="242" class="s">· 是否合理 Unknown</text>
+  <text x="315" y="274" class="s">✓ 客观、可量化</text>
+  <text x="315" y="296" class="s">✗ 标注贵、会过期</text>
+
+  <rect x="555" y="100" width="230" height="230" rx="8" class="box amber"/>
+  <text x="670" y="128" text-anchor="middle" class="h">LLM-as-Judge</text>
+  <text x="575" y="154" class="s">评软质量：</text>
+  <text x="575" y="176" class="s">· 报告可读性</text>
+  <text x="575" y="198" class="s">· 逻辑一致性</text>
+  <text x="575" y="220" class="s">· 解释充分性</text>
+  <text x="575" y="242" class="s">· 大规模快速打分</text>
+  <text x="575" y="274" class="s">✓ 可扩展、评主观维度</text>
+  <text x="575" y="296" class="s">✗ 有偏差，需校准</text>
+
+  <rect x="800" y="100" width="230" height="230" rx="8" class="box violet"/>
+  <text x="915" y="128" text-anchor="middle" class="h">人工评审</text>
+  <text x="820" y="154" class="s">兜底难例：</text>
+  <text x="820" y="176" class="s">· 关键根因是否真对</text>
+  <text x="820" y="198" class="s">· 证据是否真实存在</text>
+  <text x="820" y="220" class="s">· 高风险结论复核</text>
+  <text x="820" y="242" class="s">· 校准 LLM-Judge</text>
+  <text x="820" y="274" class="s">✓ 最权威</text>
+  <text x="820" y="296" class="s">✗ 慢、贵、难规模化</text>
+
+  <rect x="80" y="360" width="920" height="110" rx="8" class="box amber"/>
+  <text x="110" y="388" class="h">LLM-as-Judge 的坑（最容易被追问）</text>
+  <text x="110" y="413" class="s">· 偏好长答案/自信答案；位置偏差；对自家模型打分偏高；评分不稳定</text>
+  <text x="110" y="435" class="s">· 缓解：给明确评分标准(rubric)、few-shot 示例、成对比较代替打分、多次投票、用人工集校准</text>
+  <text x="110" y="457" class="s">· 边界：可信用于"可读性/一致性"等软维度；根因是否对、证据是否存在，要用 GT 和人工，不能只信 Judge</text>
+
+  <rect x="80" y="485" width="920" height="110" rx="8" class="box green"/>
+  <text x="110" y="513" class="h">组合策略（我会怎么用）</text>
+  <text x="110" y="538" class="s">· 规则先过硬约束(便宜挡掉明显错误) → GT 对客观命中(根因/证据/工具) →</text>
+  <text x="110" y="560" class="s">  LLM-Judge 评软质量(可读/一致，大规模) → 人工抽检难例和高风险并校准 Judge；</text>
+  <text x="110" y="582" class="s">· 越客观越靠前越自动，越主观越靠后越要人，成本和可信度平衡。</text>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1640 700" width="1640" height="700">
+  <style>
+    text{font-family:'Helvetica Neue',Helvetica,Arial,'PingFang SC','Microsoft YaHei',sans-serif}
+    .title{font-size:24px;font-weight:700;fill:#111827}.node{font-size:15px;font-weight:700;fill:#111827}.sub{font-size:12px;fill:#4b5563}.small{font-size:12px;font-weight:600;fill:#6b7280}
+  </style>
+  <defs>
+    <marker id="blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#6b7280"/></marker>
+    <marker id="orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#ea580c"/></marker>
+  </defs>
+  <rect width="1640" height="700" fill="#ffffff"/>
+  <text x="40" y="48" class="title">alarm-diagnosis 架构图：事件驱动的告警 RCA 编排</text>
+  <rect x="30" y="316" width="175" height="66" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="117" y="346" text-anchor="middle" class="node">用户输入</text>
+  <text x="117" y="368" text-anchor="middle" class="sub">EVT-ID 或飞书卡片</text>
+  <rect x="235" y="316" width="170" height="66" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="320" y="346" text-anchor="middle" class="node">Phase 0</text>
+  <text x="320" y="368" text-anchor="middle" class="sub">输入分流</text>
+  <rect x="440" y="94" width="185" height="66" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="532" y="132" text-anchor="middle" class="node">Bigeyes Admin API</text>
+  <rect x="440" y="316" width="185" height="66" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="532" y="354" text-anchor="middle" class="node">feishu_card_parser</text>
+  <rect x="440" y="538" width="185" height="66" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="532" y="568" text-anchor="middle" class="node">alarm_resource_mapper</text>
+  <text x="532" y="590" text-anchor="middle" class="sub">resource → service.name</text>
+  <rect x="690" y="94" width="200" height="66" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="790" y="124" text-anchor="middle" class="node">告警上下文</text>
+  <text x="790" y="146" text-anchor="middle" class="sub">事件/通知/升级/操作日志</text>
+  <rect x="690" y="316" width="200" height="66" rx="10" fill="#faf5ff" stroke="#e9d5ff"/>
+  <text x="790" y="346" text-anchor="middle" class="node">context-analyzer</text>
+  <text x="790" y="368" text-anchor="middle" class="sub">规则 / 历史 / 并发</text>
+  <rect x="690" y="538" width="200" height="66" rx="10" fill="#faf5ff" stroke="#e9d5ff"/>
+  <text x="790" y="568" text-anchor="middle" class="node">window-analyzer</text>
+  <text x="790" y="590" text-anchor="middle" class="sub">触发窗口分析</text>
+  <rect x="960" y="316" width="205" height="66" rx="10" fill="#faf5ff" stroke="#e9d5ff"/>
+  <text x="1062" y="346" text-anchor="middle" class="node">规则上下文</text>
+  <text x="1062" y="368" text-anchor="middle" class="sub">同规则24h/同资源7d/同时刻活跃</text>
+  <rect x="960" y="470" width="205" height="62" rx="10" fill="#ecfeff" stroke="#a5f3fc"/>
+  <text x="1062" y="500" text-anchor="middle" class="node">OTel Logs</text>
+  <text x="1062" y="522" text-anchor="middle" class="sub">错误类型/样本/趋势/Pod</text>
+  <rect x="960" y="590" width="205" height="62" rx="10" fill="#ecfeff" stroke="#a5f3fc"/>
+  <text x="1062" y="620" text-anchor="middle" class="node">OTel Traces</text>
+  <text x="1062" y="642" text-anchor="middle" class="sub">错误链路/P95 P99/上下游/长尾</text>
+  <rect x="1230" y="300" width="155" height="80" rx="10" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="1307" y="345" text-anchor="middle" class="node">证据融合</text>
+  <rect x="1440" y="294" width="180" height="92" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="1530" y="324" text-anchor="middle" class="node">Phase 5</text>
+  <text x="1530" y="346" text-anchor="middle" class="sub">IM结论+完整报告+编排报告</text>
+  <path d="M205 349 H235" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M405 349 C420 240 425 127 440 127" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M405 349 H440" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M405 349 C420 460 425 571 440 571" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <rect x="410" y="237" width="84" height="18" fill="#ffffff" opacity="0.95"/>
+  <text x="412" y="250" class="small">EVT-ID</text>
+  <rect x="358" y="323" width="58" height="18" fill="#ffffff" opacity="0.95"/>
+  <text x="360" y="336" class="small">飞书卡片</text>
+  <rect x="410" y="457" width="110" height="18" fill="#ffffff" opacity="0.95"/>
+  <text x="412" y="470" class="small">resource</text>
+  <path d="M625 127 H690" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M625 349 C655 300 660 150 690 127" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M625 127 C655 200 660 320 690 349" stroke="#6b7280" stroke-width="2" fill="none" marker-end="url(#gray)"/>
+  <path d="M625 571 H690" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M890 349 H960" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M890 571 C925 540 930 510 960 501" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M890 571 C925 600 930 615 960 621" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M890 127 C1080 127 1060 300 1230 330" stroke="#ea580c" stroke-width="2" fill="none" marker-end="url(#orange)"/>
+  <path d="M1165 349 C1195 345 1205 340 1230 340" stroke="#ea580c" stroke-width="2" fill="none" marker-end="url(#orange)"/>
+  <path d="M1165 501 C1200 480 1205 400 1230 360" stroke="#ea580c" stroke-width="2" fill="none" marker-end="url(#orange)"/>
+  <path d="M1165 621 C1205 600 1210 420 1230 372" stroke="#ea580c" stroke-width="2" fill="none" marker-end="url(#orange)"/>
+  <path d="M1385 340 H1440" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <text x="40" y="668" class="small">蓝色：主数据流 · 灰色：旁路取证 · 橙色：证据汇聚</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 660" width="1080" height="660">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+  </style>
+  <rect width="1080" height="660" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">AIOps Agent 三层评估体系</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">不能只看"接口成功率"或"这次答得不错"，要分输出、步骤、会话三层评</text>
+
+  <rect x="60" y="100" width="960" height="150" rx="8" class="box cyan"/>
+  <text x="90" y="128" class="h">① 输出级（Output）— 报告质量好不好</text>
+  <text x="90" y="154" class="s">· 根因命中：是否命中标准根因（对照 Ground Truth）</text>
+  <text x="90" y="176" class="s">· 证据覆盖：关键证据是否都引用、是否有来源链接</text>
+  <text x="90" y="198" class="s">· 合理 Unknown：证据不足时是否正确输出不确定，而不是硬给根因</text>
+  <text x="90" y="220" class="s">· 报告规范：是否区分事实/推断/建议，是否可被 on-call 复现</text>
+  <text x="600" y="154" class="s">指标：根因命中率 / 误判率 /</text>
+  <text x="600" y="176" class="s">Unknown 合理率 / 证据覆盖率 /</text>
+  <text x="600" y="198" class="s">人工采纳率 / 报告返工率</text>
+
+  <rect x="60" y="265" width="960" height="150" rx="8" class="box amber"/>
+  <text x="90" y="293" class="h">② 步骤级（Step / Trajectory）— 过程对不对</text>
+  <text x="90" y="319" class="s">· 工具选择：是否选了正确的取证工具，有没有绕路</text>
+  <text x="90" y="341" class="s">· 参数正确：时间窗、实体、查询参数是否对</text>
+  <text x="90" y="363" class="s">· 证据使用：是否基于工具返回推理，有没有脑补空结果</text>
+  <text x="90" y="385" class="s">· 反证检查：是否对候选根因找了反证</text>
+  <text x="600" y="319" class="s">指标：工具选择正确率 /</text>
+  <text x="600" y="341" class="s">参数正确率 / 平均步数 /</text>
+  <text x="600" y="363" class="s">空结果脑补率 / 反证检查率</text>
+
+  <rect x="60" y="430" width="960" height="150" rx="8" class="box green"/>
+  <text x="90" y="458" class="h">③ 会话级（Session）— 是否真的帮到人</text>
+  <text x="90" y="484" class="s">· 排障提效：是否真的缩短了排障路径和 MTTR</text>
+  <text x="90" y="506" class="s">· 人工采纳：建议是否被 on-call 采纳、是否需要返工</text>
+  <text x="90" y="528" class="s">· 成本时延：单次诊断的 Token 成本和耗时是否可接受</text>
+  <text x="90" y="550" class="s">· 端到端价值：从告警到结论的整体体验</text>
+  <text x="600" y="484" class="s">指标：MTTR 改善 /</text>
+  <text x="600" y="506" class="s">采纳率 / 单次成本 /</text>
+  <text x="600" y="528" class="s">端到端耗时 / 满意度</text>
+
+  <text x="540" y="615" text-anchor="middle" class="t">报告对 ≠ 过程对：可能蒙对根因但工具全错；过程对 ≠ 有用：可能很规范但太慢太贵</text>
+  <text x="540" y="640" text-anchor="middle" class="s">三层都要看，才能定位"是结论错、过程错，还是不实用"</text>
+</svg>

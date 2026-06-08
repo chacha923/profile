@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 620" width="1080" height="620">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+  </style>
+  <rect width="1080" height="620" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">eBPF 无侵入采集 vs SDK 埋点</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">不是二选一：eBPF 覆盖广、零改码，SDK 业务语义深、可定制，生产里常互补</text>
+
+  <rect x="60" y="95" width="440" height="240" rx="8" class="box green"/>
+  <text x="280" y="123" text-anchor="middle" class="h">eBPF 无侵入</text>
+  <text x="80" y="150" class="s">原理：在内核挂载安全的字节码程序，</text>
+  <text x="80" y="170" class="s">在 syscall/网络/调度等钩子点采集。</text>
+  <text x="80" y="198" class="t">✓ 零改码，存量服务即接入</text>
+  <text x="80" y="220" class="t">✓ 语言无关，覆盖全栈</text>
+  <text x="80" y="242" class="t">✓ 系统级视角(网络/IO/CPU)</text>
+  <text x="80" y="264" class="t">✓ 持续 Profiling 低开销</text>
+  <text x="80" y="292" class="s">✗ 缺业务语义(不知道"订单ID")</text>
+  <text x="80" y="314" class="s">✗ 依赖内核版本，权限要求高</text>
+
+  <rect x="580" y="95" width="440" height="240" rx="8" class="box blue"/>
+  <text x="800" y="123" text-anchor="middle" class="h">SDK / 自动埋点</text>
+  <text x="600" y="150" class="s">原理：在应用进程内埋点或字节码增强，</text>
+  <text x="600" y="170" class="s">生成带业务上下文的 span 和指标。</text>
+  <text x="600" y="198" class="t">✓ 业务语义深(订单/用户/接口)</text>
+  <text x="600" y="220" class="t">✓ 可定制关键路径埋点</text>
+  <text x="600" y="242" class="t">✓ 跨服务 TraceId 传播完整</text>
+  <text x="600" y="264" class="t">✓ 生态成熟(OTel SDK)</text>
+  <text x="600" y="292" class="s">✗ 要改码/接 Agent，存量成本高</text>
+  <text x="600" y="314" class="s">✗ 语言各一套，覆盖有盲区</text>
+
+  <rect x="80" y="365" width="920" height="110" rx="8" class="box violet"/>
+  <text x="110" y="393" class="h">互补落地</text>
+  <text x="110" y="418" class="s">· eBPF 打底：快速给全量服务铺系统级和网络级可观测，覆盖存量和非托管语言；</text>
+  <text x="110" y="440" class="s">· SDK 补深：对核心业务链路做手动埋点，补业务语义和精确 TraceId 传播；</text>
+  <text x="110" y="462" class="s">· 两者数据都汇到 OTel Collector，用统一资源标签和 TraceId 关联。</text>
+
+  <rect x="80" y="495" width="920" height="100" rx="8" class="box amber"/>
+  <text x="110" y="523" class="h">面试落点</text>
+  <text x="110" y="548" class="s">· 能讲 eBPF 原理(内核钩子、零改码)和它的语义短板，比只说"无侵入很香"深；</text>
+  <text x="110" y="570" class="s">· 强调对 AIOps 的意义：eBPF 解决"存量服务也有数据"，但根因要业务语义时仍需 SDK 埋点；</text>
+  <text x="110" y="590" class="s">· 一句话：eBPF 给广度，SDK 给深度，AIOps 要广度铺底 + 深度补关键链路。</text>
+</svg>

@@ -1,0 +1,463 @@
+{
+  "template_type": "architecture",
+  "style": 1,
+  "width": 1600,
+  "height": 980,
+  "title": "Tekton 构建发布架构图",
+  "subtitle": "从研发触发构建，到 Tekton 编排多语言流水线、镜像扫描入库，再将制品交给 SAE / Rollouts 进入发布链路",
+  "containers": [
+    {
+      "x": 60,
+      "y": 130,
+      "width": 1480,
+      "height": 120,
+      "label": "",
+      "side_label": "研发入口",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 280,
+      "width": 1480,
+      "height": 170,
+      "label": "",
+      "side_label": "Tekton 控制面",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 480,
+      "width": 1480,
+      "height": 230,
+      "label": "",
+      "side_label": "构建与扫描执行面",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 740,
+      "width": 1480,
+      "height": 160,
+      "label": "",
+      "side_label": "制品与发布目标",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "developer",
+      "kind": "user_avatar",
+      "x": 110,
+      "y": 162,
+      "width": 150,
+      "height": 48,
+      "label": "研发 / 算法同学",
+      "sublabel": "提交代码 / 触发发布",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "gitlab",
+      "kind": "document",
+      "x": 360,
+      "y": 152,
+      "width": 240,
+      "height": 80,
+      "label": "GitLab Repo",
+      "sublabel": "源码、Dockerfile、流水线参数",
+      "fill": "#ffffff",
+      "stroke": "#f97316"
+    },
+    {
+      "id": "sae_console",
+      "kind": "double_rect",
+      "x": 690,
+      "y": 154,
+      "width": 250,
+      "height": 70,
+      "label": "SAE Console / API",
+      "type_label": "入口",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "orchestrator",
+      "kind": "rect",
+      "x": 1040,
+      "y": 154,
+      "width": 240,
+      "height": 70,
+      "label": "构建发布编排器",
+      "type_label": "控制",
+      "fill": "#ffffff",
+      "stroke": "#7c3aed",
+      "flat": true
+    },
+    {
+      "id": "guard",
+      "kind": "rect",
+      "x": 1350,
+      "y": 154,
+      "width": 150,
+      "height": 70,
+      "label": "鉴权 / 审计",
+      "type_label": "守卫",
+      "fill": "#fff7ed",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "pipeline",
+      "kind": "document",
+      "x": 130,
+      "y": 322,
+      "width": 250,
+      "height": 88,
+      "label": "Pipeline / TriggerTemplate",
+      "sublabel": "Tekton 流水线定义与参数模板",
+      "fill": "#ffffff",
+      "stroke": "#7c3aed"
+    },
+    {
+      "id": "tekton_ctrl",
+      "kind": "double_rect",
+      "x": 470,
+      "y": 326,
+      "width": 240,
+      "height": 76,
+      "label": "Tekton Pipelines",
+      "type_label": "核心控制器",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "pipelinerun",
+      "kind": "document",
+      "x": 800,
+      "y": 322,
+      "width": 240,
+      "height": 88,
+      "label": "PipelineRun",
+      "sublabel": "一次构建发布任务实例",
+      "fill": "#ffffff",
+      "stroke": "#7c3aed"
+    },
+    {
+      "id": "lang_tpl",
+      "kind": "rect",
+      "x": 1130,
+      "y": 326,
+      "width": 360,
+      "height": 76,
+      "label": "Go / Java Maven / Python / Node / 推理流水线",
+      "type_label": "模板库",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "flat": true
+    },
+    {
+      "id": "source",
+      "kind": "rect",
+      "x": 110,
+      "y": 520,
+      "width": 220,
+      "height": 76,
+      "label": "源码拉取 / Workspace",
+      "type_label": "准备",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "deps",
+      "kind": "rect",
+      "x": 390,
+      "y": 510,
+      "width": 250,
+      "height": 96,
+      "label": "依赖与环境准备",
+      "sublabel": "私有源、GOPRIVATE、时区、代理、缓存",
+      "type_label": "预处理",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "build",
+      "kind": "double_rect",
+      "x": 730,
+      "y": 510,
+      "width": 280,
+      "height": 96,
+      "label": "buildx / containerd / nerdctl",
+      "sublabel": "镜像构建与产物封装",
+      "type_label": "构建引擎",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "scan",
+      "kind": "rect",
+      "x": 1090,
+      "y": 510,
+      "width": 190,
+      "height": 96,
+      "label": "scan-code",
+      "sublabel": "jar 合法性与生产扫描",
+      "type_label": "安全校验",
+      "fill": "#fff7ed",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "taskrun",
+      "kind": "rect",
+      "x": 1340,
+      "y": 520,
+      "width": 170,
+      "height": 76,
+      "label": "TaskRun Pods",
+      "type_label": "执行单元",
+      "fill": "#faf5ff",
+      "stroke": "#7c3aed",
+      "flat": true
+    },
+    {
+      "id": "harbor",
+      "kind": "cylinder",
+      "x": 160,
+      "y": 780,
+      "width": 220,
+      "height": 92,
+      "label": "Harbor",
+      "sublabel": "镜像仓库 / 制品留存",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a"
+    },
+    {
+      "id": "handoff",
+      "kind": "rect",
+      "x": 500,
+      "y": 790,
+      "width": 250,
+      "height": 72,
+      "label": "交付 SAE / Rollouts",
+      "type_label": "发布交接",
+      "fill": "#ffffff",
+      "stroke": "#7c3aed",
+      "flat": true
+    },
+    {
+      "id": "clusters",
+      "kind": "cylinder",
+      "x": 880,
+      "y": 780,
+      "width": 260,
+      "height": 92,
+      "label": "多集群 Kubernetes",
+      "sublabel": "工作负载部署与运行",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "obs",
+      "kind": "rect",
+      "x": 1260,
+      "y": 790,
+      "width": 220,
+      "height": 72,
+      "label": "事件 / 日志 / 状态",
+      "type_label": "反馈",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    }
+  ],
+  "arrows": [
+    {
+      "source": "developer",
+      "target": "gitlab",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "developer",
+      "target": "sae_console",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control",
+      "route_points": [[260,186], [320,186], [320,189], [690,189]]
+    },
+    {
+      "source": "sae_console",
+      "target": "orchestrator",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "orchestrator",
+      "target": "guard",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control",
+      "label": "校验"
+    },
+    {
+      "source": "gitlab",
+      "target": "pipeline",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "read",
+      "route_points": [[480,232], [480,286], [255,286], [255,322]]
+    },
+    {
+      "source": "orchestrator",
+      "target": "tekton_ctrl",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "write",
+      "route_points": [[1160,224], [1160,286], [590,286], [590,326]]
+    },
+    {
+      "source": "pipeline",
+      "target": "tekton_ctrl",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "read"
+    },
+    {
+      "source": "tekton_ctrl",
+      "target": "pipelinerun",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "write"
+    },
+    {
+      "source": "lang_tpl",
+      "target": "pipelinerun",
+      "source_port": "left",
+      "target_port": "right",
+      "flow": "read"
+    },
+    {
+      "source": "pipelinerun",
+      "target": "source",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "control",
+      "route_points": [[920,410], [920,470], [220,470], [220,520]]
+    },
+    {
+      "source": "source",
+      "target": "deps",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "deps",
+      "target": "build",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "build",
+      "target": "scan",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "data"
+    },
+    {
+      "source": "pipelinerun",
+      "target": "taskrun",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "write",
+      "route_points": [[960,410], [960,470], [1425,470], [1425,520]]
+    },
+    {
+      "source": "taskrun",
+      "target": "build",
+      "source_port": "left",
+      "target_port": "right",
+      "flow": "feedback",
+      "dashed": true,
+      "route_points": [[1340,558], [1310,558], [1310,670], [1010,670], [1010,558]]
+    },
+    {
+      "source": "scan",
+      "target": "harbor",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "write",
+      "route_points": [[1185,606], [1185,726], [270,726], [270,780]]
+    },
+    {
+      "source": "harbor",
+      "target": "handoff",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "read"
+    },
+    {
+      "source": "handoff",
+      "target": "clusters",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "clusters",
+      "target": "obs",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "feedback",
+      "dashed": true
+    },
+    {
+      "source": "obs",
+      "target": "sae_console",
+      "source_port": "top",
+      "target_port": "bottom",
+      "flow": "feedback",
+      "dashed": true,
+      "route_points": [[1370,790], [1520,790], [1520,120], [815,120], [815,224]]
+    },
+    {
+      "source": "obs",
+      "target": "pipelinerun",
+      "source_port": "top",
+      "target_port": "bottom",
+      "flow": "feedback",
+      "dashed": true,
+      "route_points": [[1320,790], [1460,790], [1460,430], [960,430], [960,410]]
+    }
+  ],
+  "legend": [
+    { "flow": "control", "label": "控制流：人工触发、编排、发布交接" },
+    { "flow": "write", "label": "写路径：创建 PipelineRun / TaskRun、推送镜像" },
+    { "flow": "read", "label": "读路径：读取代码、模板、镜像制品" },
+    { "flow": "data", "label": "数据流：构建产物与扫描输入输出" },
+    { "flow": "feedback", "label": "反馈流：Task 状态、运行日志、集群回传" }
+  ],
+  "legend_position": "bottom-left",
+  "legend_box": true,
+  "legend_box_fill": "#ffffff",
+  "legend_y": 900
+}

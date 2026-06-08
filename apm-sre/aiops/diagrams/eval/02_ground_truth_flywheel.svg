@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 640" width="1080" height="640">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#059669"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="640" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">评测集构造与飞轮</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">没有评测集就无法判断升级是进步还是回退；评测集从历史告警和复盘里长出来</text>
+
+  <rect x="380" y="110" width="320" height="120" rx="8" class="box violet"/>
+  <text x="540" y="140" text-anchor="middle" class="h">一条评测样本包含什么</text>
+  <text x="400" y="166" class="s">· 告警上下文（输入）</text>
+  <text x="400" y="186" class="s">· 标准根因（Ground Truth）</text>
+  <text x="400" y="206" class="s">· 关键证据 / 禁止结论 / 期望操作</text>
+  <text x="710" y="166" class="s">来源：</text>
+  <text x="710" y="186" class="s">历史告警 +</text>
+  <text x="710" y="206" class="s">复盘结论</text>
+
+  <rect x="60" y="290" width="220" height="90" rx="8" class="box blue"/>
+  <text x="170" y="320" text-anchor="middle" class="h">历史告警回放</text>
+  <text x="170" y="343" text-anchor="middle" class="s">真实事件 + 已知根因</text>
+  <text x="170" y="363" text-anchor="middle" class="s">构造输入</text>
+
+  <rect x="320" y="290" width="220" height="90" rx="8" class="box green"/>
+  <text x="430" y="320" text-anchor="middle" class="h">复盘标注</text>
+  <text x="430" y="343" text-anchor="middle" class="s">SRE 复盘产物</text>
+  <text x="430" y="363" text-anchor="middle" class="s">标准根因和证据</text>
+
+  <rect x="580" y="290" width="220" height="90" rx="8" class="box amber"/>
+  <text x="690" y="320" text-anchor="middle" class="h">人工抽检</text>
+  <text x="690" y="343" text-anchor="middle" class="s">采样人工评分</text>
+  <text x="690" y="363" text-anchor="middle" class="s">补充难例</text>
+
+  <rect x="840" y="290" width="180" height="90" rx="8" class="box cyan"/>
+  <text x="930" y="320" text-anchor="middle" class="h">线上反馈</text>
+  <text x="930" y="343" text-anchor="middle" class="s">采纳/纠错</text>
+  <text x="930" y="363" text-anchor="middle" class="s">回灌难例</text>
+
+  <path d="M170 290 L450 230" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <path d="M430 290 L490 230" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <path d="M690 290 L610 230" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <path d="M910 290 L650 225" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <rect x="80" y="430" width="445" height="170" rx="8" class="box amber"/>
+  <text x="110" y="458" class="h">构造的难点</text>
+  <text x="110" y="483" class="s">· Ground Truth 成本高：要 SRE 标注</text>
+  <text x="110" y="505" class="s">· 多根因 / 模糊根因难定唯一答案</text>
+  <text x="110" y="527" class="s">· 罕见故障样本少，难覆盖长尾</text>
+  <text x="110" y="549" class="s">· 标准会随系统演进过期</text>
+  <text x="110" y="571" class="s">· 不能只收集"答对的"，难例更值钱</text>
+
+  <rect x="555" y="430" width="445" height="170" rx="8" class="box green"/>
+  <text x="585" y="458" class="h">飞轮：越用越强</text>
+  <text x="585" y="483" class="s">· 每次线上诊断产生轨迹和人工反馈</text>
+  <text x="585" y="505" class="s">· 采纳的成正样本，纠错的成难例</text>
+  <text x="585" y="527" class="s">· 难例回灌评测集，扩大覆盖</text>
+  <text x="585" y="549" class="s">· 复盘更新标准，淘汰过期样本</text>
+  <text x="585" y="571" class="s">· 防负反馈：错误结论不能被当正样本</text>
+</svg>

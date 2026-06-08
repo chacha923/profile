@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="1100" height="620">
+  <style>
+    text{font-family:'Helvetica Neue',Helvetica,Arial,'PingFang SC','Microsoft YaHei',sans-serif}
+    .title{font-size:22px;font-weight:700;fill:#111827}.node{font-size:14px;font-weight:700;fill:#111827}.sub{font-size:12px;fill:#4b5563}.small{font-size:11px;fill:#6b7280}
+  </style>
+  <defs>
+    <marker id="blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16a34a"/></marker>
+    <marker id="red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1100" height="620" fill="#fff"/>
+  <text x="40" y="44" class="title">告警唯一性分拣：Fingerprint 路由</text>
+  <rect x="60" y="90" width="180" height="70" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="150" y="120" text-anchor="middle" class="node">AlertEventMqMessage</text>
+  <text x="150" y="142" text-anchor="middle" class="sub">source/ruleId/type/category</text>
+  <rect x="320" y="90" width="210" height="70" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="425" y="120" text-anchor="middle" class="node">normalize 基础维度</text>
+  <text x="425" y="142" text-anchor="middle" class="sub">trim + 空值归一</text>
+  <polygon points="680,82 790,125 680,168 570,125" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="680" y="119" text-anchor="middle" class="node">ruleId 空</text>
+  <text x="680" y="140" text-anchor="middle" class="node">或 source=sol?</text>
+  <rect x="845" y="90" width="190" height="70" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="940" y="120" text-anchor="middle" class="node">追加 resourceName</text>
+  <text x="940" y="142" text-anchor="middle" class="sub">避免跨应用误聚合</text>
+  <rect x="445" y="235" width="210" height="70" rx="10" fill="#faf5ff" stroke="#e9d5ff"/>
+  <text x="550" y="265" text-anchor="middle" class="node">MD5(raw)</text>
+  <text x="550" y="287" text-anchor="middle" class="sub">32位小写 fingerprint</text>
+  <rect x="445" y="365" width="210" height="70" rx="10" fill="#ecfeff" stroke="#a5f3fc"/>
+  <text x="550" y="395" text-anchor="middle" class="node">查 active 事件</text>
+  <text x="550" y="417" text-anchor="middle" class="sub">status in firing, acked</text>
+  <rect x="90" y="505" width="220" height="70" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="200" y="535" text-anchor="middle" class="node">命中未静默</text>
+  <text x="200" y="557" text-anchor="middle" class="sub">alert_count + 1</text>
+  <rect x="440" y="505" width="220" height="70" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="550" y="535" text-anchor="middle" class="node">命中且静默</text>
+  <text x="550" y="557" text-anchor="middle" class="sub">suppressed_count + 1</text>
+  <rect x="790" y="505" width="220" height="70" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="900" y="535" text-anchor="middle" class="node">未命中</text>
+  <text x="900" y="557" text-anchor="middle" class="sub">创建新聚合事件</text>
+  <path d="M240 125H320" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M530 125H570" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M790 125H845" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#red)"/>
+  <path d="M940 160C940 215 670 210 610 235" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#red)"/>
+  <path d="M680 168C680 210 610 210 585 235" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#green)"/>
+  <text x="820" y="112" class="small">是</text><text x="650" y="202" class="small">否</text>
+  <path d="M550 305V365" stroke="#2563eb" stroke-width="2" marker-end="url(#blue)"/>
+  <path d="M515 435C420 470 290 470 210 505" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#green)"/>
+  <path d="M550 435V505" stroke="#dc2626" stroke-width="2" marker-end="url(#red)"/>
+  <path d="M585 435C680 470 810 470 890 505" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+</svg>

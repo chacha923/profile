@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 940" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect width="1440" height="940" fill="#f8fafc"/>
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#64748b"/></marker></defs>
+<text x="40" y="44" fill="#0f172a" font-size="23" font-weight="800">GPU 故障排查双路径</text>
+<text x="40" y="68" fill="#64748b" font-size="14">共性原则：优先怀疑变更 · 止血优先于定位 · 隔离故障 GPU/节点/实例 · 回到平台层转用户可理解结论</text>
+<rect x="40" y="92" width="640" height="44" rx="9" fill="#7c3aed"/>
+<text x="360" y="120" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">训练任务 失败 / hang</text>
+<rect x="40" y="150" width="640" height="56" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.3"/>
+<text x="360" y="175" text-anchor="middle" fill="#7c3aed" font-size="16" font-weight="700">看任务对象</text>
+<text x="360" y="194" text-anchor="middle" fill="#475569" font-size="12">哪个 TFJob·哪些副本·fail or hang</text>
+<line x1="360" y1="206" x2="360" y2="228" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="40" y="228" width="640" height="56" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.3"/>
+<text x="360" y="253" text-anchor="middle" fill="#7c3aed" font-size="16" font-weight="700">看事件与日志</text>
+<text x="360" y="272" text-anchor="middle" fill="#475569" font-size="12">OOM？镜像/启动？存储挂载？退出码</text>
+<line x1="360" y1="284" x2="360" y2="306" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="40" y="306" width="640" height="56" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2.3"/>
+<text x="360" y="331" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">hang 专项</text>
+<text x="360" y="350" text-anchor="middle" fill="#475569" font-size="12">利用率100%无进展 → NCCL timeout → 找慢节点/掉卡</text>
+<line x1="360" y1="362" x2="360" y2="384" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="40" y="384" width="640" height="56" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="2.3"/>
+<text x="360" y="409" text-anchor="middle" fill="#0891b2" font-size="16" font-weight="700">资源/调度</text>
+<text x="360" y="428" text-anchor="middle" fill="#475569" font-size="12">Pending(配额/Gang/拓扑)？被抢占？</text>
+<line x1="360" y1="440" x2="360" y2="462" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="40" y="462" width="640" height="56" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2.3"/>
+<text x="360" y="487" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">GPU 层 DCGM</text>
+<text x="360" y="506" text-anchor="middle" fill="#475569" font-size="12">掉卡/XID/ECC/显存OOM/降频</text>
+<line x1="360" y1="518" x2="360" y2="540" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="40" y="540" width="640" height="56" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2.3"/>
+<text x="360" y="565" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">恢复</text>
+<text x="360" y="584" text-anchor="middle" fill="#475569" font-size="12">隔离故障节点 → 最近 checkpoint 续训 → 迁移</text>
+<rect x="760" y="92" width="640" height="44" rx="9" fill="#0891b2"/>
+<text x="1080" y="120" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">推理服务 延迟突增 / 报错</text>
+<rect x="760" y="150" width="640" height="56" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="2.3"/>
+<text x="1080" y="175" text-anchor="middle" fill="#0891b2" font-size="16" font-weight="700">看 SLO</text>
+<text x="1080" y="194" text-anchor="middle" fill="#475569" font-size="12">成功率·TTFT/TPOT P99·队列 → 变慢 or 报错</text>
+<line x1="1080" y1="206" x2="1080" y2="228" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="760" y="228" width="640" height="56" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="2.3"/>
+<text x="1080" y="253" text-anchor="middle" fill="#0891b2" font-size="16" font-weight="700">网关/路由层</text>
+<text x="1080" y="272" text-anchor="middle" fill="#475569" font-size="12">流量突增？限流？路由不均打爆单实例？</text>
+<line x1="1080" y1="284" x2="1080" y2="306" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="760" y="306" width="640" height="56" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2.3"/>
+<text x="1080" y="331" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">引擎层 vLLM</text>
+<text x="1080" y="350" text-anchor="middle" fill="#475569" font-size="12">waiting 队列堆积？KV cache 满？batch 变小？</text>
+<line x1="1080" y1="362" x2="1080" y2="384" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="760" y="384" width="640" height="56" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2.3"/>
+<text x="1080" y="409" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">GPU 层 DCGM</text>
+<text x="1080" y="428" text-anchor="middle" fill="#475569" font-size="12">掉卡/XID/OOM/降频/慢卡离群</text>
+<line x1="1080" y1="440" x2="1080" y2="462" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="760" y="462" width="640" height="56" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2.3"/>
+<text x="1080" y="487" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">PD 链路</text>
+<text x="1080" y="506" text-anchor="middle" fill="#475569" font-size="12">P慢/D慢？KV 传输超时？P/D 比例失衡？</text>
+<line x1="1080" y1="518" x2="1080" y2="540" stroke="#64748b" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="760" y="540" width="640" height="56" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2.3"/>
+<text x="1080" y="565" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">止血 + 处置</text>
+<text x="1080" y="584" text-anchor="middle" fill="#475569" font-size="12">切流/降级/限流/回滚 → 拉回 SLO → 隔离扩容</text>
+<rect x="40" y="606" width="1360" height="60" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2.3"/>
+<text x="720" y="633" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">回到平台层 → 复盘沉淀</text>
+<text x="720" y="652" text-anchor="middle" fill="#475569" font-size="12">底层信号转成用户可理解结论与处置 · 根因归档 · 预案/SOP 沉淀（SAI 状态同步/补偿真做）</text>
+</svg>

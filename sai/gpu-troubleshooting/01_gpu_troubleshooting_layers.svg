@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 690" width="960" height="690">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .label { font-size: 15px; font-weight: 600; fill: #111827; }
+    .clabel { font-size: 14px; font-weight: 600; fill: #111827; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .tag { font-size: 12px; font-weight: 600; fill: #1f2937; }
+    .edge { font-size: 11px; fill: #6b7280; }
+    .cmd { font-family: 'SF Mono','Menlo','Consolas',monospace; font-size: 11px; fill: #1f2937; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="960" height="690" fill="#ffffff"/>
+  <text x="40" y="46" class="title">GPU 任务排障分层模型</text>
+  <text x="40" y="74" class="sub">先定位问题在哪一层，再决定查什么、找谁；左侧是排障下钻方向。</text>
+  <rect x="150" y="100" width="670" height="66" rx="9" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="172" y="128" class="label">1  控制面（SAI）</text>
+  <text x="172" y="150" class="sub">任务状态 · watcher 同步 · 配置 · 资源池选择</text>
+  <rect x="632" y="117" width="168" height="32" rx="16" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+  <text x="716" y="138" text-anchor="middle" class="tag">我负责</text>
+  <path d="M120 166 L120 192" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="150" y="192" width="670" height="66" rx="9" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="172" y="220" class="label">2  调度（K8s）</text>
+  <text x="172" y="242" class="sub">Pending · 配额 · 污点容忍 · describe / Event</text>
+  <rect x="632" y="209" width="168" height="32" rx="16" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+  <text x="716" y="230" text-anchor="middle" class="tag">我生成 PodSpec</text>
+  <path d="M120 258 L120 284" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="150" y="284" width="670" height="66" rx="9" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="172" y="312" class="label">3  容器运行时</text>
+  <text x="172" y="334" class="sub">镜像拉取 · 启动 · OOMKilled · 设备挂载 · logs</text>
+  <rect x="632" y="301" width="168" height="32" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+  <text x="716" y="322" text-anchor="middle" class="tag">我能定位</text>
+  <path d="M120 350 L120 376" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="150" y="376" width="670" height="66" rx="9" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="172" y="404" class="label">4  驱动 / 设备</text>
+  <text x="172" y="426" class="sub">CUDA error · XID · ECC · 掉卡 · 降频 · 显存</text>
+  <rect x="632" y="393" width="168" height="32" rx="16" fill="#ffffff" stroke="#fed7aa" stroke-width="1.2"/>
+  <text x="716" y="414" text-anchor="middle" class="tag">定位 → 节点团队修</text>
+  <path d="M120 442 L120 468" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="150" y="468" width="670" height="66" rx="9" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="172" y="496" class="label">5  通信</text>
+  <text x="172" y="518" class="sub">NCCL hang · 回退 Socket · RDMA / 拓扑</text>
+  <rect x="632" y="485" width="168" height="32" rx="16" fill="#ffffff" stroke="#fed7aa" stroke-width="1.2"/>
+  <text x="716" y="506" text-anchor="middle" class="tag">定位 → 网络团队</text>
+  <path d="M120 534 L120 560" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="150" y="560" width="670" height="66" rx="9" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="172" y="588" class="label">6  训练 / 推理框架</text>
+  <text x="172" y="610" class="sub">loss nan · 数据加载 · KV Cache · TTFT / TPOT</text>
+  <rect x="632" y="577" width="168" height="32" rx="16" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+  <text x="716" y="598" text-anchor="middle" class="tag">算法 / Runtime 侧</text>
+  <text x="60" y="360" class="edge" transform="rotate(-90 60 360)">下钻方向</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 800" width="1180" height="800">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1180" height="800" fill="#ffffff"/>
+  <text x="590" y="40" font-size="20" fill="#111827" text-anchor="middle" font-weight="600">核心流程：Agent 发起一次「灰度回滚」</text>
+  <text x="590" y="66" font-size="13" fill="#6b7280" text-anchor="middle">每一步都受控：身份绑定 → 权限校验 → 复用 Controller 执行 → 审计落账（非快乐路径也画出）</text>
+  <rect x="80" y="100" width="560" height="82" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="104" y="134" font-size="15" fill="#111827" text-anchor="start" font-weight="600">1. 意图 → 工具调用</text>
+  <text x="104" y="162" font-size="12.5" fill="#374151" text-anchor="start">Agent 把「回滚 X 应用灰度」翻译成 MCP tool call：rollout/abortRollout</text>
+  <line x1="360.0" y1="182" x2="360.0" y2="204" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="80" y="204" width="560" height="82" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="2"/>
+  <text x="104" y="238" font-size="15" fill="#111827" text-anchor="start" font-weight="600">2. 身份绑定（McpAuth）</text>
+  <text x="104" y="266" font-size="12.5" fill="#374151" text-anchor="start">校验 Mcp-Token（加密绑定真实用户），解出 Mcp-User</text>
+  <line x1="360.0" y1="286" x2="360.0" y2="308" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="80" y="308" width="560" height="82" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="2"/>
+  <text x="104" y="342" font-size="15" fill="#111827" text-anchor="start" font-weight="600">3. 权限 / 资源校验</text>
+  <text x="104" y="370" font-size="12.5" fill="#374151" text-anchor="start">Resource 中间件：该真实用户对该应用 / 集群是否有操作权限</text>
+  <line x1="360.0" y1="390" x2="360.0" y2="412" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="80" y="412" width="560" height="82" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="104" y="446" font-size="15" fill="#111827" text-anchor="start" font-weight="600">4. 复用 Controller 执行</text>
+  <text x="104" y="474" font-size="12.5" fill="#374151" text-anchor="start">rollouts.Controller.AbortRollout → 调用底层 Argo / 内部 Rollouts</text>
+  <line x1="360.0" y1="494" x2="360.0" y2="516" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="80" y="516" width="560" height="82" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="104" y="550" font-size="15" fill="#111827" text-anchor="start" font-weight="600">5. 审计落账</text>
+  <text x="104" y="578" font-size="12.5" fill="#374151" text-anchor="start">记录「谁（真实用户）经由 Agent，对哪个应用做了回滚」</text>
+  <line x1="360.0" y1="598" x2="360.0" y2="620" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="80" y="620" width="560" height="82" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="104" y="654" font-size="15" fill="#111827" text-anchor="start" font-weight="600">6. 结果回写 Agent</text>
+  <text x="104" y="682" font-size="12.5" fill="#374151" text-anchor="start">返回执行结果 / 当前 Rollout 状态，供 Agent 继续编排</text>
+  <rect x="720" y="204" width="380" height="82" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="6,4"/>
+  <text x="740" y="238" font-size="13.5" fill="#b91c1c" text-anchor="start" font-weight="600">✗ 身份非法 / token 失效</text>
+  <text x="740" y="266" font-size="12" fill="#374151" text-anchor="start">→ 401 拦截，Agent 拿不到任何能力</text>
+  <line x1="640" y1="245.0" x2="720" y2="245.0" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#ar)"/>
+  <rect x="720" y="308" width="380" height="82" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="6,4"/>
+  <text x="740" y="342" font-size="13.5" fill="#b91c1c" text-anchor="start" font-weight="600">✗ 无权限</text>
+  <text x="740" y="370" font-size="12" fill="#374151" text-anchor="start">→ 拒绝执行，与人类越权同一套拦截</text>
+  <line x1="640" y1="349.0" x2="720" y2="349.0" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#ar)"/>
+  <rect x="720" y="412" width="380" height="82" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="6,4"/>
+  <text x="740" y="446" font-size="13.5" fill="#b91c1c" text-anchor="start" font-weight="600">✗ 执行失败 / 底层异常</text>
+  <text x="740" y="474" font-size="12" fill="#374151" text-anchor="start">→ 返回失败原因，可解释回写，不静默吞</text>
+  <line x1="640" y1="453.0" x2="720" y2="453.0" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#ar)"/>
+  <rect x="80" y="732" width="1020" height="62" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="590" y="770" font-size="13.5" fill="#15803d" text-anchor="middle" font-weight="600">核心取舍：Agent 调用复用人类同一套身份 / 权限 / 审计链路，而不是开特权后门 —— 这是「敢让 Agent 动生产」的前提</text>
+</svg>

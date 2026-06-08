@@ -1,0 +1,43 @@
+flowchart TB
+
+  note["ACK 节点升级后不再提供 Docker Runtime<br/>构建能力下沉到 buildkitd + 宿主机 containerd"]
+
+  subgraph node["pipeline 节点 / 宿主机"]
+    subgraph taskrunPod["Tekton TaskRun Pod"]
+      dockerBuild["docker-build step<br/>nerdctl:v2.1.6"]
+      buildctl["buildctl build<br/>dockerfile frontend + image push"]
+    end
+
+    hostPath["共享 hostPath<br/>/run/buildkit<br/>/var/lib/container/buildkit<br/>/run/containerd/containerd.sock<br/>/var/lib/containerd"]
+
+    subgraph buildkitPod["buildkitd DaemonSet Pod"]
+      buildkitd["buildkitd<br/>一个节点一个 Pod"]
+      buildkitCfg["buildkitd.toml<br/>containerd.sock<br/>namespace: buildkit"]
+    end
+
+    subgraph hostRuntime["宿主机运行时层"]
+      workspace["源码 / Dockerfile / Workspace"]
+      containerd["宿主机 containerd<br/>真正执行拉镜像 / 缓存 / 推送"]
+      sock["containerd.sock<br/>/run/containerd"]
+      cache["BuildKit Cache<br/>/var/lib/container/buildkit"]
+      hosts["hosts.toml<br/>mirror / auth / protocol"]
+    end
+  end
+
+  harbor["Harbor Registry<br/>prod / test registry"]
+  conclusion["链路说明<br/>Task Pod 只带源码与 buildctl<br/>真正构建和推镜像的是 buildkitd + containerd"]
+
+  note --> dockerBuild
+  dockerBuild --> buildctl
+  workspace --> dockerBuild
+  buildctl --> hostPath
+  hostPath --> buildkitd
+  buildctl --> buildkitd
+  buildkitCfg --> buildkitd
+  buildkitd --> containerd
+  hostPath --> containerd
+  containerd --> sock
+  buildkitd --> cache
+  hosts --> containerd
+  containerd --> harbor
+  harbor -. 链路说明 .-> conclusion

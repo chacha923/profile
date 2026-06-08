@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 700" width="1080" height="700">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#059669"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="700" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">AI 增强的协同处置：嵌入每一环</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">PagerDuty 解决"流程引擎"，AIOps 在引擎的每一环上减少人的时间和认知负担</text>
+
+  <rect x="40" y="100" width="180" height="490" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="130" y="128" text-anchor="middle" class="h">流程引擎</text>
+  <text x="130" y="148" text-anchor="middle" class="s">(PagerDuty 类)</text>
+  <rect x="60" y="165" width="140" height="50" rx="6" class="box blue"/>
+  <text x="130" y="195" text-anchor="middle" class="t">检测/路由</text>
+  <rect x="60" y="230" width="140" height="50" rx="6" class="box cyan"/>
+  <text x="130" y="260" text-anchor="middle" class="t">响应/升级</text>
+  <rect x="60" y="295" width="140" height="50" rx="6" class="box amber"/>
+  <text x="130" y="325" text-anchor="middle" class="t">定级/组队</text>
+  <rect x="60" y="360" width="140" height="50" rx="6" class="box violet"/>
+  <text x="130" y="390" text-anchor="middle" class="t">诊断/止损</text>
+  <rect x="60" y="425" width="140" height="50" rx="6" class="box green"/>
+  <text x="130" y="455" text-anchor="middle" class="t">通报/协同</text>
+  <rect x="60" y="490" width="140" height="50" rx="6" class="box red"/>
+  <text x="130" y="520" text-anchor="middle" class="t">恢复/复盘</text>
+
+  <text x="640" y="128" text-anchor="middle" class="h">AI 在每一环做什么（人最终决策）</text>
+
+  <rect x="280" y="165" width="720" height="50" rx="6" class="box blue"/>
+  <text x="300" y="186" class="s">· 告警富化(自动补实体/历史/变更) · 智能降噪分组 · 真假初判，减少误呼</text>
+  <text x="300" y="206" class="s">→ 让"被叫醒"的都是值得醒的事</text>
+
+  <rect x="280" y="230" width="720" height="50" rx="6" class="box cyan"/>
+  <text x="300" y="251" class="s">· 自动生成事件摘要(发生了什么/影响面/疑似方向) 推给 on-call</text>
+  <text x="300" y="271" class="s">→ 缩短"理解事件"的时间，加快 ack 和判断</text>
+
+  <rect x="280" y="295" width="720" height="50" rx="6" class="box amber"/>
+  <text x="300" y="316" class="s">· 基于影响面和历史给 Severity 建议 · 推荐该拉哪些人/哪个 Runbook</text>
+  <text x="300" y="336" class="s">→ 定级和组队不再凭感觉</text>
+
+  <rect x="280" y="360" width="720" height="50" rx="6" class="box violet"/>
+  <text x="300" y="381" class="s">· RCA Agent 取证定位(见 aiops.md) · 给止损建议草案 · IC 副驾答疑</text>
+  <text x="300" y="401" class="s">→ 诊断与止损提速，高风险动作仍人工确认</text>
+
+  <rect x="280" y="425" width="720" height="50" rx="6" class="box green"/>
+  <text x="300" y="446" class="s">· 自动起草对内/对外通报和状态页 · 实时维护时间线(Scribe 副驾)</text>
+  <text x="300" y="466" class="s">→ 把 Comms/Scribe 从手忙脚乱中解放</text>
+
+  <rect x="280" y="490" width="720" height="50" rx="6" class="box red"/>
+  <text x="300" y="511" class="s">· 自动生成复盘初稿(时间线/影响/根因/行动项) · 沉淀 SOP 与评测样本</text>
+  <text x="300" y="531" class="s">→ 复盘从"没人写"变成"改一改就发"，回灌飞轮</text>
+
+  <path d="M220 190 L280 190" stroke="#059669" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M220 255 L280 255" stroke="#059669" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M220 320 L280 320" stroke="#059669" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M220 385 L280 385" stroke="#059669" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M220 450 L280 450" stroke="#059669" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M220 515 L280 515" stroke="#059669" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="60" y="610" width="940" height="70" rx="8" class="box violet"/>
+  <text x="90" y="638" class="h">边界（必须守住）</text>
+  <text x="90" y="660" class="s">AI 做富化/摘要/建议/起草/记录这些"省时间"的事；定级、止损、对外通报、关闭事件的最终决策权在 IC 和人手里。</text>
+</svg>

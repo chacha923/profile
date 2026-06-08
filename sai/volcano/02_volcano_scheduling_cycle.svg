@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111827; }
+    .title { font-size: 18px; font-weight: 700; }
+    .label { font-size: 14px; font-weight: 600; }
+    .sub { font-size: 12px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; rx: 8; }
+    .blue { fill: #eff6ff; stroke: #bfdbfe; }
+    .green { fill: #f0fdf4; stroke: #bbf7d0; }
+    .red { fill: #fef2f2; stroke: #fecaca; }
+    .purple { fill: #faf5ff; stroke: #e9d5ff; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#dc2626"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16a34a"/></marker>
+  </defs>
+  <rect width="960" height="640" fill="#ffffff"/>
+  <text x="32" y="38" class="title">Volcano 调度周期：actions 编排流程，plugins 提供算法实现</text>
+
+  <rect x="62" y="88" width="140" height="54" class="box blue"/><text x="132" y="111" text-anchor="middle" class="label">Job 被观察</text><text x="132" y="130" text-anchor="middle" class="sub">缓存待调度对象</text>
+  <rect x="252" y="88" width="140" height="54" class="box blue"/><text x="322" y="111" text-anchor="middle" class="label">开启 Session</text><text x="322" y="130" text-anchor="middle" class="sub">一次调度周期</text>
+  <rect x="442" y="88" width="140" height="54" class="box green"/><text x="512" y="111" text-anchor="middle" class="label">enqueue</text><text x="512" y="130" text-anchor="middle" class="sub">Pending 到 Inqueue</text>
+  <rect x="632" y="88" width="140" height="54" class="box green"/><text x="702" y="111" text-anchor="middle" class="label">allocate</text><text x="702" y="130" text-anchor="middle" class="sub">预选 + 优选</text>
+
+  <rect x="632" y="220" width="140" height="54" class="box purple"/><text x="702" y="243" text-anchor="middle" class="label">Gang Commit</text><text x="702" y="262" text-anchor="middle" class="sub">满足 minAvailable</text>
+  <rect x="442" y="220" width="140" height="54" class="box red"/><text x="512" y="243" text-anchor="middle" class="label">preempt</text><text x="512" y="262" text-anchor="middle" class="sub">队列内抢占</text>
+  <rect x="252" y="220" width="140" height="54" class="box red"/><text x="322" y="243" text-anchor="middle" class="label">reclaim</text><text x="322" y="262" text-anchor="middle" class="sub">跨队列回收</text>
+  <rect x="62" y="220" width="140" height="54" class="box green"/><text x="132" y="243" text-anchor="middle" class="label">backfill</text><text x="132" y="262" text-anchor="middle" class="sub">利用空闲资源</text>
+
+  <rect x="252" y="346" width="160" height="54" class="box blue"/><text x="332" y="369" text-anchor="middle" class="label">Bind Pods</text><text x="332" y="388" text-anchor="middle" class="sub">绑定到节点</text>
+  <rect x="522" y="346" width="160" height="54" class="box blue"/><text x="602" y="369" text-anchor="middle" class="label">关闭 Session</text><text x="602" y="388" text-anchor="middle" class="sub">等待下个周期</text>
+
+  <path d="M202 115 L252 115" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M392 115 L442 115" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M582 115 L632 115" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M702 142 L702 220" stroke="#16a34a" stroke-width="1.8" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M632 247 L582 247" stroke="#dc2626" stroke-width="1.8" fill="none" marker-end="url(#arrow-red)"/>
+  <path d="M442 247 L392 247" stroke="#dc2626" stroke-width="1.8" fill="none" marker-end="url(#arrow-red)"/>
+  <path d="M252 247 L202 247" stroke="#16a34a" stroke-width="1.8" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M132 274 C132 340 206 373 252 373" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M412 373 L522 373" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M602 346 C602 308 740 318 740 174 C740 156 728 148 716 142" stroke="#6b7280" stroke-width="1.5" fill="none" stroke-dasharray="6 4" marker-end="url(#arrow-blue)"/>
+
+  <rect x="62" y="456" width="836" height="128" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-dasharray="7 5"/>
+  <text x="84" y="484" class="label">常见插件如何参与</text>
+  <text x="84" y="515" class="sub">priority：job / task 排序；gang：all-or-nothing 与 minAvailable；predicates：节点可行性过滤；nodeorder：节点打分。</text>
+  <text x="84" y="545" class="sub">drf / proportion / capacity：多维公平与队列份额；binpack：资源紧凑放置；network-topology-aware：网络性能域打分。</text>
+  <text x="84" y="575" class="sub">面试重点：actions 是流程骨架，plugins 是算法扩展点，配置顺序会影响调度行为。</text>
+</svg>

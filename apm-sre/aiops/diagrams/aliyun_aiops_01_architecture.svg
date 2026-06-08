@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 600" width="1280" height="600">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+  </defs>
+  <rect width="1280" height="600" fill="#ffffff"/>
+  <text x="640" y="36" font-size="19" fill="#111827" text-anchor="middle" font-weight="600">阿里云 AIOps Agent 体系 · 核心架构（理论对标，非生产落地）</text>
+  <text x="640" y="59" font-size="12" fill="#6b7280" text-anchor="middle">工具输出结构化信封 → Agent 编排多轮诊断 → 经验复用；关键诊断不降级、动作分级受控</text>
+
+  <rect x="930" y="74" width="320" height="34" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="1090" y="96" font-size="11" fill="#b45309" text-anchor="middle">边界：本图为理论对标；真实经验在自研 bigeyes / 可观测 / SAI 侧</text>
+
+  <!-- col1 signal source -->
+  <rect x="30" y="122" width="230" height="372" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="145" y="150" font-size="14.5" fill="#15803d" text-anchor="middle" font-weight="600">① 数据 / 信号源</text>
+  <rect x="44" y="166" width="202" height="50" rx="6" fill="#ffffff" stroke="#86efac"/><text x="145" y="196" font-size="11.5" fill="#374151" text-anchor="middle">指标（CMS 云监控）</text>
+  <rect x="44" y="228" width="202" height="50" rx="6" fill="#ffffff" stroke="#86efac"/><text x="145" y="258" font-size="11.5" fill="#374151" text-anchor="middle">日志（SLS 日志服务）</text>
+  <rect x="44" y="290" width="202" height="50" rx="6" fill="#ffffff" stroke="#86efac"/><text x="145" y="320" font-size="11.5" fill="#374151" text-anchor="middle">链路 / APM Trace</text>
+  <rect x="44" y="352" width="202" height="50" rx="6" fill="#ffffff" stroke="#86efac"/><text x="145" y="382" font-size="11.5" fill="#374151" text-anchor="middle">事件 / 告警</text>
+  <rect x="44" y="414" width="202" height="50" rx="6" fill="#ffffff" stroke="#86efac"/><text x="145" y="444" font-size="11.5" fill="#374151" text-anchor="middle">变更 / 发布记录</text>
+
+  <!-- col2 tool layer envelope -->
+  <rect x="288" y="122" width="230" height="372" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="403" y="150" font-size="14.5" fill="#1d4ed8" text-anchor="middle" font-weight="600">② 诊断工具层 · 结构化信封</text>
+  <rect x="302" y="166" width="202" height="44" rx="6" fill="#ffffff" stroke="#bfdbfe"/><text x="403" y="193" font-size="11.5" fill="#374151" text-anchor="middle">SysOM 内核级诊断</text>
+  <rect x="302" y="220" width="202" height="44" rx="6" fill="#ffffff" stroke="#bfdbfe"/><text x="403" y="247" font-size="11.5" fill="#374151" text-anchor="middle">各产品 *-diagnose API</text>
+  <rect x="302" y="274" width="202" height="44" rx="6" fill="#ffffff" stroke="#bfdbfe"/><text x="403" y="301" font-size="11.5" fill="#374151" text-anchor="middle">巡检 Playbook</text>
+  <rect x="302" y="334" width="202" height="130" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="403" y="356" font-size="11.5" fill="#1d4ed8" text-anchor="middle" font-weight="600">统一输出信封</text>
+  <text x="403" y="380" font-size="10.5" fill="#374151" text-anchor="middle">ok / action / execution</text>
+  <text x="403" y="402" font-size="10.5" fill="#374151" text-anchor="middle">data（事实唯一来源）</text>
+  <text x="403" y="424" font-size="10.5" fill="#374151" text-anchor="middle">agent.findings（发现）</text>
+  <text x="403" y="446" font-size="10.5" fill="#374151" text-anchor="middle">agent.next（下一步命令）</text>
+
+  <!-- col3 agent core -->
+  <rect x="546" y="122" width="230" height="372" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="2.5"/>
+  <text x="661" y="150" font-size="14.5" fill="#7c3aed" text-anchor="middle" font-weight="600">③ Agent 核心</text>
+  <rect x="560" y="166" width="202" height="64" rx="6" fill="#ffffff" stroke="#d8b4fe"/><text x="661" y="194" font-size="11.5" fill="#374151" text-anchor="middle">意图路由</text><text x="661" y="214" font-size="10.5" fill="#6b7280" text-anchor="middle">+ 兜底分类（confidence）</text>
+  <rect x="560" y="240" width="202" height="64" rx="6" fill="#ffffff" stroke="#d8b4fe"/><text x="661" y="268" font-size="11.5" fill="#374151" text-anchor="middle">Local-first 分层深诊</text><text x="661" y="288" font-size="10.5" fill="#6b7280" text-anchor="middle">命中信号才升级</text>
+  <rect x="560" y="314" width="202" height="64" rx="6" fill="#ffffff" stroke="#d8b4fe"/><text x="661" y="342" font-size="11.5" fill="#374151" text-anchor="middle">LLM 基于 data 推理</text><text x="661" y="362" font-size="10.5" fill="#6b7280" text-anchor="middle">不脑补、不自采集</text>
+  <rect x="560" y="388" width="202" height="64" rx="6" fill="#ffffff" stroke="#d8b4fe"/><text x="661" y="416" font-size="11.5" fill="#374151" text-anchor="middle">next 驱动多轮串联</text><text x="661" y="436" font-size="10.5" fill="#6b7280" text-anchor="middle">关键诊断不降级</text>
+
+  <!-- col4 knowledge memory -->
+  <rect x="804" y="122" width="230" height="372" rx="10" fill="#fdf4ff" stroke="#a21caf" stroke-width="2"/>
+  <text x="919" y="150" font-size="14.5" fill="#a21caf" text-anchor="middle" font-weight="600">④ 知识 · 记忆</text>
+  <text x="919" y="170" font-size="10.5" fill="#86198f" text-anchor="middle">CMS AgentLoop ContextStore</text>
+  <rect x="818" y="182" width="202" height="74" rx="6" fill="#ffffff" stroke="#f0abfc"/><text x="919" y="212" font-size="11.5" fill="#374151" text-anchor="middle">memory 记忆库</text><text x="919" y="234" font-size="10.5" fill="#6b7280" text-anchor="middle">偏好 / 事实 / 对话记忆</text>
+  <rect x="818" y="266" width="202" height="74" rx="6" fill="#ffffff" stroke="#f0abfc"/><text x="919" y="296" font-size="11.5" fill="#374151" text-anchor="middle">experience 经验库</text><text x="919" y="318" font-size="10.5" fill="#6b7280" text-anchor="middle">从 trace 沉淀排障经验</text>
+  <rect x="818" y="350" width="202" height="74" rx="6" fill="#ffffff" stroke="#f0abfc"/><text x="919" y="380" font-size="11.5" fill="#374151" text-anchor="middle">RAG：SOP / 故障知识</text><text x="919" y="402" font-size="10.5" fill="#6b7280" text-anchor="middle">相似 case 召回复用</text>
+
+  <!-- col5 output disposal -->
+  <rect x="1062" y="122" width="188" height="372" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text x="1156" y="150" font-size="14.5" fill="#c2410c" text-anchor="middle" font-weight="600">⑤ 输出 · 处置</text>
+  <rect x="1076" y="166" width="160" height="64" rx="6" fill="#ffffff" stroke="#fed7aa"/><text x="1156" y="194" font-size="11.5" fill="#374151" text-anchor="middle">可解释根因结论</text><text x="1156" y="214" font-size="10.5" fill="#6b7280" text-anchor="middle">给 SRE / 用户</text>
+  <rect x="1076" y="240" width="160" height="64" rx="6" fill="#ffffff" stroke="#fed7aa"/><text x="1156" y="268" font-size="11.5" fill="#374151" text-anchor="middle">SOP / Playbook 执行</text><text x="1156" y="288" font-size="10.5" fill="#6b7280" text-anchor="middle">运维问答</text>
+  <rect x="1076" y="314" width="160" height="110" rx="6" fill="#ffedd5" stroke="#ea580c" stroke-width="1.5"/><text x="1156" y="344" font-size="11.5" fill="#c2410c" text-anchor="middle" font-weight="600">受控自动处置</text><text x="1156" y="368" font-size="10.5" fill="#374151" text-anchor="middle">读写分级</text><text x="1156" y="388" font-size="10.5" fill="#374151" text-anchor="middle">灰度 · 可回滚</text><text x="1156" y="408" font-size="10.5" fill="#374151" text-anchor="middle">高危需确认</text>
+
+  <!-- arrows -->
+  <line x1="261" y1="308" x2="285" y2="308" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <line x1="519" y1="308" x2="543" y2="308" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <line x1="777" y1="308" x2="801" y2="308" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <line x1="1035" y1="308" x2="1059" y2="308" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+
+  <!-- safety band -->
+  <rect x="30" y="512" width="1220" height="60" rx="10" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="50" y="538" font-size="12.5" fill="#374151" font-weight="600">安全与权限基线（贯穿全链路）</text>
+  <text x="50" y="558" font-size="11" fill="#6b7280">凭证走 STS / RAM Role（生产推荐 EcsRamRole） · 最小 RAM 权限 · 绝不读/打印 AK/SK · Unauthorized 即停不自动换账号 · 写操作只读优先、需确认</text>
+</svg>

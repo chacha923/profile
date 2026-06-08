@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 720" width="1080" height="720">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <rect width="1080" height="720" fill="#ffffff"/>
+  <text x="540" y="42" text-anchor="middle" class="title">AIOps 1.0 算法驱动全景</text>
+  <text x="540" y="70" text-anchor="middle" class="sub">数据 → 异常检测 → 告警治理 → 根因定位 → 预测，四大经典问题域</text>
+
+  <rect x="80" y="100" width="920" height="60" rx="8" class="box blue"/>
+  <text x="110" y="128" class="h">数据底座</text>
+  <text x="110" y="148" class="s">Metrics(KPI 时序) / Logs(模板) / Traces(调用链) / Events(变更) — 高维、多源、有季节性和噪声</text>
+
+  <rect x="80" y="190" width="215" height="180" rx="8" class="box green"/>
+  <text x="187" y="218" text-anchor="middle" class="h">① 异常检测</text>
+  <text x="100" y="244" class="t">单指标：3σ / EWMA / 同环比</text>
+  <text x="100" y="266" class="t">分解：STL / Holt-Winters</text>
+  <text x="100" y="288" class="t">无监督：孤立森林 / OCSVM</text>
+  <text x="100" y="310" class="t">预测残差：Prophet / ARIMA</text>
+  <text x="100" y="332" class="t">多指标：聚类 / 降维 / 关联</text>
+  <text x="100" y="356" class="s">难点：无标注、概念漂移、季节性</text>
+
+  <rect x="320" y="190" width="215" height="180" rx="8" class="box amber"/>
+  <text x="427" y="218" text-anchor="middle" class="h">② 告警治理</text>
+  <text x="340" y="244" class="t">聚合：同规则/同资源合并</text>
+  <text x="340" y="266" class="t">抑制：依赖/父子/维护期</text>
+  <text x="340" y="288" class="t">关联：Apriori / FP-Growth</text>
+  <text x="340" y="310" class="t">风暴抑制：阈值/频率/熔断</text>
+  <text x="340" y="332" class="t">分级路由：值班/升级</text>
+  <text x="340" y="356" class="s">目标：降噪、收敛、减少打扰</text>
+
+  <rect x="560" y="190" width="215" height="180" rx="8" class="box violet"/>
+  <text x="667" y="218" text-anchor="middle" class="h">③ 根因定位</text>
+  <text x="580" y="244" class="t">拓扑下钻：调用链 + 依赖</text>
+  <text x="580" y="266" class="t">多维下钻：Adtributor</text>
+  <text x="580" y="288" class="t">HotSpot / Squeeze</text>
+  <text x="580" y="310" class="t">关联分析：变更 vs 故障</text>
+  <text x="580" y="332" class="t">图算法：PageRank / 随机游走</text>
+  <text x="580" y="356" class="s">输出：根因维度组合 / 嫌疑节点</text>
+
+  <rect x="800" y="190" width="200" height="180" rx="8" class="box cyan"/>
+  <text x="900" y="218" text-anchor="middle" class="h">④ 预测</text>
+  <text x="820" y="244" class="t">容量预测：Prophet</text>
+  <text x="820" y="266" class="t">趋势外推：Holt-Winters</text>
+  <text x="820" y="288" class="t">故障预测：分类模型</text>
+  <text x="820" y="310" class="t">磁盘/资源耗尽预警</text>
+  <text x="820" y="332" class="t">弹性伸缩输入</text>
+  <text x="820" y="356" class="s">价值：从被动到主动</text>
+
+  <rect x="80" y="400" width="920" height="70" rx="8" class="box red"/>
+  <text x="110" y="428" class="h">共性工程难题</text>
+  <text x="110" y="450" class="s">标注稀缺 · 阈值难定 · 概念漂移 · 误报漏报权衡(Precision/Recall) · 可解释性 · 冷启动 · 在线 vs 离线</text>
+
+  <rect x="80" y="500" width="920" height="80" rx="8" class="box green"/>
+  <text x="110" y="528" class="h">AIOps 2.0(LLM Agent)如何接续</text>
+  <text x="110" y="552" class="s">1.0 算法负责"把信号从噪声里挑出来"(检测/收敛/候选定位)，是 Agent 取证层的工具底座；</text>
+  <text x="110" y="572" class="s">2.0 Agent 负责"把候选信号组织成可解释证据链 + 假设验证 + 报告"。两者是工具与编排的关系，不是替代。</text>
+
+  <rect x="80" y="610" width="920" height="70" rx="8" class="box blue"/>
+  <text x="110" y="638" class="h">面试落点</text>
+  <text x="110" y="660" class="s">先讲清楚每个问题域"解决什么 + 代表算法 + 代价"，再说明 LLM 时代它们没有消失，而是变成 Agent 可调用的检测/定位工具。</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 640" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#475569"/></marker></defs>
+<rect x="0" y="0" width="1500" height="640" fill="#ffffff"/>
+<text x="750.0" y="40.0" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">GPU 运维核心流程 · 健康信号到处置</text>
+<rect x="60.0" y="260.0" width="180.0" height="110.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="150.0" y="290.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">采集</text>
+<text x="150.0" y="310.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">DCGM/exporter</text>
+<text x="150.0" y="330.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">XID/ECC 日志</text>
+<text x="150.0" y="350.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">温度/功耗/时钟</text>
+<rect x="300.0" y="260.0" width="190.0" height="110.0" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="395.0" y="290.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">异常识别</text>
+<text x="395.0" y="310.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">util异常/显存满</text>
+<text x="395.0" y="330.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">降频/ECC上涨</text>
+<text x="395.0" y="350.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">XID/NVLink错误</text>
+<path d="M 240.0,315.0 L 300.0,315.0" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="560.0" y="260.0" width="150.0" height="110.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="635.0" y="310.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="700">分类判定</text>
+<text x="635.0" y="330.0" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">按信号归类</text>
+<path d="M 490.0,315.0 L 560.0,315.0" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="780.0" y="90.0" width="200.0" height="80.0" rx="10" fill="#f8fafc" stroke="#059669" stroke-width="2"/>
+<text x="880.0" y="125.1" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="700">应用类</text>
+<text x="880.0" y="144.6" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="400">XID 13/31/43·OOM</text>
+<path d="M 710.0,315.0 C 745.0,315.0 745.0,130.0 780.0,130.0" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1020.0" y="90.0" width="300.0" height="80.0" rx="10" fill="#f1f5f9" stroke="#059669" stroke-width="2"/>
+<text x="1170.0" y="134.9" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="400">重启/调参/换规格 卡未必坏</text>
+<path d="M 980.0,130.0 L 1020.0,130.0" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="780.0" y="260.0" width="200.0" height="80.0" rx="10" fill="#f8fafc" stroke="#dc2626" stroke-width="2"/>
+<text x="880.0" y="295.1" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="700">硬件类</text>
+<text x="880.0" y="314.6" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="400">XID 48/79·DBE·掉卡</text>
+<path d="M 710.0,315.0 C 745.0,315.0 745.0,300.0 780.0,300.0" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1020.0" y="260.0" width="300.0" height="80.0" rx="10" fill="#f1f5f9" stroke="#dc2626" stroke-width="2"/>
+<text x="1170.0" y="304.9" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="400">隔离驱逐·打标·上报换卡</text>
+<path d="M 980.0,300.0 L 1020.0,300.0" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="780.0" y="430.0" width="200.0" height="80.0" rx="10" fill="#f8fafc" stroke="#ea580c" stroke-width="2"/>
+<text x="880.0" y="465.1" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="700">性能类</text>
+<text x="880.0" y="484.6" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="400">慢卡降频·热节流</text>
+<path d="M 710.0,315.0 C 745.0,315.0 745.0,470.0 780.0,470.0" fill="none" stroke="#ea580c" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1020.0" y="430.0" width="300.0" height="80.0" rx="10" fill="#f1f5f9" stroke="#ea580c" stroke-width="2"/>
+<text x="1170.0" y="474.9" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="400">查温度功耗风道·降频/迁移</text>
+<path d="M 980.0,470.0 L 1020.0,470.0" fill="none" stroke="#ea580c" stroke-width="2" marker-end="url(#arr)"/>
+<text x="750.0" y="600.0" text-anchor="middle" fill="#64748b" font-size="14" font-weight="400">兜底：不只靠事件流——周期性健康巡检 + 节点全量对账，避免漏判；训练靠 checkpoint、推理靠副本/迁移</text>
+</svg>

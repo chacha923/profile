@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="ab" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 11 4, 0 8" fill="#2563eb"/></marker>
+  </defs>
+  <rect width="1120" height="640" fill="#ffffff"/>
+  <text x="560" y="38" font-size="19" fill="#111827" text-anchor="middle" font-weight="600">CICD 走向 AI Native Ops 的演进阶梯</text>
+  <text x="560" y="62" font-size="12" fill="#6b7280" text-anchor="middle">面试口径：我做的是 L2 地基层；L2 的受控边界，正是 L3 自治敢落地的前提</text>
+  <rect x="70" y="224" width="320" height="216" rx="12" fill="#f9fafb" stroke="#9ca3af" stroke-width="2.5"/>
+  <text x="230.0" y="258" font-size="15" fill="#4b5563" text-anchor="middle" font-weight="600">L1  AI 辅助</text>
+  <text x="90" y="290" font-size="11.8" fill="#374151" text-anchor="start">• 人用 Claude Code / Copilot</text>
+  <text x="90" y="317" font-size="11.8" fill="#374151" text-anchor="start">• 辅助写代码、pipeline、脚本</text>
+  <text x="90" y="344" font-size="11.8" fill="#374151" text-anchor="start">• 平台本身没变化</text>
+  <text x="230.0" y="424" font-size="11.8" fill="#4b5563" text-anchor="middle" font-weight="600">普遍，不差异化</text>
+  <line x1="390" y1="332.0" x2="410" y2="266.0" stroke="#2563eb" stroke-width="2.5" marker-end="url(#ab)"/>
+  <rect x="410" y="158" width="320" height="216" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="570.0" y="192" font-size="15" fill="#15803d" text-anchor="middle" font-weight="600">L2  能力 Agent 化</text>
+  <text x="430" y="224" font-size="11.8" fill="#374151" text-anchor="start">• 运维能力封装成受控 MCP Skill</text>
+  <text x="430" y="251" font-size="11.8" fill="#374151" text-anchor="start">• 发版 / 查询 / 回滚 / Pod 排障</text>
+  <text x="430" y="278" font-size="11.8" fill="#374151" text-anchor="start">• 身份绑定真实用户 + 权限 + 审计</text>
+  <text x="430" y="305" font-size="11.8" fill="#374151" text-anchor="start">• 复用同一套 Controller，无特权后门</text>
+  <text x="570.0" y="358" font-size="11.8" fill="#15803d" text-anchor="middle" font-weight="600">← 我真做的就在这层</text>
+  <line x1="730" y1="266.0" x2="750" y2="200.0" stroke="#2563eb" stroke-width="2.5" marker-end="url(#ab)"/>
+  <rect x="750" y="92" width="320" height="216" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="7,4"/>
+  <text x="910.0" y="126" font-size="15" fill="#1d4ed8" text-anchor="middle" font-weight="600">L3  AI Native / Agentic Ops</text>
+  <text x="770" y="158" font-size="11.8" fill="#374151" text-anchor="start">• Agent 作为一等操作者</text>
+  <text x="770" y="185" font-size="11.8" fill="#374151" text-anchor="start">• 自主编排 skill 完成闭环：</text>
+  <text x="770" y="212" font-size="11.8" fill="#374151" text-anchor="start">• 发布 → 观测 → 异常 → 回滚</text>
+  <text x="770" y="239" font-size="11.8" fill="#374151" text-anchor="start">• 平台围绕 Agent 交互设计</text>
+  <text x="910.0" y="292" font-size="11.8" fill="#1d4ed8" text-anchor="middle" font-weight="600">目标：能讲演进，未全做到</text>
+  <rect x="70" y="500" width="990" height="98" rx="12" fill="#fffbeb" stroke="#ca8a04" stroke-width="1.8"/>
+  <text x="92" y="528" font-size="13.5" fill="#a16207" text-anchor="start" font-weight="600">为什么 L2 是关键地基</text>
+  <text x="92" y="554" font-size="11.8" fill="#374151" text-anchor="start">AI Native Ops 真正难的不是「让 Agent 调工具」，而是「敢让它调」——出错谁兜底、越权怎么拦、动作能否审计回放。</text>
+  <text x="92" y="578" font-size="11.8" fill="#374151" text-anchor="start">我把每个运维动作做成身份绑定、权限校验、审计可查的受控 Skill，等于给 L3 自治铺好了「敢放手」的安全底座。</text>
+</svg>

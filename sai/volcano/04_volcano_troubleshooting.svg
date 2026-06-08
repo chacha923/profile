@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" width="960" height="660">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111827; }
+    .title { font-size: 18px; font-weight: 700; }
+    .label { font-size: 14px; font-weight: 600; }
+    .sub { font-size: 12px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; rx: 8; }
+    .blue { fill: #eff6ff; stroke: #bfdbfe; }
+    .green { fill: #f0fdf4; stroke: #bbf7d0; }
+    .red { fill: #fef2f2; stroke: #fecaca; }
+    .orange { fill: #fff7ed; stroke: #fed7aa; }
+    .purple { fill: #faf5ff; stroke: #e9d5ff; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="960" height="660" fill="#ffffff"/>
+  <text x="32" y="38" class="title">Volcano 排障路径：从 Pending 到资源、队列、Gang、拓扑逐层收敛</text>
+
+  <rect x="72" y="92" width="150" height="58" class="box red"/><text x="147" y="116" text-anchor="middle" class="label">症状</text><text x="147" y="136" text-anchor="middle" class="sub">Job Pending / 慢</text>
+  <rect x="282" y="92" width="150" height="58" class="box blue"/><text x="357" y="116" text-anchor="middle" class="label">假设</text><text x="357" y="136" text-anchor="middle" class="sub">准入或资源不足</text>
+  <rect x="492" y="92" width="150" height="58" class="box orange"/><text x="567" y="116" text-anchor="middle" class="label">验证对象</text><text x="567" y="136" text-anchor="middle" class="sub">Job / PodGroup / Queue</text>
+  <rect x="702" y="92" width="150" height="58" class="box green"/><text x="777" y="116" text-anchor="middle" class="label">指标</text><text x="777" y="136" text-anchor="middle" class="sub">events / allocated</text>
+
+  <rect x="72" y="238" width="150" height="58" class="box orange"/><text x="147" y="262" text-anchor="middle" class="label">结论 A</text><text x="147" y="282" text-anchor="middle" class="sub">minAvailable 不满足</text>
+  <rect x="282" y="238" width="150" height="58" class="box orange"/><text x="357" y="262" text-anchor="middle" class="label">结论 B</text><text x="357" y="282" text-anchor="middle" class="sub">Queue 额度卡住</text>
+  <rect x="492" y="238" width="150" height="58" class="box orange"/><text x="567" y="262" text-anchor="middle" class="label">结论 C</text><text x="567" y="282" text-anchor="middle" class="sub">插件配置冲突</text>
+  <rect x="702" y="238" width="150" height="58" class="box orange"/><text x="777" y="262" text-anchor="middle" class="label">结论 D</text><text x="777" y="282" text-anchor="middle" class="sub">拓扑 / GPU 不匹配</text>
+
+  <rect x="72" y="390" width="180" height="64" class="box purple"/><text x="162" y="415" text-anchor="middle" class="label">优化动作</text><text x="162" y="435" text-anchor="middle" class="sub">调整资源申请或队列</text>
+  <rect x="308" y="390" width="180" height="64" class="box purple"/><text x="398" y="415" text-anchor="middle" class="label">优化动作</text><text x="398" y="435" text-anchor="middle" class="sub">检查 action/plugin 顺序</text>
+  <rect x="544" y="390" width="180" height="64" class="box purple"/><text x="634" y="415" text-anchor="middle" class="label">优化动作</text><text x="634" y="435" text-anchor="middle" class="sub">放宽 hard 约束或补拓扑</text>
+  <rect x="760" y="390" width="120" height="64" class="box green"/><text x="820" y="415" text-anchor="middle" class="label">复测</text><text x="820" y="435" text-anchor="middle" class="sub">重提任务</text>
+
+  <rect x="72" y="525" width="808" height="70" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-dasharray="7 5"/>
+  <text x="96" y="552" class="label">面试表达顺序</text>
+  <text x="96" y="578" class="sub">先看 Volcano 自定义对象状态，再看 scheduler 配置，再看资源池与拓扑，最后结合日志和 metrics 复测。</text>
+
+  <path d="M222 121 L282 121" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M432 121 L492 121" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M642 121 L702 121" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M777 150 C777 202 147 198 147 238" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#arrow-red)"/>
+  <path d="M777 150 C777 202 357 198 357 238" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#arrow-red)"/>
+  <path d="M777 150 C777 202 567 198 567 238" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#arrow-red)"/>
+  <path d="M777 150 L777 238" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#arrow-red)"/>
+  <path d="M147 296 L162 390" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M357 296 L398 390" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M567 296 L398 390" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M777 296 L634 390" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M724 422 L760 422" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+</svg>

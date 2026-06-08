@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+  <rect width="1400" height="820" fill="#f7f9fc"/>
+  <text x="70" y="70" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#17202a">训推混部关键机制</text>
+  <text x="70" y="112" font-family="Arial, sans-serif" font-size="18" fill="#52616f">低水位放行，高水位回收，训练通过 checkpoint 回退恢复</text>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#34495e"/>
+    </marker>
+  </defs>
+  <rect x="90" y="190" width="220" height="115" rx="8" fill="#ffffff" stroke="#2f80ed" stroke-width="3"/>
+  <text x="125" y="242" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#1f4e79">低水位窗口</text>
+  <text x="125" y="276" font-family="Arial, sans-serif" font-size="17" fill="#273746">P99 稳定，队列低</text>
+
+  <rect x="380" y="190" width="220" height="115" rx="8" fill="#ffffff" stroke="#2e7d32" stroke-width="3"/>
+  <text x="415" y="242" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#1b5e20">放行训练</text>
+  <text x="415" y="276" font-family="Arial, sans-serif" font-size="17" fill="#273746">只接可抢占任务</text>
+
+  <rect x="670" y="190" width="220" height="115" rx="8" fill="#ffffff" stroke="#f39c12" stroke-width="3"/>
+  <text x="705" y="242" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#8a5a00">运行监控</text>
+  <text x="705" y="276" font-family="Arial, sans-serif" font-size="17" fill="#273746">指标持续采样</text>
+
+  <rect x="960" y="190" width="220" height="115" rx="8" fill="#ffffff" stroke="#c0392b" stroke-width="3"/>
+  <text x="995" y="242" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#922b21">高水位触发</text>
+  <text x="995" y="276" font-family="Arial, sans-serif" font-size="17" fill="#273746">P99 或队列上升</text>
+
+  <rect x="960" y="450" width="220" height="115" rx="8" fill="#ffffff" stroke="#c0392b" stroke-width="3"/>
+  <text x="995" y="502" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#922b21">回收训练</text>
+  <text x="995" y="536" font-family="Arial, sans-serif" font-size="17" fill="#273746">停止新调度，驱逐</text>
+
+  <rect x="670" y="450" width="220" height="115" rx="8" fill="#ffffff" stroke="#8e44ad" stroke-width="3"/>
+  <text x="705" y="502" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#6c3483">落 checkpoint</text>
+  <text x="705" y="536" font-family="Arial, sans-serif" font-size="17" fill="#273746">优雅终止窗口</text>
+
+  <rect x="380" y="450" width="220" height="115" rx="8" fill="#ffffff" stroke="#566573" stroke-width="3"/>
+  <text x="415" y="502" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#2c3e50">回退队列</text>
+  <text x="415" y="536" font-family="Arial, sans-serif" font-size="17" fill="#273746">训练池恢复排队</text>
+
+  <rect x="90" y="450" width="220" height="115" rx="8" fill="#ffffff" stroke="#2f80ed" stroke-width="3"/>
+  <text x="125" y="502" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#1f4e79">推理恢复</text>
+  <text x="125" y="536" font-family="Arial, sans-serif" font-size="17" fill="#273746">保留冷却时间</text>
+
+  <line x1="310" y1="248" x2="380" y2="248" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="600" y1="248" x2="670" y2="248" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="890" y1="248" x2="960" y2="248" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1070" y1="305" x2="1070" y2="450" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="960" y1="508" x2="890" y2="508" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="670" y1="508" x2="600" y2="508" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="380" y1="508" x2="310" y2="508" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 680" width="1080" height="680">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="680" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">RAG 知识检索工程（SOP / 故障案例库）</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">让 Agent 复用历史排障经验，关键不在"塞文档"，而在切块、检索、重排和保鲜</text>
+
+  <text x="120" y="105" class="h">离线：知识入库</text>
+  <rect x="40" y="120" width="150" height="70" rx="8" class="box violet"/>
+  <text x="115" y="148" text-anchor="middle" class="t">SOP / 复盘</text>
+  <text x="115" y="170" text-anchor="middle" class="s">原始知识</text>
+
+  <rect x="220" y="120" width="150" height="70" rx="8" class="box blue"/>
+  <text x="295" y="143" text-anchor="middle" class="t">分块 Chunking</text>
+  <text x="295" y="164" text-anchor="middle" class="s">按语义/标题切</text>
+  <text x="295" y="182" text-anchor="middle" class="s">带元数据</text>
+
+  <rect x="400" y="120" width="150" height="70" rx="8" class="box green"/>
+  <text x="475" y="143" text-anchor="middle" class="t">Embedding</text>
+  <text x="475" y="164" text-anchor="middle" class="s">向量化</text>
+  <text x="475" y="182" text-anchor="middle" class="s">+ 关键词索引</text>
+
+  <rect x="580" y="120" width="150" height="70" rx="8" class="box amber"/>
+  <text x="655" y="143" text-anchor="middle" class="t">向量库</text>
+  <text x="655" y="164" text-anchor="middle" class="s">+ 倒排索引</text>
+  <text x="655" y="182" text-anchor="middle" class="s">owner/版本/有效期</text>
+
+  <path d="M190 155 L220 155" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M370 155 L400 155" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M550 155 L580 155" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+
+  <text x="120" y="245" class="h">在线：检索增强</text>
+  <rect x="40" y="260" width="150" height="70" rx="8" class="box cyan"/>
+  <text x="115" y="288" text-anchor="middle" class="t">告警/查询</text>
+  <text x="115" y="310" text-anchor="middle" class="s">改写 + 扩展</text>
+
+  <rect x="220" y="260" width="150" height="70" rx="8" class="box blue"/>
+  <text x="295" y="283" text-anchor="middle" class="t">混合检索</text>
+  <text x="295" y="304" text-anchor="middle" class="s">向量 + 关键词</text>
+  <text x="295" y="322" text-anchor="middle" class="s">Top-K 召回</text>
+
+  <rect x="400" y="260" width="150" height="70" rx="8" class="box amber"/>
+  <text x="475" y="283" text-anchor="middle" class="t">Rerank 重排</text>
+  <text x="475" y="304" text-anchor="middle" class="s">Cross-Encoder</text>
+  <text x="475" y="322" text-anchor="middle" class="s">精排 Top-N</text>
+
+  <rect x="580" y="260" width="150" height="70" rx="8" class="box green"/>
+  <text x="655" y="283" text-anchor="middle" class="t">注入上下文</text>
+  <text x="655" y="304" text-anchor="middle" class="s">带来源/链接</text>
+  <text x="655" y="322" text-anchor="middle" class="s">可引用可追溯</text>
+
+  <rect x="760" y="260" width="150" height="70" rx="8" class="box violet"/>
+  <text x="835" y="283" text-anchor="middle" class="t">LLM 生成</text>
+  <text x="835" y="304" text-anchor="middle" class="s">引用 + 解释</text>
+  <text x="835" y="322" text-anchor="middle" class="s">禁止无源编造</text>
+
+  <path d="M190 295 L220 295" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M370 295 L400 295" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M550 295 L580 295" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M730 295 L760 295" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M655 190 L655 260" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <text x="665" y="228" class="s">查询命中库</text>
+
+  <rect x="80" y="365" width="440" height="150" rx="8" class="box amber"/>
+  <text x="110" y="393" class="h">每个环节的常见坑</text>
+  <text x="110" y="417" class="s">· 切块太大：噪声多、稀释相关段</text>
+  <text x="110" y="437" class="s">· 切块太小：丢上下文、答非所问</text>
+  <text x="110" y="457" class="s">· 只用向量：精确名词(错误码/服务名)召回差</text>
+  <text x="110" y="477" class="s">· 不重排：Top-K 顺序差，关键段排在后面</text>
+  <text x="110" y="497" class="s">· 不带来源：无法追溯，等于鼓励幻觉</text>
+
+  <rect x="555" y="365" width="445" height="150" rx="8" class="box green"/>
+  <text x="585" y="393" class="h">知识保鲜（最容易被追问）</text>
+  <text x="585" y="417" class="s">· 每条知识带 owner / 版本 / 适用条件 / 有效期</text>
+  <text x="585" y="437" class="s">· 过期知识降权或下线，复盘后更新</text>
+  <text x="585" y="457" class="s">· 命中后记录是否被采纳，反哺质量</text>
+  <text x="585" y="477" class="s">· 知识库不是越大越好，要分层和治理</text>
+  <text x="585" y="497" class="s">· 错误知识比没知识更危险</text>
+
+  <rect x="80" y="535" width="920" height="120" rx="8" class="box blue"/>
+  <text x="110" y="563" class="h">面试落点</text>
+  <text x="110" y="588" class="s">· RAG 不是"接个向量库"，是切块策略 + 混合检索 + 重排 + 来源约束 + 保鲜治理的工程；</text>
+  <text x="110" y="610" class="s">· AIOps 场景精确名词多(服务名/错误码/PromQL)，必须向量 + 关键词混合，纯语义召回会漏；</text>
+  <text x="110" y="632" class="s">· 强调"带来源 + 禁止无源编造"，把 RAG 当证据来源而非答案来源，呼应 RCA 的证据驱动。</text>
+</svg>

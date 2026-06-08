@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 680" width="1240" height="680">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="ao" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="agr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9ca3af"/></marker>
+  </defs>
+  <rect width="1240" height="680" fill="#ffffff"/>
+  <text x="620" y="38" font-size="19" fill="#111827" text-anchor="middle" font-weight="600">大数据平台 AIOps RCA Agent 落地架构（假设落地）</text>
+  <text x="620" y="62" font-size="12" fill="#6b7280" text-anchor="middle">先接数据与工具、再接模型；模型编排证据不替代证据；动作分级受控</text>
+  <rect x="30" y="100" width="270" height="380" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="165.0" y="128" font-size="15" fill="#15803d" text-anchor="middle" font-weight="600">① 证据源（真实信号）</text>
+  <rect x="44" y="140" width="242" height="44" rx="6" fill="#ffffff" stroke="#86efac" stroke-width="1"/>
+  <text x="165.0" y="166" font-size="11.5" fill="#374151" text-anchor="middle">调度状态机事件（卡哪态）</text>
+  <rect x="44" y="194" width="242" height="44" rx="6" fill="#ffffff" stroke="#86efac" stroke-width="1"/>
+  <text x="165.0" y="220" font-size="11.5" fill="#374151" text-anchor="middle">Yarn 队列水位 / App 状态</text>
+  <rect x="44" y="248" width="242" height="44" rx="6" fill="#ffffff" stroke="#86efac" stroke-width="1"/>
+  <text x="165.0" y="274" font-size="11.5" fill="#374151" text-anchor="middle">Spark executor 日志</text>
+  <rect x="44" y="302" width="242" height="44" rx="6" fill="#ffffff" stroke="#86efac" stroke-width="1"/>
+  <text x="165.0" y="328" font-size="11.5" fill="#374151" text-anchor="middle">DAG 依赖 / 分区就绪</text>
+  <rect x="44" y="356" width="242" height="44" rx="6" fill="#ffffff" stroke="#86efac" stroke-width="1"/>
+  <text x="165.0" y="382" font-size="11.5" fill="#374151" text-anchor="middle">最近变更 / 发布 / SQL 上线</text>
+  <rect x="44" y="410" width="242" height="44" rx="6" fill="#ffffff" stroke="#86efac" stroke-width="1"/>
+  <text x="165.0" y="436" font-size="11.5" fill="#374151" text-anchor="middle">告警事件 / 历史复盘</text>
+  <rect x="330" y="100" width="270" height="380" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="465.0" y="128" font-size="15" fill="#1d4ed8" text-anchor="middle" font-weight="600">② 取证工具层（只读白名单）</text>
+  <rect x="344" y="140" width="242" height="44" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="465.0" y="166" font-size="11.5" fill="#374151" text-anchor="middle">查任务状态机轨迹</text>
+  <rect x="344" y="194" width="242" height="44" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="465.0" y="220" font-size="11.5" fill="#374151" text-anchor="middle">查父依赖 / 分区进度</text>
+  <rect x="344" y="248" width="242" height="44" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="465.0" y="274" font-size="11.5" fill="#374151" text-anchor="middle">查 Yarn 队列水位</text>
+  <rect x="344" y="302" width="242" height="44" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="465.0" y="328" font-size="11.5" fill="#374151" text-anchor="middle">查 App 状态 / 日志</text>
+  <rect x="344" y="356" width="242" height="44" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="465.0" y="382" font-size="11.5" fill="#374151" text-anchor="middle">查时间窗内变更</text>
+  <rect x="344" y="410" width="242" height="44" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="465.0" y="436" font-size="11.5" fill="#374151" text-anchor="middle">检索 SOP / 故障知识库</text>
+  <rect x="630" y="100" width="270" height="380" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="2.5"/>
+  <text x="765.0" y="128" font-size="15" fill="#7c3aed" text-anchor="middle" font-weight="600">③ RCA Agent 核心</text>
+  <text x="765.0" y="162" font-size="12.5" fill="#374151" text-anchor="middle">• 规划取证顺序</text>
+  <text x="765.0" y="204" font-size="12.5" fill="#374151" text-anchor="middle">• 编排工具形成证据链</text>
+  <text x="765.0" y="246" font-size="12.5" fill="#374151" text-anchor="middle">• 变更归因优先</text>
+  <text x="765.0" y="288" font-size="12.5" fill="#374151" text-anchor="middle">• 区分 证据 / 推断 / 建议</text>
+  <text x="765.0" y="330" font-size="12.5" fill="#374151" text-anchor="middle">• 没证据 → 说不知道</text>
+  <text x="765.0" y="372" font-size="12.5" fill="#374151" text-anchor="middle">• 报告校验</text>
+  <line x1="300" y1="290" x2="330" y2="290" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <line x1="600" y1="290" x2="630" y2="290" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="930" y="100" width="280" height="120" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="1070.0" y="130" font-size="14" fill="#1d4ed8" text-anchor="middle" font-weight="600">④ 输出：根因报告</text>
+  <text x="1070.0" y="158" font-size="11.5" fill="#374151" text-anchor="middle">根因假设 + 证据引用</text>
+  <text x="1070.0" y="180" font-size="11.5" fill="#374151" text-anchor="middle">下一步排查 / 处置建议</text>
+  <text x="1070.0" y="204" font-size="11" fill="#6b7280" text-anchor="middle">先做「辅助值班 Copilot」</text>
+  <rect x="930" y="250" width="280" height="230" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text x="1070.0" y="278" font-size="14" fill="#c2410c" text-anchor="middle" font-weight="600">⑤ 受控处置（分级）</text>
+  <rect x="944" y="294" width="252" height="68" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1"/>
+  <text x="1070.0" y="318" font-size="12" fill="#15803d" text-anchor="middle" font-weight="600">低风险 → 自动</text>
+  <text x="1070.0" y="342" font-size="11" fill="#374151" text-anchor="middle">只读诊断 / 幂等重试</text>
+  <rect x="944" y="372" width="252" height="90" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1"/>
+  <text x="1070.0" y="396" font-size="12" fill="#c2410c" text-anchor="middle" font-weight="600">高风险 → 审批 + 审计</text>
+  <text x="1070.0" y="420" font-size="11" fill="#374151" text-anchor="middle">Kill App / 置成功</text>
+  <text x="1070.0" y="442" font-size="11" fill="#374151" text-anchor="middle">扩缩容 / 改队列权限</text>
+  <line x1="900" y1="160" x2="930" y2="160" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <line x1="900" y1="330" x2="930" y2="330" stroke="#ea580c" stroke-width="2.2" marker-end="url(#ao)"/>
+  <rect x="906" y="312" width="78" height="18" fill="#ffffff" opacity="0.95"/>
+  <text x="910" y="326" font-size="10.5" fill="#c2410c" text-anchor="start">受控执行</text>
+  <rect x="30" y="510" width="1180" height="66" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="55" y="538" font-size="13.5" fill="#7c3aed" text-anchor="start" font-weight="600">⑥ AgentOps（Agent 自身可观测与评估）</text>
+  <text x="55" y="560" font-size="11.5" fill="#374151" text-anchor="start">记录 trajectory / tool 调用 / 检索 / token / 耗时 / 人工采纳率 → 历史故障标注做离线评测 → 看根因命中率与 MTTR 改善，而非「答得流不流畅」</text>
+  <line x1="30" y1="612" x2="64" y2="612" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <text x="72" y="616" font-size="11.5" fill="#6b7280" text-anchor="start">取证 / 诊断（只读）</text>
+  <line x1="280" y1="612" x2="314" y2="612" stroke="#ea580c" stroke-width="2.2" marker-end="url(#ao)"/>
+  <text x="322" y="616" font-size="11.5" fill="#6b7280" text-anchor="start">受控执行（动作）</text>
+  <rect x="520" y="604" width="16" height="12" rx="2" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="542" y="614" font-size="11.5" fill="#6b7280" text-anchor="start">绿底=真实经验可支撑（Soda 状态机/Yarn/变更管控）</text>
+</svg>

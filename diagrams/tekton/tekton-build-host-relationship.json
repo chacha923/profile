@@ -1,0 +1,356 @@
+{
+  "template_type": "architecture",
+  "style": 1,
+  "width": 1800,
+  "height": 1080,
+  "title": "Tekton 构建环境与宿主机关系图",
+  "subtitle": "ACK 升级到纯 containerd 后，构建链路仍然是 buildctl -> buildkitd -> 宿主机 containerd -> Harbor，而不是依赖 Docker Engine",
+  "containers": [
+    {
+      "x": 80,
+      "y": 160,
+      "width": 1240,
+      "height": 760,
+      "label": "",
+      "side_label": "pipeline 节点 / 宿主机",
+      "side_label_x": 28,
+      "side_label_anchor": "start",
+      "stroke": "#94a3b8",
+      "fill": "none"
+    },
+    {
+      "x": 130,
+      "y": 250,
+      "width": 430,
+      "height": 270,
+      "label": "",
+      "side_label": "Tekton TaskRun Pod",
+      "side_label_x": 140,
+      "side_label_y": 236,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 660,
+      "y": 250,
+      "width": 470,
+      "height": 270,
+      "label": "",
+      "side_label": "buildkitd DaemonSet Pod",
+      "side_label_x": 630,
+      "side_label_y": 236,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 220,
+      "y": 580,
+      "width": 860,
+      "height": 260,
+      "label": "",
+      "side_label": "宿主机运行时层",
+      "side_label_x": 210,
+      "side_label_y": 526,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "runtime_note",
+      "kind": "rect",
+      "x": 220,
+      "y": 88,
+      "width": 1360,
+      "height": 52,
+      "label": "ACK 节点升级后不再提供 Docker Runtime，构建能力下沉到 buildkitd + 宿主机 containerd",
+      "type_label": "适配背景",
+      "fill": "#fff7ed",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "docker_build",
+      "kind": "double_rect",
+      "x": 160,
+      "y": 300,
+      "width": 340,
+      "height": 84,
+      "label": "docker-build step",
+      "sublabel": "nerdctl:v2.1.6",
+      "type_label": "TaskRun 内执行单元",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "buildctl_cmd",
+      "kind": "document",
+      "x": 160,
+      "y": 430,
+      "width": 340,
+      "height": 84,
+      "label": "buildctl build",
+      "sublabel": "dockerfile frontend + image push",
+      "fill": "#ffffff",
+      "stroke": "#7c3aed"
+    },
+    {
+      "id": "hostpaths",
+      "kind": "document",
+      "x": 585,
+      "y": 320,
+      "width": 300,
+      "height": 150,
+      "label": "共享 hostPath",
+      "sublabel": "buildkit socket / cache /\ncontainerd.sock / runtime data",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8"
+    },
+    {
+      "id": "buildkitd",
+      "kind": "double_rect",
+      "x": 930,
+      "y": 300,
+      "width": 210,
+      "height": 84,
+      "label": "buildkitd",
+      "sublabel": "一个节点一个 Pod",
+      "type_label": "DaemonSet 进程",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "buildkit_cfg",
+      "kind": "document",
+      "x": 900,
+      "y": 430,
+      "width": 280,
+      "height": 90,
+      "label": "buildkitd.toml",
+      "sublabel": "containerd.sock\nnamespace: buildkit",
+      "fill": "#ffffff",
+      "stroke": "#7c3aed"
+    },
+    {
+      "id": "workspace",
+      "kind": "folder",
+      "x": 160,
+      "y": 620,
+      "width": 290,
+      "height": 82,
+      "label": "源码 / Dockerfile / Workspace",
+      "sublabel": "源码上下文",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8"
+    },
+    {
+      "id": "containerd",
+      "kind": "double_rect",
+      "x": 560,
+      "y": 640,
+      "width": 300,
+      "height": 86,
+      "label": "宿主机 containerd",
+      "sublabel": "真正执行拉镜像、缓存与推送",
+      "type_label": "Node Runtime",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "registry_cfg",
+      "kind": "document",
+      "x": 930,
+      "y": 635,
+      "width": 180,
+      "height": 110,
+      "label": "hosts.toml",
+      "sublabel": "mirror / auth / protocol",
+      "fill": "#ffffff",
+      "stroke": "#f97316"
+    },
+    {
+      "id": "cache",
+      "kind": "cylinder",
+      "x": 290,
+      "y": 770,
+      "width": 210,
+      "height": 92,
+      "label": "BuildKit Cache",
+      "sublabel": "/var/lib/container/buildkit",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a"
+    },
+    {
+      "id": "sock",
+      "kind": "rect",
+      "x": 600,
+      "y": 780,
+      "width": 240,
+      "height": 68,
+      "label": "containerd.sock",
+      "type_label": "/run/containerd",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "harbor",
+      "kind": "cylinder",
+      "x": 1390,
+      "y": 330,
+      "width": 260,
+      "height": 120,
+      "label": "Harbor Registry",
+      "sublabel": "prod / test registry",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a"
+    },
+    {
+      "id": "result_note",
+      "kind": "rect",
+      "x": 1340,
+      "y": 610,
+      "width": 360,
+      "height": 116,
+      "label": "链路说明",
+      "sublabel": "Task Pod 只带源码与 buildctl。\n真正构建和推镜像的是 buildkitd + containerd。",
+      "type_label": "关系说明",
+      "fill": "#faf5ff",
+      "stroke": "#7c3aed",
+      "flat": true
+    }
+  ],
+  "arrows": [
+    {
+      "source": "docker_build",
+      "target": "buildctl_cmd",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "control"
+    },
+    {
+      "source": "workspace",
+      "target": "docker_build",
+      "source_port": "top",
+      "target_port": "bottom",
+      "flow": "read",
+      "route_points": [[305,620], [305,560], [240,560], [240,384]]
+    },
+    {
+      "source": "buildctl_cmd",
+      "target": "hostpaths",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "read"
+    },
+    {
+      "source": "hostpaths",
+      "target": "buildkitd",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "read",
+      "label": "/run/buildkit"
+    },
+    {
+      "source": "buildctl_cmd",
+      "target": "buildkitd",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control",
+      "route_points": [[500,472], [760,472], [760,342], [930,342]]
+    },
+    {
+      "source": "buildkit_cfg",
+      "target": "buildkitd",
+      "source_port": "top",
+      "target_port": "bottom",
+      "flow": "read"
+    },
+    {
+      "source": "buildkitd",
+      "target": "containerd",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "write",
+      "route_points": [[1035,384], [1035,590], [710,590], [710,640]]
+    },
+    {
+      "source": "hostpaths",
+      "target": "containerd",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "read",
+      "route_points": [[735,470], [735,600], [650,600], [650,640]]
+    },
+    {
+      "source": "buildkitd",
+      "target": "cache",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "write",
+      "route_points": [[1000,384], [1000,600], [395,600], [395,770]]
+    },
+    {
+      "source": "containerd",
+      "target": "sock",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "feedback"
+    },
+    {
+      "source": "registry_cfg",
+      "target": "containerd",
+      "source_port": "left",
+      "target_port": "right",
+      "flow": "read",
+      "label": "mirror / auth"
+    },
+    {
+      "source": "containerd",
+      "target": "harbor",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "data",
+      "route_points": [[860,683], [1280,683], [1280,390], [1390,390]],
+      "label": "HTTPS pull / push"
+    },
+    {
+      "source": "harbor",
+      "target": "result_note",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "feedback",
+      "dashed": true,
+      "route_points": [[1520,450], [1520,560], [1520,560], [1520,610]]
+    }
+  ],
+  "legend": [
+    {
+      "flow": "control",
+      "label": "控制流：buildctl 发起构建请求"
+    },
+    {
+      "flow": "read",
+      "label": "读路径：源码、配置、hostPath 挂载"
+    },
+    {
+      "flow": "write",
+      "label": "执行路径：buildkitd 通过 containerd 完成构建"
+    },
+    {
+      "flow": "data",
+      "label": "数据流：拉基础镜像、推目标镜像"
+    },
+    {
+      "flow": "feedback",
+      "label": "结果/状态说明：socket、链路说明"
+    }
+  ],
+  "legend_position": "bottom-left",
+  "legend_box": true,
+  "legend_box_fill": "#ffffff",
+  "legend_y": 995
+}

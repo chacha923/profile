@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 660" width="1080" height="660">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="660" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">实体 / 拓扑统一建模：让数据"知道是谁"</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">告警资源名 ≠ service.name；要把多源信号挂到统一实体图上，Agent 才能定位</text>
+
+  <text x="180" y="105" text-anchor="middle" class="h">多源融合</text>
+  <rect x="60" y="120" width="240" height="50" rx="8" class="box blue"/>
+  <text x="180" y="150" text-anchor="middle" class="t">CMDB：应用/owner/业务组</text>
+  <rect x="60" y="180" width="240" height="50" rx="8" class="box green"/>
+  <text x="180" y="210" text-anchor="middle" class="t">调用链：服务依赖关系</text>
+  <rect x="60" y="240" width="240" height="50" rx="8" class="box amber"/>
+  <text x="180" y="270" text-anchor="middle" class="t">部署系统：版本/变更</text>
+  <rect x="60" y="300" width="240" height="50" rx="8" class="box cyan"/>
+  <text x="180" y="330" text-anchor="middle" class="t">K8s 元数据：Pod/节点/标签</text>
+
+  <rect x="390" y="170" width="240" height="150" rx="8" class="box violet"/>
+  <text x="510" y="200" text-anchor="middle" class="h">统一实体图</text>
+  <text x="510" y="226" text-anchor="middle" class="s">UModel / 资源图谱</text>
+  <text x="410" y="252" class="s">服务 — 实例 — Pod — 主机</text>
+  <text x="410" y="274" class="s">— DB — MQ — 依赖 — 变更</text>
+  <text x="410" y="300" class="s">每个实体有唯一 ID 和关系</text>
+
+  <path d="M300 145 C340 175 350 200 390 215" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <path d="M300 205 L390 230" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M300 265 L390 260" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M300 325 C340 300 350 290 390 280" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <rect x="720" y="120" width="300" height="80" rx="8" class="box blue"/>
+  <text x="870" y="148" text-anchor="middle" class="t">Metrics / Logs / Traces</text>
+  <text x="870" y="172" text-anchor="middle" class="s">挂到实体上 → 有了归属</text>
+  <text x="870" y="190" text-anchor="middle" class="s">"谁的延迟高、谁的错误"</text>
+
+  <rect x="720" y="220" width="300" height="100" rx="8" class="box green"/>
+  <text x="870" y="248" text-anchor="middle" class="t">RCA Agent 定位</text>
+  <text x="740" y="272" class="s">· 知道谁调用它、影响哪条业务</text>
+  <text x="740" y="292" class="s">· 知道下游是不是真因</text>
+  <text x="740" y="312" class="s">· 知道变更是否相关</text>
+
+  <path d="M630 230 L720 175" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M630 260 L720 265" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="80" y="375" width="445" height="160" rx="8" class="box amber"/>
+  <text x="110" y="403" class="h">最关键的坑：资源映射</text>
+  <text x="110" y="428" class="s">· 告警里的 resource 名（如某主机/某中间件实例）</text>
+  <text x="110" y="448" class="s">  不一定等于 OTel 的 service.name</text>
+  <text x="110" y="468" class="s">· 要做 resource → service 的候选映射 + 事实探测</text>
+  <text x="110" y="488" class="s">· 类别分支：Application 类深查 logs/traces；</text>
+  <text x="110" y="508" class="s">  Redis/RDS/Kafka/ECS 路由到指标或专项</text>
+  <text x="110" y="528" class="s">· 映射错 → Agent 工具调用全打空</text>
+
+  <rect x="555" y="375" width="445" height="160" rx="8" class="box red"/>
+  <text x="585" y="403" class="h">没有实体语义会怎样</text>
+  <text x="585" y="428" class="s">· Agent 知道"延迟高"，但不知道是谁</text>
+  <text x="585" y="448" class="s">· 把相关服务当根因，分不清上下游</text>
+  <text x="585" y="468" class="s">· 变更关联不上，错过真因</text>
+  <text x="585" y="488" class="s">· 多维定位拿到维度也落不到实体</text>
+  <text x="585" y="508" class="s">→ 数据再全，定位也走不通</text>
+  <text x="585" y="528" class="s">这就是"瓶颈在数据语义不在模型"的来源</text>
+
+  <rect x="80" y="555" width="920" height="80" rx="8" class="box blue"/>
+  <text x="110" y="583" class="h">面试落点</text>
+  <text x="110" y="607" class="s">· 能讲"告警 resource ≠ service.name，需要映射和路由层"，是 AIOps 定位能不能跑通的关键工程；</text>
+  <text x="110" y="627" class="s">· 实体/拓扑建模是把可观测数据从"散点"变成"可推理的图"，是 RCA 的语义底座。</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 870" width="960" height="870">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .label { font-size: 15px; font-weight: 600; fill: #111827; }
+    .clabel { font-size: 14px; font-weight: 600; fill: #111827; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .tag { font-size: 12px; font-weight: 600; fill: #1f2937; }
+    .edge { font-size: 11px; fill: #6b7280; }
+    .cmd { font-family: 'SF Mono','Menlo','Consolas',monospace; font-size: 11px; fill: #1f2937; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="960" height="870" fill="#ffffff"/>
+  <text x="40" y="46" class="title">GPU 任务通用排障流程</text>
+  <text x="40" y="74" class="sub">先归类症状，再分层下钻缩小范围，定位到层、止损优先、复测闭环。</text>
+  <rect x="380" y="100" width="200" height="52" rx="9" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="480" y="131" text-anchor="middle" class="label">归类症状</text>
+  <rect x="70" y="180" width="250" height="60" rx="9" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="195" y="206" text-anchor="middle" class="label">起不来</text>
+  <text x="195" y="226" text-anchor="middle" class="sub">Pending / CrashLoop</text>
+  <rect x="355" y="180" width="250" height="60" rx="9" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="480" y="206" text-anchor="middle" class="label">跑得慢</text>
+  <text x="480" y="226" text-anchor="middle" class="sub">慢 / GPU 利用率低</text>
+  <rect x="640" y="180" width="250" height="60" rx="9" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="765" y="206" text-anchor="middle" class="label">跑挂了</text>
+  <text x="765" y="226" text-anchor="middle" class="sub">退出 / hang / OOM / 掉卡</text>
+  <path d="M480 152 L195 178" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M480 152 L480 178" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M480 152 L765 178" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M195 240 L470 290" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M480 240 L480 290" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M765 240 L490 290" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="350" y="292" width="260" height="52" rx="9" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="480" y="314" text-anchor="middle" class="clabel">看控制面</text>
+  <text x="480" y="334" text-anchor="middle" class="sub">任务状态 / watcher 是否同步</text>
+  <path d="M480 344 L480 370" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="350" y="370" width="260" height="52" rx="9" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="480" y="392" text-anchor="middle" class="clabel">看 K8s 对象</text>
+  <text x="480" y="412" text-anchor="middle" class="sub">get -owide / describe / Event</text>
+  <path d="M480 422 L480 448" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="350" y="448" width="260" height="52" rx="9" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="480" y="470" text-anchor="middle" class="clabel">看容器日志</text>
+  <text x="480" y="490" text-anchor="middle" class="sub">logs --previous，抓首个 ERROR</text>
+  <path d="M480 500 L480 526" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="350" y="526" width="260" height="52" rx="9" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="480" y="548" text-anchor="middle" class="clabel">看设备健康</text>
+  <text x="480" y="568" text-anchor="middle" class="sub">nvidia-smi / dcgmi / dmesg</text>
+  <path d="M480 578 L480 604" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="350" y="604" width="260" height="52" rx="9" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="480" y="626" text-anchor="middle" class="clabel">看通信（多机）</text>
+  <text x="480" y="646" text-anchor="middle" class="sub">NCCL_DEBUG · topo -m</text>
+  <path d="M480 656 L480 682" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="350" y="682" width="260" height="52" rx="9" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="480" y="704" text-anchor="middle" class="clabel">定位到层 · 止损优先</text>
+  <text x="480" y="724" text-anchor="middle" class="sub">隔离坏节点 / 重调度 / 回退</text>
+  <path d="M480 734 L480 760" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <rect x="350" y="760" width="260" height="52" rx="9" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="480" y="782" text-anchor="middle" class="clabel">对症处置 · 复测闭环</text>
+  <text x="480" y="802" text-anchor="middle" class="sub">复测同一指标，确认闭环</text>
+</svg>

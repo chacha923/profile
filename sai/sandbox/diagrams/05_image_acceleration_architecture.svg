@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+  </defs>
+  <rect width="1200" height="660" fill="#ffffff"/>
+  <text x="600" y="38" font-size="19" fill="#111827" text-anchor="middle" font-weight="600">面向 Agent 场景的镜像加速分层落地（假设落地）</text>
+  <text x="600" y="62" font-size="12" fill="#6b7280" text-anchor="middle">预热 / Lazy Pull / P2P 三层正交，按瓶颈组合；只读 rootfs 与会话可写层分离</text>
+  <rect x="30" y="110" width="215" height="300" rx="10" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+  <text x="137.5" y="142" font-size="15" fill="#a16207" text-anchor="middle" font-weight="600">① 构建侧</text>
+  <rect x="44" y="158" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="137.5" y="182" font-size="11" fill="#374151" text-anchor="middle">Tekton + buildx</text>
+  <rect x="44" y="208" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="137.5" y="232" font-size="11" fill="#374151" text-anchor="middle">containerd / nerdctl</text>
+  <rect x="44" y="258" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="137.5" y="282" font-size="11" fill="#374151" text-anchor="middle">镜像层收敛 / 基础镜像</text>
+  <rect x="44" y="308" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="137.5" y="332" font-size="11" fill="#374151" text-anchor="middle">[+] nydus 格式转换 step</text>
+  <line x1="245" y1="260.0" x2="257" y2="260.0" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="257" y="110" width="215" height="300" rx="10" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+  <text x="364.5" y="142" font-size="15" fill="#a16207" text-anchor="middle" font-weight="600">② 镜像仓库</text>
+  <rect x="271" y="158" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="364.5" y="182" font-size="11" fill="#374151" text-anchor="middle">Harbor</text>
+  <rect x="271" y="208" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="364.5" y="232" font-size="11" fill="#374151" text-anchor="middle">内容寻址去重</text>
+  <rect x="271" y="258" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="364.5" y="282" font-size="11" fill="#374151" text-anchor="middle">就近缓存 / pull-through</text>
+  <line x1="472" y1="260.0" x2="484" y2="260.0" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="484" y="110" width="215" height="300" rx="10" fill="#f9fafb" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="591.5" y="142" font-size="15" fill="#4b5563" text-anchor="middle" font-weight="600">③ 分发层</text>
+  <rect x="498" y="158" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="591.5" y="182" font-size="11" fill="#374151" text-anchor="middle">预热：热镜像铺节点</text>
+  <rect x="498" y="208" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="591.5" y="232" font-size="11" fill="#374151" text-anchor="middle">Lazy Pull：nydusd 按需</text>
+  <rect x="498" y="258" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="591.5" y="282" font-size="11" fill="#374151" text-anchor="middle">P2P：Dragonfly 收敛回源</text>
+  <line x1="699" y1="260.0" x2="711" y2="260.0" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="711" y="110" width="215" height="300" rx="10" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+  <text x="818.5" y="142" font-size="15" fill="#a16207" text-anchor="middle" font-weight="600">④ 节点 containerd</text>
+  <rect x="725" y="158" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="818.5" y="182" font-size="11" fill="#374151" text-anchor="middle">snapshotter overlayfs→nydus</text>
+  <rect x="725" y="208" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="818.5" y="232" font-size="11" fill="#374151" text-anchor="middle">只读 rootfs：加速分发</text>
+  <rect x="725" y="258" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="818.5" y="282" font-size="11" fill="#374151" text-anchor="middle">会话可写层：本地 NVMe</text>
+  <line x1="926" y1="260.0" x2="938" y2="260.0" stroke="#2563eb" stroke-width="2.2" marker-end="url(#ab)"/>
+  <rect x="938" y="110" width="215" height="300" rx="10" fill="#f9fafb" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="1045.5" y="142" font-size="15" fill="#4b5563" text-anchor="middle" font-weight="600">⑤ Sandbox runtime</text>
+  <rect x="952" y="158" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="1045.5" y="182" font-size="11" fill="#374151" text-anchor="middle">容器 / microVM</text>
+  <rect x="952" y="208" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="1045.5" y="232" font-size="11" fill="#374151" text-anchor="middle">Pool/Snapshot 摘 runtime 延迟</text>
+  <rect x="952" y="258" width="187" height="40" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="1045.5" y="282" font-size="11" fill="#374151" text-anchor="middle">生命周期 Event 上报</text>
+  <rect x="30" y="450" width="1135" height="64" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="55" y="477" font-size="13.5" fill="#15803d" text-anchor="start" font-weight="600">贯穿层：可观测 + 失败原因可解释回写</text>
+  <text x="55" y="500" font-size="11.5" fill="#374151" text-anchor="start">每个 Sandbox 上报：镜像本地命中 / 拉取耗时 / unpack 耗时 / 按需拉取阻塞次数 → 把 ImagePullBackOff 翻译成用户可懂原因（复用 SAE + Bigeyes 经验）</text>
+  <rect x="30" y="536" width="1135" height="50" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="55" y="566" font-size="12.5" fill="#1d4ed8" text-anchor="start" font-weight="600">落地第一步 → 先打点量化瓶颈（镜像层 vs runtime 层），再决定先上预热 / Lazy Pull / P2P；灰度上线并保留回退 overlayfs + 直连仓库</text>
+  <rect x="880" y="92" width="16" height="12" rx="2" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="902" y="102" font-size="11" fill="#6b7280" text-anchor="start">真实经验</text>
+  <rect x="970" y="92" width="16" height="12" rx="2" fill="#fefce8" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="992" y="102" font-size="11" fill="#6b7280" text-anchor="start">混合（真实链路+理论扩展）</text>
+  <rect x="1140" y="92" width="16" height="12" rx="2" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="1115" y="118" font-size="11" fill="#6b7280" text-anchor="start">理论对标</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 600" width="1020" height="600">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .label { font-size: 15px; font-weight: 600; fill: #111827; }
+    .clabel { font-size: 14px; font-weight: 600; fill: #111827; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .tag { font-size: 12px; font-weight: 600; fill: #1f2937; }
+    .edge { font-size: 11px; fill: #6b7280; }
+    .cmd { font-family: 'SF Mono','Menlo','Consolas',monospace; font-size: 11px; fill: #1f2937; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1020" height="600" fill="#ffffff"/>
+  <text x="40" y="46" class="title">GPU 排障命令速查</text>
+  <text x="40" y="74" class="sub">按排障层次组织：每组命令旁标注「看什么 / 异常说明什么」。</text>
+  <rect x="40" y="98" width="300" height="200" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="56" y="128" class="clabel">设备健康（nvidia-smi）</text>
+  <line x1="56" y1="140" x2="324" y2="140" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="56" y="164" class="cmd">nvidia-smi</text>
+  <text x="56" y="188" class="cmd">nvidia-smi -q -d ECC,TEMP,CLOCK</text>
+  <text x="56" y="212" class="cmd">nvidia-smi topo -m</text>
+  <text x="56" y="236" class="sub">→ 利用率锯齿 / 显存满 / 降频</text>
+  <rect x="360" y="98" width="300" height="200" rx="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="376" y="128" class="clabel">XID / 内核错误</text>
+  <line x1="376" y1="140" x2="644" y2="140" stroke="#fecaca" stroke-width="1"/>
+  <text x="376" y="164" class="cmd">dmesg -T | grep -iE 'xid|ecc'</text>
+  <text x="376" y="200" class="sub">→ Xid 48/79 = 硬故障</text>
+  <text x="376" y="224" class="sub">→ 立即隔离节点</text>
+  <rect x="680" y="98" width="300" height="200" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="696" y="128" class="clabel">DCGM 设备诊断</text>
+  <line x1="696" y1="140" x2="964" y2="140" stroke="#fed7aa" stroke-width="1"/>
+  <text x="696" y="164" class="cmd">dcgmi discovery -l</text>
+  <text x="696" y="188" class="cmd">dcgmi diag -r 1</text>
+  <text x="696" y="212" class="sub">→ 诊断是否 PASS</text>
+  <text x="696" y="236" class="sub">→ 坏卡自动发现的基础</text>
+  <rect x="40" y="330" width="300" height="200" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="56" y="360" class="clabel">K8s 任务侧</text>
+  <line x1="56" y1="372" x2="324" y2="372" stroke="#d1d5db" stroke-width="1"/>
+  <text x="56" y="396" class="cmd">kubectl get pod -owide</text>
+  <text x="56" y="420" class="cmd">kubectl describe pod &lt;pod&gt;</text>
+  <text x="56" y="444" class="cmd">kubectl logs &lt;pod&gt; --previous</text>
+  <text x="56" y="468" class="sub">→ 区分调度 / 启动 / 运行期</text>
+  <rect x="360" y="330" width="300" height="200" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="376" y="360" class="clabel">通信（多机训练）</text>
+  <line x1="376" y1="372" x2="644" y2="372" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="376" y="396" class="cmd">export NCCL_DEBUG=INFO</text>
+  <text x="376" y="420" class="cmd">NCCL_DEBUG_SUBSYS=INIT,NET,COLL</text>
+  <text x="376" y="444" class="cmd">all_reduce_perf 基准</text>
+  <text x="376" y="468" class="sub">→ NET/IB vs NET/Socket</text>
+</svg>

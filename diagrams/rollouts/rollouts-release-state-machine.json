@@ -1,0 +1,453 @@
+{
+  "template_type": "architecture",
+  "style": 1,
+  "width": 1600,
+  "height": 1080,
+  "title": "一次发版的完整状态机",
+  "subtitle": "覆盖灰度、暂停、HPA、CronHPA、回滚、重启、状态收敛",
+  "containers": [
+    {
+      "x": 60,
+      "y": 130,
+      "width": 1480,
+      "height": 130,
+      "label": "",
+      "side_label": "发现与建模",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 290,
+      "width": 1480,
+      "height": 210,
+      "label": "",
+      "side_label": "渐进发布主链路",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 530,
+      "width": 1480,
+      "height": 210,
+      "label": "",
+      "side_label": "扰动与异常处理",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 770,
+      "width": 1480,
+      "height": 190,
+      "label": "",
+      "side_label": "收敛与完成",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "idle",
+      "kind": "rect",
+      "x": 120,
+      "y": 170,
+      "width": 160,
+      "height": 60,
+      "label": "稳定态",
+      "type_label": "初始",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "detect",
+      "kind": "double_rect",
+      "x": 400,
+      "y": 162,
+      "width": 220,
+      "height": 76,
+      "label": "发现模板变更",
+      "sublabel": "Deployment 模板更新 / 新版本进入",
+      "type_label": "事件",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "sync",
+      "kind": "rect",
+      "x": 760,
+      "y": 170,
+      "width": 200,
+      "height": 60,
+      "label": "同步模板与 Selector",
+      "type_label": "同步",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "newrs",
+      "kind": "double_rect",
+      "x": 1110,
+      "y": 162,
+      "width": 240,
+      "height": 76,
+      "label": "匹配或创建 newRS",
+      "sublabel": "按 hash 找到新版本 RS",
+      "type_label": "RS",
+      "fill": "#faf5ff",
+      "stroke": "#7c3aed"
+    },
+    {
+      "id": "grayinit",
+      "kind": "rect",
+      "x": 160,
+      "y": 360,
+      "width": 220,
+      "height": 74,
+      "label": "初始化灰度副本",
+      "type_label": "Step 0",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "grayrun",
+      "kind": "double_rect",
+      "x": 500,
+      "y": 350,
+      "width": 250,
+      "height": 94,
+      "label": "灰度运行中",
+      "sublabel": "newRS 启动，oldRS 仍承接主流量",
+      "type_label": "运行",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "pause",
+      "kind": "rect",
+      "x": 900,
+      "y": 360,
+      "width": 220,
+      "height": 74,
+      "label": "灰度暂停 / 验证",
+      "type_label": "Pause",
+      "fill": "#fff7ed",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "stepup",
+      "kind": "double_rect",
+      "x": 1240,
+      "y": 350,
+      "width": 220,
+      "height": 94,
+      "label": "继续推进下一步",
+      "sublabel": "扩 newRS、缩 oldRS、调整流量",
+      "type_label": "Step N",
+      "fill": "#faf5ff",
+      "stroke": "#7c3aed"
+    },
+    {
+      "id": "hpaevent",
+      "kind": "hexagon",
+      "x": 140,
+      "y": 600,
+      "width": 200,
+      "height": 82,
+      "label": "HPA 触发",
+      "type_label": "指标驱动",
+      "fill": "#ffffff",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "cronhpaevent",
+      "kind": "hexagon",
+      "x": 420,
+      "y": 600,
+      "width": 220,
+      "height": 82,
+      "label": "CronHPA 触发",
+      "type_label": "定时驱动",
+      "fill": "#ffffff",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "rebalance",
+      "kind": "rect",
+      "x": 760,
+      "y": 604,
+      "width": 240,
+      "height": 74,
+      "label": "副本重平衡",
+      "type_label": "扩缩容处理",
+      "fill": "#fff7ed",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "timeout",
+      "kind": "rect",
+      "x": 1100,
+      "y": 604,
+      "width": 180,
+      "height": 74,
+      "label": "超时 / 中止 / 失败",
+      "type_label": "异常",
+      "fill": "#fef2f2",
+      "stroke": "#dc2626",
+      "flat": true
+    },
+    {
+      "id": "rollback",
+      "kind": "double_rect",
+      "x": 1360,
+      "y": 594,
+      "width": 150,
+      "height": 94,
+      "label": "回滚 / 重启 / 恢复",
+      "sublabel": "控制动作进入恢复路径",
+      "type_label": "恢复",
+      "fill": "#fef2f2",
+      "stroke": "#dc2626"
+    },
+    {
+      "id": "fulltraffic",
+      "kind": "rect",
+      "x": 180,
+      "y": 830,
+      "width": 220,
+      "height": 74,
+      "label": "新版本接管全部流量",
+      "type_label": "最终切流",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "flat": true
+    },
+    {
+      "id": "cleanup",
+      "kind": "rect",
+      "x": 540,
+      "y": 830,
+      "width": 200,
+      "height": 74,
+      "label": "缩容 oldRS",
+      "type_label": "清理",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "flat": true
+    },
+    {
+      "id": "statusdone",
+      "kind": "rect",
+      "x": 880,
+      "y": 830,
+      "width": 220,
+      "height": 74,
+      "label": "状态收敛",
+      "type_label": "completedAt / step close",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "flat": true
+    },
+    {
+      "id": "completed",
+      "kind": "double_rect",
+      "x": 1240,
+      "y": 820,
+      "width": 220,
+      "height": 94,
+      "label": "完成态",
+      "sublabel": "newRS 稳定，oldRS 退出，状态关闭",
+      "type_label": "稳定",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a"
+    }
+  ],
+  "arrows": [
+    {
+      "source": "idle",
+      "target": "detect",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "detect",
+      "target": "sync",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "sync",
+      "target": "newrs",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "newrs",
+      "target": "grayinit",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "write",
+      "route_points": [[1230,238], [1230,320], [270,320], [270,360]]
+    },
+    {
+      "source": "grayinit",
+      "target": "grayrun",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "write"
+    },
+    {
+      "source": "grayrun",
+      "target": "pause",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "pause",
+      "target": "stepup",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "hpaevent",
+      "target": "rebalance",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "async",
+      "dashed": true
+    },
+    {
+      "source": "cronhpaevent",
+      "target": "rebalance",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "async",
+      "dashed": true
+    },
+    {
+      "source": "pause",
+      "target": "rebalance",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "feedback",
+      "dashed": true
+    },
+    {
+      "source": "rebalance",
+      "target": "stepup",
+      "source_port": "top",
+      "target_port": "bottom",
+      "flow": "control",
+      "route_points": [[880,604], [880,520], [1350,520], [1350,444]]
+    },
+    {
+      "source": "grayrun",
+      "target": "timeout",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "feedback",
+      "dashed": true,
+      "route_points": [[620,444], [620,560], [1190,560], [1190,604]]
+    },
+    {
+      "source": "pause",
+      "target": "timeout",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "feedback",
+      "dashed": true
+    },
+    {
+      "source": "stepup",
+      "target": "timeout",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "feedback",
+      "dashed": true,
+      "route_points": [[1350,444], [1350,560], [1210,560], [1210,604]]
+    },
+    {
+      "source": "timeout",
+      "target": "rollback",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "feedback"
+    },
+    {
+      "source": "rollback",
+      "target": "grayrun",
+      "source_port": "top",
+      "target_port": "bottom",
+      "flow": "control",
+      "route_points": [[1435,594], [1435,540], [620,540], [620,444]]
+    },
+    {
+      "source": "stepup",
+      "target": "fulltraffic",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "write",
+      "route_points": [[1350,444], [1350,790], [290,790], [290,830]]
+    },
+    {
+      "source": "fulltraffic",
+      "target": "cleanup",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "write"
+    },
+    {
+      "source": "cleanup",
+      "target": "statusdone",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "feedback"
+    },
+    {
+      "source": "statusdone",
+      "target": "completed",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "rollback",
+      "target": "statusdone",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "control",
+      "route_points": [[1435,688], [1435,780], [990,780], [990,830]]
+    }
+  ],
+  "legend": [
+    { "flow": "control", "label": "状态推进 / 控制动作" },
+    { "flow": "write", "label": "副本或流量变更" },
+    { "flow": "feedback", "label": "健康反馈 / 超时 / 回滚反馈" },
+    { "flow": "async", "label": "HPA / CronHPA 外部扰动" }
+  ],
+  "legend_position": "bottom-left",
+  "legend_box": true,
+  "legend_box_fill": "#ffffff",
+  "legend_y": 1020
+}

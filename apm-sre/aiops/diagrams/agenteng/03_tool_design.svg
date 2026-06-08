@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 660" width="1080" height="660">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="660" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">工具/Function Calling 取证回路与工具设计</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">Agent 的能力上限取决于工具设计：好的工具让模型少犯错，坏的工具放大幻觉</text>
+
+  <rect x="60" y="100" width="180" height="64" rx="8" class="box violet"/>
+  <text x="150" y="128" text-anchor="middle" class="h">LLM 规划</text>
+  <text x="150" y="150" text-anchor="middle" class="s">选工具 + 填参数</text>
+
+  <rect x="320" y="100" width="180" height="64" rx="8" class="box blue"/>
+  <text x="410" y="128" text-anchor="middle" class="h">工具网关</text>
+  <text x="410" y="150" text-anchor="middle" class="s">鉴权/限流/超时</text>
+
+  <rect x="580" y="100" width="180" height="64" rx="8" class="box green"/>
+  <text x="670" y="128" text-anchor="middle" class="h">真实系统</text>
+  <text x="670" y="150" text-anchor="middle" class="s">指标/日志/链路</text>
+
+  <rect x="840" y="100" width="180" height="64" rx="8" class="box amber"/>
+  <text x="930" y="128" text-anchor="middle" class="h">证据对象</text>
+  <text x="930" y="150" text-anchor="middle" class="s">结构化 + 来源</text>
+
+  <path d="M240 132 L320 132" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M500 132 L580 132" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M760 132 L840 132" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M930 164 C930 210 200 210 150 168" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <text x="520" y="205" class="s">证据回灌，进入下一轮推理</text>
+
+  <rect x="80" y="245" width="440" height="180" rx="8" class="box green"/>
+  <text x="110" y="273" class="h">好工具的设计原则</text>
+  <text x="110" y="298" class="s">· 默认只读，写操作单独分级</text>
+  <text x="110" y="318" class="s">· 语义清晰的名字和参数描述(给模型读)</text>
+  <text x="110" y="338" class="s">· 输入约束：时间窗、实体、分页，防漫查</text>
+  <text x="110" y="358" class="s">· 输出结构化：来源/时间/实体/关键值/置信度</text>
+  <text x="110" y="378" class="s">· 错误可读：超时/无权限/空结果要区分</text>
+  <text x="110" y="400" class="s">· 粒度适中：太细模型要拼，太粗不可控</text>
+
+  <rect x="555" y="245" width="445" height="180" rx="8" class="box red"/>
+  <text x="585" y="273" class="h">坏工具放大幻觉</text>
+  <text x="585" y="298" class="s">· 返回大段非结构化文本 → 模型乱解读</text>
+  <text x="585" y="318" class="s">· 空结果不显式标注 → 模型脑补</text>
+  <text x="585" y="338" class="s">· 参数语义模糊 → 模型填错</text>
+  <text x="585" y="358" class="s">· 无超时无限流 → 拖垮系统</text>
+  <text x="585" y="378" class="s">· 一个工具干太多事 → 难审计</text>
+  <text x="585" y="400" class="s">· 写权限太大 → 误操作线上</text>
+
+  <rect x="80" y="445" width="920" height="90" rx="8" class="box amber"/>
+  <text x="110" y="473" class="h">关键：让"空结果"和"不确定"成为合法返回</text>
+  <text x="110" y="498" class="s">工具查不到时要返回明确的"无数据/降级"标记，而不是空字符串；模型据此输出 Unknown，</text>
+  <text x="110" y="520" class="s">而不是编造。这是 RCA 防幻觉的工具侧基础——证据缺失本身也是一种证据。</text>
+
+  <rect x="80" y="555" width="920" height="90" rx="8" class="box blue"/>
+  <text x="110" y="583" class="h">面试落点</text>
+  <text x="110" y="608" class="s">· 能讲"工具设计决定 Agent 上限"，比只说"会用 function calling"深；</text>
+  <text x="110" y="630" class="s">· 强调只读优先、输出结构化为证据对象、空结果显式化，这三条直接对应 RCA 可信度。</text>
+</svg>

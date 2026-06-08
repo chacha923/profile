@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 760" width="1080" height="760">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .q { font-size: 13px; font-weight: 700; fill: #1d4ed8; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="760" fill="#ffffff"/>
+  <text x="540" y="42" text-anchor="middle" class="title">异常检测算法选型决策</text>
+  <text x="540" y="70" text-anchor="middle" class="sub">没有银弹：按"数据形态 + 是否有标注 + 季节性 + 可解释性"选，而不是上来就用深度学习</text>
+
+  <rect x="420" y="100" width="240" height="56" rx="8" class="box blue"/>
+  <text x="540" y="125" text-anchor="middle" class="q">指标是单维还是多维？</text>
+  <text x="540" y="144" text-anchor="middle" class="s">single KPI vs 多 KPI 联合</text>
+
+  <path d="M460 156 L250 200" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M620 156 L830 200" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="330" y="185" class="s">单指标</text>
+  <text x="720" y="185" class="s">多指标</text>
+
+  <rect x="60" y="205" width="380" height="56" rx="8" class="box green"/>
+  <text x="250" y="230" text-anchor="middle" class="q">有明显周期/季节性吗？</text>
+  <text x="250" y="249" text-anchor="middle" class="s">日内/周内波动</text>
+
+  <path d="M150 261 L110 305" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M350 261 L360 305" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="95" y="290" class="s">有</text>
+  <text x="365" y="290" class="s">无/弱</text>
+
+  <rect x="40" y="310" width="180" height="120" rx="8" class="box amber"/>
+  <text x="130" y="335" text-anchor="middle" class="h">分解/预测残差</text>
+  <text x="55" y="360" class="t">STL 分解</text>
+  <text x="55" y="382" class="t">Holt-Winters</text>
+  <text x="55" y="404" class="t">Prophet</text>
+  <text x="55" y="424" class="s">去季节后看残差</text>
+
+  <rect x="250" y="310" width="180" height="120" rx="8" class="box cyan"/>
+  <text x="340" y="335" text-anchor="middle" class="h">统计/规则</text>
+  <text x="265" y="360" class="t">3σ / Z-score</text>
+  <text x="265" y="382" class="t">EWMA / MA</text>
+  <text x="265" y="404" class="t">同环比 / 分位数</text>
+  <text x="265" y="424" class="s">轻量、可解释</text>
+
+  <rect x="640" y="205" width="380" height="56" rx="8" class="box violet"/>
+  <text x="830" y="230" text-anchor="middle" class="q">有标注样本吗？</text>
+  <text x="830" y="249" text-anchor="middle" class="s">历史故障是否标好</text>
+
+  <path d="M740 261 L700 305" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M940 261 L950 305" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="690" y="290" class="s">无(常态)</text>
+  <text x="955" y="290" class="s">有</text>
+
+  <rect x="620" y="310" width="180" height="120" rx="8" class="box green"/>
+  <text x="710" y="335" text-anchor="middle" class="h">无监督</text>
+  <text x="635" y="360" class="t">孤立森林 iForest</text>
+  <text x="635" y="382" class="t">One-Class SVM</text>
+  <text x="635" y="404" class="t">聚类 / PCA 降维</text>
+  <text x="635" y="424" class="s">高维联合异常</text>
+
+  <rect x="830" y="310" width="190" height="120" rx="8" class="box blue"/>
+  <text x="925" y="335" text-anchor="middle" class="h">有监督/半监督</text>
+  <text x="845" y="360" class="t">GBDT / XGBoost</text>
+  <text x="845" y="382" class="t">LSTM / 深度模型</text>
+  <text x="845" y="404" class="t">主动学习补标</text>
+  <text x="845" y="424" class="s">标注成本高、易漂移</text>
+
+  <rect x="80" y="475" width="920" height="110" rx="8" class="box amber"/>
+  <text x="110" y="503" class="h">关键权衡(面试常追问)</text>
+  <text x="110" y="527" class="s">· 阈值难定：静态阈值会随业务增长失效 → 用动态基线/分位数/自适应；</text>
+  <text x="110" y="549" class="s">· 误报 vs 漏报：调高灵敏度漏报少但噪声大 → 用 Precision/Recall/F1 + 业务容忍度权衡；</text>
+  <text x="110" y="571" class="s">· 概念漂移：模型要定期重训 + 在线更新；冷启动期先用统计法兜底。</text>
+
+  <rect x="80" y="600" width="920" height="120" rx="8" class="box violet"/>
+  <text x="110" y="628" class="h">工程落地顺序(我会怎么选)</text>
+  <text x="110" y="652" class="s">1. 先上统计法(3σ/同环比/分位数)拿到 80% 价值，可解释、好运维；</text>
+  <text x="110" y="674" class="s">2. 对强季节性核心 KPI 上 STL/Prophet 去季节；</text>
+  <text x="110" y="696" class="s">3. 多维/联合异常再上无监督(iForest)；深度模型只在有标注、有规模、能持续重训时才上。</text>
+</svg>

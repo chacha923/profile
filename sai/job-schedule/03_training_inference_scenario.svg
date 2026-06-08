@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+  <rect width="1400" height="820" fill="#f6f8fb"/>
+  <text x="70" y="70" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#17202a">训推混部典型业务场景</text>
+  <text x="70" y="112" font-family="Arial, sans-serif" font-size="18" fill="#52616f">推理低谷释放机会容量，训练队列消化低优任务，高峰快速退让</text>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#34495e"/>
+    </marker>
+  </defs>
+  <rect x="90" y="180" width="280" height="160" rx="8" fill="#ffffff" stroke="#2f80ed" stroke-width="3"/>
+  <text x="130" y="230" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f4e79">在线推理流量</text>
+  <text x="130" y="268" font-family="Arial, sans-serif" font-size="18" fill="#273746">P95 / P99</text>
+  <text x="130" y="298" font-family="Arial, sans-serif" font-size="18" fill="#273746">队列长度</text>
+
+  <rect x="90" y="480" width="280" height="160" rx="8" fill="#ffffff" stroke="#8e44ad" stroke-width="3"/>
+  <text x="130" y="530" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#6c3483">训练任务队列</text>
+  <text x="130" y="568" font-family="Arial, sans-serif" font-size="18" fill="#273746">短任务 / 低优</text>
+  <text x="130" y="598" font-family="Arial, sans-serif" font-size="18" fill="#273746">checkpoint / retry</text>
+
+  <rect x="535" y="310" width="330" height="190" rx="8" fill="#ffffff" stroke="#2e7d32" stroke-width="3"/>
+  <text x="585" y="365" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#1b5e20">混部机会池</text>
+  <text x="585" y="405" font-family="Arial, sans-serif" font-size="18" fill="#273746">低水位：接训练</text>
+  <text x="585" y="435" font-family="Arial, sans-serif" font-size="18" fill="#273746">高水位：回收训练</text>
+  <text x="585" y="465" font-family="Arial, sans-serif" font-size="18" fill="#273746">持续监控干扰</text>
+
+  <rect x="1030" y="180" width="280" height="160" rx="8" fill="#ffffff" stroke="#2f80ed" stroke-width="3"/>
+  <text x="1070" y="230" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f4e79">推理服务</text>
+  <text x="1070" y="268" font-family="Arial, sans-serif" font-size="18" fill="#273746">用户请求优先</text>
+  <text x="1070" y="298" font-family="Arial, sans-serif" font-size="18" fill="#273746">尾延迟保护</text>
+
+  <rect x="1030" y="480" width="280" height="160" rx="8" fill="#ffffff" stroke="#8e44ad" stroke-width="3"/>
+  <text x="1070" y="530" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#6c3483">训练回退池</text>
+  <text x="1070" y="568" font-family="Arial, sans-serif" font-size="18" fill="#273746">抢占后恢复</text>
+  <text x="1070" y="598" font-family="Arial, sans-serif" font-size="18" fill="#273746">失败退避熔断</text>
+
+  <line x1="370" y1="260" x2="535" y2="365" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="370" y1="560" x2="535" y2="445" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="865" y1="365" x2="1030" y2="260" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="865" y1="445" x2="1030" y2="560" stroke="#34495e" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="430" y="300" font-family="Arial, sans-serif" font-size="17" fill="#52616f">低谷判断</text>
+  <text x="430" y="585" font-family="Arial, sans-serif" font-size="17" fill="#52616f">任务准入</text>
+  <text x="905" y="300" font-family="Arial, sans-serif" font-size="17" fill="#52616f">容量保护</text>
+  <text x="905" y="585" font-family="Arial, sans-serif" font-size="17" fill="#52616f">抢占回退</text>
+</svg>

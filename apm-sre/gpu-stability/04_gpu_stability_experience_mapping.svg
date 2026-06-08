@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420 980" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect width="1420" height="980" fill="#f8fafc"/>
+<text x="40" y="46" fill="#0f172a" font-size="24" font-weight="800">GPU 训练/推理稳定性 · 经验边界映射</text>
+<text x="40" y="72" fill="#64748b" font-size="14">面试自检：每个能力先归正确的一档，再决定措辞强弱——绝不把右栏说成自己的项目</text>
+<rect x="40" y="98" width="435" height="46" rx="9" fill="#059669"/>
+<text x="257" y="127" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="800">真实经验 · 可深聊数据模型与取舍</text>
+<rect x="40" y="156" width="435" height="60" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="56" y="181" fill="#059669" font-size="15" font-weight="700">训练任务托管</text>
+<text x="56" y="202" fill="#475569" font-size="12">SAI 500+ TFJob：生命周期/多副本/节点池/存储/重启迁移</text>
+<rect x="40" y="225" width="435" height="60" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="56" y="250" fill="#059669" font-size="15" font-weight="700">推理服务托管</text>
+<text x="56" y="271" fill="#475569" font-size="12">SAI 600+ 服务：多云规格状态/扩缩容/PD 平台适配</text>
+<rect x="40" y="294" width="435" height="60" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="56" y="319" fill="#059669" font-size="15" font-weight="700">GPU 资源池治理</text>
+<text x="56" y="340" fill="#475569" font-size="12">独占/共享/抢占/CPU 资源组抽象</text>
+<rect x="40" y="363" width="435" height="60" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="56" y="388" fill="#059669" font-size="15" font-weight="700">GPU 排障</text>
+<text x="56" y="409" fill="#475569" font-size="12">训练+推理 GPU 故障定位（平台侧）</text>
+<rect x="40" y="432" width="435" height="60" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="56" y="457" fill="#059669" font-size="15" font-weight="700">告警治理</text>
+<text x="56" y="478" fill="#475569" font-size="12">Bigeyes：聚合/抖动抑制/限流/飞书闭环</text>
+<rect x="40" y="501" width="435" height="60" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="56" y="526" fill="#059669" font-size="15" font-weight="700">发布与变更风控</text>
+<text x="56" y="547" fill="#475569" font-size="12">SAE 灰度回滚 · 小红书 riskfree 红线/封网</text>
+<rect x="40" y="570" width="435" height="60" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="56" y="595" fill="#059669" font-size="15" font-weight="700">状态一致性</text>
+<text x="56" y="616" fill="#475569" font-size="12">SAI 状态同步与补偿 · 漂移/缺失恢复</text>
+<rect x="493" y="98" width="435" height="46" rx="9" fill="#2563eb"/>
+<text x="710" y="127" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="800">部分真做 + 部分对标</text>
+<rect x="493" y="156" width="435" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="509" y="181" fill="#2563eb" font-size="15" font-weight="700">NCCL/RDMA 通信</text>
+<text x="509" y="202" fill="#475569" font-size="12">场景接触过；调参与通信优化对标</text>
+<rect x="493" y="225" width="435" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="509" y="250" fill="#2563eb" font-size="15" font-weight="700">checkpoint 容错</text>
+<text x="509" y="271" fill="#475569" font-size="12">存储挂载/重启真做；续训策略对标</text>
+<rect x="493" y="294" width="435" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="509" y="319" fill="#2563eb" font-size="15" font-weight="700">容量评估</text>
+<text x="509" y="340" fill="#475569" font-size="12">通用资源(FinOps)真做；MFU/显存KV建模对标</text>
+<rect x="493" y="363" width="435" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="509" y="388" fill="#2563eb" font-size="15" font-weight="700">弹性与冷启动</text>
+<text x="509" y="409" fill="#475569" font-size="12">扩缩容真做；大权重预热优化对标</text>
+<rect x="493" y="432" width="435" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="509" y="457" fill="#2563eb" font-size="15" font-weight="700">容灾</text>
+<text x="509" y="478" fill="#475569" font-size="12">多集群/多机房模型真做；多活演练对标</text>
+<rect x="493" y="501" width="435" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="509" y="526" fill="#2563eb" font-size="15" font-weight="700">故障演练</text>
+<text x="509" y="547" fill="#475569" font-size="12">被动演练+补偿真做；混沌平台对标</text>
+<rect x="946" y="98" width="435" height="46" rx="9" fill="#ea580c"/>
+<text x="1163" y="127" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="800">纯理论对标 · 不能包装成项目</text>
+<rect x="946" y="156" width="435" height="60" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="962" y="181" fill="#ea580c" font-size="15" font-weight="700">训练引擎内核</text>
+<text x="962" y="202" fill="#475569" font-size="12">Megatron/DeepSpeed · TP/PP/DP 并行调优</text>
+<rect x="946" y="225" width="435" height="60" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="962" y="250" fill="#ea580c" font-size="15" font-weight="700">推理引擎内核</text>
+<text x="962" y="271" fill="#475569" font-size="12">vLLM/SGLang 调度与显存内部实现</text>
+<rect x="946" y="294" width="435" height="60" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="962" y="319" fill="#ea580c" font-size="15" font-weight="700">推理 SLO 指标</text>
+<text x="962" y="340" fill="#475569" font-size="12">TTFT/TPOT/长尾——引擎语义指标</text>
+<rect x="946" y="363" width="435" height="60" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="962" y="388" fill="#ea580c" font-size="15" font-weight="700">系统化压测</text>
+<text x="962" y="409" fill="#475569" font-size="12">训练吞吐扫描 / GenAI-Perf 曲线建模</text>
+<rect x="946" y="432" width="435" height="60" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="962" y="457" fill="#ea580c" font-size="15" font-weight="700">GPU 硬件运维</text>
+<text x="962" y="478" fill="#475569" font-size="12">掉卡/固件/ECC 修复——平台侧仅感知</text>
+<rect x="40" y="860" width="1340" height="84" rx="10" fill="#1e293b"/>
+<text x="64" y="890" fill="#fff" font-size="16" font-weight="800">边界总则</text>
+<text x="64" y="914" fill="#e2e8f0" font-size="13.5">开场先声明没专职做 GPU 稳定性 SRE；左栏可主动深聊，中栏说清「哪块真做、哪块对标」，右栏只讲“对标理解 + 如果落地怎么做”。</text>
+<text x="64" y="934" fill="#e2e8f0" font-size="13.5">绝不编造 MFU/P99 优化收益、压测规模、混沌平台。差异化卖点：既懂训推服务托管控制面，又能从 SRE 视角设计训练+推理稳定性体系。</text>
+</svg>

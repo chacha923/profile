@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 680" width="1080" height="680">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="680" fill="#ffffff"/>
+  <text x="540" y="42" text-anchor="middle" class="title">端到端智能诊断闭环（AI-in-SRE-Loop）</text>
+  <text x="540" y="70" text-anchor="middle" class="sub">不止做诊断：事前预防 → 事中检测 → 诊断协同 → 受控止损 → 事后回灌，形成闭环</text>
+
+  <circle cx="540" cy="370" r="120" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="540" y="360" text-anchor="middle" class="h">稳定性闭环</text>
+  <text x="540" y="384" text-anchor="middle" class="s">人机协同</text>
+
+  <rect x="430" y="110" width="220" height="80" rx="8" class="box green"/>
+  <text x="540" y="140" text-anchor="middle" class="h">① 事前预防</text>
+  <text x="540" y="163" text-anchor="middle" class="t">容量预测 / 变更风险评估</text>
+  <text x="540" y="182" text-anchor="middle" class="s">混沌演练 / 预案就绪</text>
+
+  <rect x="800" y="250" width="220" height="80" rx="8" class="box blue"/>
+  <text x="910" y="280" text-anchor="middle" class="h">② 事中检测</text>
+  <text x="910" y="303" text-anchor="middle" class="t">异常检测 / 告警收敛</text>
+  <text x="910" y="322" text-anchor="middle" class="s">SLO 燃尽 / 快速发现</text>
+
+  <rect x="800" y="430" width="220" height="80" rx="8" class="box cyan"/>
+  <text x="910" y="460" text-anchor="middle" class="h">③ 诊断协同</text>
+  <text x="910" y="483" text-anchor="middle" class="t">RCA Agent 取证 + 解释</text>
+  <text x="910" y="502" text-anchor="middle" class="s">替代"拉群救火"</text>
+
+  <rect x="430" y="560" width="220" height="80" rx="8" class="box amber"/>
+  <text x="540" y="590" text-anchor="middle" class="h">④ 受控止损</text>
+  <text x="540" y="613" text-anchor="middle" class="t">预案/回滚/限流建议</text>
+  <text x="540" y="632" text-anchor="middle" class="s">分级审批 + 可回滚</text>
+
+  <rect x="60" y="430" width="220" height="80" rx="8" class="box violet"/>
+  <text x="170" y="460" text-anchor="middle" class="h">⑤ 事后回灌</text>
+  <text x="170" y="483" text-anchor="middle" class="t">复盘 → SOP / 评测集</text>
+  <text x="170" y="502" text-anchor="middle" class="s">知识沉淀为组织资产</text>
+
+  <rect x="60" y="250" width="220" height="80" rx="8" class="box green"/>
+  <text x="170" y="280" text-anchor="middle" class="h">数据飞轮</text>
+  <text x="170" y="303" text-anchor="middle" class="t">数据→工具→知识→反馈</text>
+  <text x="170" y="322" text-anchor="middle" class="s">每轮诊断都让系统更强</text>
+
+  <path d="M650 150 C760 170 800 220 880 250" stroke="#059669" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+  <path d="M910 330 L910 430" stroke="#059669" stroke-width="2.2" marker-end="url(#ar)"/>
+  <path d="M800 500 C700 540 680 555 650 575" stroke="#059669" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+  <path d="M430 600 C320 580 280 540 250 510" stroke="#059669" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+  <path d="M170 430 L170 330" stroke="#059669" stroke-width="2.2" marker-end="url(#ar)"/>
+  <path d="M250 250 C320 200 380 170 430 155" stroke="#059669" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+</svg>

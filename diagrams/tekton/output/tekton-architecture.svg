@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" width="1600" height="980">
+  <defs>
+    <marker id="arrowA" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowB" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+    <marker id="arrowC" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowE" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f97316"/>
+    </marker>
+    <marker id="arrowF" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowH" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+    <filter id="shadowSoft" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <filter id="shadowGlass" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#020617" flood-opacity="0.28"/>
+    </filter>
+    <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { font-size: 30px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 14px; font-weight: 500; fill: #6b7280; }
+    .section { font-size: 13px; font-weight: 700; fill: #2563eb; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #94a3b8; }
+    .node-title { font-size: 18px; font-weight: 700; fill: #111827; }
+    .node-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .node-type { font-size: 12px; font-weight: 700; fill: #9ca3af; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #94a3b8; }
+    </style>
+  </defs>
+  <rect width="1600.0" height="980.0" fill="#ffffff"/>
+  <text x="800.0" y="56" text-anchor="middle" class="title">Tekton 构建发布架构图</text>
+  <text x="800.0" y="82" text-anchor="middle" class="subtitle">从研发触发构建，到 Tekton 编排多语言流水线、镜像扫描入库，再将制品交给 SAE / Rollouts 进入发布链路</text>
+  <rect x="60.0" y="130.0" width="1480.0" height="120.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="20.0" y="190.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">研发入口</text>
+  <rect x="60.0" y="280.0" width="1480.0" height="170.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="20.0" y="365.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">Tekton 控制面</text>
+  <rect x="60.0" y="480.0" width="1480.0" height="230.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="20.0" y="595.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">构建与扫描执行面</text>
+  <rect x="60.0" y="740.0" width="1480.0" height="160.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="20.0" y="820.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">制品与发布目标</text>
+  <path d="M 260.0,186.0 L 280.4,186.0 L 339.6,192.0 L 360.0,192.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 260.0,186.0 L 320.0,186.0 L 320.0,189.0 L 690.0,189.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 940.0,189.0 L 1040.0,189.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 1280.0,189.0 L 1350.0,189.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 480.0,232.0 L 480.0,286.0 L 255.0,286.0 L 255.0,322.0" fill="none" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <path d="M 1160.0,224.0 L 1160.0,286.0 L 590.0,286.0 L 590.0,326.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 380.0,366.0 L 400.4,366.0 L 449.6,364.0 L 470.0,364.0" fill="none" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <path d="M 710.0,364.0 L 730.4,364.0 L 779.6,366.0 L 800.0,366.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 1130.0,364.0 L 1109.6,364.0 L 1060.4,366.0 L 1040.0,366.0" fill="none" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <path d="M 920.0,410.0 L 920.0,470.0 L 220.0,470.0 L 220.0,520.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 330.0,558.0 L 390.0,558.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 640.0,558.0 L 730.0,558.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 1010.0,558.0 L 1090.0,558.0" fill="none" stroke="#f97316" stroke-width="2.4" marker-end="url(#arrowE)"/>
+  <path d="M 920.0,410.0 L 960.0,410.0 L 960.0,470.0 L 1425.0,470.0 L 1425.0,520.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 1340.0,558.0 L 1310.0,558.0 L 1310.0,670.0 L 1010.0,670.0 L 1010.0,558.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <path d="M 1185.0,606.0 L 1185.0,726.0 L 270.0,726.0 L 270.0,780.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 380.0,826.0 L 500.0,826.0" fill="none" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <path d="M 750.0,826.0 L 880.0,826.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 1140.0,826.0 L 1260.0,826.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <path d="M 1370.0,790.0 L 1520.0,790.0 L 1520.0,120.0 L 815.0,120.0 L 815.0,224.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <path d="M 1370.0,790.0 L 1460.0,790.0 L 1460.0,430.0 L 960.0,430.0 L 960.0,410.0 L 920.0,410.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <rect x="110.0" y="162.0" width="150.0" height="48.0" rx="10.0" fill="#ffffff" stroke="#94a3b8" stroke-width="2.0"/>
+  <circle cx="136.0" cy="186.0" r="18" fill="#dbeafe" stroke="#94a3b8" stroke-width="1.6"/>
+  <circle cx="136.0" cy="180.0" r="5" fill="#94a3b8"/>
+  <path d="M 126.0 197.0 Q 136.0 188.0 146.0 197.0" fill="none" stroke="#94a3b8" stroke-width="2"/>
+  <text x="174.0" y="192.0" text-anchor="start" class="node-title">研发 / 算法同学</text>
+  <text x="174.0" y="214.0" text-anchor="start" class="node-sub">提交代码 / 触发发布</text>
+  <path d="M 360.0 152.0 L 582.4 152.0 L 600.0 169.6 L 600.0 232.0 L 360.0 232.0 Z" fill="#ffffff" stroke="#f97316" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <path d="M 582.4 152.0 L 582.4 169.6 L 600.0 169.6" fill="none" stroke="#f97316" stroke-width="2.0"/>
+  <line x1="378.0" y1="178.0" x2="572.0" y2="178.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <line x1="378.0" y1="192.0" x2="572.0" y2="192.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <line x1="378.0" y1="206.0" x2="572.0" y2="206.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <line x1="378.0" y1="220.0" x2="572.0" y2="220.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <text x="480.0" y="258.0" text-anchor="middle" class="node-title">GitLab Repo</text>
+  <text x="480.0" y="276.0" text-anchor="middle" class="node-sub">源码、Dockerfile、流水线参数</text>
+  <rect x="690.0" y="154.0" width="250.0" height="70.0" rx="10.0" fill="#eff6ff" stroke="#2563eb" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="696.0" y="160.0" width="238.0" height="58.0" rx="7.0" fill="none" stroke="#2563eb" stroke-width="1.2" opacity="0.65"/>
+  <text x="815.0" y="172.0" text-anchor="middle" class="node-type">入口</text>
+  <text x="815.0" y="195.0" text-anchor="middle" class="node-title">SAE Console / API</text>
+  <rect x="1040.0" y="154.0" width="240.0" height="70.0" rx="10.0" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="1160.0" y="172.0" text-anchor="middle" class="node-type">控制</text>
+  <text x="1160.0" y="195.0" text-anchor="middle" class="node-title">构建发布编排器</text>
+  <rect x="1350.0" y="154.0" width="150.0" height="70.0" rx="10.0" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+  <text x="1425.0" y="172.0" text-anchor="middle" class="node-type">守卫</text>
+  <text x="1425.0" y="195.0" text-anchor="middle" class="node-title">鉴权 / 审计</text>
+  <path d="M 130.0 322.0 L 362.0 322.0 L 380.0 340.0 L 380.0 410.0 L 130.0 410.0 Z" fill="#ffffff" stroke="#7c3aed" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <path d="M 362.0 322.0 L 362.0 340.0 L 380.0 340.0" fill="none" stroke="#7c3aed" stroke-width="2.0"/>
+  <line x1="148.0" y1="348.0" x2="352.0" y2="348.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <line x1="148.0" y1="362.0" x2="352.0" y2="362.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <line x1="148.0" y1="376.0" x2="352.0" y2="376.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <line x1="148.0" y1="390.0" x2="352.0" y2="390.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <text x="255.0" y="436.0" text-anchor="middle" class="node-title">Pipeline / TriggerTemplate</text>
+  <text x="255.0" y="454.0" text-anchor="middle" class="node-sub">Tekton 流水线定义与参数模板</text>
+  <rect x="470.0" y="326.0" width="240.0" height="76.0" rx="10.0" fill="#eff6ff" stroke="#2563eb" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="476.0" y="332.0" width="228.0" height="64.0" rx="7.0" fill="none" stroke="#2563eb" stroke-width="1.2" opacity="0.65"/>
+  <text x="590.0" y="344.0" text-anchor="middle" class="node-type">核心控制器</text>
+  <text x="590.0" y="370.0" text-anchor="middle" class="node-title">Tekton Pipelines</text>
+  <path d="M 800.0 322.0 L 1022.0 322.0 L 1040.0 340.0 L 1040.0 410.0 L 800.0 410.0 Z" fill="#ffffff" stroke="#7c3aed" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <path d="M 1022.0 322.0 L 1022.0 340.0 L 1040.0 340.0" fill="none" stroke="#7c3aed" stroke-width="2.0"/>
+  <line x1="818.0" y1="348.0" x2="1012.0" y2="348.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <line x1="818.0" y1="362.0" x2="1012.0" y2="362.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <line x1="818.0" y1="376.0" x2="1012.0" y2="376.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <line x1="818.0" y1="390.0" x2="1012.0" y2="390.0" stroke="#c4b5fd" stroke-width="1.2"/>
+  <text x="920.0" y="436.0" text-anchor="middle" class="node-title">PipelineRun</text>
+  <text x="920.0" y="454.0" text-anchor="middle" class="node-sub">一次构建发布任务实例</text>
+  <rect x="1130.0" y="326.0" width="360.0" height="76.0" rx="10.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="1310.0" y="344.0" text-anchor="middle" class="node-type">模板库</text>
+  <text x="1310.0" y="370.0" text-anchor="middle" class="node-title">Go / Java Maven / Python / Node / 推理流水线</text>
+  <rect x="110.0" y="520.0" width="220.0" height="76.0" rx="10.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+  <text x="220.0" y="538.0" text-anchor="middle" class="node-type">准备</text>
+  <text x="220.0" y="564.0" text-anchor="middle" class="node-title">源码拉取 / Workspace</text>
+  <rect x="390.0" y="510.0" width="250.0" height="96.0" rx="10.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+  <text x="515.0" y="528.0" text-anchor="middle" class="node-type">预处理</text>
+  <text x="515.0" y="564.0" text-anchor="middle" class="node-title">依赖与环境准备</text>
+  <text x="515.0" y="586.0" text-anchor="middle" class="node-sub">私有源、GOPRIVATE、时区、代理、缓存</text>
+  <rect x="730.0" y="510.0" width="280.0" height="96.0" rx="10.0" fill="#eff6ff" stroke="#2563eb" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="736.0" y="516.0" width="268.0" height="84.0" rx="7.0" fill="none" stroke="#2563eb" stroke-width="1.2" opacity="0.65"/>
+  <text x="870.0" y="528.0" text-anchor="middle" class="node-type">构建引擎</text>
+  <text x="870.0" y="564.0" text-anchor="middle" class="node-title">buildx / containerd / nerdctl</text>
+  <text x="870.0" y="586.0" text-anchor="middle" class="node-sub">镜像构建与产物封装</text>
+  <rect x="1090.0" y="510.0" width="190.0" height="96.0" rx="10.0" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+  <text x="1185.0" y="528.0" text-anchor="middle" class="node-type">安全校验</text>
+  <text x="1185.0" y="564.0" text-anchor="middle" class="node-title">scan-code</text>
+  <text x="1185.0" y="586.0" text-anchor="middle" class="node-sub">jar 合法性与生产扫描</text>
+  <rect x="1340.0" y="520.0" width="170.0" height="76.0" rx="10.0" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="1425.0" y="538.0" text-anchor="middle" class="node-type">执行单元</text>
+  <text x="1425.0" y="564.0" text-anchor="middle" class="node-title">TaskRun Pods</text>
+  <ellipse cx="270.0" cy="791.5" rx="55.0" ry="11.5" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <rect x="160.0" y="791.5" width="220.0" height="69.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <ellipse cx="270.0" cy="860.5" rx="55.0" ry="11.5" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <ellipse cx="270.0" cy="814.96" rx="55.0" ry="11.5" fill="none" stroke="#16a34a" stroke-opacity="0.45" stroke-width="1.2"/>
+  <ellipse cx="270.0" cy="835.2" rx="55.0" ry="11.5" fill="none" stroke="#16a34a" stroke-opacity="0.25" stroke-width="1.2"/>
+  <text x="270.0" y="820.0" text-anchor="middle" class="node-title">Harbor</text>
+  <text x="270.0" y="844.0" text-anchor="middle" class="node-sub">镜像仓库 / 制品留存</text>
+  <rect x="500.0" y="790.0" width="250.0" height="72.0" rx="10.0" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="625.0" y="808.0" text-anchor="middle" class="node-type">发布交接</text>
+  <text x="625.0" y="832.0" text-anchor="middle" class="node-title">交付 SAE / Rollouts</text>
+  <ellipse cx="1010.0" cy="791.5" rx="65.0" ry="11.5" fill="#eff6ff" stroke="#2563eb" stroke-width="2.2"/>
+  <rect x="880.0" y="791.5" width="260.0" height="69.0" fill="#eff6ff" stroke="#2563eb" stroke-width="2.2"/>
+  <ellipse cx="1010.0" cy="860.5" rx="65.0" ry="11.5" fill="#eff6ff" stroke="#2563eb" stroke-width="2.2"/>
+  <ellipse cx="1010.0" cy="814.96" rx="65.0" ry="11.5" fill="none" stroke="#2563eb" stroke-opacity="0.45" stroke-width="1.2"/>
+  <ellipse cx="1010.0" cy="835.2" rx="65.0" ry="11.5" fill="none" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1.2"/>
+  <text x="1010.0" y="820.0" text-anchor="middle" class="node-title">多集群 Kubernetes</text>
+  <text x="1010.0" y="844.0" text-anchor="middle" class="node-sub">工作负载部署与运行</text>
+  <rect x="1260.0" y="790.0" width="220.0" height="72.0" rx="10.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+  <text x="1370.0" y="808.0" text-anchor="middle" class="node-type">反馈</text>
+  <text x="1370.0" y="832.0" text-anchor="middle" class="node-title">事件 / 日志 / 状态</text>
+  <rect x="1297.0" y="159.0" width="36" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+  <text x="1315.0" y="173.0" text-anchor="middle" class="arrow-label">校验</text>
+  <rect x="32.0" y="886.0" width="303" height="134" rx="10" fill="#ffffff" opacity="0.88"/>
+  <line x1="42.0" y1="900.0" x2="72.0" y2="900.0" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <text x="82.0" y="904.0" class="legend">控制流：人工触发、编排、发布交接</text>
+  <line x1="42.0" y1="922.0" x2="72.0" y2="922.0" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <text x="82.0" y="926.0" class="legend">写路径：创建 PipelineRun / TaskRun、推送镜像</text>
+  <line x1="42.0" y1="944.0" x2="72.0" y2="944.0" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <text x="82.0" y="948.0" class="legend">读路径：读取代码、模板、镜像制品</text>
+  <line x1="42.0" y1="966.0" x2="72.0" y2="966.0" stroke="#f97316" stroke-width="2.4" marker-end="url(#arrowE)"/>
+  <text x="82.0" y="970.0" class="legend">数据流：构建产物与扫描输入输出</text>
+  <line x1="42.0" y1="988.0" x2="72.0" y2="988.0" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)"/>
+  <text x="82.0" y="992.0" class="legend">反馈流：Task 状态、运行日志、集群回传</text>
+</svg>

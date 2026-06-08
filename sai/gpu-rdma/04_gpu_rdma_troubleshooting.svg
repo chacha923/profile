@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" font-family="Helvetica, Arial, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+  </defs>
+  <rect width="960" height="640" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="600" fill="#111827">GPU RDMA troubleshooting flow</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#6b7280">Symptom - Hypothesis - Verify - Metrics - Conclusion - Fix - Retest</text>
+  <rect x="280" y="80" width="400" height="44" rx="22" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="480" y="108" text-anchor="middle" font-size="13" fill="#991b1b">Symptom: slow multi-node train / NCCL timeout</text>
+  <path d="M480 124 L480 148" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="240" y="148" width="480" height="44" rx="22" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="480" y="176" text-anchor="middle" font-size="13" fill="#9a3412">Hypothesis: RDMA off / peermem missing / bad topo</text>
+  <path d="M480 192 L480 216" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="120" y="216" width="720" height="44" rx="22" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="480" y="244" text-anchor="middle" font-size="12" fill="#1e40af">Verify: ibv_devinfo, rdma link, lsmod peermem, topo -m, NCCL_DEBUG</text>
+  <path d="M480 260 L480 284" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="200" y="284" width="560" height="44" rx="22" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="480" y="312" text-anchor="middle" font-size="13" fill="#166534">Metrics: NCCL transport, all_reduce BW, GDR flag</text>
+  <path d="M480 328 L480 352" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="260" y="352" width="440" height="44" rx="22" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.5"/>
+  <text x="480" y="380" text-anchor="middle" font-size="13" fill="#5b21b6">Conclusion: path / topology / driver / network policy</text>
+  <path d="M480 396 L480 420" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="100" y="420" width="760" height="44" rx="22" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="480" y="448" text-anchor="middle" font-size="12" fill="#1e40af">Fix: peermem, GPU-NIC align, RoCE PFC/ECN, NCCL env, mount infiniband dev</text>
+  <path d="M480 464 L480 488" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="240" y="488" width="480" height="44" rx="22" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="480" y="516" text-anchor="middle" font-size="13" fill="#166534">Retest: nccl-tests all_reduce, compare step time</text>
+  <rect x="60" y="560" width="840" height="60" rx="8" fill="#fafafa" stroke="#e5e7eb"/>
+  <text x="80" y="586" font-size="12" fill="#374151">Root causes: NCCL Socket fallback, peermem not loaded, GPU-NIC SYS distance</text>
+  <text x="80" y="608" font-size="12" fill="#374151">RoCE loss without PFC, K8s policy blocks RDMA, container missing /dev/infiniband</text>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 520" width="1280" height="520">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="b" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="o" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="g" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+  </defs>
+  <rect width="1280" height="520" fill="#ffffff"/>
+  <text x="640" y="34" font-size="19" fill="#111827" text-anchor="middle" font-weight="600">核心流程 · Local-first 分层诊断（信封驱动多轮）</text>
+  <text x="640" y="57" font-size="12" fill="#6b7280" text-anchor="middle">先廉价本地快查，命中信号才升级云端深诊；agent.next 串联下一步；结论沉淀经验库</text>
+
+  <!-- main row y center 150 -->
+  <rect x="24" y="116" width="160" height="68" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/><text x="104" y="146" font-size="12" fill="#374151" text-anchor="middle">症状 / 告警</text><text x="104" y="166" font-size="10.5" fill="#6b7280" text-anchor="middle">输入</text>
+  <rect x="220" y="116" width="170" height="68" rx="8" fill="#faf5ff" stroke="#9333ea" stroke-width="1.5"/><text x="305" y="146" font-size="12" fill="#374151" text-anchor="middle">意图路由</text><text x="305" y="166" font-size="10.5" fill="#6b7280" text-anchor="middle">内存/网络/IO/load + 兜底分类</text>
+  <rect x="426" y="116" width="170" height="68" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/><text x="511" y="142" font-size="12" fill="#374151" text-anchor="middle">本地快查</text><text x="511" y="161" font-size="10.5" fill="#6b7280" text-anchor="middle">Local-first，廉价</text><text x="511" y="177" font-size="10.5" fill="#6b7280" text-anchor="middle">不问 region/instance</text>
+
+  <!-- decision diamond hit? center (700,150) -->
+  <polygon points="700,108 770,150 700,192 630,150" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <text x="700" y="146" font-size="12" fill="#b45309" text-anchor="middle">命中</text><text x="700" y="163" font-size="12" fill="#b45309" text-anchor="middle">信号?</text>
+
+  <rect x="812" y="116" width="180" height="68" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/><text x="902" y="142" font-size="12" fill="#374151" text-anchor="middle">云端深诊</text><text x="902" y="161" font-size="10.5" fill="#6b7280" text-anchor="middle">专用诊断 API</text><text x="902" y="177" font-size="10.5" fill="#c2410c" text-anchor="middle">禁止降级 top/ps/iostat</text>
+  <rect x="1028" y="116" width="226" height="68" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><text x="1141" y="142" font-size="12" fill="#1d4ed8" text-anchor="middle" font-weight="600">返回结构化信封</text><text x="1141" y="162" font-size="10.5" fill="#374151" text-anchor="middle">data / findings / agent.next</text><text x="1141" y="178" font-size="10.5" fill="#6b7280" text-anchor="middle">data = 事实唯一来源</text>
+
+  <line x1="184" y1="150" x2="216" y2="150" stroke="#2563eb" stroke-width="2" marker-end="url(#b)"/>
+  <line x1="390" y1="150" x2="422" y2="150" stroke="#2563eb" stroke-width="2" marker-end="url(#b)"/>
+  <line x1="596" y1="150" x2="628" y2="150" stroke="#2563eb" stroke-width="2" marker-end="url(#b)"/>
+  <line x1="770" y1="150" x2="808" y2="150" stroke="#2563eb" stroke-width="2" marker-end="url(#b)"/>
+  <text x="789" y="142" font-size="11" fill="#16a34a" text-anchor="middle" font-weight="600">是</text>
+  <line x1="992" y1="150" x2="1024" y2="150" stroke="#2563eb" stroke-width="2" marker-end="url(#b)"/>
+
+  <!-- branch: not hit -> local conclusion (down from diamond) -->
+  <line x1="700" y1="192" x2="700" y2="250" stroke="#16a34a" stroke-width="2" marker-end="url(#g)"/>
+  <text x="716" y="222" font-size="11" fill="#16a34a" font-weight="600">否</text>
+  <rect x="590" y="250" width="220" height="56" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/><text x="700" y="274" font-size="11.5" fill="#374151" text-anchor="middle">本地排除 / 直接给结论</text><text x="700" y="293" font-size="10.5" fill="#6b7280" text-anchor="middle">省成本、少打扰（结束）</text>
+
+  <!-- second row: LLM reason -> next? -->
+  <rect x="1028" y="300" width="226" height="64" rx="8" fill="#faf5ff" stroke="#9333ea" stroke-width="1.5"/><text x="1141" y="328" font-size="12" fill="#374151" text-anchor="middle">LLM 基于 data 推理根因</text><text x="1141" y="348" font-size="10.5" fill="#6b7280" text-anchor="middle">不另起炉灶采集</text>
+  <line x1="1141" y1="184" x2="1141" y2="298" stroke="#9333ea" stroke-width="2" marker-end="url(#b)"/>
+
+  <polygon points="902,332 968,364 902,396 836,364" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <text x="902" y="360" font-size="11.5" fill="#b45309" text-anchor="middle">next 有</text><text x="902" y="377" font-size="11.5" fill="#b45309" text-anchor="middle">命令?</text>
+  <line x1="1028" y1="332" x2="970" y2="345" stroke="#9333ea" stroke-width="2" marker-end="url(#b)"/>
+
+  <!-- next yes -> loop back to deep diag -->
+  <line x1="902" y1="332" x2="902" y2="186" stroke="#ea580c" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#o)"/>
+  <text x="922" y="258" font-size="11" fill="#ea580c" font-weight="600">是 · 多轮执行</text>
+
+  <!-- next no -> conclusion -> experience -->
+  <rect x="560" y="336" width="200" height="56" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/><text x="660" y="360" font-size="11.5" fill="#374151" text-anchor="middle">输出可解释结论</text><text x="660" y="379" font-size="10.5" fill="#6b7280" text-anchor="middle">回写控制面</text>
+  <line x1="836" y1="364" x2="762" y2="364" stroke="#ea580c" stroke-width="2" marker-end="url(#o)"/>
+  <text x="799" y="356" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600">否</text>
+
+  <rect x="560" y="430" width="200" height="56" rx="8" fill="#fdf4ff" stroke="#a21caf" stroke-width="1.5"/><text x="660" y="454" font-size="11.5" fill="#374151" text-anchor="middle">沉淀 experience 经验库</text><text x="660" y="473" font-size="10.5" fill="#6b7280" text-anchor="middle">下次相似故障可复用</text>
+  <line x1="660" y1="392" x2="660" y2="428" stroke="#a21caf" stroke-width="2" marker-end="url(#b)"/>
+</svg>

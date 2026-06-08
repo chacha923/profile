@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 620" width="1080" height="620">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="620" fill="#ffffff"/>
+  <text x="540" y="40" text-anchor="middle" class="title">Eval-Driven Development：用评测驱动迭代</text>
+  <text x="540" y="66" text-anchor="middle" class="sub">改提示词、换模型、加工具，先跑评测集对比，再决定是否上线，避免凭单次 demo 拍板</text>
+
+  <rect x="60" y="110" width="180" height="80" rx="8" class="box blue"/>
+  <text x="150" y="140" text-anchor="middle" class="h">改动</text>
+  <text x="150" y="163" text-anchor="middle" class="s">提示词/模型/工具</text>
+  <text x="150" y="182" text-anchor="middle" class="s">/知识库</text>
+
+  <rect x="300" y="110" width="180" height="80" rx="8" class="box violet"/>
+  <text x="390" y="140" text-anchor="middle" class="h">跑评测集</text>
+  <text x="390" y="163" text-anchor="middle" class="s">历史告警回放</text>
+  <text x="390" y="182" text-anchor="middle" class="s">三层评估</text>
+
+  <rect x="540" y="110" width="180" height="80" rx="8" class="box amber"/>
+  <text x="630" y="140" text-anchor="middle" class="h">对比基线</text>
+  <text x="630" y="163" text-anchor="middle" class="s">新旧 trajectory</text>
+  <text x="630" y="182" text-anchor="middle" class="s">指标 diff</text>
+
+  <rect x="780" y="110" width="180" height="80" rx="8" class="box green"/>
+  <text x="870" y="140" text-anchor="middle" class="h">决策</text>
+  <text x="870" y="163" text-anchor="middle" class="s">进步→灰度上线</text>
+  <text x="870" y="182" text-anchor="middle" class="s">回退→不上</text>
+
+  <path d="M240 150 L300 150" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M480 150 L540 150" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M720 150 L780 150" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="300" y="250" width="180" height="70" rx="8" class="box cyan"/>
+  <text x="390" y="278" text-anchor="middle" class="h">灰度上线</text>
+  <text x="390" y="300" text-anchor="middle" class="s">小流量观察</text>
+
+  <rect x="540" y="250" width="180" height="70" rx="8" class="box green"/>
+  <text x="630" y="278" text-anchor="middle" class="h">线上监控</text>
+  <text x="630" y="300" text-anchor="middle" class="s">质量看板/告警</text>
+
+  <rect x="780" y="250" width="180" height="70" rx="8" class="box red"/>
+  <text x="870" y="278" text-anchor="middle" class="h">难例回灌</text>
+  <text x="870" y="300" text-anchor="middle" class="s">扩充评测集</text>
+
+  <path d="M870 190 L870 250" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M780 285 L720 285" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M540 285 L480 285" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M390 320 C390 400 200 380 150 195" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <text x="210" y="370" class="s">回灌评测集，下次改动复用</text>
+
+  <rect x="80" y="360" width="445" height="120" rx="8" class="box amber"/>
+  <text x="110" y="388" class="h">为什么必须 Eval-Driven</text>
+  <text x="110" y="413" class="s">· 模型/提示词升级可能在某些场景回退</text>
+  <text x="110" y="435" class="s">· 单次 demo 看不出回归，要批量回放</text>
+  <text x="110" y="457" class="s">· 没有评测集，无法判断是进步还是变差</text>
+
+  <rect x="555" y="360" width="445" height="120" rx="8" class="box blue"/>
+  <text x="585" y="388" class="h">关键指标看板</text>
+  <text x="585" y="413" class="s">· 离线：根因命中率/工具正确率/Unknown 合理率</text>
+  <text x="585" y="435" class="s">· 在线：采纳率/MTTR/成本/时延/失败率</text>
+  <text x="585" y="457" class="s">· 回归：每次改动 vs 基线的指标 diff</text>
+
+  <rect x="80" y="500" width="920" height="90" rx="8" class="box green"/>
+  <text x="110" y="528" class="h">面试落点</text>
+  <text x="110" y="553" class="s">· "AIOps 要走 eval-driven development"是核心观点：上线标准不是接口成功率，是诊断质量；</text>
+  <text x="110" y="575" class="s">· 强调离线 benchmark 防回归 + 在线看板防衰减 + 难例回灌形成闭环，呼应数据飞轮。</text>
+</svg>

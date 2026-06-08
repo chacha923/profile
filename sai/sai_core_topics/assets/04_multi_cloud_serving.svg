@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 650" width="960" height="650">
+<style>
+text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+.title { font-size: 25px; font-weight: 700; fill: #111827; }
+.subtitle { font-size: 13px; fill: #6b7280; }
+.label { font-size: 14px; font-weight: 650; fill: #111827; }
+.small { font-size: 12px; fill: #6b7280; }
+.tiny { font-size: 11px; fill: #6b7280; }
+.lane { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+</style>
+<defs>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.10"/></filter>
+<marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16a34a"/></marker>
+<marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#9333ea"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#ea580c"/></marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#dc2626"/></marker>
+<marker id="arrow-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#0f766e"/></marker>
+<marker id="arrow-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#6b7280"/></marker>
+</defs>
+<rect width="960" height="650" fill="#ffffff"/>
+<text x="480.0" y="34" text-anchor="middle" class="title">多云推理服务托管</text>
+<text x="480.0" y="57" text-anchor="middle" class="subtitle">统一推理服务画像，底层 ACK / PAI / 火山 / 贝联 差异集中适配</text>
+<rect x="70" y="95" width="155" height="54" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="147.5" y="114.0" text-anchor="middle" class="label">统一推理入口</text>
+<text x="147.5" y="135.0" text-anchor="middle" class="small">列表 / 详情 / 操作</text>
+<rect x="300" y="95" width="155" height="54" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="377.5" y="114.0" text-anchor="middle" class="label">服务画像</text>
+<text x="377.5" y="135.0" text-anchor="middle" class="small">provider / runtime</text>
+<text x="377.5" y="149.0" text-anchor="middle" class="small">/ model</text>
+<rect x="530" y="95" width="155" height="54" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="607.5" y="114.0" text-anchor="middle" class="label">Provider 适配</text>
+<text x="607.5" y="135.0" text-anchor="middle" class="small">规格 / 状态 / 实例</text>
+<rect x="760" y="95" width="120" height="54" rx="10" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="820.0" y="114.0" text-anchor="middle" class="label">Sync</text>
+<text x="820.0" y="135.0" text-anchor="middle" class="small">状态补偿</text>
+<line x1="225" y1="122" x2="300" y2="122" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+<rect x="220.5" y="101.0" width="84" height="20" rx="10" fill="#ffffff" opacity="0.92"/>
+<text x="262.5" y="116.0" text-anchor="middle" class="tiny">创建 / 变更</text>
+<line x1="455" y1="122" x2="530" y2="122" stroke="#9333ea" stroke-width="2.2" marker-end="url(#arrow-purple)"/>
+<line x1="685" y1="122" x2="760" y2="122" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arrow-teal)"/>
+<rect x="680.5" y="101.0" width="84" height="20" rx="10" fill="#ffffff" opacity="0.92"/>
+<text x="722.5" y="116.0" text-anchor="middle" class="tiny">查询</text>
+<rect x="40" y="205" width="880" height="138" rx="10" fill="#fff7ed" fill-opacity="0.45" stroke="#fed7aa" stroke-width="1.3" stroke-dasharray="7 5"/>
+<text x="54" y="227" class="lane" fill="#ea580c">SERVING PROVIDERS</text>
+<rect x="80" y="250" width="165" height="58" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="162.5" y="271.0" text-anchor="middle" class="label">ACK / KServe</text>
+<text x="162.5" y="292.0" text-anchor="middle" class="small">CRD / Pod</text>
+<rect x="295" y="250" width="165" height="58" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="377.5" y="271.0" text-anchor="middle" class="label">PAI EAS</text>
+<text x="377.5" y="292.0" text-anchor="middle" class="small">外部托管</text>
+<rect x="510" y="250" width="165" height="58" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="592.5" y="271.0" text-anchor="middle" class="label">火山推理</text>
+<text x="592.5" y="292.0" text-anchor="middle" class="small">云厂商 API</text>
+<rect x="725" y="250" width="165" height="58" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="807.5" y="271.0" text-anchor="middle" class="label">贝联</text>
+<text x="807.5" y="292.0" text-anchor="middle" class="small">LcComputing</text>
+<path d="M590 149 V190 Q590 205 575 205 H160 V250" fill="none" stroke="#ea580c" stroke-width="2.2" marker-end="url(#arrow-orange)"/>
+<rect x="324" y="192" width="92" height="20" rx="10" fill="#ffffff" opacity="0.92"/>
+<text x="370" y="207" text-anchor="middle" class="tiny">适配调用</text>
+<path d="M820 149 V190 Q820 205 805 205 H805 V250" fill="none" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arrow-teal)" stroke-dasharray="6 4"/>
+<rect x="774" y="192" width="92" height="20" rx="10" fill="#ffffff" opacity="0.92"/>
+<text x="820" y="207" text-anchor="middle" class="tiny">状态拉取</text>
+<rect x="40" y="390" width="880" height="92" rx="10" fill="#f0fdf4" fill-opacity="0.45" stroke="#bbf7d0" stroke-width="1.3" stroke-dasharray="7 5"/>
+<text x="54" y="412" class="lane" fill="#16a34a">NETWORK ACCESS</text>
+<rect x="80" y="418" width="165" height="42" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="162.5" y="431.0" text-anchor="middle" class="label">Envoy</text>
+<text x="162.5" y="452.0" text-anchor="middle" class="small">流量入口</text>
+<rect x="295" y="418" width="165" height="42" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="377.5" y="423.0" text-anchor="middle" class="label">Gateway /</text>
+<text x="377.5" y="440.0" text-anchor="middle" class="label">HTTPRoute</text>
+<text x="377.5" y="461.0" text-anchor="middle" class="small">路由治理</text>
+<rect x="510" y="418" width="165" height="42" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="592.5" y="423.0" text-anchor="middle" class="label">Service /</text>
+<text x="592.5" y="440.0" text-anchor="middle" class="label">ExternalName</text>
+<text x="592.5" y="461.0" text-anchor="middle" class="small">外部服务映射</text>
+<rect x="725" y="418" width="165" height="42" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" filter="url(#shadow)"/>
+<text x="807.5" y="423.0" text-anchor="middle" class="label">Ingress /</text>
+<text x="807.5" y="440.0" text-anchor="middle" class="label">VirtualService</text>
+<text x="807.5" y="461.0" text-anchor="middle" class="small">接入编排</text>
+<path d="M805 308 V380 Q805 395 790 395 H160 V418" fill="none" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+<rect x="404" y="382" width="92" height="20" rx="10" fill="#ffffff" opacity="0.92"/>
+<text x="450" y="397" text-anchor="middle" class="tiny">贝联接入</text>
+<rect x="40" y="520" width="880" height="70" rx="10" fill="#eff6ff" fill-opacity="0.45" stroke="#bfdbfe" stroke-width="1.3" stroke-dasharray="7 5"/>
+<text x="54" y="542" class="lane" fill="#2563eb">UNIFIED OPERATIONS</text>
+<rect x="82" y="545" width="84" height="30" rx="15.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="124.0" y="565.0" text-anchor="middle" class="small" font-weight="650" fill="#2563eb">扩缩容</text>
+<rect x="202" y="545" width="84" height="30" rx="15.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="244.0" y="565.0" text-anchor="middle" class="small" font-weight="650" fill="#2563eb">重启</text>
+<rect x="322" y="545" width="84" height="30" rx="15.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="364.0" y="565.0" text-anchor="middle" class="small" font-weight="650" fill="#2563eb">迁移</text>
+<rect x="442" y="545" width="84" height="30" rx="15.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="484.0" y="565.0" text-anchor="middle" class="small" font-weight="650" fill="#2563eb">实例</text>
+<rect x="562" y="545" width="84" height="30" rx="15.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="604.0" y="565.0" text-anchor="middle" class="small" font-weight="650" fill="#2563eb">日志</text>
+<rect x="682" y="545" width="84" height="30" rx="15.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="724.0" y="565.0" text-anchor="middle" class="small" font-weight="650" fill="#2563eb">事件</text>
+<rect x="802" y="545" width="84" height="30" rx="15.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="844.0" y="565.0" text-anchor="middle" class="small" font-weight="650" fill="#2563eb">状态</text>
+<path d="M760 149 V512" fill="none" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arrow-teal)" stroke-dasharray="6 4"/>
+<rect x="766" y="325" width="92" height="20" rx="10" fill="#ffffff" opacity="0.92"/>
+<text x="812" y="340" text-anchor="middle" class="tiny">运行态回写</text>
+<line x1="26" y1="610" x2="56" y2="610" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<text x="64" y="614" class="tiny">用户操作</text>
+<line x1="26" y1="628" x2="56" y2="628" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+<text x="64" y="632" class="tiny">Provider 调用</text>
+<line x1="26" y1="646" x2="56" y2="646" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+<text x="64" y="650" class="tiny">网络接入</text>
+<line x1="26" y1="664" x2="56" y2="664" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow-teal)"/>
+<text x="64" y="668" class="tiny">状态补偿</text>
+</svg>

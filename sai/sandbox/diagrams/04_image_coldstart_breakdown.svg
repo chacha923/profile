@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="agr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9ca3af"/></marker>
+  </defs>
+  <rect width="1200" height="640" fill="#ffffff"/>
+  <text x="600" y="40" font-size="19" fill="#111827" text-anchor="middle" font-weight="600">Sandbox 冷启动耗时分解 × 优化打在哪一段</text>
+  <text x="600" y="64" font-size="12" fill="#6b7280" text-anchor="middle">从「请求」到「能执行」：先按阶段定位瓶颈，再对症选优化（不要全都堆）</text>
+  <rect x="40" y="100" width="170" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="125.0" y="130" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">调度/分配</text>
+  <text x="125.0" y="152" font-size="11" fill="#6b7280" text-anchor="middle">控制面选节点</text>
+  <line x1="210" y1="135.0" x2="228" y2="135.0" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="228" y="100" width="170" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="313.0" y="130" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">镜像拉取</text>
+  <text x="313.0" y="152" font-size="11" fill="#6b7280" text-anchor="middle">回源/带宽瓶颈</text>
+  <line x1="398" y1="135.0" x2="416" y2="135.0" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="416" y="100" width="170" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="501.0" y="130" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">unpack/解压</text>
+  <text x="501.0" y="152" font-size="11" fill="#6b7280" text-anchor="middle">逐层解压慢</text>
+  <line x1="586" y1="135.0" x2="604" y2="135.0" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="604" y="100" width="170" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="689.0" y="130" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">rootfs 挂载</text>
+  <text x="689.0" y="152" font-size="11" fill="#6b7280" text-anchor="middle">overlayfs</text>
+  <line x1="774" y1="135.0" x2="792" y2="135.0" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="792" y="100" width="170" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="877.0" y="130" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">runtime 启动</text>
+  <text x="877.0" y="152" font-size="11" fill="#6b7280" text-anchor="middle">容器/microVM</text>
+  <line x1="962" y1="135.0" x2="980" y2="135.0" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="980" y="100" width="170" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="1065.0" y="130" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">进程初始化</text>
+  <text x="1065.0" y="152" font-size="11" fill="#6b7280" text-anchor="middle">入口进程就绪</text>
+  <rect x="20.0" y="300" width="210" height="150" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="125.0" y="326" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">控制面吞吐治理</text>
+  <text x="125.0" y="346" font-size="11" fill="#15803d" text-anchor="middle">SAE Reconcile / 状态收敛</text>
+  <text x="34.0" y="370" font-size="11.5" fill="#374151" text-anchor="start">• 多模块拆分降耦</text>
+  <text x="34.0" y="392" font-size="11.5" fill="#374151" text-anchor="start">• 状态可解释回写</text>
+  <line x1="125.0" y1="300" x2="125.0" y2="174" stroke="#16a34a" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="208.0" y="300" width="210" height="150" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="313.0" y="326" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">镜像分发加速</text>
+  <text x="313.0" y="346" font-size="11" fill="#4b5563" text-anchor="middle">摘掉拉取关键路径</text>
+  <text x="222.0" y="370" font-size="11.5" fill="#374151" text-anchor="start">• Lazy Pull 按需拉取</text>
+  <text x="222.0" y="392" font-size="11.5" fill="#374151" text-anchor="start">• Dragonfly P2P 收敛回源</text>
+  <text x="222.0" y="414" font-size="11.5" fill="#374151" text-anchor="start">• 镜像预热铺热镜像</text>
+  <line x1="313.0" y1="300" x2="313.0" y2="174" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#ab)"/>
+  <rect x="396.0" y="300" width="210" height="150" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="501.0" y="326" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">格式/挂载加速</text>
+  <text x="501.0" y="346" font-size="11" fill="#4b5563" text-anchor="middle">跳过逐层解压</text>
+  <text x="410.0" y="370" font-size="11.5" fill="#374151" text-anchor="start">• Nydus RAFS+erofs</text>
+  <text x="410.0" y="392" font-size="11.5" fill="#374151" text-anchor="start">• 挂载即用，免 unpack</text>
+  <line x1="501.0" y1="300" x2="501.0" y2="174" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#ab)"/>
+  <rect x="772.0" y="300" width="210" height="150" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="877.0" y="326" font-size="14" fill="#111827" text-anchor="middle" font-weight="600">runtime 冷启动消除</text>
+  <text x="877.0" y="346" font-size="11" fill="#4b5563" text-anchor="middle">见 sandbox.md</text>
+  <text x="786.0" y="370" font-size="11.5" fill="#374151" text-anchor="start">• Sandbox Pool 预热实例</text>
+  <text x="786.0" y="392" font-size="11.5" fill="#374151" text-anchor="start">• Snapshot/Restore 跳引导</text>
+  <line x1="877.0" y1="300" x2="877.0" y2="174" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#ab)"/>
+  <text x="935" y="285" font-size="11" fill="#9ca3af" text-anchor="middle">（覆盖 runtime 启动 + 进程初始化两段）</text>
+  <line x1="40" y1="600" x2="74" y2="600" stroke="#16a34a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="82" y="604" font-size="12" fill="#6b7280" text-anchor="start">真实生产经验（SAE 镜像构建/Harbor/containerd 链路、控制面排查）</text>
+  <line x1="560" y1="600" x2="594" y2="600" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#agr)"/>
+  <text x="602" y="604" font-size="12" fill="#6b7280" text-anchor="start">理论对标（Nydus / Dragonfly P2P / Pool / Snapshot，无直接实操）</text>
+</svg>

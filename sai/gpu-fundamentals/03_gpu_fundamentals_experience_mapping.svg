@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1340 560" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#475569"/></marker></defs>
+<rect x="0" y="0" width="1340" height="560" fill="#ffffff"/>
+<text x="670.0" y="40.0" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">经验边界映射 · 真实做的 vs 理论对标</text>
+<rect x="60.0" y="90.0" width="360.0" height="95.0" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+<text x="240.0" y="142.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">GPU 资源池/调度/device plugin</text>
+<rect x="470.0" y="90.0" width="360.0" height="95.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="650.0" y="142.5" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">SAI 资源池治理与调度产品化</text>
+<path d="M 420.0,137.5 L 470.0,137.5" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="880.0" y="90.0" width="400.0" height="95.0" rx="10" fill="#f1f5f9" stroke="#2563eb" stroke-width="2"/>
+<text x="1080.0" y="142.4" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="700">我做的·能讲数据模型与取舍</text>
+<path d="M 830.0,137.5 L 880.0,137.5" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="60.0" y="199.0" width="360.0" height="95.0" rx="10" fill="#f8fafc" stroke="#059669" stroke-width="2"/>
+<text x="240.0" y="251.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">DCGM/XID/ECC 健康信号</text>
+<rect x="470.0" y="199.0" width="360.0" height="95.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="650.0" y="251.5" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">平台侧感知/告警/隔离兜底</text>
+<path d="M 420.0,246.5 L 470.0,246.5" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="880.0" y="199.0" width="400.0" height="95.0" rx="10" fill="#f1f5f9" stroke="#059669" stroke-width="2"/>
+<text x="1080.0" y="251.4" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="700">接触并用于排障治理·非写采集内核</text>
+<path d="M 830.0,246.5 L 880.0,246.5" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="60.0" y="308.0" width="360.0" height="95.0" rx="10" fill="#f8fafc" stroke="#dc2626" stroke-width="2"/>
+<text x="240.0" y="360.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">GPU 微架构/CUDA kernel/算子</text>
+<rect x="470.0" y="308.0" width="360.0" height="95.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="650.0" y="360.5" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">无直接生产映射</text>
+<path d="M 420.0,355.5 L 470.0,355.5" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="880.0" y="308.0" width="400.0" height="95.0" rx="10" fill="#f1f5f9" stroke="#dc2626" stroke-width="2"/>
+<text x="1080.0" y="360.4" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="700">理论对标·不包装成项目经验</text>
+<path d="M 830.0,355.5 L 880.0,355.5" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="60.0" y="417.0" width="360.0" height="95.0" rx="10" fill="#f8fafc" stroke="#dc2626" stroke-width="2"/>
+<text x="240.0" y="469.9" text-anchor="middle" fill="#1f2937" font-size="15" font-weight="700">硬件维修/固件/机房布线</text>
+<rect x="470.0" y="417.0" width="360.0" height="95.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="650.0" y="469.5" text-anchor="middle" fill="#1f2937" font-size="14" font-weight="400">无直接生产映射</text>
+<path d="M 420.0,464.5 L 470.0,464.5" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="880.0" y="417.0" width="400.0" height="95.0" rx="10" fill="#f1f5f9" stroke="#dc2626" stroke-width="2"/>
+<text x="1080.0" y="469.4" text-anchor="middle" fill="#1f2937" font-size="13" font-weight="700">平台感知兜底·修复由硬件团队</text>
+<path d="M 830.0,464.5 L 880.0,464.5" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<text x="60.0" y="544.0" text-anchor="start" fill="#64748b" font-size="14" font-weight="400">蓝=真实做   绿=相邻经验   红=理论对标（无直接生产映射）</text>
+</svg>

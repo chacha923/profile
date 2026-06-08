@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1060" width="1600" height="1060">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; fill: #111827; }
+    .title { font-size: 34px; font-weight: 700; }
+    .subtitle { font-size: 17px; fill: #6b7280; }
+    .layer-label { font-size: 18px; font-weight: 700; fill: #334155; }
+    .node-title { font-size: 17px; font-weight: 700; }
+    .node-sub { font-size: 13px; fill: #475569; }
+    .node-meta { font-size: 12px; fill: #64748b; }
+    .edge-label { font-size: 12px; font-weight: 600; fill: #334155; }
+    .legend { font-size: 12px; fill: #64748b; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#9333ea"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 11 4, 0 8" fill="#f97316"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1060" fill="#ffffff"/>
+  <text x="70" y="66" class="title">SAE 面试视角模块拆解</text>
+  <text x="70" y="98" class="subtitle">把项目讲成一条清晰主线：入口层承接诉求，console 做同步编排，sae-api 沉淀资源契约，watcher / job 承接异步状态面，底座执行真实云原生动作</text>
+
+  <rect x="70" y="130" width="1460" height="135" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="96" y="162" class="layer-label">入口与产品层</text>
+  <rect x="70" y="300" width="1460" height="225" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="96" y="332" class="layer-label">sae-console 同步控制面</text>
+  <rect x="70" y="560" width="1460" height="210" rx="12" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="96" y="592" class="layer-label">领域资源契约与异步状态面</text>
+  <rect x="70" y="805" width="1460" height="165" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="96" y="837" class="layer-label">云原生执行底座与外部系统</text>
+
+  <g transform="translate(145,176)">
+    <rect width="205" height="68" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="102" y="28" text-anchor="middle" class="node-title">研发 / 运维</text>
+    <text x="102" y="51" text-anchor="middle" class="node-sub">创建、发布、排障</text>
+  </g>
+  <g transform="translate(420,168)">
+    <rect width="220" height="84" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="110" y="30" text-anchor="middle" class="node-title">控制台前端</text>
+    <text x="110" y="53" text-anchor="middle" class="node-sub">应用、发布、日志、事件</text>
+    <text x="110" y="70" text-anchor="middle" class="node-meta">用户最常用产品入口</text>
+  </g>
+  <g transform="translate(710,168)">
+    <rect width="230" height="84" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="115" y="30" text-anchor="middle" class="node-title">OpenAPI / MCP / Agent</text>
+    <text x="115" y="53" text-anchor="middle" class="node-sub">自动化查询与批量操作</text>
+    <text x="115" y="70" text-anchor="middle" class="node-meta">统一复用控制面能力</text>
+  </g>
+  <g transform="translate(1015,168)">
+    <rect width="215" height="84" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="107" y="30" text-anchor="middle" class="node-title">saectl / clone-batch</text>
+    <text x="107" y="53" text-anchor="middle" class="node-sub">集群纳管、迁移辅助</text>
+    <text x="107" y="70" text-anchor="middle" class="node-meta">专项入口，不是主服务</text>
+  </g>
+  <g transform="translate(1300,168)">
+    <rect width="175" height="84" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+    <text x="87" y="30" text-anchor="middle" class="node-title">GitLab 事件</text>
+    <text x="87" y="53" text-anchor="middle" class="node-sub">分支、Tag、Commit</text>
+    <text x="87" y="70" text-anchor="middle" class="node-meta">触发构建发布</text>
+  </g>
+
+  <g transform="translate(135,365)">
+    <rect width="225" height="100" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="112" y="32" text-anchor="middle" class="node-title">console main</text>
+    <text x="112" y="56" text-anchor="middle" class="node-sub">统一 HTTP API</text>
+    <text x="112" y="75" text-anchor="middle" class="node-meta">CAS、审计、OTel、Gin</text>
+  </g>
+  <g transform="translate(430,350)">
+    <rect width="245" height="130" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="122" y="30" text-anchor="middle" class="node-title">领域 Controllers</text>
+    <text x="122" y="55" text-anchor="middle" class="node-sub">application / deploy</text>
+    <text x="122" y="75" text-anchor="middle" class="node-sub">rollouts / pipeline</text>
+    <text x="122" y="95" text-anchor="middle" class="node-sub">workload / monitor</text>
+    <text x="122" y="115" text-anchor="middle" class="node-meta">参数校验、权限、业务规则</text>
+  </g>
+  <g transform="translate(745,350)">
+    <rect width="255" height="130" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8"/>
+    <text x="127" y="30" text-anchor="middle" class="node-title">pkg/sae 编排 SDK</text>
+    <text x="127" y="55" text-anchor="middle" class="node-sub">ClusterManager</text>
+    <text x="127" y="75" text-anchor="middle" class="node-sub">PipelineManager / Verber</text>
+    <text x="127" y="95" text-anchor="middle" class="node-sub">apps / rollouts / autoscaling</text>
+    <text x="127" y="115" text-anchor="middle" class="node-meta">把业务动作翻译成集群动作</text>
+  </g>
+  <g transform="translate(1070,350)">
+    <rect width="210" height="130" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.8"/>
+    <text x="105" y="30" text-anchor="middle" class="node-title">dashboard / workload</text>
+    <text x="105" y="55" text-anchor="middle" class="node-sub">Pod、日志、事件</text>
+    <text x="105" y="75" text-anchor="middle" class="node-sub">WebShell、Profile</text>
+    <text x="105" y="95" text-anchor="middle" class="node-sub">Service、Ingress、HPA</text>
+    <text x="105" y="115" text-anchor="middle" class="node-meta">运行视角查询与诊断</text>
+  </g>
+  <g transform="translate(1345,365)">
+    <rect width="145" height="100" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+    <text x="72" y="32" text-anchor="middle" class="node-title">治理守卫</text>
+    <text x="72" y="56" text-anchor="middle" class="node-sub">质量、窗口</text>
+    <text x="72" y="75" text-anchor="middle" class="node-sub">白名单、审批</text>
+  </g>
+
+  <g transform="translate(135,625)">
+    <rect width="270" height="92" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+    <text x="135" y="30" text-anchor="middle" class="node-title">sae-api</text>
+    <text x="135" y="54" text-anchor="middle" class="node-sub">Application / Cluster CRD</text>
+    <text x="135" y="73" text-anchor="middle" class="node-meta">typed client、informer、controller</text>
+  </g>
+  <g transform="translate(475,625)">
+    <rect width="210" height="92" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="105" y="30" text-anchor="middle" class="node-title">MySQL / Redis</text>
+    <text x="105" y="54" text-anchor="middle" class="node-sub">元数据、发布单</text>
+    <text x="105" y="73" text-anchor="middle" class="node-meta">事件、历史、缓存、会话</text>
+  </g>
+  <g transform="translate(760,625)">
+    <rect width="250" height="92" rx="8" fill="#faf5ff" stroke="#9333ea" stroke-width="2"/>
+    <text x="125" y="30" text-anchor="middle" class="node-title">watcher</text>
+    <text x="125" y="54" text-anchor="middle" class="node-sub">Event / Replicas / PipelineRun</text>
+    <text x="125" y="73" text-anchor="middle" class="node-meta">异步状态回写与通知</text>
+  </g>
+  <g transform="translate(1085,625)">
+    <rect width="210" height="92" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="105" y="30" text-anchor="middle" class="node-title">saejob</text>
+    <text x="105" y="54" text-anchor="middle" class="node-sub">定时重检、同步</text>
+    <text x="105" y="73" text-anchor="middle" class="node-meta">补偿与批处理入口</text>
+  </g>
+  <g transform="translate(1360,625)">
+    <rect width="130" height="92" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+    <text x="65" y="30" text-anchor="middle" class="node-title">通知</text>
+    <text x="65" y="54" text-anchor="middle" class="node-sub">飞书</text>
+    <text x="65" y="73" text-anchor="middle" class="node-meta">订阅、提醒</text>
+  </g>
+
+  <g transform="translate(135,870)">
+    <rect width="210" height="72" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="105" y="29" text-anchor="middle" class="node-title">Kubernetes</text>
+    <text x="105" y="52" text-anchor="middle" class="node-sub">Deployment / Pod / Event</text>
+  </g>
+  <g transform="translate(405,870)">
+    <rect width="190" height="72" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="95" y="29" text-anchor="middle" class="node-title">Tekton</text>
+    <text x="95" y="52" text-anchor="middle" class="node-sub">Pipeline / PipelineRun</text>
+  </g>
+  <g transform="translate(655,870)">
+    <rect width="210" height="72" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="105" y="29" text-anchor="middle" class="node-title">Argo Rollouts</text>
+    <text x="105" y="52" text-anchor="middle" class="node-sub">灰度、回滚、放量</text>
+  </g>
+  <g transform="translate(925,870)">
+    <rect width="205" height="72" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="102" y="29" text-anchor="middle" class="node-title">GitLab / Harbor</text>
+    <text x="102" y="52" text-anchor="middle" class="node-sub">代码、镜像、制品</text>
+  </g>
+  <g transform="translate(1190,870)">
+    <rect width="255" height="72" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="127" y="29" text-anchor="middle" class="node-title">指标 / 日志 / APM</text>
+    <text x="127" y="52" text-anchor="middle" class="node-sub">Prometheus、ARMS、事件中心</text>
+  </g>
+
+  <path d="M530 252 L530 315" stroke="#2563eb" stroke-width="2.4" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M825 252 L825 315" stroke="#2563eb" stroke-width="2.4" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M350 415 L430 415" stroke="#2563eb" stroke-width="2.4" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M675 415 L745 415" stroke="#2563eb" stroke-width="2.4" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M1000 415 L1070 415" stroke="#2563eb" stroke-width="2.4" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M1000 480 C990 540 300 540 270 625" stroke="#2563eb" stroke-width="2.4" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M873 480 L873 625" stroke="#16a34a" stroke-width="2.4" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M885 717 C905 780 750 805 750 870" stroke="#2563eb" stroke-width="2.4" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M875 870 C875 790 900 780 900 717" stroke="#9333ea" stroke-width="2.4" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M885 717 L580 717" stroke="#16a34a" stroke-width="2.4" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M1010 671 L1360 671" stroke="#9333ea" stroke-width="2.4" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M1190 870 C1190 785 1010 780 965 717" stroke="#9333ea" stroke-width="2.4" stroke-dasharray="7 5" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M1032 870 C1000 795 1030 765 1085 700" stroke="#f97316" stroke-width="2.4" stroke-dasharray="7 5" fill="none" marker-end="url(#arrow-orange)"/>
+
+  <rect x="70" y="1002" width="1460" height="34" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <g transform="translate(96,1013)">
+    <line x1="0" y1="8" x2="42" y2="8" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+    <text x="52" y="12" class="legend">同步请求与编排</text>
+    <line x1="190" y1="8" x2="232" y2="8" stroke="#9333ea" stroke-width="2.4" marker-end="url(#arrow-purple)"/>
+    <text x="242" y="12" class="legend">异步监听与通知</text>
+    <line x1="390" y1="8" x2="432" y2="8" stroke="#16a34a" stroke-width="2.4" marker-end="url(#arrow-green)"/>
+    <text x="442" y="12" class="legend">状态回写与查询</text>
+    <line x1="600" y1="8" x2="642" y2="8" stroke="#f97316" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#arrow-orange)"/>
+    <text x="652" y="12" class="legend">补偿、治理、外部事件</text>
+  </g>
+</svg>

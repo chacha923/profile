@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 640" width="1020" height="640">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .label { font-size: 15px; font-weight: 600; fill: #111827; }
+    .clabel { font-size: 14px; font-weight: 600; fill: #111827; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .tag { font-size: 12px; font-weight: 600; fill: #1f2937; }
+    .edge { font-size: 11px; fill: #6b7280; }
+    .cmd { font-family: 'SF Mono','Menlo','Consolas',monospace; font-size: 11px; fill: #1f2937; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1020" height="640" fill="#ffffff"/>
+  <text x="40" y="46" class="title">GPU 训练任务常见问题与处置</text>
+  <text x="40" y="74" class="sub">六类高频问题，按「现象 → 根因 → 处置」记忆；红色为需立即止损类。</text>
+  <rect x="40" y="98" width="300" height="222" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="56" y="128" class="clabel">① Pending 调度不上</text>
+  <line x1="56" y1="140" x2="324" y2="140" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="56" y="164" class="sub">• Insufficient GPU：池无空闲卡</text>
+  <text x="56" y="187" class="sub">• nodeSelector / 污点不匹配</text>
+  <text x="56" y="210" class="sub">• 配额打满 / 共享显存字段不符</text>
+  <text x="56" y="233" class="sub">→ 查资源池翻译的标签污点</text>
+  <rect x="360" y="98" width="300" height="222" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="376" y="128" class="clabel">② CrashLoopBackOff</text>
+  <line x1="376" y1="140" x2="644" y2="140" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="376" y="164" class="sub">• ImagePullBackOff：Harbor/网络</text>
+  <text x="376" y="187" class="sub">• CUDA 驱动版本不匹配</text>
+  <text x="376" y="210" class="sub">• 容器看不到卡：device plugin</text>
+  <text x="376" y="233" class="sub">→ logs --previous 抓崩溃日志</text>
+  <rect x="680" y="98" width="300" height="222" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="696" y="128" class="clabel">③ 显存 OOM vs OOMKilled</text>
+  <line x1="696" y1="140" x2="964" y2="140" stroke="#fed7aa" stroke-width="1"/>
+  <text x="696" y="164" class="sub">• CUDA OOM = 显存不够</text>
+  <text x="696" y="187" class="sub">  减 batch / 梯度累积 / 换大卡</text>
+  <text x="696" y="210" class="sub">• OOMKilled = 主存被杀</text>
+  <text x="696" y="233" class="sub">  调 limits.memory / 查 DataLoader</text>
+  <rect x="40" y="348" width="300" height="222" rx="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="56" y="378" class="clabel">④ 训练 hang 卡住</text>
+  <line x1="56" y1="390" x2="324" y2="390" stroke="#fecaca" stroke-width="1"/>
+  <text x="56" y="414" class="sub">• 单机：DataLoader / 死锁</text>
+  <text x="56" y="437" class="sub">• 多机：一个 rank 挂全组等</text>
+  <text x="56" y="460" class="sub">• NCCL_DEBUG 看缺席 rank</text>
+  <text x="56" y="483" class="sub">→ 设超时让它快速失败</text>
+  <rect x="360" y="348" width="300" height="222" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="376" y="378" class="clabel">⑤ 慢 / 利用率低</text>
+  <line x1="376" y1="390" x2="644" y2="390" stroke="#fed7aa" stroke-width="1"/>
+  <text x="376" y="414" class="sub">• 数据加载锯齿（最常见）</text>
+  <text x="376" y="437" class="sub">• NCCL 回退 Socket</text>
+  <text x="376" y="460" class="sub">• 跨 NUMA / 温度功耗降频</text>
+  <text x="376" y="483" class="sub">→ 利用率高 ≠ 算得快</text>
+  <rect x="680" y="348" width="300" height="222" rx="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="696" y="378" class="clabel">⑥ XID / 掉卡 / ECC</text>
+  <line x1="696" y1="390" x2="964" y2="390" stroke="#fecaca" stroke-width="1"/>
+  <text x="696" y="414" class="sub">• 48 / 79：硬故障，隔离节点</text>
+  <text x="696" y="437" class="sub">• 63 / 64：ECC 坏页，看趋势</text>
+  <text x="696" y="460" class="sub">• 31：多为程序问题</text>
+  <text x="696" y="483" class="sub">→ dmesg grep xid，cordon+drain</text>
+</svg>

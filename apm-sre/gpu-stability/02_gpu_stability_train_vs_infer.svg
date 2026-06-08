@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 890" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect width="1480" height="890" fill="#f8fafc"/>
+<text x="40" y="46" fill="#0f172a" font-size="24" font-weight="800">训练 vs 推理：稳定性治理的关键差异</text>
+<text x="40" y="72" fill="#64748b" font-size="14">共性底座可复用，但 SLO / 容错 / 调度必须按负载特征分别设计</text>
+<rect x="40" y="90" width="590" height="50" rx="9" fill="#7c3aed"/>
+<text x="335" y="123" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">GPU 训练</text>
+<rect x="850" y="90" width="590" height="50" rx="9" fill="#0891b2"/>
+<text x="1145" y="123" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">GPU 推理</text>
+<rect x="650" y="158" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="185" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">负载特征</text>
+<rect x="40" y="158" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="185" text-anchor="middle" fill="#5b21b6" font-size="14.5">长时批任务(小时~天)·有状态</text>
+<rect x="850" y="158" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="185" text-anchor="middle" fill="#0e7490" font-size="14.5">在线服务(ms~s)·半无状态</text>
+<rect x="650" y="220" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="247" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">核心 SLO</text>
+<rect x="40" y="220" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="247" text-anchor="middle" fill="#5b21b6" font-size="14.5">任务成功率·有效训练时长·MFU</text>
+<rect x="850" y="220" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="247" text-anchor="middle" fill="#0e7490" font-size="14.5">成功率·TTFT/TPOT·长尾P99·吞吐</text>
+<rect x="650" y="282" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="309" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">故障影响</text>
+<rect x="40" y="282" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="309" text-anchor="middle" fill="#5b21b6" font-size="14.5">一卡故障→整job挂→回退checkpoint</text>
+<rect x="850" y="282" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="309" text-anchor="middle" fill="#0e7490" font-size="14.5">一实例故障→摘除路由·其余继续</text>
+<rect x="650" y="344" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="371" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">容错机制</text>
+<rect x="40" y="344" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="371" text-anchor="middle" fill="#5b21b6" font-size="14.5">checkpoint+断点续训+弹性容错</text>
+<rect x="850" y="344" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="371" text-anchor="middle" fill="#0e7490" font-size="14.5">多副本冗余+降级+限流+熔断</text>
+<rect x="650" y="406" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="433" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">调度模式</text>
+<rect x="40" y="406" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="433" text-anchor="middle" fill="#5b21b6" font-size="14.5">Gang(全或无)+拓扑亲和+队列</text>
+<rect x="850" y="406" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="433" text-anchor="middle" fill="#0e7490" font-size="14.5">弹性HPA扩缩容+滚动发布灰度</text>
+<rect x="650" y="468" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="495" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">通信依赖</text>
+<rect x="40" y="468" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="495" text-anchor="middle" fill="#5b21b6" font-size="14.5">强:NCCL/RDMA·慢节点拖垮全局</text>
+<rect x="850" y="468" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="495" text-anchor="middle" fill="#0e7490" font-size="14.5">弱:PD分离时KV cache传输</text>
+<rect x="650" y="530" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="557" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">容量评估</text>
+<rect x="40" y="530" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="557" text-anchor="middle" fill="#5b21b6" font-size="14.5">集群算力·排队·碎片·MFU</text>
+<rect x="850" y="530" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="557" text-anchor="middle" fill="#0e7490" font-size="14.5">显存+KV cache(并发×序列)+激活</text>
+<rect x="650" y="592" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="619" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">弹性诉求</text>
+<rect x="40" y="592" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="619" text-anchor="middle" fill="#5b21b6" font-size="14.5">扩资源加速·容忍抢占·续训</text>
+<rect x="850" y="592" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="619" text-anchor="middle" fill="#0e7490" font-size="14.5">抗突发流量·大权重冷启动慢</text>
+<rect x="650" y="654" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="681" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">变更风险</text>
+<rect x="40" y="654" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="681" text-anchor="middle" fill="#5b21b6" font-size="14.5">数据/代码/超参→正确性与收敛</text>
+<rect x="850" y="654" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="681" text-anchor="middle" fill="#0e7490" font-size="14.5">模型版本/配置→在线质量与延迟</text>
+<rect x="650" y="716" width="180" height="44" rx="10" fill="#1e293b"/>
+<text x="740" y="743" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">时间敏感</text>
+<rect x="40" y="716" width="590" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="335" y="743" text-anchor="middle" fill="#5b21b6" font-size="14.5">可容忍重试·非实时</text>
+<rect x="850" y="716" width="590" height="44" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1145" y="743" text-anchor="middle" fill="#0e7490" font-size="14.5">实时·秒级影响用户</text>
+<rect x="40" y="786" width="1400" height="72" rx="10" fill="#1e293b"/>
+<text x="64" y="814" fill="#fff" font-size="15" font-weight="800">一句话差异</text>
+<text x="64" y="840" fill="#e2e8f0" font-size="14.5">训练 = 算得完·算得对·算得值(MFU)，靠 checkpoint + 容错扛故障；推理 = 答得快·答得稳·扛得住流量，靠多副本 + 降级限流扛故障。</text>
+</svg>

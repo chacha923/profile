@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 620" width="1280" height="620">
+  <style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }</style>
+  <defs>
+    <marker id="b" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" fill="#9ca3af"/></marker>
+  </defs>
+  <rect width="1280" height="620" fill="#ffffff"/>
+  <text x="640" y="34" font-size="19" fill="#111827" text-anchor="middle" font-weight="600">阿里云在 AIOps 各环节已 skill 化盘点（来自 alibabacloud-aiops-skills 仓库）</text>
+  <text x="640" y="57" font-size="12" fill="#6b7280" text-anchor="middle">绿=已成体系 · 蓝=已覆盖 · 橙=部分/工具化 · 灰=偏薄或未单独 skill 化（自研/算法空间）</text>
+
+  <!-- entry band -->
+  <rect x="30" y="76" width="1220" height="44" rx="8" fill="#faf5ff" stroke="#9333ea" stroke-width="1.5"/>
+  <text x="50" y="103" font-size="12.5" fill="#7c3aed" font-weight="600">运维问答 / Agent 入口：</text>
+  <text x="225" y="103" font-size="11.5" fill="#374151">STAROps Chat（自然语言根因 / APM / 链路问答）· 各 DB Copilot（RDS / PolarDB / ADB）作为子域入口</text>
+
+  <!-- 6 stage columns, y 140..470 -->
+  <!-- col1 观测告警 -->
+  <rect x="30" y="140" width="190" height="330" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="125" y="166" font-size="13.5" fill="#1d4ed8" text-anchor="middle" font-weight="600">观测 · 告警</text>
+  <rect x="42" y="180" width="166" height="38" rx="5" fill="#ffffff" stroke="#bfdbfe"/><text x="125" y="204" font-size="10.5" fill="#374151" text-anchor="middle">CMS 监控/告警规则</text>
+  <rect x="42" y="224" width="166" height="38" rx="5" fill="#ffffff" stroke="#bfdbfe"/><text x="125" y="248" font-size="10.5" fill="#374151" text-anchor="middle">SLS 日志查询/索引</text>
+  <rect x="42" y="268" width="166" height="38" rx="5" fill="#ffffff" stroke="#bfdbfe"/><text x="125" y="292" font-size="10.5" fill="#374151" text-anchor="middle">EMAS APM 查询</text>
+  <rect x="42" y="312" width="166" height="38" rx="5" fill="#ffffff" stroke="#bfdbfe"/><text x="125" y="336" font-size="10.5" fill="#374151" text-anchor="middle">EBS 磁盘指标分析</text>
+  <rect x="42" y="424" width="166" height="32" rx="5" fill="#dbeafe" stroke="#2563eb"/><text x="125" y="445" font-size="10.5" fill="#1d4ed8" text-anchor="middle" font-weight="600">已覆盖</text>
+
+  <!-- col2 巡检发现 -->
+  <rect x="234" y="140" width="190" height="330" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="329" y="166" font-size="13.5" fill="#15803d" text-anchor="middle" font-weight="600">巡检 · 发现</text>
+  <rect x="246" y="180" width="166" height="44" rx="5" fill="#ffffff" stroke="#86efac"/><text x="329" y="207" font-size="10.5" fill="#374151" text-anchor="middle">ECS 健康巡检</text>
+  <rect x="246" y="230" width="166" height="44" rx="5" fill="#ffffff" stroke="#86efac"/><text x="329" y="257" font-size="10.5" fill="#374151" text-anchor="middle">Alinux SysOM 巡检</text>
+  <rect x="246" y="280" width="166" height="44" rx="5" fill="#ffffff" stroke="#86efac"/><text x="329" y="307" font-size="10.5" fill="#374151" text-anchor="middle">ECS 诊断 / 宕机诊断</text>
+  <rect x="246" y="424" width="166" height="32" rx="5" fill="#dcfce7" stroke="#16a34a"/><text x="329" y="445" font-size="10.5" fill="#15803d" text-anchor="middle" font-weight="600">Playbook 化</text>
+
+  <!-- col3 诊断根因 (star, highlight) -->
+  <rect x="438" y="140" width="190" height="330" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="2.8"/>
+  <text x="533" y="166" font-size="13.5" fill="#7c3aed" text-anchor="middle" font-weight="600">★ 诊断 · 根因</text>
+  <rect x="450" y="180" width="166" height="38" rx="5" fill="#ffffff" stroke="#d8b4fe"/><text x="533" y="204" font-size="10.5" fill="#374151" text-anchor="middle">SysOM 内核诊断</text>
+  <rect x="450" y="222" width="166" height="38" rx="5" fill="#ffffff" stroke="#d8b4fe"/><text x="533" y="246" font-size="10.5" fill="#374151" text-anchor="middle">STAROps 根因/链路</text>
+  <rect x="450" y="264" width="166" height="38" rx="5" fill="#ffffff" stroke="#d8b4fe"/><text x="533" y="288" font-size="10.5" fill="#374151" text-anchor="middle">PAI-DLC 任务诊断</text>
+  <rect x="450" y="306" width="166" height="38" rx="5" fill="#ffffff" stroke="#d8b4fe"/><text x="533" y="330" font-size="10.5" fill="#374151" text-anchor="middle">ES / DAS / DB 自治</text>
+  <rect x="450" y="348" width="166" height="38" rx="5" fill="#ffffff" stroke="#d8b4fe"/><text x="533" y="372" font-size="10.5" fill="#374151" text-anchor="middle">网络可达性分析</text>
+  <rect x="450" y="424" width="166" height="32" rx="5" fill="#f3e8ff" stroke="#9333ea"/><text x="533" y="445" font-size="10.5" fill="#7c3aed" text-anchor="middle" font-weight="600">投入最重 · 已成体系</text>
+
+  <!-- col4 知识记忆 -->
+  <rect x="642" y="140" width="190" height="330" rx="10" fill="#fdf4ff" stroke="#a21caf" stroke-width="1.8"/>
+  <text x="737" y="166" font-size="13.5" fill="#a21caf" text-anchor="middle" font-weight="600">知识 · 记忆</text>
+  <rect x="654" y="184" width="166" height="50" rx="5" fill="#ffffff" stroke="#f0abfc"/><text x="737" y="206" font-size="10.5" fill="#374151" text-anchor="middle">ContextStore</text><text x="737" y="223" font-size="10" fill="#6b7280" text-anchor="middle">memory / experience</text>
+  <rect x="654" y="244" width="166" height="50" rx="5" fill="#ffffff" stroke="#f0abfc"/><text x="737" y="266" font-size="10.5" fill="#374151" text-anchor="middle">Tablestore 记忆</text><text x="737" y="283" font-size="10" fill="#6b7280" text-anchor="middle">openclaw-memory</text>
+  <rect x="654" y="424" width="166" height="32" rx="5" fill="#fae8ff" stroke="#a21caf"/><text x="737" y="445" font-size="10.5" fill="#a21caf" text-anchor="middle" font-weight="600">已覆盖</text>
+
+  <!-- col5 SOP编排 -->
+  <rect x="846" y="140" width="190" height="330" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+  <text x="941" y="166" font-size="13.5" fill="#c2410c" text-anchor="middle" font-weight="600">SOP · 编排</text>
+  <rect x="858" y="184" width="166" height="44" rx="5" fill="#ffffff" stroke="#fed7aa"/><text x="941" y="211" font-size="10.5" fill="#374151" text-anchor="middle">playbooks/* 流水线</text>
+  <rect x="858" y="234" width="166" height="44" rx="5" fill="#ffffff" stroke="#fed7aa"/><text x="941" y="261" font-size="10.5" fill="#374151" text-anchor="middle">SysOM-PAI 诊断编排</text>
+  <rect x="858" y="284" width="166" height="44" rx="5" fill="#ffffff" stroke="#fed7aa"/><text x="941" y="311" font-size="10.5" fill="#374151" text-anchor="middle">PTS 任务编排</text>
+  <rect x="858" y="424" width="166" height="32" rx="5" fill="#ffedd5" stroke="#ea580c"/><text x="941" y="445" font-size="10.5" fill="#c2410c" text-anchor="middle" font-weight="600">Pipeline 化</text>
+
+  <!-- col6 处置变更容量 -->
+  <rect x="1050" y="140" width="200" height="330" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+  <text x="1150" y="166" font-size="13.5" fill="#c2410c" text-anchor="middle" font-weight="600">处置 · 变更 · 容量</text>
+  <rect x="1062" y="180" width="176" height="40" rx="5" fill="#ffffff" stroke="#fed7aa"/><text x="1150" y="205" font-size="10.5" fill="#374151" text-anchor="middle">OOS 补丁/扩展</text>
+  <rect x="1062" y="226" width="176" height="40" rx="5" fill="#ffffff" stroke="#fed7aa"/><text x="1150" y="251" font-size="10.5" fill="#374151" text-anchor="middle">ECS 代码部署</text>
+  <rect x="1062" y="272" width="176" height="40" rx="5" fill="#ffffff" stroke="#fed7aa"/><text x="1150" y="297" font-size="10.5" fill="#374151" text-anchor="middle">PTS 压测（容量）</text>
+  <rect x="1062" y="318" width="176" height="40" rx="5" fill="#ffffff" stroke="#fed7aa"/><text x="1150" y="343" font-size="10.5" fill="#374151" text-anchor="middle">ODPS 配额/成本</text>
+  <rect x="1062" y="424" width="176" height="32" rx="5" fill="#ffedd5" stroke="#ea580c"/><text x="1150" y="445" font-size="10.5" fill="#c2410c" text-anchor="middle" font-weight="600">部分覆盖</text>
+
+  <!-- flow arrows between stage headers -->
+  <line x1="220" y1="153" x2="232" y2="153" stroke="#9ca3af" stroke-width="1.8" marker-end="url(#b)"/>
+  <line x1="424" y1="153" x2="436" y2="153" stroke="#9ca3af" stroke-width="1.8" marker-end="url(#b)"/>
+  <line x1="628" y1="153" x2="640" y2="153" stroke="#9ca3af" stroke-width="1.8" marker-end="url(#b)"/>
+  <line x1="832" y1="153" x2="844" y2="153" stroke="#9ca3af" stroke-width="1.8" marker-end="url(#b)"/>
+  <line x1="1036" y1="153" x2="1048" y2="153" stroke="#9ca3af" stroke-width="1.8" marker-end="url(#b)"/>
+
+  <!-- honest gap band -->
+  <rect x="30" y="500" width="1220" height="92" rx="10" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="50" y="526" font-size="12.5" fill="#374151" font-weight="600">偏薄 / 未单独 skill 化的环节（自研与算法团队的空间，也是这个岗位的价值点）</text>
+  <text x="50" y="550" font-size="11" fill="#6b7280">· 时序异常检测 / 无监督告警降噪算法　· 容量水位预测与趋势外推　· 变更风险评分 / 发布管控决策　· 多源根因关联（指标×日志×链路×变更）的算法层</text>
+  <text x="50" y="572" font-size="11" fill="#6b7280">· 故障复盘自动生成与改进闭环　· 跨服务故障传播图谱　→ 阿里云 skill 多在「单点诊断 + 工具/Playbook 化」，编排与算法决策层仍是建设重点</text>
+</svg>

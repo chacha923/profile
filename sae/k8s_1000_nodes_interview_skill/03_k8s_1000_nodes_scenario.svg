@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <style>
+    text {
+      font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif;
+    }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 14px; fill: #6b7280; }
+    .lane-title { font-size: 15px; font-weight: 700; fill: #111827; }
+    .node-title { font-size: 16px; font-weight: 700; fill: #111827; }
+    .node-text { font-size: 13px; fill: #374151; }
+    .label { font-size: 12px; font-weight: 700; fill: #6b7280; }
+    .legend { font-size: 12px; fill: #6b7280; }
+  </style>
+
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#9333ea"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="#ffffff"/>
+
+  <text x="600" y="42" text-anchor="middle" class="title">1000 节点 Kubernetes 典型业务场景</text>
+  <text x="600" y="68" text-anchor="middle" class="subtitle">把业务动作映射到集群压力面，再落到可执行的治理动作</text>
+
+  <text x="34" y="112" class="label">业务触发</text>
+  <text x="34" y="322" class="label">典型现象</text>
+  <text x="34" y="532" class="label">治理动作</text>
+
+  <line x1="48" y1="145" x2="1152" y2="145" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="48" y1="355" x2="1152" y2="355" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="48" y1="565" x2="1152" y2="565" stroke="#e5e7eb" stroke-width="1"/>
+
+  <g transform="translate(118,96)">
+    <rect width="240" height="580" rx="14" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.4"/>
+    <text x="120" y="30" text-anchor="middle" class="lane-title">发布 / 推理变更</text>
+
+    <rect x="24" y="56" width="192" height="112" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+    <text x="120" y="86" text-anchor="middle" class="node-title">大规模发布</text>
+    <text x="120" y="112" text-anchor="middle" class="node-text">Deployment / Pod</text>
+    <text x="120" y="136" text-anchor="middle" class="node-text">EndpointSlice 批量变化</text>
+
+    <path d="M120 176 L120 244" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow-blue)"/>
+
+    <rect x="24" y="254" width="192" height="112" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+    <text x="120" y="284" text-anchor="middle" class="node-title">发布卡住</text>
+    <text x="120" y="310" text-anchor="middle" class="node-text">Pod Pending</text>
+    <text x="120" y="334" text-anchor="middle" class="node-text">apiserver 延迟升高</text>
+
+    <path d="M120 374 L120 442" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)"/>
+
+    <rect x="24" y="452" width="192" height="96" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+    <text x="120" y="482" text-anchor="middle" class="node-title">分批灰度</text>
+    <text x="120" y="508" text-anchor="middle" class="node-text">发布限流</text>
+    <text x="120" y="532" text-anchor="middle" class="node-text">平台状态缓存</text>
+  </g>
+
+  <g transform="translate(370,96)">
+    <rect width="240" height="580" rx="14" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.4"/>
+    <text x="120" y="30" text-anchor="middle" class="lane-title">AI 训练 / 节点扩容</text>
+
+    <rect x="24" y="56" width="192" height="112" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+    <text x="120" y="86" text-anchor="middle" class="node-title">训练集中提交</text>
+    <text x="120" y="112" text-anchor="middle" class="node-text">TFJob / PVC / GPU</text>
+    <text x="120" y="136" text-anchor="middle" class="node-text">新节点批量注册</text>
+
+    <path d="M120 176 L120 244" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow-blue)"/>
+
+    <rect x="24" y="254" width="192" height="112" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+    <text x="120" y="284" text-anchor="middle" class="node-title">资源与启动变慢</text>
+    <text x="120" y="310" text-anchor="middle" class="node-text">GPU 不足 / PVC 慢</text>
+    <text x="120" y="334" text-anchor="middle" class="node-text">镜像仓库压力高</text>
+
+    <path d="M120 374 L120 442" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)"/>
+
+    <rect x="24" y="452" width="192" height="96" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+    <text x="120" y="482" text-anchor="middle" class="node-title">资源治理</text>
+    <text x="120" y="508" text-anchor="middle" class="node-text">节点池 / Quota</text>
+    <text x="120" y="532" text-anchor="middle" class="node-text">镜像预热 / 队列</text>
+  </g>
+
+  <g transform="translate(622,96)">
+    <rect width="240" height="580" rx="14" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.4"/>
+    <text x="120" y="30" text-anchor="middle" class="lane-title">DNS / 服务发现</text>
+
+    <rect x="24" y="56" width="192" height="112" rx="10" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+    <text x="120" y="86" text-anchor="middle" class="node-title">服务发现高频</text>
+    <text x="120" y="112" text-anchor="middle" class="node-text">短连接 / ndots</text>
+    <text x="120" y="136" text-anchor="middle" class="node-text">DNS QPS 放大</text>
+
+    <path d="M120 176 L120 244" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow-blue)"/>
+
+    <rect x="24" y="254" width="192" height="112" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+    <text x="120" y="284" text-anchor="middle" class="node-title">调用偶发超时</text>
+    <text x="120" y="310" text-anchor="middle" class="node-text">CoreDNS CPU 高</text>
+    <text x="120" y="334" text-anchor="middle" class="node-text">conntrack 异常</text>
+
+    <path d="M120 374 L120 442" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)"/>
+
+    <rect x="24" y="452" width="192" height="96" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+    <text x="120" y="482" text-anchor="middle" class="node-title">DNS 分层治理</text>
+    <text x="120" y="508" text-anchor="middle" class="node-text">NodeLocal DNSCache</text>
+    <text x="120" y="532" text-anchor="middle" class="node-text">CoreDNS 扩容 / 缓存</text>
+  </g>
+
+  <g transform="translate(874,96)">
+    <rect width="240" height="580" rx="14" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.4"/>
+    <text x="120" y="30" text-anchor="middle" class="lane-title">可观测 / 控制器</text>
+
+    <rect x="24" y="56" width="192" height="112" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="120" y="86" text-anchor="middle" class="node-title">指标与事件爆量</text>
+    <text x="120" y="112" text-anchor="middle" class="node-text">Prometheus 采集变重</text>
+    <text x="120" y="136" text-anchor="middle" class="node-text">控制器异常重试</text>
+
+    <path d="M120 176 L120 244" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#arrow-blue)"/>
+
+    <rect x="24" y="254" width="192" height="112" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+    <text x="120" y="284" text-anchor="middle" class="node-title">系统自我放大</text>
+    <text x="120" y="310" text-anchor="middle" class="node-text">查询慢 / OOM</text>
+    <text x="120" y="334" text-anchor="middle" class="node-text">apiserver QPS 异常</text>
+
+    <path d="M120 374 L120 442" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)"/>
+
+    <rect x="24" y="452" width="192" height="96" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+    <text x="120" y="482" text-anchor="middle" class="node-title">采集与客户端治理</text>
+    <text x="120" y="508" text-anchor="middle" class="node-text">分片 / 降采样</text>
+    <text x="120" y="532" text-anchor="middle" class="node-text">informer / 限流</text>
+  </g>
+
+  <path d="M238 692 C360 724, 840 724, 994 692" stroke="#9333ea" stroke-width="2" fill="none" marker-end="url(#arrow-purple)"/>
+  <text x="600" y="725" text-anchor="middle" class="legend">面试表达主线：先说业务场景，再说压力表现，最后落到可观测指标和治理动作</text>
+</svg>

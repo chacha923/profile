@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" width="980" height="560">
+  <style>text{font-family:'Helvetica Neue',Helvetica,Arial,'PingFang SC','Microsoft YaHei',sans-serif}.title{font-size:22px;font-weight:700;fill:#111827}.node{font-size:15px;font-weight:700;fill:#111827}.sub{font-size:12px;fill:#6b7280}</style>
+  <defs><marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker><marker id="red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#dc2626"/></marker></defs>
+  <rect width="980" height="560" fill="#fff"/>
+  <text x="40" y="42" class="title">告警聚合事件状态机</text>
+  <circle cx="80" cy="270" r="10" fill="#111827"/>
+  <rect x="165" y="225" width="150" height="70" rx="12" fill="#eff6ff" stroke="#bfdbfe"/><text x="240" y="255" text-anchor="middle" class="node">firing</text><text x="240" y="277" text-anchor="middle" class="sub">新告警/持续触发</text>
+  <rect x="405" y="110" width="150" height="70" rx="12" fill="#f0fdf4" stroke="#bbf7d0"/><text x="480" y="140" text-anchor="middle" class="node">muted</text><text x="480" y="162" text-anchor="middle" class="sub">静默/屏蔽中</text>
+  <rect x="405" y="225" width="150" height="70" rx="12" fill="#fff7ed" stroke="#fed7aa"/><text x="480" y="255" text-anchor="middle" class="node">acked</text><text x="480" y="277" text-anchor="middle" class="sub">已响应</text>
+  <rect x="655" y="225" width="150" height="70" rx="12" fill="#ecfeff" stroke="#a5f3fc"/><text x="730" y="255" text-anchor="middle" class="node">resolved</text><text x="730" y="277" text-anchor="middle" class="sub">已解决</text>
+  <rect x="405" y="360" width="150" height="70" rx="12" fill="#fef2f2" stroke="#fecaca"/><text x="480" y="390" text-anchor="middle" class="node">closed</text><text x="480" y="412" text-anchor="middle" class="sub">误报/关闭</text>
+  <circle cx="890" cy="270" r="13" fill="none" stroke="#111827" stroke-width="2"/><circle cx="890" cy="270" r="8" fill="#111827"/>
+  <path d="M90 270H165" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/><text x="120" y="258" class="sub">新建</text>
+  <path d="M240 225C210 180 210 150 240 120C280 90 330 130 300 175" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="248" y="105" class="sub">同 fingerprint 聚合</text>
+  <path d="M315 250C350 210 380 170 405 150" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="320" y="188" class="sub">屏蔽</text>
+  <path d="M405 165C360 190 330 220 315 245" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="340" y="225" class="sub">取消/过期</text>
+  <path d="M315 260H405" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/><text x="344" y="248" class="sub">ack</text>
+  <path d="M555 260H655" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/><text x="594" y="248" class="sub">resolve</text>
+  <path d="M315 285C350 330 390 370 405 390" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#red)"/><text x="330" y="365" class="sub">误报</text>
+  <path d="M805 260H877" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M730 225C710 150 610 105 555 135" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#red)"/><text x="635" y="115" class="sub">抖动窗口内 reopen</text>
+</svg>

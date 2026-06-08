@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 1280" width="2100" height="1280">
+  <defs>
+    <marker id="arrowA" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowB" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+    <marker id="arrowC" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowE" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f97316"/>
+    </marker>
+    <marker id="arrowF" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowH" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+    <filter id="shadowSoft" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <filter id="shadowGlass" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#020617" flood-opacity="0.28"/>
+    </filter>
+    <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { font-size: 30px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 14px; font-weight: 500; fill: #6b7280; }
+    .section { font-size: 13px; font-weight: 700; fill: #2563eb; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #94a3b8; }
+    .node-title { font-size: 18px; font-weight: 700; fill: #111827; }
+    .node-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .node-type { font-size: 12px; font-weight: 700; fill: #9ca3af; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #94a3b8; }
+    </style>
+  </defs>
+  <rect width="2100.0" height="1280.0" fill="#ffffff"/>
+  <text x="1050.0" y="56" text-anchor="middle" class="title">Tekton 构建链路剖面图</text>
+  <rect x="120.0" y="190.0" width="1380.0" height="860.0" rx="16.0" fill="none" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="150.0" y="170.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">同一个 pipeline 节点</text>
+  <rect x="180.0" y="290.0" width="360.0" height="240.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="210.0" y="270.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">Tekton TaskRun Pod</text>
+  <rect x="660.0" y="290.0" width="380.0" height="240.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="690.0" y="270.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">buildkitd DaemonSet Pod</text>
+  <rect x="250.0" y="650.0" width="980.0" height="280.0" rx="16.0" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="280.0" y="630.0" text-anchor="start" dominant-baseline="middle" font-size="14.0" font-weight="600" fill="#6b7280">宿主机运行时</text>
+  <path d="M 360.0,760.0 L 360.0,620.0 L 280.0,620.0 L 280.0,456.0 L 360.0,456.0" fill="none" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <path d="M 490.0,408.0 L 510.4,408.0 L 539.6,415.0 L 560.0,415.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 720.0,415.0 L 725.0,415.0 L 725.0,408.0 L 730.0,408.0" fill="none" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <path d="M 850.0,456.0 L 850.0,650.0 L 680.0,650.0 L 680.0,740.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 930.0,760.0 L 990.0,760.0 L 990.0,408.0 L 970.0,408.0" fill="none" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <path d="M 680.0,836.0 L 680.0,872.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)"/>
+  <path d="M 800.0,788.0 L 1019.6,788.0 L 1019.6,784.0 L 1040.0,784.0" fill="none" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <path d="M 1150.0,872.0 L 1150.0,940.0 L 740.0,940.0 L 740.0,836.0 L 680.0,836.0" fill="none" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <path d="M 800.0,788.0 L 1420.0,788.0 L 1420.0,445.0 L 1660.0,445.0" fill="none" stroke="#f97316" stroke-width="2.4" marker-end="url(#arrowE)"/>
+  <path d="M 1800.0,510.0 L 1800.0,640.0 L 1770.0,640.0 L 1770.0,760.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <rect x="240.0" y="78.0" width="1540.0" height="68.0" rx="10.0" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+  <text x="1010.0" y="96.0" text-anchor="middle" class="node-type">背景</text>
+  <text x="1010.0" y="118.0" text-anchor="middle" class="node-title">ACK 升级后不再依赖 Docker Runtime，构建链路天然走 containerd</text>
+  <rect x="230.0" y="360.0" width="260.0" height="96.0" rx="10.0" fill="#eff6ff" stroke="#2563eb" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="236.0" y="366.0" width="248.0" height="84.0" rx="7.0" fill="none" stroke="#2563eb" stroke-width="1.2" opacity="0.65"/>
+  <text x="360.0" y="378.0" text-anchor="middle" class="node-type">TaskRun Pod 内</text>
+  <text x="360.0" y="414.0" text-anchor="middle" class="node-title">docker-build step</text>
+  <text x="360.0" y="436.0" text-anchor="middle" class="node-sub">buildctl client + source context</text>
+  <rect x="220.0" y="760.0" width="280.0" height="92.0" rx="10.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="360.0" y="806.0" text-anchor="middle" class="node-title">源码 / Dockerfile / Workspace</text>
+  <text x="360.0" y="828.0" text-anchor="middle" class="node-sub">构建上下文</text>
+  <rect x="560.0" y="388.0" width="160.0" height="54.0" rx="10.0" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.8"/>
+  <text x="640.0" y="415.0" text-anchor="middle" class="node-title">共享 hostPath</text>
+  <rect x="730.0" y="360.0" width="240.0" height="96.0" rx="10.0" fill="#eff6ff" stroke="#2563eb" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="736.0" y="366.0" width="228.0" height="84.0" rx="7.0" fill="none" stroke="#2563eb" stroke-width="1.2" opacity="0.65"/>
+  <text x="850.0" y="378.0" text-anchor="middle" class="node-type">DaemonSet Pod</text>
+  <text x="850.0" y="414.0" text-anchor="middle" class="node-title">buildkitd</text>
+  <text x="850.0" y="436.0" text-anchor="middle" class="node-sub">节点上的构建守护进程</text>
+  <rect x="820.0" y="760.0" width="220.0" height="92.0" rx="10.0" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="930.0" y="806.0" text-anchor="middle" class="node-title">buildkitd.toml</text>
+  <text x="930.0" y="828.0" text-anchor="middle" class="node-sub">containerd.sock / buildkit namespace</text>
+  <rect x="560.0" y="740.0" width="240.0" height="96.0" rx="10.0" fill="#eff6ff" stroke="#2563eb" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="566.0" y="746.0" width="228.0" height="84.0" rx="7.0" fill="none" stroke="#2563eb" stroke-width="1.2" opacity="0.65"/>
+  <text x="680.0" y="758.0" text-anchor="middle" class="node-type">Node Runtime</text>
+  <text x="680.0" y="794.0" text-anchor="middle" class="node-title">宿主机 containerd</text>
+  <text x="680.0" y="816.0" text-anchor="middle" class="node-sub">真正执行拉取、缓存、推送</text>
+  <ellipse cx="1140.0" cy="745.0" rx="50.0" ry="13.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <rect x="1040.0" y="745.0" width="200.0" height="78.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <ellipse cx="1140.0" cy="823.0" rx="50.0" ry="13.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <ellipse cx="1140.0" cy="771.52" rx="50.0" ry="13.0" fill="none" stroke="#16a34a" stroke-opacity="0.45" stroke-width="1.2"/>
+  <ellipse cx="1140.0" cy="794.4" rx="50.0" ry="13.0" fill="none" stroke="#16a34a" stroke-opacity="0.25" stroke-width="1.2"/>
+  <text x="1140.0" y="778.0" text-anchor="middle" class="node-title">BuildKit Cache</text>
+  <text x="1140.0" y="802.0" text-anchor="middle" class="node-sub">/var/lib/container/buildkit</text>
+  <rect x="570.0" y="872.0" width="220.0" height="74.0" rx="10.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+  <text x="680.0" y="890.0" text-anchor="middle" class="node-type">/run/containerd</text>
+  <text x="680.0" y="915.0" text-anchor="middle" class="node-title">containerd.sock</text>
+  <rect x="1040.0" y="872.0" width="220.0" height="92.0" rx="10.0" fill="#ffffff" stroke="#f97316" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="1150.0" y="918.0" text-anchor="middle" class="node-title">hosts.toml</text>
+  <text x="1150.0" y="940.0" text-anchor="middle" class="node-sub">registry mirror / auth</text>
+  <ellipse cx="1800.0" cy="396.25" rx="70.0" ry="16.25" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <rect x="1660.0" y="396.25" width="280.0" height="97.5" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <ellipse cx="1800.0" cy="493.75" rx="70.0" ry="16.25" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <ellipse cx="1800.0" cy="429.4" rx="70.0" ry="16.25" fill="none" stroke="#16a34a" stroke-opacity="0.45" stroke-width="1.2"/>
+  <ellipse cx="1800.0" cy="458.0" rx="70.0" ry="16.25" fill="none" stroke="#16a34a" stroke-opacity="0.25" stroke-width="1.2"/>
+  <text x="1800.0" y="439.0" text-anchor="middle" class="node-title">Harbor Registry</text>
+  <text x="1800.0" y="463.0" text-anchor="middle" class="node-sub">基础镜像拉取 + 目标镜像推送</text>
+  <rect x="1560.0" y="760.0" width="420.0" height="140.0" rx="10.0" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="1770.0" y="778.0" text-anchor="middle" class="node-type">关系说明</text>
+  <text x="1770.0" y="836.0" text-anchor="middle" class="node-title">链路说明</text>
+  <text x="1770.0" y="858.0" text-anchor="middle" class="node-sub">TaskRun Pod 只负责发起 buildctl；真正干活的是同节点的 buildkitd + 宿主机 containerd。</text>
+  <rect x="1335.5" y="602.5" width="133" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+  <text x="1402.0" y="616.5" text-anchor="middle" class="arrow-label">HTTPS pull / push</text>
+  <rect x="32.0" y="1106.0" width="268" height="134" rx="10" fill="#ffffff" opacity="0.88"/>
+  <line x1="42.0" y1="1120.0" x2="72.0" y2="1120.0" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <text x="82.0" y="1124.0" class="legend">控制流：buildctl 发起构建</text>
+  <line x1="42.0" y1="1142.0" x2="72.0" y2="1142.0" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+  <text x="82.0" y="1146.0" class="legend">读路径：源码、配置、共享 socket</text>
+  <line x1="42.0" y1="1164.0" x2="72.0" y2="1164.0" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+  <text x="82.0" y="1168.0" class="legend">执行路径：buildkitd 驱动 containerd</text>
+  <line x1="42.0" y1="1186.0" x2="72.0" y2="1186.0" stroke="#f97316" stroke-width="2.4" marker-end="url(#arrowE)"/>
+  <text x="82.0" y="1190.0" class="legend">数据流：镜像拉取与推送</text>
+  <line x1="42.0" y1="1208.0" x2="72.0" y2="1208.0" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)"/>
+  <text x="82.0" y="1212.0" class="legend">结果说明：socket / 链路说明</text>
+</svg>

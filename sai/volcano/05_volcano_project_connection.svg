@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 640" width="1040" height="640">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111827; }
+    .title { font-size: 18px; font-weight: 700; }
+    .label { font-size: 14px; font-weight: 600; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .tiny { font-size: 11px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; rx: 8; }
+    .blue { fill: #eff6ff; stroke: #bfdbfe; }
+    .green { fill: #f0fdf4; stroke: #bbf7d0; }
+    .orange { fill: #fff7ed; stroke: #fed7aa; }
+    .red { fill: #fef2f2; stroke: #fecaca; }
+    .gray { fill: #f9fafb; stroke: #d1d5db; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16a34a"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#ea580c"/></marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#dc2626"/></marker>
+  </defs>
+
+  <rect width="1040" height="640" fill="#ffffff"/>
+  <text x="32" y="38" class="title">经验边界与理论对标：ACK / SAI 真实经验如何安全映射到 Volcano</text>
+
+  <rect x="58" y="86" width="250" height="126" class="box blue"/>
+  <text x="183" y="116" text-anchor="middle" class="label">真实生产经验</text>
+  <text x="183" y="140" text-anchor="middle" class="sub">ACK 算法套件 / ACK 调度能力</text>
+  <text x="183" y="162" text-anchor="middle" class="sub">SAI 训练平台 / TFJob 接入</text>
+  <text x="183" y="184" text-anchor="middle" class="sub">任务生命周期 / Pending 排查</text>
+
+  <rect x="394" y="86" width="250" height="126" class="box orange"/>
+  <text x="519" y="116" text-anchor="middle" class="label">共同工程问题</text>
+  <text x="519" y="140" text-anchor="middle" class="sub">整体启动 / 多租户队列</text>
+  <text x="519" y="162" text-anchor="middle" class="sub">资源碎片 / 高优保障</text>
+  <text x="519" y="184" text-anchor="middle" class="sub">GPU 拓扑 / 状态解释</text>
+
+  <rect x="730" y="86" width="250" height="126" class="box green"/>
+  <text x="855" y="116" text-anchor="middle" class="label">理论对标对象</text>
+  <text x="855" y="140" text-anchor="middle" class="sub">Volcano</text>
+  <text x="855" y="162" text-anchor="middle" class="sub">PodGroup / Queue / Gang</text>
+  <text x="855" y="184" text-anchor="middle" class="sub">Preempt / Reclaim / Plugins</text>
+
+  <path d="M308 149 L394 149" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M644 149 L730 149" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+
+  <rect x="88" y="286" width="190" height="76" class="box green"/>
+  <text x="183" y="315" text-anchor="middle" class="label">了解型说法</text>
+  <text x="183" y="338" text-anchor="middle" class="sub">对标理解调度语义</text>
+
+  <rect x="314" y="286" width="190" height="76" class="box green"/>
+  <text x="409" y="315" text-anchor="middle" class="label">排查型说法</text>
+  <text x="409" y="338" text-anchor="middle" class="sub">按对象链路定位</text>
+
+  <rect x="540" y="286" width="190" height="76" class="box green"/>
+  <text x="635" y="315" text-anchor="middle" class="label">落地型说法</text>
+  <text x="635" y="338" text-anchor="middle" class="sub">假设引入的设计</text>
+
+  <rect x="766" y="286" width="190" height="76" class="box red"/>
+  <text x="861" y="315" text-anchor="middle" class="label">不能说的话</text>
+  <text x="861" y="338" text-anchor="middle" class="sub">不伪装生产落地</text>
+
+  <path d="M855 212 C855 252 183 246 183 286" stroke="#16a34a" stroke-width="1.6" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M855 212 C855 252 409 246 409 286" stroke="#16a34a" stroke-width="1.6" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M855 212 C855 252 635 246 635 286" stroke="#16a34a" stroke-width="1.6" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M855 212 C922 244 901 254 861 286" stroke="#dc2626" stroke-width="1.6" fill="none" marker-end="url(#arrow-red)"/>
+
+  <rect x="72" y="448" width="896" height="112" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-dasharray="7 5"/>
+  <text x="98" y="478" class="label">面试主线</text>
+  <text x="98" y="506" class="sub">先声明：生产没有自建 Volcano，真实经验是 ACK 调度能力和 SAI 训练平台接入。</text>
+  <text x="98" y="530" class="sub">再对标：Volcano 用 PodGroup、Queue、Gang、抢占回收、插件机制解释同类批调度问题。</text>
+  <text x="98" y="554" class="sub">最后收口：能做方案评估和排障推演，但不把理论学习包装成已上线项目。</text>
+
+  <path d="M183 362 L246 448" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M409 362 L438 448" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M635 362 L630 448" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#arrow-orange)"/>
+  <path d="M861 362 L788 448" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#arrow-red)"/>
+
+  <text x="60" y="606" class="tiny">边界：ACK / SAI 是真实经验；Volcano 是理论对标对象；落地设计只能用“如果让我引入”，不能说“我已经落地”。</text>
+</svg>

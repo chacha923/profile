@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .label { font-size: 14px; font-weight: 600; fill: #111827; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .edge { font-size: 11px; fill: #6b7280; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="960" height="720" fill="#ffffff"/>
+  <text x="40" y="46" class="title">PD 分离排障决策树</text>
+  <text x="40" y="74" class="sub">先按用户体验指标分流，再定位 Prefill、Decode、KV Transfer 或 Router。</text>
+
+  <rect x="360" y="105" width="240" height="64" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="480" y="132" text-anchor="middle" class="label">请求变慢或失败</text>
+  <text x="480" y="153" text-anchor="middle" class="sub">先拆 TTFT / TPOT / error</text>
+
+  <polygon points="480,220 590,280 480,340 370,280" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="480" y="274" text-anchor="middle" class="label">TTFT 是否升高？</text>
+  <text x="480" y="297" text-anchor="middle" class="sub">首 token 变慢</text>
+
+  <rect x="75" y="245" width="215" height="92" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="182" y="275" text-anchor="middle" class="label">查 Prefill</text>
+  <text x="182" y="301" text-anchor="middle" class="sub">prompt 长度 / queue</text>
+  <text x="182" y="322" text-anchor="middle" class="sub">GPU 算力 / batch</text>
+
+  <polygon points="480,405 590,465 480,525 370,465" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+  <text x="480" y="459" text-anchor="middle" class="label">TPOT 是否升高？</text>
+  <text x="480" y="482" text-anchor="middle" class="sub">后续 token 变慢</text>
+
+  <rect x="75" y="430" width="215" height="92" rx="8" fill="#ede9fe" stroke="#d8b4fe" stroke-width="1.5"/>
+  <text x="182" y="460" text-anchor="middle" class="label">查 Decode</text>
+  <text x="182" y="486" text-anchor="middle" class="sub">KV Cache / 显存</text>
+  <text x="182" y="507" text-anchor="middle" class="sub">decode queue / OOM</text>
+
+  <polygon points="480,575 590,635 480,695 370,635" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="480" y="629" text-anchor="middle" class="label">跨阶段是否异常？</text>
+  <text x="480" y="652" text-anchor="middle" class="sub">失败 / 超时 / 抖动</text>
+
+  <rect x="670" y="588" width="215" height="92" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="777" y="618" text-anchor="middle" class="label">查 Router / KV Transfer</text>
+  <text x="777" y="644" text-anchor="middle" class="sub">路由 / 重试 / 超时</text>
+  <text x="777" y="665" text-anchor="middle" class="sub">网络 / 拓扑 / 版本</text>
+
+  <rect x="670" y="245" width="215" height="92" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="777" y="275" text-anchor="middle" class="label">查基础因素</text>
+  <text x="777" y="301" text-anchor="middle" class="sub">模型加载 / 配置</text>
+  <text x="777" y="322" text-anchor="middle" class="sub">节点 / 网络 / Runtime 日志</text>
+
+  <path d="M480 169 L480 219" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M370 280 L291 290" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="320" y="271" class="edge">是</text>
+  <path d="M480 340 L480 404" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="495" y="375" class="edge">否</text>
+  <path d="M370 465 L291 475" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="320" y="456" class="edge">是</text>
+  <path d="M480 525 L480 574" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="495" y="555" class="edge">否</text>
+  <path d="M590 635 L669 635" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="625" y="624" class="edge">是</text>
+  <path d="M590 280 L669 290" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="625" y="271" class="edge">否但仍异常</text>
+</svg>

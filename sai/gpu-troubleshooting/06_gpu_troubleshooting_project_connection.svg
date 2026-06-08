@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif; }
+    .title { font-size: 22px; font-weight: 600; fill: #111827; }
+    .label { font-size: 15px; font-weight: 600; fill: #111827; }
+    .clabel { font-size: 14px; font-weight: 600; fill: #111827; }
+    .sub { font-size: 12px; fill: #4b5563; }
+    .tag { font-size: 12px; font-weight: 600; fill: #1f2937; }
+    .edge { font-size: 11px; fill: #6b7280; }
+    .cmd { font-family: 'SF Mono','Menlo','Consolas',monospace; font-size: 11px; fill: #1f2937; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="40" y="46" class="title">GPU 排障与 SAI 平台的安全连接</text>
+  <text x="40" y="74" class="sub">守住平台边界：能定位到层、能止损、能演进观测，不夸大成自研。</text>
+  <rect x="40" y="98" width="410" height="168" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="58" y="130" class="clabel">了解型</text>
+  <line x1="58" y1="142" x2="432" y2="142" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="58" y="168" class="sub">• 理解 GPU 任务全链路六层故障</text>
+  <text x="58" y="194" class="sub">• SAI 托管训练 / 推理任务</text>
+  <text x="58" y="220" class="sub">• 我在控制面 / 资源池 / 运行态治理</text>
+  <rect x="510" y="98" width="410" height="168" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="528" y="130" class="clabel">排查型</text>
+  <line x1="528" y1="142" x2="902" y2="142" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="528" y="168" class="sub">• 归类症状 → 分层下钻 → 定位到层</text>
+  <text x="528" y="194" class="sub">• describe / logs / nvidia-smi / dmesg</text>
+  <text x="528" y="220" class="sub">• 多机用 NCCL_DEBUG / topo 排通信</text>
+  <rect x="40" y="300" width="410" height="168" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+  <text x="58" y="332" class="clabel">实践型</text>
+  <line x1="58" y1="344" x2="432" y2="344" stroke="#e9d5ff" stroke-width="1"/>
+  <text x="58" y="370" class="sub">• 控制面 + Event + DCGM + 训练指标打通</text>
+  <text x="58" y="396" class="sub">• XID 接告警，坏卡自动隔离重调度</text>
+  <text x="58" y="422" class="sub">• 训练心跳识别「假活 hang」并止损</text>
+  <rect x="510" y="300" width="410" height="168" rx="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="528" y="332" class="clabel">不能说的话</text>
+  <line x1="528" y1="344" x2="902" y2="344" stroke="#fecaca" stroke-width="1"/>
+  <text x="528" y="370" class="sub">• 不说自研 GPU Scheduler / 推理引擎</text>
+  <text x="528" y="396" class="sub">• 不说改过 NCCL / 驱动 / 固件</text>
+  <text x="528" y="422" class="sub">• 不说做了显存隔离 / MIG 切分</text>
+</svg>

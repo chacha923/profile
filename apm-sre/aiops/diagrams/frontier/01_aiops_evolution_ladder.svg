@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 680" width="1080" height="680">
+  <style>
+    text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .sub { font-size: 13px; fill: #6b7280; }
+    .h { font-size: 15px; font-weight: 700; fill: #111827; }
+    .t { font-size: 12.5px; fill: #374151; }
+    .s { font-size: 11.5px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+    .green { fill: #ecfdf5; stroke: #86efac; }
+    .blue { fill: #eff6ff; stroke: #93c5fd; }
+    .amber { fill: #fffbeb; stroke: #fcd34d; }
+    .cyan { fill: #ecfeff; stroke: #67e8f9; }
+    .violet { fill: #f5f3ff; stroke: #c4b5fd; }
+    .red { fill: #fef2f2; stroke: #fca5a5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="680" fill="#ffffff"/>
+  <text x="540" y="42" text-anchor="middle" class="title">AIOps 演进阶梯：从规则到自主</text>
+  <text x="540" y="70" text-anchor="middle" class="sub">自动化程度越往上越高，但人对越上层越要保留接管与审计能力</text>
+
+  <rect x="60" y="560" width="220" height="90" rx="8" class="box red"/>
+  <text x="170" y="590" text-anchor="middle" class="h">L0 规则/脚本</text>
+  <text x="170" y="614" text-anchor="middle" class="t">固定阈值 / runbook</text>
+  <text x="170" y="634" text-anchor="middle" class="s">确定性、不可泛化</text>
+
+  <rect x="220" y="450" width="220" height="90" rx="8" class="box amber"/>
+  <text x="330" y="480" text-anchor="middle" class="h">L1 算法驱动 1.0</text>
+  <text x="330" y="504" text-anchor="middle" class="t">异常检测/降噪/多维定位</text>
+  <text x="330" y="524" text-anchor="middle" class="s">可解释、难端到端编排</text>
+
+  <rect x="380" y="340" width="220" height="90" rx="8" class="box blue"/>
+  <text x="490" y="370" text-anchor="middle" class="h">L2 SRE Copilot</text>
+  <text x="490" y="394" text-anchor="middle" class="t">嵌入告警/PromQL/SOP</text>
+  <text x="490" y="414" text-anchor="middle" class="s">辅助人，不自主执行</text>
+
+  <rect x="540" y="230" width="220" height="90" rx="8" class="box cyan"/>
+  <text x="650" y="260" text-anchor="middle" class="h">L3 RCA Agent</text>
+  <text x="650" y="284" text-anchor="middle" class="t">假设-验证 + 多源取证</text>
+  <text x="650" y="304" text-anchor="middle" class="s">证据驱动、允许 Unknown</text>
+
+  <rect x="700" y="120" width="220" height="90" rx="8" class="box violet"/>
+  <text x="810" y="150" text-anchor="middle" class="h">L4 AgentOps + 多Agent</text>
+  <text x="810" y="174" text-anchor="middle" class="t">可观测/评估/协作编排</text>
+  <text x="810" y="194" text-anchor="middle" class="s">Agent 自身被治理</text>
+
+  <rect x="820" y="95" width="200" height="40" rx="8" class="box green"/>
+  <text x="920" y="120" text-anchor="middle" class="h">L5 受控自愈(目标态)</text>
+
+  <path d="M280 600 L330 540" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M440 495 L490 430" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M600 385 L650 320" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M760 275 L810 210" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M920 120 L920 135" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="40" y="120" width="330" height="200" rx="8" class="box green"/>
+  <text x="60" y="148" class="h">QCon 大厂讲了什么(关键趋势)</text>
+  <text x="60" y="174" class="s">· 端到端智能诊断：从拉群救火到 AI 排查</text>
+  <text x="60" y="196" class="s">· 全链路 Agent 无侵入可观测(推理→执行)</text>
+  <text x="60" y="218" class="s">· 数据飞轮：运维数据→工具→知识→反馈</text>
+  <text x="60" y="240" class="s">· 统一实体/拓扑模型支撑定位</text>
+  <text x="60" y="262" class="s">· 评估工程化：从盲调到数据驱动</text>
+  <text x="60" y="284" class="s">· 知识沉淀：个人经验→组织资产</text>
+  <text x="60" y="306" class="s">· 记忆中间件：让 Agent 跨会话积累</text>
+
+  <text x="540" y="500" class="s" transform="rotate(-32 540 500)">自动化程度 ↑</text>
+</svg>

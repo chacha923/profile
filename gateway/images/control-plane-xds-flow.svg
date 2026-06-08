@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; fill: #111827; }
+    .title { font-size: 24px; font-weight: 700; }
+    .subtitle { font-size: 13px; fill: #6b7280; }
+    .label { font-size: 15px; font-weight: 700; }
+    .small { font-size: 12px; fill: #4b5563; }
+    .tiny { font-size: 11px; fill: #6b7280; }
+    .lane-title { font-size: 13px; font-weight: 700; fill: #374151; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#111827" flood-opacity="0.10"/></filter>
+  </defs>
+  <rect width="1200" height="700" fill="#ffffff"/>
+  <text class="title" x="600" y="42" text-anchor="middle">控制面到 xDS 的生成链路</text>
+  <text class="subtitle" x="600" y="66" text-anchor="middle">面试讲重点：K8s 资源变化不是直接改 Envoy，而是经过 Reconciler 翻译成 xDS，再由 Envoy 拉取。</text>
+  <g filter="url(#shadow)">
+    <rect x="60" y="130" width="190" height="88" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+    <circle cx="84" cy="154" r="14" fill="#dbeafe" stroke="#93c5fd" stroke-width="1"/>
+    <text x="84" y="159" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">K8s</text>
+    <text class="label" x="108" y="160">Kubernetes API</text>
+    <text class="small" x="108" y="182">Gateway / HTTPRoute</text>
+    <text class="small" x="108" y="199">Service / EndpointSlice</text>
+    <text class="small" x="108" y="216">Secret / Http2Rpc</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="300" y="130" width="190" height="88" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+    <circle cx="324" cy="154" r="14" fill="#fed7aa" stroke="#fdba74" stroke-width="1"/>
+    <text x="324" y="159" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">W</text>
+    <text class="label" x="348" y="160">Watchers</text>
+    <text class="small" x="348" y="182">Informer + Lister</text>
+    <text class="small" x="348" y="199">Workqueue</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="540" y="130" width="190" height="88" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+    <circle cx="564" cy="154" r="14" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1"/>
+    <text x="564" y="159" text-anchor="middle" font-size="13" font-weight="700" fill="#7e22ce">R</text>
+    <text class="label" x="588" y="160">Reconciler</text>
+    <text class="small" x="588" y="182">GatewayController</text>
+    <text class="small" x="588" y="199">httpRouteReconciler</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="780" y="130" width="190" height="88" rx="10" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+    <circle cx="804" cy="154" r="14" fill="#ccfbf1" stroke="#5eead4" stroke-width="1"/>
+    <text x="804" y="159" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">X</text>
+    <text class="label" x="828" y="160">Translator</text>
+    <text class="small" x="828" y="182">LDS / RDS</text>
+    <text class="small" x="828" y="199">CDS / EDS / SDS</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="970" y="292" width="170" height="88" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+    <circle cx="994" cy="316" r="14" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+    <text x="994" y="321" text-anchor="middle" font-size="13" font-weight="700" fill="#15803d">E</text>
+    <text class="label" x="1018" y="322">Envoy 数据面</text>
+    <text class="small" x="1018" y="344">ADS / Delta ADS</text>
+    <text class="small" x="1018" y="361">接收配置并转发流量</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="300" y="320" width="190" height="90" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+    <circle cx="324" cy="344" r="14" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+    <text x="324" y="349" text-anchor="middle" font-size="13" font-weight="700" fill="#374151">D</text>
+    <text class="label" x="348" y="350">Gateway 创建面</text>
+    <text class="small" x="348" y="372">PodTemplate</text>
+    <text class="small" x="348" y="389">Deployment</text>
+    <text class="small" x="348" y="406">ConfigMap</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="540" y="320" width="190" height="90" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+    <circle cx="564" cy="344" r="14" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+    <text x="564" y="349" text-anchor="middle" font-size="13" font-weight="700" fill="#374151">RM</text>
+    <text class="label" x="588" y="350">ResourceManager</text>
+    <text class="small" x="588" y="372">资源写入</text>
+    <text class="small" x="588" y="389">版本递增</text>
+    <text class="small" x="588" y="406">变更回调</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="780" y="320" width="190" height="90" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+    <circle cx="804" cy="344" r="14" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+    <text x="804" y="349" text-anchor="middle" font-size="13" font-weight="700" fill="#374151">XS</text>
+    <text class="label" x="828" y="350">xDS Server</text>
+    <text class="small" x="828" y="372">连接管理</text>
+    <text class="small" x="828" y="389">防抖推送</text>
+    <text class="small" x="828" y="406">Admin / Metrics</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="60" y="510" width="190" height="72" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+    <text class="label" x="78" y="540">面试关键词</text>
+    <text class="small" x="78" y="562">声明式配置</text>
+    <text class="small" x="78" y="579">控制面/数据面分离</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="300" y="510" width="190" height="72" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+    <text class="label" x="318" y="540">变更来源</text>
+    <text class="small" x="318" y="562">HTTPRoute 变更</text>
+    <text class="small" x="318" y="579">EndpointSlice 变化</text>
+    <text class="small" x="318" y="596">Gateway listener 变化</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="540" y="510" width="190" height="72" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+    <text class="label" x="558" y="540">产物</text>
+    <text class="small" x="558" y="562">Envoy protobuf</text>
+    <text class="small" x="558" y="579">带版本的 xDS 资源</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="780" y="510" width="190" height="72" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+    <text class="label" x="798" y="540">稳定性点</text>
+    <text class="small" x="798" y="562">leader election</text>
+    <text class="small" x="798" y="579">ready gate</text>
+    <text class="small" x="798" y="596">debounce</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="970" y="510" width="170" height="72" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+    <text class="label" x="988" y="540">排查入口</text>
+    <text class="small" x="988" y="562">/resources</text>
+    <text class="small" x="988" y="579">/connections</text>
+    <text class="small" x="988" y="596">/versions /metrics</text>
+  </g>
+  <line x1="250" y1="174" x2="300" y2="174" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <rect x="248.0" y="142" width="54" height="20" rx="5" fill="#ffffff" opacity="0.96" stroke="#e5e7eb"/>
+  <text class="tiny" x="275" y="156" text-anchor="middle">watch</text>
+  <line x1="490" y1="174" x2="540" y2="174" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <rect x="481.0" y="142" width="68" height="20" rx="5" fill="#ffffff" opacity="0.96" stroke="#e5e7eb"/>
+  <text class="tiny" x="515" y="156" text-anchor="middle">enqueue</text>
+  <line x1="730" y1="174" x2="780" y2="174" stroke="#9333ea" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <rect x="713.0" y="142" width="84" height="20" rx="5" fill="#ffffff" opacity="0.96" stroke="#e5e7eb"/>
+  <text class="tiny" x="755" y="156" text-anchor="middle">translate</text>
+  <path d="M 875 218 L 875 260 L 635 260 L 635 320" fill="none" stroke="#9333ea" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <rect x="725.0" y="238" width="60" height="20" rx="5" fill="#ffffff" opacity="0.96" stroke="#e5e7eb"/>
+  <text class="tiny" x="755" y="252" text-anchor="middle">xDS 资源</text>
+  <line x1="730" y1="365" x2="780" y2="365" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="728.0" y="333" width="54" height="20" rx="5" fill="#ffffff" opacity="0.96" stroke="#e5e7eb"/>
+  <text class="tiny" x="755" y="347" text-anchor="middle">store</text>
+  <path d="M 970 365 L 1005 365 L 1005 380 L 1055 380" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="981.0" y="333" width="54" height="20" rx="5" fill="#ffffff" opacity="0.96" stroke="#e5e7eb"/>
+  <text class="tiny" x="1008" y="347" text-anchor="middle">ADS</text>
+  <path d="M 635 410 L 635 455 L 1075 455 L 1075 380" fill="none" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrow-green)" stroke-dasharray="5 4"/>
+  <rect x="823.0" y="433" width="54" height="20" rx="5" fill="#ffffff" opacity="0.96" stroke="#e5e7eb"/>
+  <text class="tiny" x="850" y="447" text-anchor="middle">push</text>
+  <path d="M 635 218 L 635 275 L 395 275 L 395 320" fill="none" stroke="#ea580c" stroke-width="1.8" marker-end="url(#arrow-orange)" stroke-dasharray="5 4"/>
+  <rect x="477.0" y="253" width="76" height="20" rx="5" fill="#ffffff" opacity="0.96" stroke="#e5e7eb"/>
+  <text class="tiny" x="515" y="267" text-anchor="middle">创建/更新数据面</text>
+  <line x1="155" y1="218" x2="155" y2="510" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow-gray)" stroke-dasharray="5 4"/>
+  <line x1="395" y1="410" x2="395" y2="510" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow-gray)" stroke-dasharray="5 4"/>
+  <line x1="635" y1="410" x2="635" y2="510" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow-gray)" stroke-dasharray="5 4"/>
+  <line x1="875" y1="410" x2="875" y2="510" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow-gray)" stroke-dasharray="5 4"/>
+  <line x1="1055" y1="380" x2="1055" y2="510" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow-gray)" stroke-dasharray="5 4"/>
+  <g transform="translate(58,650)">
+    <line x1="0" y1="0" x2="34" y2="0" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/><text class="tiny" x="44" y="4">控制触发</text>
+    <line x1="130" y1="0" x2="164" y2="0" stroke="#9333ea" stroke-width="2" marker-end="url(#arrow-purple)"/><text class="tiny" x="174" y="4">配置翻译</text>
+    <line x1="270" y1="0" x2="304" y2="0" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/><text class="tiny" x="314" y="4">xDS 下发</text>
+    <line x1="410" y1="0" x2="444" y2="0" stroke="#16a34a" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrow-green)"/><text class="tiny" x="454" y="4">增量推送</text>
+  </g>
+</svg>

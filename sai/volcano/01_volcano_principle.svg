@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111827; }
+    .title { font-size: 18px; font-weight: 700; }
+    .label { font-size: 14px; font-weight: 600; }
+    .sub { font-size: 12px; fill: #6b7280; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; rx: 8; }
+    .blue { fill: #eff6ff; stroke: #bfdbfe; }
+    .green { fill: #f0fdf4; stroke: #bbf7d0; }
+    .orange { fill: #fff7ed; stroke: #fed7aa; }
+    .purple { fill: #faf5ff; stroke: #e9d5ff; }
+    .lane { fill: #f9fafb; stroke: #d1d5db; stroke-dasharray: 7 5; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16a34a"/></marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#9333ea"/></marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="32" y="38" class="title">Volcano 原理模型：Kubernetes 上的批量计算调度层</text>
+
+  <rect x="32" y="70" width="896" height="88" class="lane"/>
+  <text x="48" y="94" class="sub">上层工作负载</text>
+  <rect x="92" y="104" width="160" height="40" class="box blue"/><text x="172" y="129" text-anchor="middle" class="label">PyTorch / TF</text>
+  <rect x="286" y="104" width="160" height="40" class="box blue"/><text x="366" y="129" text-anchor="middle" class="label">Spark / Flink</text>
+  <rect x="480" y="104" width="160" height="40" class="box blue"/><text x="560" y="129" text-anchor="middle" class="label">Ray / MPI</text>
+  <rect x="674" y="104" width="160" height="40" class="box blue"/><text x="754" y="129" text-anchor="middle" class="label">AI 平台任务</text>
+
+  <rect x="32" y="186" width="896" height="104" class="lane"/>
+  <text x="48" y="210" class="sub">Volcano API 对象</text>
+  <rect x="92" y="228" width="170" height="44" class="box green"/><text x="177" y="247" text-anchor="middle" class="label">VolcanoJob</text><text x="177" y="264" text-anchor="middle" class="sub">tasks / policies</text>
+  <rect x="322" y="228" width="170" height="44" class="box green"/><text x="407" y="247" text-anchor="middle" class="label">PodGroup</text><text x="407" y="264" text-anchor="middle" class="sub">minMember / minResources</text>
+  <rect x="552" y="228" width="170" height="44" class="box green"/><text x="637" y="247" text-anchor="middle" class="label">Queue</text><text x="637" y="264" text-anchor="middle" class="sub">guarantee / deserved</text>
+  <rect x="762" y="228" width="120" height="44" class="box green"/><text x="822" y="247" text-anchor="middle" class="label">CRD</text><text x="822" y="264" text-anchor="middle" class="sub">K8s 风格</text>
+
+  <rect x="32" y="318" width="896" height="116" class="lane"/>
+  <text x="48" y="342" class="sub">控制面组件</text>
+  <rect x="86" y="360" width="150" height="50" class="box orange"/><text x="161" y="381" text-anchor="middle" class="label">Admission</text><text x="161" y="398" text-anchor="middle" class="sub">校验 CRD</text>
+  <rect x="292" y="360" width="170" height="50" class="box orange"/><text x="377" y="381" text-anchor="middle" class="label">Controller</text><text x="377" y="398" text-anchor="middle" class="sub">生命周期管理</text>
+  <rect x="518" y="360" width="170" height="50" class="box orange"/><text x="603" y="381" text-anchor="middle" class="label">Scheduler</text><text x="603" y="398" text-anchor="middle" class="sub">actions + plugins</text>
+  <rect x="744" y="360" width="120" height="50" class="box orange"/><text x="804" y="381" text-anchor="middle" class="label">vcctl</text><text x="804" y="398" text-anchor="middle" class="sub">命令行</text>
+
+  <rect x="32" y="462" width="896" height="92" class="lane"/>
+  <text x="48" y="486" class="sub">执行资源层</text>
+  <rect x="92" y="502" width="165" height="36" class="box purple"/><text x="174" y="525" text-anchor="middle" class="label">CPU / Memory</text>
+  <rect x="292" y="502" width="165" height="36" class="box purple"/><text x="374" y="525" text-anchor="middle" class="label">GPU / NPU</text>
+  <rect x="492" y="502" width="165" height="36" class="box purple"/><text x="574" y="525" text-anchor="middle" class="label">IB / RoCE</text>
+  <rect x="692" y="502" width="165" height="36" class="box purple"/><text x="774" y="525" text-anchor="middle" class="label">K8s Nodes</text>
+
+  <path d="M754 144 L754 228" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M177 272 L177 360" stroke="#2563eb" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M407 272 L407 360" stroke="#16a34a" stroke-width="1.8" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M637 272 L637 360" stroke="#16a34a" stroke-width="1.8" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M603 410 L603 502" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrow-purple)"/>
+  <path d="M377 410 C377 448 514 456 574 502" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrow-purple)"/>
+
+  <text x="54" y="579" class="sub">蓝色：作业提交路径  绿色：资源与准入对象  紫色：最终节点绑定与资源感知</text>
+</svg>

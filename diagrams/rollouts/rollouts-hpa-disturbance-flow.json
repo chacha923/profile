@@ -1,0 +1,395 @@
+{
+  "template_type": "architecture",
+  "style": 1,
+  "width": 1600,
+  "height": 920,
+  "title": "Rollouts 处理 HPA 扰动的流程",
+  "subtitle": "以 rolling gray pause 场景为主线：HPA 改副本数后，controller 如何收敛 oldRS / stableRS / status，再继续发布",
+  "containers": [
+    {
+      "x": 60,
+      "y": 130,
+      "width": 1480,
+      "height": 130,
+      "label": "",
+      "side_label": "扰动来源",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 290,
+      "width": 1480,
+      "height": 180,
+      "label": "",
+      "side_label": "Rollout 前置判断",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 500,
+      "width": 1480,
+      "height": 180,
+      "label": "",
+      "side_label": "HPA 扰动处理",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    },
+    {
+      "x": 60,
+      "y": 710,
+      "width": 1480,
+      "height": 150,
+      "label": "",
+      "side_label": "状态收敛与继续发布",
+      "side_label_x": 20,
+      "side_label_anchor": "start",
+      "stroke": "#cbd5e1",
+      "fill": "none"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "metrics",
+      "kind": "hexagon",
+      "x": 120,
+      "y": 165,
+      "width": 190,
+      "height": 64,
+      "label": "指标变化 / 定时触发",
+      "type_label": "外部信号",
+      "fill": "#ffffff",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "hpa",
+      "kind": "rect",
+      "x": 400,
+      "y": 162,
+      "width": 230,
+      "height": 68,
+      "label": "HPA / CronHPA 改副本",
+      "type_label": "自动扩缩容",
+      "fill": "#fff7ed",
+      "stroke": "#f97316",
+      "flat": true
+    },
+    {
+      "id": "rsStatus",
+      "kind": "rect",
+      "x": 760,
+      "y": 162,
+      "width": 250,
+      "height": 68,
+      "label": "RS 实际副本发生变化",
+      "type_label": "运行时结果",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "enqueue",
+      "kind": "double_rect",
+      "x": 1150,
+      "y": 158,
+      "width": 240,
+      "height": 76,
+      "label": "ReplicaSet 事件触发入队",
+      "type_label": "reconcile 入口",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "reconcile",
+      "kind": "double_rect",
+      "x": 110,
+      "y": 340,
+      "width": 220,
+      "height": 76,
+      "label": "RolloutRolling()",
+      "type_label": "主循环",
+      "fill": "#eff6ff",
+      "stroke": "#2563eb"
+    },
+    {
+      "id": "grayCheck",
+      "kind": "rect",
+      "x": 430,
+      "y": 340,
+      "width": 250,
+      "height": 76,
+      "label": "判断是否 gray pause",
+      "sublabel": "isRollingGrayPause()",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "annCheck",
+      "kind": "rect",
+      "x": 790,
+      "y": 340,
+      "width": 250,
+      "height": 76,
+      "label": "判断是否打开 HPA 协同",
+      "sublabel": "gray-pause-hpa-enable",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "branch",
+      "kind": "diamond",
+      "x": 1160,
+      "y": 336,
+      "width": 190,
+      "height": 84,
+      "label": "满足条件？",
+      "fill": "#ffffff",
+      "stroke": "#7c3aed",
+      "flat": true
+    },
+    {
+      "id": "scaleDown",
+      "kind": "rect",
+      "x": 120,
+      "y": 560,
+      "width": 270,
+      "height": 78,
+      "label": "HPA 缩容分支",
+      "sublabel": "优先缩 oldRS，受 maxUnavailable / 30s 保护约束",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "scaleUp",
+      "kind": "rect",
+      "x": 470,
+      "y": 560,
+      "width": 270,
+      "height": 78,
+      "label": "HPA 扩容分支",
+      "sublabel": "优先补 stableRS，限制一次扩太多",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "grayGuard",
+      "kind": "rect",
+      "x": 840,
+      "y": 560,
+      "width": 280,
+      "height": 78,
+      "label": "维持 gray 语义边界",
+      "sublabel": "不直接破坏 grayReplicas / pause / rollback 语义",
+      "fill": "#faf5ff",
+      "stroke": "#7c3aed"
+    },
+    {
+      "id": "statusPatch",
+      "kind": "rect",
+      "x": 1220,
+      "y": 560,
+      "width": 220,
+      "height": 78,
+      "label": "回写 rollingStatus",
+      "sublabel": "scaleDownAt / HPAReplicas",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "flat": true
+    },
+    {
+      "id": "pauseReconcile",
+      "kind": "rect",
+      "x": 160,
+      "y": 750,
+      "width": 270,
+      "height": 70,
+      "label": "reconcileRollingPause()",
+      "type_label": "暂停期收敛",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "rollingSync",
+      "kind": "rect",
+      "x": 560,
+      "y": 750,
+      "width": 290,
+      "height": 70,
+      "label": "syncRollingStatus()",
+      "type_label": "统一状态汇总",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "flat": true
+    },
+    {
+      "id": "continueRelease",
+      "kind": "rect",
+      "x": 980,
+      "y": 750,
+      "width": 260,
+      "height": 70,
+      "label": "继续发布 or 继续暂停",
+      "type_label": "状态机推进",
+      "fill": "#ffffff",
+      "stroke": "#94a3b8",
+      "flat": true
+    },
+    {
+      "id": "keyRule",
+      "kind": "note",
+      "x": 1290,
+      "y": 740,
+      "width": 190,
+      "height": 92,
+      "label": "核心原则",
+      "sublabel": "HPA 可以扰动副本数\\n但不能直接改写\\n发布完成语义",
+      "fill": "#fffef2",
+      "stroke": "#eab308"
+    }
+  ],
+  "arrows": [
+    {
+      "source": "metrics",
+      "target": "hpa",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "async"
+    },
+    {
+      "source": "hpa",
+      "target": "rsStatus",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "write"
+    },
+    {
+      "source": "rsStatus",
+      "target": "enqueue",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "feedback"
+    },
+    {
+      "source": "enqueue",
+      "target": "reconcile",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "control",
+      "route_points": [[1270,234], [1270,310], [220,310], [220,340]]
+    },
+    {
+      "source": "reconcile",
+      "target": "grayCheck",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "grayCheck",
+      "target": "annCheck",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "annCheck",
+      "target": "branch",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "branch",
+      "target": "scaleDown",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "control",
+      "label": "缩容"
+    },
+    {
+      "source": "branch",
+      "target": "scaleUp",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "control",
+      "label": "扩容",
+      "route_points": [[1255,420], [1255,500], [605,500], [605,560]]
+    },
+    {
+      "source": "scaleDown",
+      "target": "grayGuard",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "scaleUp",
+      "target": "grayGuard",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "grayGuard",
+      "target": "statusPatch",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "write"
+    },
+    {
+      "source": "statusPatch",
+      "target": "pauseReconcile",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "feedback",
+      "dashed": true,
+      "route_points": [[1330,638], [1330,700], [295,700], [295,750]]
+    },
+    {
+      "source": "pauseReconcile",
+      "target": "rollingSync",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "source": "rollingSync",
+      "target": "continueRelease",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "write"
+    },
+    {
+      "source": "continueRelease",
+      "target": "reconcile",
+      "source_port": "top",
+      "target_port": "bottom",
+      "flow": "feedback",
+      "dashed": true,
+      "route_points": [[1110,750], [1110,680], [220,680], [220,416]]
+    }
+  ],
+  "legend": [
+    { "flow": "control", "label": "控制流：reconcile 内部判断与分支" },
+    { "flow": "write", "label": "写路径：修改 RS / 写回状态" },
+    { "flow": "feedback", "label": "反馈流：RS 变化、状态回传、再次入队" },
+    { "flow": "async", "label": "异步扰动：HPA / CronHPA 信号" }
+  ],
+  "legend_position": "bottom-left",
+  "legend_box": true,
+  "legend_box_fill": "#ffffff",
+  "legend_y": 890
+}

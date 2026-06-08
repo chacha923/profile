@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 720" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2563eb"/></marker></defs>
+<rect x="0" y="0" width="1100" height="720" fill="#ffffff"/>
+<text x="550.0" y="40.0" text-anchor="middle" fill="#475569" font-size="21" font-weight="700">容量类故障排查路径（延迟升高/疑似容量不够）</text>
+<rect x="180.0" y="80.0" width="740.0" height="70.0" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="550.0" y="105.0" text-anchor="middle" fill="#2563eb" font-size="16" font-weight="700">先看 SLO 表现</text>
+<text x="550.0" y="128.0" text-anchor="middle" fill="#1f2937" font-size="15">成功率掉？P99 涨？TTFT/TPS 恶化？→ 容量问题 or 依赖问题</text>
+<line x1="550.0" y1="150.0" x2="550.0" y2="172.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="180.0" y="172.0" width="740.0" height="70.0" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="550.0" y="197.0" text-anchor="middle" fill="#0891b2" font-size="16" font-weight="700">看水位哪维先到顶</text>
+<text x="550.0" y="220.0" text-anchor="middle" fill="#1f2937" font-size="15">GPU利用率 / 显存(KV Cache) / QPS÷上限 / queue latency</text>
+<line x1="550.0" y1="242.0" x2="550.0" y2="264.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="180.0" y="264.0" width="740.0" height="70.0" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="550.0" y="289.0" text-anchor="middle" fill="#7c3aed" font-size="16" font-weight="700">真不够 还是 扩不起来</text>
+<text x="550.0" y="312.0" text-anchor="middle" fill="#1f2937" font-size="15">副本到上限？HPA触发？被配额/资源池卡 Pending？</text>
+<line x1="550.0" y1="334.0" x2="550.0" y2="356.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="180.0" y="356.0" width="740.0" height="70.0" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="550.0" y="381.0" text-anchor="middle" fill="#ea580c" font-size="16" font-weight="700">看实例是否倾斜</text>
+<text x="550.0" y="404.0" text-anchor="middle" fill="#1f2937" font-size="15">路由不均 / 长序列集中 → 局部触顶而整体水位不高</text>
+<line x1="550.0" y1="426.0" x2="550.0" y2="448.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="180.0" y="448.0" width="740.0" height="70.0" rx="9" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<text x="550.0" y="473.0" text-anchor="middle" fill="#dc2626" font-size="16" font-weight="700">看依赖与故障域</text>
+<text x="550.0" y="496.0" text-anchor="middle" fill="#1f2937" font-size="15">某 AZ/资源池挂 → 余量被吃 → headroom 是否已占用</text>
+<line x1="550.0" y1="518.0" x2="550.0" y2="540.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="180.0" y="540.0" width="740.0" height="70.0" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="550.0" y="565.0" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">回到容量结论</text>
+<text x="550.0" y="588.0" text-anchor="middle" fill="#1f2937" font-size="15">当前负载 vs 评估上限/基线是否仍成立（换版/序列变长会失效）</text>
+<line x1="550.0" y1="610.0" x2="550.0" y2="632.0" stroke="#475569" stroke-width="2.4" marker-end="url(#ah)"/>
+<rect x="180.0" y="632.0" width="740.0" height="70.0" rx="9" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+<text x="550.0" y="657.0" text-anchor="middle" fill="#475569" font-size="16" font-weight="700">处置</text>
+<text x="550.0" y="680.0" text-anchor="middle" fill="#1f2937" font-size="15">临时扩容 / 限流降级兜住 → 复盘修正基线与阈值</text>
+<text x="550.0" y="702.0" text-anchor="middle" fill="#475569" font-size="14" font-weight="600">纯理论对标，无直接项目落地经验；按知识体系给出的可操作排查链路</text>
+</svg>
