@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 900" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1180" height="900" fill="#ffffff"/>
+<text x="40" y="52" fill="#0f172a" font-size="29.3" font-weight="700">serving 框架定位象限（横向对标）</text>
+<rect x="140" y="120" width="720" height="720" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<line x1="500" y1="120" x2="500" y2="840" stroke="#94a3b8" stroke-width="2"/>
+<line x1="140" y1="480" x2="860" y2="480" stroke="#94a3b8" stroke-width="2"/>
+<text x="680" y="874" text-anchor="middle" fill="#475569" font-size="19.5" font-weight="700">通用 / 多框架  →</text>
+<text x="320" y="874" text-anchor="middle" fill="#475569" font-size="19.5" font-weight="700">←  单一框架 / 专用</text>
+<text x="106" y="321" text-anchor="middle" fill="#475569" font-size="19.5" font-weight="700" transform="rotate(-90 106 321)">高吞吐 / 高利用率  →</text>
+<text x="106" y="681" text-anchor="middle" fill="#475569" font-size="19.5" font-weight="700" transform="rotate(-90 106 681)">←  简单 / 基础</text>
+<circle cx="327.2" cy="652.8" r="13" fill="#dc2626"/>
+<rect x="197.2" y="580.8" width="260" height="52" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2.2"/>
+<text x="327.2" y="601.3" text-anchor="middle" fill="#334155" font-size="19.5" font-weight="700">TorchServe</text>
+<text x="327.2" y="623.3" text-anchor="middle" fill="#334155" font-size="18.3" font-weight="400">纯PyTorch·简单</text>
+<line x1="327.2" y1="632.8" x2="327.2" y2="639.8" stroke="#dc2626" stroke-width="1.6"/>
+<circle cx="356" cy="408" r="13" fill="#0891b2"/>
+<rect x="226" y="336" width="260" height="52" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2.2"/>
+<text x="356" y="356.5" text-anchor="middle" fill="#334155" font-size="19.5" font-weight="700">TF Serving</text>
+<text x="356" y="378.5" text-anchor="middle" fill="#334155" font-size="18.3" font-weight="400">纯TF·成熟稳定</text>
+<line x1="356" y1="388" x2="356" y2="395" stroke="#0891b2" stroke-width="1.6"/>
+<circle cx="672.8" cy="336" r="13" fill="#7c3aed"/>
+<rect x="542.8" y="264" width="260" height="52" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="672.8" y="284.5" text-anchor="middle" fill="#334155" font-size="19.5" font-weight="700">Triton</text>
+<text x="672.8" y="306.5" text-anchor="middle" fill="#334155" font-size="18.3" font-weight="400">多框架·高利用·通用首选</text>
+<line x1="672.8" y1="316" x2="672.8" y2="323" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="384.8" cy="249.6" r="13" fill="#059669"/>
+<rect x="254.8" y="177.6" width="260" height="52" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2.2"/>
+<text x="384.8" y="198.1" text-anchor="middle" fill="#334155" font-size="19.5" font-weight="700">vLLM</text>
+<text x="384.8" y="220.1" text-anchor="middle" fill="#334155" font-size="18.3" font-weight="400">LLM专用·高吞吐</text>
+<line x1="384.8" y1="229.6" x2="384.8" y2="236.6" stroke="#059669" stroke-width="1.6"/>
+</svg>

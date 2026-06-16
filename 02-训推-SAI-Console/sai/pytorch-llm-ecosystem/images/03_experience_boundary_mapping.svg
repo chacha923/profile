@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 1160">
+<style>text { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif; }</style>
+<rect x="0" y="0" width="2200" height="1160" fill="#f8fafc"/>
+<defs>
+  <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+  <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#059669"/></marker>
+  <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#d97706"/></marker>
+  <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker>
+</defs>
+<text x="70" y="66" fill="#0f172a" font-size="34" font-weight="800" text-anchor="start">从 TFJob/PAI 真实经验迁移到 LLM 生态：能说什么、不能说什么</text>
+<rect x="70" y="94" width="28" height="20" rx="4" fill="#2563eb"/>
+<text x="110" y="112" fill="#334155" font-size="18" font-weight="700" text-anchor="start">真实生产经验</text>
+<rect x="330" y="94" width="28" height="20" rx="4" fill="#059669"/>
+<text x="370" y="112" fill="#334155" font-size="18" font-weight="700" text-anchor="start">相邻经验/可迁移</text>
+<rect x="590" y="94" width="28" height="20" rx="4" fill="#d97706"/>
+<text x="630" y="112" fill="#334155" font-size="18" font-weight="700" text-anchor="start">理论对标</text>
+<rect x="850" y="94" width="28" height="20" rx="4" fill="#dc2626"/>
+<text x="890" y="112" fill="#334155" font-size="18" font-weight="700" text-anchor="start">不能夸大</text>
+<rect x="70" y="160" width="650" height="700" rx="18" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="395" y="210" fill="#2563eb" font-size="25" font-weight="800" text-anchor="middle">真实做过/可证明</text>
+<rect x="105" y="255" width="580" height="125" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<rect x="105" y="255" width="9" height="125" rx="4" fill="#2563eb"/>
+<text x="395.0" y="291" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">SAI控制面</text>
+<text x="129" y="327" fill="#334155" font-size="19" font-weight="400" text-anchor="start">统一入口、Provider、生命周期、状态同步</text>
+<rect x="105" y="400" width="580" height="125" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<rect x="105" y="400" width="9" height="125" rx="4" fill="#2563eb"/>
+<text x="395.0" y="436" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">TFJob主力承接</text>
+<text x="129" y="472" fill="#334155" font-size="19" font-weight="400" text-anchor="start">训练任务、TensorBoard、日志、事件、潮汐/待退</text>
+<rect x="105" y="545" width="580" height="125" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<rect x="105" y="545" width="9" height="125" rx="4" fill="#2563eb"/>
+<text x="395.0" y="581" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">推理服务托管</text>
+<text x="129" y="617" fill="#334155" font-size="19" font-weight="400" text-anchor="start">PAI/贝联/ACK Provider、扩缩容、服务状态</text>
+<rect x="105" y="690" width="580" height="125" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<rect x="105" y="690" width="9" height="125" rx="4" fill="#2563eb"/>
+<text x="395.0" y="726" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">GPU平台排障</text>
+<text x="129" y="762" fill="#334155" font-size="19" font-weight="400" text-anchor="start">Pending、OOMKill、镜像、PVC、节点池、配额</text>
+<rect x="770" y="160" width="650" height="700" rx="18" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="1095" y="210" fill="#059669" font-size="25" font-weight="800" text-anchor="middle">可迁移到LLM的能力</text>
+<rect x="805" y="255" width="580" height="125" rx="14" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<rect x="805" y="255" width="9" height="125" rx="4" fill="#059669"/>
+<text x="1095.0" y="291" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">TrainingProvider</text>
+<text x="829" y="327" fill="#334155" font-size="19" font-weight="400" text-anchor="start">底层可适配 PyTorchJob / PAI-DLC / DeepSpeed模板</text>
+<rect x="805" y="400" width="580" height="125" rx="14" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<rect x="805" y="400" width="9" height="125" rx="4" fill="#059669"/>
+<text x="1095.0" y="436" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">ModelVersion</text>
+<text x="829" y="472" fill="#334155" font-size="19" font-weight="400" text-anchor="start">权重、tokenizer、config、LoRA、评测报告绑定</text>
+<rect x="805" y="545" width="580" height="125" rx="14" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<rect x="805" y="545" width="9" height="125" rx="4" fill="#059669"/>
+<text x="1095.0" y="581" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">LLMRuntimeProvider</text>
+<text x="829" y="617" fill="#334155" font-size="19" font-weight="400" text-anchor="start">vLLM/Triton/PAI EAS 的创建、ready、扩缩容</text>
+<rect x="805" y="690" width="580" height="125" rx="14" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<rect x="805" y="690" width="9" height="125" rx="4" fill="#059669"/>
+<text x="1095.0" y="726" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">Token级观测</text>
+<text x="829" y="762" fill="#334155" font-size="19" font-weight="400" text-anchor="start">TTFT、TPOT、tokens/s、KV Cache、成本/千token</text>
+<rect x="1470" y="160" width="650" height="700" rx="18" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1795" y="210" fill="#d97706" font-size="25" font-weight="800" text-anchor="middle">只能理论对标</text>
+<rect x="1505" y="255" width="580" height="125" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="1505" y="255" width="9" height="125" rx="4" fill="#d97706"/>
+<text x="1795.0" y="291" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">PyTorch内核</text>
+<text x="1529" y="327" fill="#334155" font-size="19" font-weight="400" text-anchor="start">autograd、Dynamo/Inductor、算子优化</text>
+<rect x="1505" y="400" width="580" height="125" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="1505" y="400" width="9" height="125" rx="4" fill="#d97706"/>
+<text x="1795.0" y="436" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">分布式算法</text>
+<text x="1529" y="472" fill="#334155" font-size="19" font-weight="400" text-anchor="start">FSDP/ZeRO/PP/TP 的实现细节</text>
+<rect x="1505" y="545" width="580" height="125" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="1505" y="545" width="9" height="125" rx="4" fill="#d97706"/>
+<text x="1795.0" y="581" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">推理引擎内核</text>
+<text x="1529" y="617" fill="#334155" font-size="19" font-weight="400" text-anchor="start">PagedAttention、continuous batching、TRT engine</text>
+<rect x="1505" y="690" width="580" height="125" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="1505" y="690" width="9" height="125" rx="4" fill="#d97706"/>
+<text x="1795.0" y="726" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">大模型效果</text>
+<text x="1529" y="762" fill="#334155" font-size="19" font-weight="400" text-anchor="start">评测集、偏好对齐、LLM-as-Judge 偏差</text>
+<path d="M 720,510 L 760,510" fill="none" stroke="#059669" stroke-width="3" marker-end="url(#arrow-green)"/>
+<path d="M 1420,510 L 1460,510" fill="none" stroke="#d97706" stroke-width="3" marker-end="url(#arrow-orange)"/>
+<rect x="70" y="920" width="2050" height="160" rx="18" fill="#fef2f2" stroke="#dc2626" stroke-width="2.2"/>
+<text x="110" y="965" fill="#dc2626" font-size="26" font-weight="900" text-anchor="start">面试红线</text>
+<text x="110" y="1005" fill="#334155" font-size="22" font-weight="700" text-anchor="start">不能说：我负责过 LLM 服务 SRE / 自研 PyTorch 训练框架 / 自研 vLLM 或 TensorRT-LLM / 做过大模型效果闭环收益。</text>
+<text x="110" y="1045" fill="#334155" font-size="22" font-weight="700" text-anchor="start">可以说：我做的是 SAI/PAI/TFJob 的平台治理经验，正在按 PyTorch 和 LLM 生态做对标，能讲清如果演进该补哪些对象、状态和排障抓手。</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 860" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1280" height="860" fill="#ffffff"/>
+<defs>
+<marker id="ar" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#475569"/></marker>
+<marker id="arr" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#dc2626"/></marker>
+<marker id="arg" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#059669"/></marker>
+</defs>
+<text x="640.0" y="52" fill="#0f172a" font-size="30" font-weight="700" text-anchor="middle">SoulGateway 灰度典型场景</text>
+<rect x="40" y="90" width="580" height="330" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<rect x="40" y="90" width="580" height="52" rx="14" fill="#2563eb"/>
+<rect x="40" y="120" width="580" height="22" fill="#2563eb"/>
+<text x="330.0" y="124" fill="#ffffff" font-size="23" font-weight="700" text-anchor="middle">场景A 金丝雀按步推进</text>
+<text x="68" y="182" fill="#1f2937" font-size="19" font-weight="600">现象：停在 10% 不前进</text>
+<text x="68" y="226" fill="#1f2937" font-size="19" font-weight="600">排查：Rollout step/status、status.canary.weights、</text>
+<text x="68" y="270" fill="#1f2937" font-size="19" font-weight="400">      VerifyWeight 是否一直 false</text>
+<text x="68" y="314" fill="#1f2937" font-size="19" font-weight="600">优化：核对网关节点与 Pod 的 pod-template-hash</text>
+<rect x="660" y="90" width="580" height="330" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<rect x="660" y="90" width="580" height="52" rx="14" fill="#ea580c"/>
+<rect x="660" y="120" width="580" height="22" fill="#ea580c"/>
+<text x="950.0" y="124" fill="#ffffff" font-size="23" font-weight="700" text-anchor="middle">场景B 灰度中扩容 / Pod 重建</text>
+<text x="688" y="182" fill="#1f2937" font-size="19" font-weight="600">现象：权重没变但流量分布不对</text>
+<text x="688" y="226" fill="#1f2937" font-size="19" font-weight="600">排查：VerifyWeight 慢路径有没有 UpNode 新 Pod、</text>
+<text x="688" y="270" fill="#1f2937" font-size="19" font-weight="400">      DownNode 旧 IP</text>
+<text x="688" y="314" fill="#1f2937" font-size="19" font-weight="600">优化：确认门控在副本对齐后触发对账</text>
+<rect x="40" y="460" width="580" height="330" rx="14" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<rect x="40" y="460" width="580" height="52" rx="14" fill="#059669"/>
+<rect x="40" y="490" width="580" height="22" fill="#059669"/>
+<text x="330.0" y="494" fill="#ffffff" font-size="23" font-weight="700" text-anchor="middle">场景C 全量晋升</text>
+<text x="68" y="552" fill="#1f2937" font-size="19" font-weight="600">现象：晋升后流量打回旧版本</text>
+<text x="68" y="596" fill="#1f2937" font-size="19" font-weight="600">排查：SetWeight 的 w==0 且 canary 非空特判</text>
+<text x="68" y="640" fill="#1f2937" font-size="19" font-weight="400">      是否把 stableNodes 换成 canaryNodes</text>
+<text x="68" y="684" fill="#1f2937" font-size="19" font-weight="600">优化：确认旧 stable 节点被 DownNode</text>
+<rect x="660" y="460" width="580" height="330" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<rect x="660" y="460" width="580" height="52" rx="14" fill="#dc2626"/>
+<rect x="660" y="490" width="580" height="22" fill="#dc2626"/>
+<text x="950.0" y="494" fill="#ffffff" font-size="23" font-weight="700" text-anchor="middle">场景D 回滚（Abort）</text>
+<text x="688" y="552" fill="#1f2937" font-size="19" font-weight="600">现象：回滚了 canary 还在收流量</text>
+<text x="688" y="596" fill="#1f2937" font-size="19" font-weight="600">排查：主循环 Aborted 分支 desiredWeight=0、</text>
+<text x="688" y="640" fill="#1f2937" font-size="19" font-weight="400">      canary 节点是否被摘</text>
+<text x="688" y="684" fill="#1f2937" font-size="19" font-weight="600">优化：确认 VerifyWeight 把 canary 节点 DownNode</text>
+</svg>

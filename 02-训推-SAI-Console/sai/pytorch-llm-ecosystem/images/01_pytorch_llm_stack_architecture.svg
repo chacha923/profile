@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 1260">
+<style>text { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif; }</style>
+<rect x="0" y="0" width="2200" height="1260" fill="#f8fafc"/>
+<defs>
+  <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+  <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#059669"/></marker>
+  <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#d97706"/></marker>
+  <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker>
+</defs>
+<text x="70" y="66" fill="#0f172a" font-size="34" font-weight="800" text-anchor="start">PyTorch 体系到 LLM 托管生态：平台侧理解分层</text>
+<text x="70" y="104" fill="#475569" font-size="21" font-weight="600" text-anchor="start">重点不是假装写过框架，而是把训练框架、分布式优化、模型产物、推理 runtime 和 SAI/PAI 托管语义接起来。</text>
+<rect x="70" y="132" width="28" height="20" rx="4" fill="#2563eb"/>
+<text x="110" y="150" fill="#334155" font-size="18" font-weight="700" text-anchor="start">真实生产经验</text>
+<rect x="330" y="132" width="28" height="20" rx="4" fill="#059669"/>
+<text x="370" y="150" fill="#334155" font-size="18" font-weight="700" text-anchor="start">相邻经验/可迁移</text>
+<rect x="590" y="132" width="28" height="20" rx="4" fill="#d97706"/>
+<text x="630" y="150" fill="#334155" font-size="18" font-weight="700" text-anchor="start">理论对标</text>
+<rect x="850" y="132" width="28" height="20" rx="4" fill="#dc2626"/>
+<text x="890" y="150" fill="#334155" font-size="18" font-weight="700" text-anchor="start">不能夸大</text>
+<rect x="55" y="180" width="2090" height="195" rx="18" fill="#fff1f2" stroke="#dc2626" stroke-width="1.7"/>
+<text x="78" y="215" fill="#dc2626" font-size="24" font-weight="800" text-anchor="start">业务/模型层</text>
+<rect x="360" y="200" width="500" height="130" rx="14" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<rect x="360" y="200" width="9" height="130" rx="4" fill="#dc2626"/>
+<text x="610.0" y="236" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">训练脚本</text>
+<text x="384" y="272" fill="#334155" font-size="19" font-weight="400" text-anchor="start">模型结构、loss、数据读取</text>
+<text x="384" y="299" fill="#334155" font-size="19" font-weight="400" text-anchor="start">业务侧负责</text>
+<rect x="920" y="200" width="500" height="130" rx="14" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<rect x="920" y="200" width="9" height="130" rx="4" fill="#dc2626"/>
+<text x="1170.0" y="236" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">Transformers生态</text>
+<text x="944" y="272" fill="#334155" font-size="19" font-weight="400" text-anchor="start">HF Trainer、PEFT/LoRA</text>
+<text x="944" y="299" fill="#334155" font-size="19" font-weight="400" text-anchor="start">模型开发者主阵地</text>
+<rect x="1480" y="200" width="500" height="130" rx="14" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<rect x="1480" y="200" width="9" height="130" rx="4" fill="#dc2626"/>
+<text x="1730.0" y="236" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">评测与Prompt</text>
+<text x="1504" y="272" fill="#334155" font-size="19" font-weight="400" text-anchor="start">业务评测集、安全集</text>
+<text x="1504" y="299" fill="#334155" font-size="19" font-weight="400" text-anchor="start">上线门禁输入</text>
+<rect x="55" y="410" width="2090" height="195" rx="18" fill="#fffbeb" stroke="#d97706" stroke-width="1.7"/>
+<text x="78" y="445" fill="#d97706" font-size="24" font-weight="800" text-anchor="start">PyTorch框架层</text>
+<rect x="360" y="430" width="500" height="130" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="360" y="430" width="9" height="130" rx="4" fill="#d97706"/>
+<text x="610.0" y="466" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">Tensor / Module</text>
+<text x="384" y="502" fill="#334155" font-size="19" font-weight="400" text-anchor="start">Tensor计算、nn.Module</text>
+<text x="384" y="529" fill="#334155" font-size="19" font-weight="400" text-anchor="start">参数与算子表达</text>
+<rect x="920" y="430" width="500" height="130" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="920" y="430" width="9" height="130" rx="4" fill="#d97706"/>
+<text x="1170.0" y="466" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">autograd</text>
+<text x="944" y="502" fill="#334155" font-size="19" font-weight="400" text-anchor="start">前向构图、反向求导</text>
+<text x="944" y="529" fill="#334155" font-size="19" font-weight="400" text-anchor="start">训练显存来源</text>
+<rect x="1480" y="430" width="500" height="130" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="1480" y="430" width="9" height="130" rx="4" fill="#d97706"/>
+<text x="1730.0" y="466" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">torch.compile</text>
+<text x="1504" y="502" fill="#334155" font-size="19" font-weight="400" text-anchor="start">Dynamo捕获图、Inductor优化</text>
+<text x="1504" y="529" fill="#334155" font-size="19" font-weight="400" text-anchor="start">性能优化对标</text>
+<rect x="55" y="640" width="2090" height="195" rx="18" fill="#eef2ff" stroke="#d97706" stroke-width="1.7"/>
+<text x="78" y="675" fill="#d97706" font-size="24" font-weight="800" text-anchor="start">分布式训练层</text>
+<rect x="360" y="660" width="500" height="130" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="360" y="660" width="9" height="130" rx="4" fill="#d97706"/>
+<text x="610.0" y="696" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">DDP</text>
+<text x="384" y="732" fill="#334155" font-size="19" font-weight="400" text-anchor="start">数据并行、AllReduce</text>
+<text x="384" y="759" fill="#334155" font-size="19" font-weight="400" text-anchor="start">扩吞吐不省显存</text>
+<rect x="920" y="660" width="500" height="130" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="920" y="660" width="9" height="130" rx="4" fill="#d97706"/>
+<text x="1170.0" y="696" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">FSDP / ZeRO</text>
+<text x="944" y="732" fill="#334155" font-size="19" font-weight="400" text-anchor="start">参数/梯度/优化器分片</text>
+<text x="944" y="759" fill="#334155" font-size="19" font-weight="400" text-anchor="start">拿通信换显存</text>
+<rect x="1480" y="660" width="500" height="130" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<rect x="1480" y="660" width="9" height="130" rx="4" fill="#d97706"/>
+<text x="1730.0" y="696" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">torchrun / rendezvous</text>
+<text x="1504" y="732" fill="#334155" font-size="19" font-weight="400" text-anchor="start">多进程启动与发现</text>
+<text x="1504" y="759" fill="#334155" font-size="19" font-weight="400" text-anchor="start">卡死排查入口</text>
+<rect x="55" y="870" width="2090" height="195" rx="18" fill="#ecfdf5" stroke="#059669" stroke-width="1.7"/>
+<text x="78" y="905" fill="#059669" font-size="24" font-weight="800" text-anchor="start">托管与Serving层</text>
+<rect x="360" y="890" width="500" height="130" rx="14" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<rect x="360" y="890" width="9" height="130" rx="4" fill="#059669"/>
+<text x="610.0" y="926" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">TrainingProvider</text>
+<text x="384" y="962" fill="#334155" font-size="19" font-weight="400" text-anchor="start">PyTorchJob / PAI-DLC</text>
+<text x="384" y="989" fill="#334155" font-size="19" font-weight="400" text-anchor="start">训练语义适配</text>
+<rect x="920" y="890" width="500" height="130" rx="14" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<rect x="920" y="890" width="9" height="130" rx="4" fill="#059669"/>
+<text x="1170.0" y="926" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">ModelVersion / EvalJob</text>
+<text x="944" y="962" fill="#334155" font-size="19" font-weight="400" text-anchor="start">模型版本、评测报告</text>
+<text x="944" y="989" fill="#334155" font-size="19" font-weight="400" text-anchor="start">发布可追溯</text>
+<rect x="1480" y="890" width="500" height="130" rx="14" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<rect x="1480" y="890" width="9" height="130" rx="4" fill="#059669"/>
+<text x="1730.0" y="926" fill="#0f172a" font-size="23" font-weight="800" text-anchor="middle">LLMRuntimeProvider</text>
+<text x="1504" y="962" fill="#334155" font-size="19" font-weight="400" text-anchor="start">vLLM / Triton / PAI EAS</text>
+<text x="1504" y="989" fill="#334155" font-size="19" font-weight="400" text-anchor="start">TTFT/TPOT/KV Cache</text>
+<rect x="55" y="1120" width="2090" height="90" rx="16" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<text x="1100" y="1157" fill="#0f172a" font-size="24" font-weight="800" text-anchor="middle">真实经验底座：SAI 控制面 / TFJob / Provider / GPU资源池 / PAI托管 / 日志事件指标</text>
+<text x="1100" y="1193" fill="#334155" font-size="21" font-weight="600" text-anchor="middle">能迁移的能力：提交入口、资源准入、生命周期、状态同步、观测排障、灰度回滚、成本治理</text>
+</svg>

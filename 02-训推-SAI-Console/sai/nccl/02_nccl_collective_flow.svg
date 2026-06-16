@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2080 1040" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#94a3b8" stroke-width="2"/></marker></defs>
+<rect x="0" y="0" width="2080" height="1040" fill="#ffffff"/>
+<text x="50" y="64" fill="#0f172a" font-size="34" font-weight="700">并行策略 ↔ 集合通信原语 映射</text>
+<text x="50" y="104" fill="#64748b" font-size="20">记忆点：AllReduce ≈ ReduceScatter + AllGather（Ring AllReduce 两阶段实现）</text>
+<text x="70" y="200" fill="#0f172a" font-size="23" font-weight="700">并行策略</text>
+<text x="540" y="200" fill="#0f172a" font-size="23" font-weight="700">主要通信原语</text>
+<text x="1050" y="200" fill="#0f172a" font-size="23" font-weight="700">通信内容</text>
+<text x="1650" y="200" fill="#0f172a" font-size="23" font-weight="700">通信特征</text>
+<rect x="70" y="240" width="420" height="130" rx="13" fill="#2563eb" fill-opacity="0.12" stroke="#2563eb" stroke-width="3"/>
+<text x="94" y="313" fill="#2563eb" font-size="23" font-weight="700">数据并行 DP</text>
+<rect x="540" y="240" width="470" height="130" rx="13" fill="#f8fafc" stroke="#2563eb" stroke-width="2.4"/>
+<text x="562" y="313" fill="#0f172a" font-size="21" font-weight="700">AllReduce</text>
+<rect x="1050" y="240" width="560" height="130" rx="13" fill="#f8fafc" stroke="#2563eb" stroke-width="2.4"/>
+<text x="1072" y="310" fill="#334155" font-size="20">梯度同步：规约后人人拿完整梯度</text>
+<rect x="1650" y="240" width="380" height="130" rx="13" fill="#2563eb" fill-opacity="0.06" stroke="#2563eb" stroke-width="2.4"/>
+<text x="1672" y="310" fill="#334155" font-size="20">Ring，通信量与卡数无关</text>
+<path d="M 490 305 L 536 305" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 1010 305 L 1046 305" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="70" y="392" width="420" height="130" rx="13" fill="#059669" fill-opacity="0.12" stroke="#059669" stroke-width="3"/>
+<text x="94" y="465" fill="#059669" font-size="23" font-weight="700">ZeRO / FSDP</text>
+<rect x="540" y="392" width="470" height="130" rx="13" fill="#f8fafc" stroke="#059669" stroke-width="2.4"/>
+<text x="562" y="465" fill="#0f172a" font-size="21" font-weight="700">ReduceScatter + AllGather</text>
+<rect x="1050" y="392" width="560" height="130" rx="13" fill="#f8fafc" stroke="#059669" stroke-width="2.4"/>
+<text x="1072" y="462" fill="#334155" font-size="20">梯度规约分片 + 参数收集</text>
+<rect x="1650" y="392" width="380" height="130" rx="13" fill="#059669" fill-opacity="0.06" stroke="#059669" stroke-width="2.4"/>
+<text x="1672" y="462" fill="#334155" font-size="20">省显存，通信量上升</text>
+<path d="M 490 457 L 536 457" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 1010 457 L 1046 457" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="70" y="544" width="420" height="130" rx="13" fill="#0891b2" fill-opacity="0.12" stroke="#0891b2" stroke-width="3"/>
+<text x="94" y="617" fill="#0891b2" font-size="23" font-weight="700">张量并行 TP</text>
+<rect x="540" y="544" width="470" height="130" rx="13" fill="#f8fafc" stroke="#0891b2" stroke-width="2.4"/>
+<text x="562" y="617" fill="#0f172a" font-size="21" font-weight="700">AllReduce / AllGather</text>
+<rect x="1050" y="544" width="560" height="130" rx="13" fill="#f8fafc" stroke="#0891b2" stroke-width="2.4"/>
+<text x="1072" y="614" fill="#334155" font-size="20">层内切分，前/反向汇聚输出</text>
+<rect x="1650" y="544" width="380" height="130" rx="13" fill="#0891b2" fill-opacity="0.06" stroke="#0891b2" stroke-width="2.4"/>
+<text x="1672" y="614" fill="#334155" font-size="20">通信频繁，多在机内 NVLink</text>
+<path d="M 490 609 L 536 609" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 1010 609 L 1046 609" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="70" y="696" width="420" height="130" rx="13" fill="#d97706" fill-opacity="0.12" stroke="#d97706" stroke-width="3"/>
+<text x="94" y="769" fill="#d97706" font-size="23" font-weight="700">流水线并行 PP</text>
+<rect x="540" y="696" width="470" height="130" rx="13" fill="#f8fafc" stroke="#d97706" stroke-width="2.4"/>
+<text x="562" y="769" fill="#0f172a" font-size="21" font-weight="700">P2P send / recv</text>
+<rect x="1050" y="696" width="560" height="130" rx="13" fill="#f8fafc" stroke="#d97706" stroke-width="2.4"/>
+<text x="1072" y="766" fill="#334155" font-size="20">相邻 stage 间激活/梯度传递</text>
+<rect x="1650" y="696" width="380" height="130" rx="13" fill="#d97706" fill-opacity="0.06" stroke="#d97706" stroke-width="2.4"/>
+<text x="1672" y="766" fill="#334155" font-size="20">点对点，非集合通信</text>
+<path d="M 490 761 L 536 761" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 1010 761 L 1046 761" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="70" y="848" width="420" height="130" rx="13" fill="#7c3aed" fill-opacity="0.12" stroke="#7c3aed" stroke-width="3"/>
+<text x="94" y="921" fill="#7c3aed" font-size="23" font-weight="700">专家并行 EP (MoE)</text>
+<rect x="540" y="848" width="470" height="130" rx="13" fill="#f8fafc" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="562" y="921" fill="#0f172a" font-size="21" font-weight="700">All-to-All</text>
+<rect x="1050" y="848" width="560" height="130" rx="13" fill="#f8fafc" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="1072" y="918" fill="#334155" font-size="20">token 路由到各专家再收回</text>
+<rect x="1650" y="848" width="380" height="130" rx="13" fill="#7c3aed" fill-opacity="0.06" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="1672" y="918" fill="#334155" font-size="20">通信不规则，易成瓶颈</text>
+<path d="M 490 913 L 536 913" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 1010 913 L 1046 913" stroke="#94a3b8" stroke-width="2.6" marker-end="url(#ar)"/>
+</svg>

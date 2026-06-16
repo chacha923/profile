@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 926" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="2400" height="926" fill="#ffffff"/>
+<text x="50.0" y="84.0" text-anchor="start" fill="#0f172a" font-size="34" font-weight="700">典型场景的指标特征签名（看到这组组合 → 优先怀疑）</text>
+<text x="50.0" y="116.0" text-anchor="start" fill="#64748b" font-size="19" font-weight="400">▲=偏高  ▼=偏低  ≈=中等  ✓=正常/达标  —— 任何单一指标都不下结论，看组合</text>
+<rect x="50.0" y="142.0" width="742.7" height="360.0" rx="16" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<rect x="50.0" y="142.0" width="742.7" height="56.0" rx="16" fill="#7c3aed" stroke="none" stroke-width="0"/>
+<rect x="50.0" y="170.0" width="742.7" height="28.0" rx="0" fill="#7c3aed" stroke="none" stroke-width="0"/>
+<text x="421.3" y="179.0" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700">推理容量过剩</text>
+<text x="78.0" y="234.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">GPU_UTIL</text>
+<text x="764.7" y="234.0" text-anchor="end" fill="#2563eb" font-size="22" font-weight="700">▼</text>
+<line x1="74.0" y1="246.0" x2="768.7" y2="246.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="78.0" y="274.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">QPS</text>
+<text x="764.7" y="274.0" text-anchor="end" fill="#2563eb" font-size="22" font-weight="700">▼</text>
+<line x1="74.0" y1="286.0" x2="768.7" y2="286.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="78.0" y="314.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">P99</text>
+<text x="764.7" y="314.0" text-anchor="end" fill="#059669" font-size="22" font-weight="700">✓</text>
+<line x1="74.0" y1="326.0" x2="768.7" y2="326.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="78.0" y="354.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">显存</text>
+<text x="764.7" y="354.0" text-anchor="end" fill="#dc2626" font-size="22" font-weight="700">▲</text>
+<line x1="74.0" y1="366.0" x2="768.7" y2="366.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="78.0" y="394.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">功耗</text>
+<text x="764.7" y="394.0" text-anchor="end" fill="#2563eb" font-size="22" font-weight="700">▼</text>
+<line x1="74.0" y1="406.0" x2="768.7" y2="406.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="70.0" y1="408.0" x2="772.7" y2="408.0" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5,5"/>
+<text x="74.0" y="438.0" text-anchor="start" fill="#7c3aed" font-size="18" font-weight="700">→ 处理方向</text>
+<text x="421.3" y="466.0" text-anchor="middle" fill="#334155" font-size="18" font-weight="400">副本过多 / 低峰 → 分时弹性、共卡、按 SLA 反推副本</text>
+<rect x="828.7" y="142.0" width="742.7" height="360.0" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<rect x="828.7" y="142.0" width="742.7" height="56.0" rx="16" fill="#2563eb" stroke="none" stroke-width="0"/>
+<rect x="828.7" y="170.0" width="742.7" height="28.0" rx="0" fill="#2563eb" stroke="none" stroke-width="0"/>
+<text x="1200.0" y="179.0" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700">动态批没生效</text>
+<text x="856.7" y="234.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">QPS</text>
+<text x="1543.3" y="234.0" text-anchor="end" fill="#d97706" font-size="22" font-weight="700">≈</text>
+<line x1="852.7" y1="246.0" x2="1547.3" y2="246.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="856.7" y="274.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">GPU_UTIL</text>
+<text x="1543.3" y="274.0" text-anchor="end" fill="#d97706" font-size="22" font-weight="700">≈</text>
+<line x1="852.7" y1="286.0" x2="1547.3" y2="286.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="856.7" y="314.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">batch≈1</text>
+<text x="1543.3" y="314.0" text-anchor="end" fill="#2563eb" font-size="22" font-weight="700">▼</text>
+<line x1="852.7" y1="326.0" x2="1547.3" y2="326.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="856.7" y="354.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">P99</text>
+<text x="1543.3" y="354.0" text-anchor="end" fill="#059669" font-size="22" font-weight="700">✓</text>
+<line x1="852.7" y1="366.0" x2="1547.3" y2="366.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="848.7" y1="408.0" x2="1551.3" y2="408.0" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5,5"/>
+<text x="852.7" y="438.0" text-anchor="start" fill="#2563eb" font-size="18" font-weight="700">→ 处理方向</text>
+<text x="1200.0" y="466.0" text-anchor="middle" fill="#334155" font-size="18" font-weight="400">请求不集中 / 等待短 → 调 batch wait、相近 shape 路由</text>
+<rect x="1607.3" y="142.0" width="742.7" height="360.0" rx="16" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<rect x="1607.3" y="142.0" width="742.7" height="56.0" rx="16" fill="#0891b2" stroke="none" stroke-width="0"/>
+<rect x="1607.3" y="170.0" width="742.7" height="28.0" rx="0" fill="#0891b2" stroke="none" stroke-width="0"/>
+<text x="1978.7" y="179.0" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700">CPU 前后处理瓶颈</text>
+<text x="1635.3" y="234.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">GPU_UTIL</text>
+<text x="2322.0" y="234.0" text-anchor="end" fill="#2563eb" font-size="22" font-weight="700">▼</text>
+<line x1="1631.3" y1="246.0" x2="2326.0" y2="246.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="1635.3" y="274.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">CPU</text>
+<text x="2322.0" y="274.0" text-anchor="end" fill="#dc2626" font-size="22" font-weight="700">▲</text>
+<line x1="1631.3" y1="286.0" x2="2326.0" y2="286.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="1635.3" y="314.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">forward</text>
+<text x="2322.0" y="314.0" text-anchor="end" fill="#2563eb" font-size="22" font-weight="700">▼</text>
+<line x1="1631.3" y1="326.0" x2="2326.0" y2="326.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="1635.3" y="354.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">端到端</text>
+<text x="2322.0" y="354.0" text-anchor="end" fill="#dc2626" font-size="22" font-weight="700">▲</text>
+<line x1="1631.3" y1="366.0" x2="2326.0" y2="366.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="1627.3" y1="408.0" x2="2330.0" y2="408.0" stroke="#0891b2" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5,5"/>
+<text x="1631.3" y="438.0" text-anchor="start" fill="#0891b2" font-size="18" font-weight="700">→ 处理方向</text>
+<text x="1978.7" y="466.0" text-anchor="middle" fill="#334155" font-size="18" font-weight="400">tokenizer / 特征慢 → 异步化、并行、优化特征服务</text>
+<rect x="50.0" y="538.0" width="742.7" height="360.0" rx="16" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<rect x="50.0" y="538.0" width="742.7" height="56.0" rx="16" fill="#dc2626" stroke="none" stroke-width="0"/>
+<rect x="50.0" y="566.0" width="742.7" height="28.0" rx="0" fill="#dc2626" stroke="none" stroke-width="0"/>
+<text x="421.3" y="575.0" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700">LLM decode memory-bound</text>
+<text x="78.0" y="630.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">GPU_UTIL</text>
+<text x="764.7" y="630.0" text-anchor="end" fill="#d97706" font-size="22" font-weight="700">≈</text>
+<line x1="74.0" y1="642.0" x2="768.7" y2="642.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="78.0" y="670.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">DRAM_ACTIVE</text>
+<text x="764.7" y="670.0" text-anchor="end" fill="#dc2626" font-size="22" font-weight="700">▲</text>
+<line x1="74.0" y1="682.0" x2="768.7" y2="682.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="78.0" y="710.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">Tensor</text>
+<text x="764.7" y="710.0" text-anchor="end" fill="#2563eb" font-size="22" font-weight="700">▼</text>
+<line x1="74.0" y1="722.0" x2="768.7" y2="722.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="78.0" y="750.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">tokens/s</text>
+<text x="764.7" y="750.0" text-anchor="end" fill="#2563eb" font-size="22" font-weight="700">▼</text>
+<line x1="74.0" y1="762.0" x2="768.7" y2="762.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="70.0" y1="804.0" x2="772.7" y2="804.0" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5,5"/>
+<text x="74.0" y="834.0" text-anchor="start" fill="#dc2626" font-size="18" font-weight="700">→ 处理方向</text>
+<text x="421.3" y="862.0" text-anchor="middle" fill="#334155" font-size="18" font-weight="400">访存受限 → 量化、算子融合、KV cache、换推理引擎</text>
+<rect x="828.7" y="538.0" width="742.7" height="360.0" rx="16" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<rect x="828.7" y="538.0" width="742.7" height="56.0" rx="16" fill="#ea580c" stroke="none" stroke-width="0"/>
+<rect x="828.7" y="566.0" width="742.7" height="28.0" rx="0" fill="#ea580c" stroke="none" stroke-width="0"/>
+<text x="1200.0" y="575.0" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700">训练数据加载瓶颈</text>
+<text x="856.7" y="630.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">GPU_UTIL</text>
+<text x="1543.3" y="630.0" text-anchor="end" fill="#ea580c" font-size="22" font-weight="700">锯齿</text>
+<line x1="852.7" y1="642.0" x2="1547.3" y2="642.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="856.7" y="670.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">CPU</text>
+<text x="1543.3" y="670.0" text-anchor="end" fill="#dc2626" font-size="22" font-weight="700">▲</text>
+<line x1="852.7" y1="682.0" x2="1547.3" y2="682.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="856.7" y="710.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">存储 IO</text>
+<text x="1543.3" y="710.0" text-anchor="end" fill="#dc2626" font-size="22" font-weight="700">▲</text>
+<line x1="852.7" y1="722.0" x2="1547.3" y2="722.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="856.7" y="750.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">step time</text>
+<text x="1543.3" y="750.0" text-anchor="end" fill="#dc2626" font-size="22" font-weight="700">▲</text>
+<line x1="852.7" y1="762.0" x2="1547.3" y2="762.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="848.7" y1="804.0" x2="1551.3" y2="804.0" stroke="#ea580c" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5,5"/>
+<text x="852.7" y="834.0" text-anchor="start" fill="#ea580c" font-size="18" font-weight="700">→ 处理方向</text>
+<text x="1200.0" y="862.0" text-anchor="middle" fill="#334155" font-size="18" font-weight="400">远端存储 / 小文件 → 加 worker、缓存、prefetch、合并小文件</text>
+<rect x="1607.3" y="538.0" width="742.7" height="360.0" rx="16" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<rect x="1607.3" y="538.0" width="742.7" height="56.0" rx="16" fill="#059669" stroke="none" stroke-width="0"/>
+<rect x="1607.3" y="566.0" width="742.7" height="28.0" rx="0" fill="#059669" stroke="none" stroke-width="0"/>
+<text x="1978.7" y="575.0" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700">多卡通信瓶颈</text>
+<text x="1635.3" y="630.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">单卡 UTIL</text>
+<text x="2322.0" y="630.0" text-anchor="end" fill="#059669" font-size="22" font-weight="700">✓</text>
+<line x1="1631.3" y1="642.0" x2="2326.0" y2="642.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="1635.3" y="670.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">多卡 UTIL</text>
+<text x="2322.0" y="670.0" text-anchor="end" fill="#2563eb" font-size="22" font-weight="700">▼</text>
+<line x1="1631.3" y1="682.0" x2="2326.0" y2="682.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="1635.3" y="710.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">网络</text>
+<text x="2322.0" y="710.0" text-anchor="end" fill="#dc2626" font-size="22" font-weight="700">▲</text>
+<line x1="1631.3" y1="722.0" x2="2326.0" y2="722.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<text x="1635.3" y="750.0" text-anchor="start" fill="#1f2937" font-size="21" font-weight="400">all-reduce</text>
+<text x="2322.0" y="750.0" text-anchor="end" fill="#dc2626" font-size="22" font-weight="700">▲</text>
+<line x1="1631.3" y1="762.0" x2="2326.0" y2="762.0" stroke="#e2e8f0" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="1627.3" y1="804.0" x2="2330.0" y2="804.0" stroke="#059669" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5,5"/>
+<text x="1631.3" y="834.0" text-anchor="start" fill="#059669" font-size="18" font-weight="700">→ 处理方向</text>
+<text x="1978.7" y="862.0" text-anchor="middle" fill="#334155" font-size="18" font-weight="400">梯度同步贵 → 拓扑亲和、NCCL 调优、控制分布式规模</text>
+</svg>

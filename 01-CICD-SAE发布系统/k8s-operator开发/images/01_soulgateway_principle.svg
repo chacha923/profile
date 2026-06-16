@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 860" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1180" height="860" fill="#ffffff"/>
+<defs>
+<marker id="ar" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#475569"/></marker>
+<marker id="arb" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/></marker>
+<marker id="arg" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#059669"/></marker>
+<marker id="arr" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#dc2626"/></marker>
+</defs>
+<text x="590.0" y="52" fill="#0f172a" font-size="30" font-weight="700" text-anchor="middle">SoulGateway Provider 在 Argo Rollouts 灰度链路中的分层位置</text>
+<rect x="50.0" y="92" width="1080" height="124" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.4" stroke-dasharray="7,5"/>
+<text x="76.0" y="130" fill="#2563eb" font-size="24" font-weight="700" text-anchor="start">Rollout 控制器层（原生）</text>
+<rect x="74.0" y="150" width="318.0" height="52" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="233.0" y="182" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">Rollout CR · 按 steps 推进</text>
+<rect x="414.0" y="150" width="318.0" height="52" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="573.0" y="182" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">算出当前 desiredWeight</text>
+<rect x="754.0" y="150" width="318.0" height="52" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="913.0" y="182" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">回滚/暂停/晋升联动</text>
+<line x1="590.0" y1="216" x2="590.0" y2="252" stroke="#475569" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="666.49" y="220" width="147.02" height="23" rx="4" fill="#ffffff" opacity="0.95"/>
+<text x="740.0" y="235" fill="#475569" font-size="17" font-weight="600" text-anchor="middle">desiredWeight</text>
+<rect x="50.0" y="250" width="1080" height="124" rx="14" fill="#f0f9ff" stroke="#0891b2" stroke-width="2.4" stroke-dasharray="7,5"/>
+<text x="76.0" y="288" fill="#0891b2" font-size="24" font-weight="700" text-anchor="start">TrafficRouting 调和层（原生）</text>
+<rect x="74.0" y="308" width="318.0" height="52" rx="10" fill="#cffafe" stroke="#0891b2" stroke-width="2"/>
+<text x="233.0" y="340" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">NewTrafficRoutingReconciler 工厂</text>
+<rect x="414.0" y="308" width="318.0" height="52" rx="10" fill="#cffafe" stroke="#0891b2" stroke-width="2"/>
+<text x="573.0" y="340" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">权重变化 modified → SetWeight</text>
+<rect x="754.0" y="308" width="318.0" height="52" rx="10" fill="#cffafe" stroke="#0891b2" stroke-width="2"/>
+<text x="913.0" y="340" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">副本门控满足 → VerifyWeight</text>
+<line x1="590.0" y1="374" x2="590.0" y2="410" stroke="#475569" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="708.65" y="378" width="62.7" height="23" rx="4" fill="#ffffff" opacity="0.95"/>
+<text x="740.0" y="393" fill="#475569" font-size="17" font-weight="600" text-anchor="middle">节点级权重</text>
+<rect x="50.0" y="408" width="1080" height="124" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="2.4" stroke-dasharray="7,5"/>
+<text x="76.0" y="446" fill="#ea580c" font-size="24" font-weight="700" text-anchor="start">SoulGateway Provider 层（自研二开）</text>
+<rect x="74.0" y="466" width="318.0" height="52" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+<text x="233.0" y="498" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">SetWeight 下发期望权重</text>
+<rect x="414.0" y="466" width="318.0" height="52" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+<text x="573.0" y="498" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">VerifyWeight 多轮节点对账</text>
+<rect x="754.0" y="466" width="318.0" height="52" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+<text x="913.0" y="498" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">Service→Ready Pod→网关节点 桥接</text>
+<line x1="590.0" y1="532" x2="590.0" y2="568" stroke="#475569" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="597.98" y="536" width="284.04" height="23" rx="4" fill="#ffffff" opacity="0.95"/>
+<text x="740.0" y="551" fill="#475569" font-size="17" font-weight="600" text-anchor="middle">/cloud/flowControl 下发 + 对账</text>
+<rect x="50.0" y="566" width="1080" height="124" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2.4" stroke-dasharray="7,5"/>
+<text x="76.0" y="604" fill="#dc2626" font-size="24" font-weight="700" text-anchor="start">自研网关层（外部）</text>
+<rect x="74.0" y="624" width="318.0" height="52" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="233.0" y="656" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">admin REST: /cloud/flowControl</text>
+<rect x="414.0" y="624" width="318.0" height="52" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="573.0" y="656" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">stable 节点组(100-w)</text>
+<rect x="754.0" y="624" width="318.0" height="52" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="913.0" y="656" fill="#1f2937" font-size="19" font-weight="600" text-anchor="middle">canary 节点组(w)</text>
+<rect x="50.0" y="728" width="1080" height="46" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="590.0" y="757" fill="#334155" font-size="18" font-weight="600" text-anchor="middle">衔接点：上游 Application Operator 的 createNetwork 预先建好 stable + canary 两个 Service，本 Provider 在其上做节点级权重切分</text>
+</svg>

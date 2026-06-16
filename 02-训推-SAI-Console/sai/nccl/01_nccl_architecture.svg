@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1560 1090" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#94a3b8" stroke-width="2"/></marker></defs>
+<rect x="0" y="0" width="1560" height="1090" fill="#ffffff"/>
+<text x="50" y="64" fill="#0f172a" font-size="34" font-weight="700">NCCL 集合通信分层定位</text>
+<text x="50" y="104" fill="#64748b" font-size="20">框架调 NCCL 做多卡协同；NCCL 选算法+传输，落到 NVLink/IB 拓扑（传输细节见 gpu-rdma）</text>
+<rect x="70" y="160" width="1020" height="140" rx="14" fill="#2563eb" fill-opacity="0.10" stroke="#2563eb" stroke-width="3"/>
+<text x="100" y="212" fill="#2563eb" font-size="27" font-weight="700">框架层</text>
+<text x="100" y="252" fill="#334155" font-size="20">PyTorch DDP/FSDP · Megatron-LM · DeepSpeed · vLLM 多</text>
+<text x="100" y="280" fill="#334155" font-size="20">卡 —— 发起集合通信</text>
+<rect x="1120" y="188" width="380" height="84" rx="12" fill="#2563eb" fill-opacity="0.12" stroke="#2563eb" stroke-width="2.4"/>
+<text x="1142" y="228" fill="#2563eb" font-size="19" font-weight="700">相邻经验：</text>
+<text x="1142" y="258" fill="#2563eb" font-size="19">多卡任务上线</text>
+<path d="M 580 300 L 580 322" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="70" y="324" width="1020" height="140" rx="14" fill="#0891b2" fill-opacity="0.10" stroke="#0891b2" stroke-width="3"/>
+<text x="100" y="376" fill="#0891b2" font-size="27" font-weight="700">NCCL 原语层</text>
+<text x="100" y="416" fill="#334155" font-size="20">AllReduce · ReduceScatter · AllGather · Broadcast · All-to-All（</text>
+<text x="100" y="444" fill="#334155" font-size="20">标准化多卡协同）</text>
+<rect x="1120" y="352" width="380" height="84" rx="12" fill="#d97706" fill-opacity="0.12" stroke="#d97706" stroke-width="2.4"/>
+<text x="1142" y="402" fill="#d97706" font-size="19" font-weight="700">对标理解 + 真实排障</text>
+<path d="M 580 464 L 580 486" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="70" y="488" width="1020" height="140" rx="14" fill="#dc2626" fill-opacity="0.10" stroke="#dc2626" stroke-width="3"/>
+<text x="100" y="540" fill="#dc2626" font-size="27" font-weight="700">NCCL 算法/调度层</text>
+<text x="100" y="580" fill="#334155" font-size="20">Ring（带宽最优）· Tree/双二叉树（延迟优）· NVLS（NVLink SHARP）· channel 编</text>
+<text x="100" y="608" fill="#334155" font-size="20">排</text>
+<rect x="1120" y="516" width="380" height="84" rx="12" fill="#dc2626" fill-opacity="0.12" stroke="#dc2626" stroke-width="2.4"/>
+<text x="1142" y="556" fill="#dc2626" font-size="19" font-weight="700">纯对标：</text>
+<text x="1142" y="586" fill="#dc2626" font-size="19">算法实现</text>
+<path d="M 580 628 L 580 650" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="70" y="652" width="1020" height="140" rx="14" fill="#d97706" fill-opacity="0.10" stroke="#d97706" stroke-width="3"/>
+<text x="100" y="704" fill="#d97706" font-size="27" font-weight="700">传输选择层</text>
+<text x="100" y="744" fill="#334155" font-size="20">自动选 NVLink/PCIe(P2P) · IB/RoCE(NET/IB+GDR) · 回退 NET/Socket</text>
+<rect x="1120" y="680" width="380" height="84" rx="12" fill="#059669" fill-opacity="0.12" stroke="#059669" stroke-width="2.4"/>
+<text x="1142" y="720" fill="#059669" font-size="19" font-weight="700">真实经验：</text>
+<text x="1142" y="750" fill="#059669" font-size="19">排障/防回退</text>
+<path d="M 580 792 L 580 814" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="70" y="816" width="1020" height="140" rx="14" fill="#7c3aed" fill-opacity="0.10" stroke="#7c3aed" stroke-width="3"/>
+<text x="100" y="868" fill="#7c3aed" font-size="27" font-weight="700">互联/拓扑层</text>
+<text x="100" y="908" fill="#334155" font-size="20">机内 NVLink/NVSwitch · 机间 InfiniBand/RoCE · 详见 gpu-rdma</text>
+<rect x="1120" y="844" width="380" height="84" rx="12" fill="#059669" fill-opacity="0.12" stroke="#059669" stroke-width="2.4"/>
+<text x="1142" y="884" fill="#059669" font-size="19" font-weight="700">真实经验：</text>
+<text x="1142" y="914" fill="#059669" font-size="19">拓扑感知调度</text>
+<text x="50" y="1040" fill="#0f172a" font-size="19" font-weight="700">经验边界：</text>
+<rect x="180" y="1020" width="24" height="24" rx="5" fill="#059669"/>
+<text x="212" y="1040" fill="#334155" font-size="19">真实/相邻经验</text>
+<rect x="389" y="1020" width="24" height="24" rx="5" fill="#dc2626"/>
+<text x="421" y="1040" fill="#334155" font-size="19">纯对标(算法/源码)</text>
+<rect x="639" y="1020" width="24" height="24" rx="5" fill="#d97706"/>
+<text x="671" y="1040" fill="#334155" font-size="19">混合:对标+排障</text>
+</svg>

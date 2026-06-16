@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2600 658" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker>
+<marker id="ar2" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker></defs>
+<rect x="0" y="0" width="2600" height="658" fill="#ffffff"/>
+<text x="1300" y="58" text-anchor="middle" fill="#0f172a" font-size="32" font-weight="800">AIOps 根因分析 · 核心流程</text>
+<rect x="40" y="90" width="2520" height="218" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.6" opacity="0.5"/>
+<text x="70" y="194" fill="#7c3aed" font-size="24" font-weight="800" transform="rotate(-90 70 194)" text-anchor="middle">单 Agent ReAct（生产主力）</text>
+<rect x="120" y="120" width="327" height="148" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="283" y="152" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">告警接入</text>
+<text x="283" y="178" text-anchor="middle" fill="#475569" font-size="17">HTTP / 轮询 / MQ</text>
+<text x="283" y="201" text-anchor="middle" fill="#475569" font-size="17">三种触发入口</text>
+<rect x="473" y="120" width="327" height="148" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="636" y="152" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">解析告警</text>
+<text x="636" y="178" text-anchor="middle" fill="#475569" font-size="17">正则提服务树</text>
+<text x="636" y="201" text-anchor="middle" fill="#475569" font-size="17">Pod名 · 告警时间</text>
+<text x="636" y="224" text-anchor="middle" fill="#475569" font-size="17">失败抛错带原文</text>
+<rect x="826" y="120" width="327" height="148" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="989" y="152" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">预取上下文</text>
+<text x="989" y="178" text-anchor="middle" fill="#475569" font-size="17">get_pod/service</text>
+<text x="989" y="201" text-anchor="middle" fill="#475569" font-size="17">_all_info</text>
+<text x="989" y="224" text-anchor="middle" fill="#475569" font-size="17">end_time = 告警+5min</text>
+<rect x="1179" y="120" width="327" height="148" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="1342" y="152" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">读知识库案例</text>
+<text x="1342" y="178" text-anchor="middle" fill="#475569" font-size="17">get_alert_analysis</text>
+<text x="1342" y="201" text-anchor="middle" fill="#475569" font-size="17">按告警类型筛案例</text>
+<text x="1342" y="224" text-anchor="middle" fill="#475569" font-size="17">现象/根因/方案</text>
+<rect x="1532" y="120" width="327" height="148" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="1695" y="152" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">ReAct 取证循环</text>
+<text x="1695" y="178" text-anchor="middle" fill="#475569" font-size="17">think→只读工具→observe</text>
+<text x="1695" y="201" text-anchor="middle" fill="#475569" font-size="17">逐项验证故障现象</text>
+<text x="1695" y="224" text-anchor="middle" fill="#475569" font-size="17">时间→现象→证据</text>
+<rect x="1885" y="120" width="327" height="148" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="2048" y="152" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">12项否决质检</text>
+<text x="2048" y="178" text-anchor="middle" fill="#475569" font-size="17">OBSERVER_PROMPT</text>
+<text x="2048" y="201" text-anchor="middle" fill="#475569" font-size="17">任一不过禁 terminate</text>
+<text x="2048" y="224" text-anchor="middle" fill="#475569" font-size="17">修正后重出</text>
+<rect x="2238" y="120" width="327" height="148" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="2401" y="152" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">输出落地</text>
+<text x="2401" y="178" text-anchor="middle" fill="#475569" font-size="17">去md包裹</text>
+<text x="2401" y="201" text-anchor="middle" fill="#475569" font-size="17">落 analysis_history</text>
+<text x="2401" y="224" text-anchor="middle" fill="#475569" font-size="17">send_clerk 回贴飞书</text>
+<line x1="447" y1="194" x2="473" y2="194" stroke="#7c3aed" stroke-width="3" marker-end="url(#ar)"/>
+<line x1="800" y1="194" x2="826" y2="194" stroke="#7c3aed" stroke-width="3" marker-end="url(#ar)"/>
+<line x1="1153" y1="194" x2="1179" y2="194" stroke="#7c3aed" stroke-width="3" marker-end="url(#ar)"/>
+<line x1="1506" y1="194" x2="1532" y2="194" stroke="#7c3aed" stroke-width="3" marker-end="url(#ar)"/>
+<line x1="1859" y1="194" x2="1885" y2="194" stroke="#7c3aed" stroke-width="3" marker-end="url(#ar)"/>
+<line x1="2212" y1="194" x2="2238" y2="194" stroke="#7c3aed" stroke-width="3" marker-end="url(#ar)"/>
+<path d="M 1695,268 C 1635,314 1755,314 1695,272" fill="none" stroke="#7c3aed" stroke-width="2.4" stroke-dasharray="6,5" marker-end="url(#ar2)"/>
+<text x="1695" y="330" text-anchor="middle" fill="#7c3aed" font-size="15">证据不足 → 继续取证（轮数上限10·超限强制汇总）</text>
+<rect x="40" y="388" width="2520" height="222" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="1.6" opacity="0.5"/>
+<text x="70" y="493" fill="#0891b2" font-size="24" font-weight="800" transform="rotate(-90 70 493)" text-anchor="middle">多 Agent 圆桌（探索形态）</text>
+<rect x="120" y="418" width="434" height="150" rx="10" fill="#cffafe" stroke="#0891b2" stroke-width="2.2"/>
+<text x="337" y="450" text-anchor="middle" fill="#0f172a" font-size="23" font-weight="700">receiver</text>
+<text x="337" y="476" text-anchor="middle" fill="#475569" font-size="17">告警接收人</text>
+<text x="337" y="499" text-anchor="middle" fill="#475569" font-size="17">抛出告警</text>
+<text x="337" y="522" text-anchor="middle" fill="#475569" font-size="17">向 analyst 求因</text>
+<rect x="624" y="418" width="434" height="150" rx="10" fill="#cffafe" stroke="#0891b2" stroke-width="2.2"/>
+<text x="841" y="450" text-anchor="middle" fill="#0f172a" font-size="23" font-weight="700">analyst</text>
+<text x="841" y="476" text-anchor="middle" fill="#475569" font-size="17">分析师</text>
+<text x="841" y="499" text-anchor="middle" fill="#475569" font-size="17">按可能性输出</text>
+<text x="841" y="522" text-anchor="middle" fill="#475569" font-size="17">最多5条根因(JSON)</text>
+<rect x="1128" y="418" width="434" height="150" rx="10" fill="#cffafe" stroke="#0891b2" stroke-width="2.2"/>
+<text x="1345" y="450" text-anchor="middle" fill="#0f172a" font-size="23" font-weight="700">planner</text>
+<text x="1345" y="476" text-anchor="middle" fill="#475569" font-size="17">规划师</text>
+<text x="1345" y="499" text-anchor="middle" fill="#475569" font-size="17">对每条根因</text>
+<text x="1345" y="522" text-anchor="middle" fill="#475569" font-size="17">规划验证步骤</text>
+<text x="1345" y="545" text-anchor="middle" fill="#475569" font-size="17">指派 executor</text>
+<rect x="1632" y="418" width="434" height="150" rx="10" fill="#cffafe" stroke="#0891b2" stroke-width="2.2"/>
+<text x="1849" y="450" text-anchor="middle" fill="#0f172a" font-size="23" font-weight="700">k8s_engineer</text>
+<text x="1849" y="476" text-anchor="middle" fill="#475569" font-size="17">k8s工程师</text>
+<text x="1849" y="499" text-anchor="middle" fill="#475569" font-size="17">按步骤调只读工具</text>
+<text x="1849" y="522" text-anchor="middle" fill="#475569" font-size="17">仅依据工具输出</text>
+<text x="1849" y="545" text-anchor="middle" fill="#475569" font-size="17">给阶段性结论</text>
+<rect x="2136" y="418" width="434" height="150" rx="10" fill="#cffafe" stroke="#0891b2" stroke-width="2.2"/>
+<text x="2353" y="450" text-anchor="middle" fill="#0f172a" font-size="23" font-weight="700">examiner</text>
+<text x="2353" y="476" text-anchor="middle" fill="#475569" font-size="17">检查员</text>
+<text x="2353" y="499" text-anchor="middle" fill="#475569" font-size="17">裁决是否根因</text>
+<text x="2353" y="522" text-anchor="middle" fill="#475569" font-size="17">汇总最可能1条</text>
+<text x="2353" y="545" text-anchor="middle" fill="#475569" font-size="17">根因+解决方案</text>
+<line x1="554" y1="493" x2="624" y2="493" stroke="#0891b2" stroke-width="3" marker-end="url(#ar)"/>
+<text x="589" y="484" text-anchor="middle" fill="#64748b" font-size="15">≤5根因</text>
+<line x1="1058" y1="493" x2="1128" y2="493" stroke="#0891b2" stroke-width="3" marker-end="url(#ar)"/>
+<text x="1093" y="484" text-anchor="middle" fill="#64748b" font-size="15">验证步骤</text>
+<line x1="1562" y1="493" x2="1632" y2="493" stroke="#0891b2" stroke-width="3" marker-end="url(#ar)"/>
+<text x="1597" y="484" text-anchor="middle" fill="#64748b" font-size="15">工具结论</text>
+<line x1="2066" y1="493" x2="2136" y2="493" stroke="#0891b2" stroke-width="3" marker-end="url(#ar)"/>
+<text x="2101" y="484" text-anchor="middle" fill="#64748b" font-size="15">裁决/汇总</text>
+<text x="1300" y="620" text-anchor="middle" fill="#0891b2" font-size="16">终止条件：k8s_engineer 队列空 且 根因/步骤验证完成，或已产出最终答案 → examiner 读 summary 汇总</text>
+</svg>

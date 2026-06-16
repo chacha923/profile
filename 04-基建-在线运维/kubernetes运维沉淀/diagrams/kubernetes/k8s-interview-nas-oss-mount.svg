@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 920" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1760" height="920" fill="#f8fafc"/>
+<text x="44" y="54" fill="#0f172a" font-size="31" font-weight="700" text-anchor="start">NAS / OSS 挂载给 Pod 的端到端链路</text>
+<rect x="960" y="36" width="24" height="18" rx="4" fill="#2563eb"/>
+<text x="992" y="50" fill="#334155" font-size="17">NAS 共享文件 RWX</text>
+<rect x="1190" y="36" width="24" height="18" rx="4" fill="#d97706"/>
+<text x="1222" y="50" fill="#334155" font-size="17">OSS 对象桶 ROX</text>
+<rect x="1420" y="36" width="24" height="18" rx="4" fill="#059669"/>
+<text x="1452" y="50" fill="#334155" font-size="17">验证逐层确认</text>
+<text x="44" y="98" fill="#475569" font-size="21" font-weight="700" text-anchor="start">前置准备：四步验通再写 YAML</text>
+<rect x="44" y="112" width="388" height="94" rx="12" fill="#eef2f7" stroke="#475569" stroke-width="2.4"/>
+<text x="238" y="138.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">① CSI 插件就绪</text>
+<text x="238" y="165.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">csi-plugin / provisioner</text>
+<text x="238" y="192.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">NAS·OSS 驱动 Running</text>
+<rect x="476" y="112" width="388" height="94" rx="12" fill="#eef2f7" stroke="#475569" stroke-width="2.4"/>
+<text x="670" y="138.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">② 建存储资源</text>
+<text x="670" y="165.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">NAS 文件系统+挂载点</text>
+<text x="670" y="192.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">或 OSS Bucket</text>
+<rect x="908" y="112" width="388" height="94" rx="12" fill="#eef2f7" stroke="#475569" stroke-width="2.4"/>
+<text x="1102" y="138.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">③ 打通网络</text>
+<text x="1102" y="165.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">节点 VPC 可达挂载点</text>
+<text x="1102" y="192.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">OSS 内网 endpoint</text>
+<rect x="1340" y="112" width="388" height="94" rx="12" fill="#eef2f7" stroke="#475569" stroke-width="2.4"/>
+<text x="1534" y="138.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">④ 准备凭证</text>
+<text x="1534" y="165.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">OSS AK/SK 最小权限</text>
+<text x="1534" y="192.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">NAS 免凭证</text>
+<defs><marker id="ah475569" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#475569"/></marker></defs>
+<path d="M 238,206 L 238,256" stroke="#475569" stroke-width="2.6" fill="none" marker-end="url(#ah475569)"/>
+<defs><marker id="ah475569" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#475569"/></marker></defs>
+<path d="M 1102,206 L 1102,256" stroke="#475569" stroke-width="2.6" fill="none" stroke-dasharray="7 5" marker-end="url(#ah475569)"/>
+<text x="44" y="272" fill="#2563eb" font-size="20" font-weight="700" text-anchor="start">NAS 路径</text>
+<rect x="44" y="282" width="346" height="104" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.4"/>
+<text x="217" y="313.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">NAS 文件系统</text>
+<text x="217" y="340.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">挂载点域名 :2049</text>
+<text x="217" y="367.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">子目录按业务隔离</text>
+<rect x="430" y="282" width="346" height="104" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.4"/>
+<text x="603" y="313.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">PV 或 StorageClass</text>
+<text x="603" y="340.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">静态:手动建 PV</text>
+<text x="603" y="367.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">动态:SC volumeAs=subpath</text>
+<rect x="816" y="282" width="346" height="104" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.4"/>
+<text x="989" y="313.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">PVC (RWX)</text>
+<text x="989" y="340.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">ReadWriteMany</text>
+<text x="989" y="367.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">多节点共享读写</text>
+<defs><marker id="ah2563eb" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#2563eb"/></marker></defs>
+<path d="M 390,334 L 430,334" stroke="#2563eb" stroke-width="2.6" fill="none" marker-end="url(#ah2563eb)"/>
+<defs><marker id="ah2563eb" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#2563eb"/></marker></defs>
+<path d="M 776,334 L 816,334" stroke="#2563eb" stroke-width="2.6" fill="none" marker-end="url(#ah2563eb)"/>
+<text x="44" y="462" fill="#d97706" font-size="20" font-weight="700" text-anchor="start">OSS 路径</text>
+<rect x="44" y="472" width="346" height="104" rx="12" fill="#fff7ed" stroke="#d97706" stroke-width="2.4"/>
+<text x="217" y="503.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">OSS Bucket + Secret</text>
+<text x="217" y="530.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">bucket / 内网 endpoint</text>
+<text x="217" y="557.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">AK 存入 Secret</text>
+<rect x="430" y="472" width="346" height="104" rx="12" fill="#fff7ed" stroke="#d97706" stroke-width="2.4"/>
+<text x="603" y="503.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">PV (ossplugin)</text>
+<text x="603" y="530.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">ossfs 模拟文件系统</text>
+<text x="603" y="557.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">nodePublishSecretRef</text>
+<rect x="816" y="472" width="346" height="104" rx="12" fill="#fff7ed" stroke="#d97706" stroke-width="2.4"/>
+<text x="989" y="503.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">PVC (ROX)</text>
+<text x="989" y="530.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">ReadOnlyMany</text>
+<text x="989" y="557.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">数据集只读优先</text>
+<defs><marker id="ahd97706" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#d97706"/></marker></defs>
+<path d="M 390,524 L 430,524" stroke="#d97706" stroke-width="2.6" fill="none" marker-end="url(#ahd97706)"/>
+<defs><marker id="ahd97706" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#d97706"/></marker></defs>
+<path d="M 776,524 L 816,524" stroke="#d97706" stroke-width="2.6" fill="none" marker-end="url(#ahd97706)"/>
+<rect x="1262" y="300" width="330" height="150" rx="12" fill="#f1f5f9" stroke="#334155" stroke-width="2.4"/>
+<text x="1427" y="337.0" text-anchor="middle" fill="#1f2937" font-size="23" font-weight="700">Pod</text>
+<text x="1427" y="367.0" text-anchor="middle" fill="#1f2937" font-size="18" font-weight="400">volumeMounts</text>
+<text x="1427" y="397.0" text-anchor="middle" fill="#1f2937" font-size="18" font-weight="400">mountPath: /data</text>
+<text x="1427" y="427.0" text-anchor="middle" fill="#1f2937" font-size="18" font-weight="400">claimName: &lt;pvc&gt;</text>
+<defs><marker id="ah2563eb" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#2563eb"/></marker></defs>
+<path d="M 1162,334 L 1262,360" stroke="#2563eb" stroke-width="2.6" fill="none" marker-end="url(#ah2563eb)"/>
+<defs><marker id="ahd97706" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#d97706"/></marker></defs>
+<path d="M 1162,524 L 1262,600" stroke="#d97706" stroke-width="2.6" fill="none" marker-end="url(#ahd97706)"/>
+<rect x="1262" y="612" width="330" height="104" rx="12" fill="#f1f5f9" stroke="#334155" stroke-width="2.4"/>
+<text x="1427" y="643.5" text-anchor="middle" fill="#1f2937" font-size="21" font-weight="700">Node / kubelet</text>
+<text x="1427" y="670.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">CSI Node 完成 mount</text>
+<text x="1427" y="697.5" text-anchor="middle" fill="#1f2937" font-size="17" font-weight="400">卷挂进容器 /data</text>
+<defs><marker id="ah334155" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#334155"/></marker></defs>
+<path d="M 1427,450 L 1427,612" stroke="#334155" stroke-width="2.6" fill="none" marker-end="url(#ah334155)"/>
+<text x="44" y="760" fill="#059669" font-size="21" font-weight="700" text-anchor="start">验证：逐层确认，不止看 Pod Running</text>
+<rect x="44" y="776" width="296" height="72" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2.4"/>
+<text x="192" y="819.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">PVC Bound</text>
+<rect x="360" y="776" width="296" height="72" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2.4"/>
+<text x="508" y="819.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">PV Bound</text>
+<defs><marker id="ah059669" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#059669"/></marker></defs>
+<path d="M 340,812 L 360,812" stroke="#059669" stroke-width="2.6" fill="none" marker-end="url(#ah059669)"/>
+<rect x="676" y="776" width="296" height="72" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2.4"/>
+<text x="824" y="819.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">Pod Running</text>
+<defs><marker id="ah059669" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#059669"/></marker></defs>
+<path d="M 656,812 L 676,812" stroke="#059669" stroke-width="2.6" fill="none" marker-end="url(#ah059669)"/>
+<rect x="992" y="776" width="296" height="72" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2.4"/>
+<text x="1140" y="819.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">exec ls /data</text>
+<defs><marker id="ah059669" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#059669"/></marker></defs>
+<path d="M 972,812 L 992,812" stroke="#059669" stroke-width="2.6" fill="none" marker-end="url(#ah059669)"/>
+<rect x="1308" y="776" width="296" height="72" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2.4"/>
+<text x="1456" y="819.5" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="700">touch 验写 (NAS)</text>
+<defs><marker id="ah059669" markerWidth="10" markerHeight="10" refX="7.5" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#059669"/></marker></defs>
+<path d="M 1288,812 L 1308,812" stroke="#059669" stroke-width="2.6" fill="none" marker-end="url(#ah059669)"/>
+</svg>

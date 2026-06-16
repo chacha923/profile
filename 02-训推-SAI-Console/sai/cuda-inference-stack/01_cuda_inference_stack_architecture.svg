@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 1326" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1480" height="1326" fill="#ffffff"/>
+<defs><marker id="ar" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#94a3b8" stroke-width="2"/></marker></defs>
+<text x="50" y="70" fill="#0f172a" font-size="34" font-weight="700">CUDA 在生成式推理栈中的分层定位（自底向上）</text>
+<text x="50" y="112" fill="#64748b" font-size="20">上层框架不直接操作 GPU；计算下发经 Runtime→Driver→GPU，K8s 只调度资源</text>
+<rect x="80" y="150" width="980" height="150" rx="14" fill="#059669" fill-opacity="0.10" stroke="#059669" stroke-width="3"/>
+<text x="114" y="208" fill="#059669" font-size="27" font-weight="700">K8s 编排层</text>
+<text x="114" y="258" fill="#334155" font-size="20">device plugin（暴露 nvidia.com/gpu，只调度不计算） · nvidia-container-toolkit（注入宿主驱动）</text>
+<rect x="1090" y="180" width="340" height="90" rx="12" fill="#059669" fill-opacity="0.12" stroke="#059669" stroke-width="2.4"/>
+<text x="1112" y="223" fill="#059669" font-size="19" font-weight="700">真实经验：</text>
+<text x="1112" y="255" fill="#059669" font-size="19">调度/透传/版本兼容</text>
+<path d="M 570 300 L 570 324" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="326" width="980" height="150" rx="14" fill="#2563eb" fill-opacity="0.10" stroke="#2563eb" stroke-width="3"/>
+<text x="114" y="384" fill="#2563eb" font-size="27" font-weight="700">框架层</text>
+<text x="114" y="434" fill="#334155" font-size="20">PyTorch / vLLM / TensorRT-LLM / SGLang —— 不直接操作 GPU</text>
+<rect x="1090" y="356" width="340" height="90" rx="12" fill="#2563eb" fill-opacity="0.12" stroke="#2563eb" stroke-width="2.4"/>
+<text x="1112" y="399" fill="#2563eb" font-size="19" font-weight="700">相邻经验：</text>
+<text x="1112" y="431" fill="#2563eb" font-size="19">推理服务上线/稳定性</text>
+<path d="M 570 476 L 570 500" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="502" width="980" height="150" rx="14" fill="#d97706" fill-opacity="0.10" stroke="#d97706" stroke-width="3"/>
+<text x="114" y="560" fill="#d97706" font-size="27" font-weight="700">库层</text>
+<text x="114" y="610" fill="#334155" font-size="20">cuDNN · cuBLAS（算子/GEMM）  |  NCCL（多卡通信）  |  TensorRT（推理图优化）</text>
+<rect x="1090" y="532" width="340" height="90" rx="12" fill="#d97706" fill-opacity="0.12" stroke="#d97706" stroke-width="2.4"/>
+<text x="1112" y="575" fill="#d97706" font-size="19" font-weight="700"></text>
+<text x="1112" y="607" fill="#d97706" font-size="19">理论对标内核 + 真实排障入口</text>
+<path d="M 570 652 L 570 676" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="678" width="980" height="150" rx="14" fill="#0891b2" fill-opacity="0.10" stroke="#0891b2" stroke-width="3"/>
+<text x="114" y="736" fill="#0891b2" font-size="27" font-weight="700">CUDA Runtime + Toolkit</text>
+<text x="114" y="786" fill="#334155" font-size="20">libcudart.so · nvcc —— 随镜像/应用走（平时说的“CUDA 中间层”）</text>
+<rect x="1090" y="708" width="340" height="90" rx="12" fill="#059669" fill-opacity="0.12" stroke="#059669" stroke-width="2.4"/>
+<text x="1112" y="761" fill="#059669" font-size="19" font-weight="700">真实经验：镜像版本基线</text>
+<path d="M 570 828 L 570 852" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="854" width="980" height="150" rx="14" fill="#7c3aed" fill-opacity="0.10" stroke="#7c3aed" stroke-width="3"/>
+<text x="114" y="912" fill="#7c3aed" font-size="27" font-weight="700">NVIDIA Driver + CUDA Driver API</text>
+<text x="114" y="962" fill="#334155" font-size="20">libcuda.so —— 装在宿主机，访问 GPU 的唯一入口</text>
+<rect x="1090" y="884" width="340" height="90" rx="12" fill="#059669" fill-opacity="0.12" stroke="#059669" stroke-width="2.4"/>
+<text x="1112" y="927" fill="#059669" font-size="19" font-weight="700">真实经验：</text>
+<text x="1112" y="959" fill="#059669" font-size="19">driver 管控/灰度</text>
+<path d="M 570 1004 L 570 1028" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="1030" width="980" height="150" rx="14" fill="#dc2626" fill-opacity="0.10" stroke="#dc2626" stroke-width="3"/>
+<text x="114" y="1088" fill="#dc2626" font-size="27" font-weight="700">GPU 硬件</text>
+<text x="114" y="1138" fill="#334155" font-size="20">SM / CUDA Core / Tensor Core · 多级显存（寄存器→SRAM→L2→HBM）</text>
+<rect x="1090" y="1060" width="340" height="90" rx="12" fill="#dc2626" fill-opacity="0.12" stroke="#dc2626" stroke-width="2.4"/>
+<text x="1112" y="1113" fill="#dc2626" font-size="19" font-weight="700">理论对标：微体系结构</text>
+<text x="50" y="1266" fill="#0f172a" font-size="19" font-weight="700">经验边界：</text>
+<rect x="200" y="1244" width="26" height="26" rx="5" fill="#059669"/>
+<text x="234" y="1266" fill="#334155" font-size="19">真实/相邻经验（平台侧真做）</text>
+<rect x="557" y="1244" width="26" height="26" rx="5" fill="#dc2626"/>
+<text x="591" y="1266" fill="#334155" font-size="19">理论对标（内核/算法，未亲写）</text>
+<rect x="934" y="1244" width="26" height="26" rx="5" fill="#d97706"/>
+<text x="968" y="1266" fill="#334155" font-size="19">混合：内核对标+排障真做</text>
+</svg>

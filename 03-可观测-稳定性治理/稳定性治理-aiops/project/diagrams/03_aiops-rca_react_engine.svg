@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 1120" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="13" markerHeight="13" refX="9" refY="5" orient="auto"><path d="M0,0 L11,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="2200" height="1120" fill="#ffffff"/>
+<text x="1100" y="52" text-anchor="middle" fill="#0f172a" font-size="32" font-weight="800">TAOPlayer · Think-Act-Observe（ReAct）引擎</text>
+<path d="M 630,310 L 1040,310" stroke="#7c3aed" stroke-width="4" marker-end="url(#ar)"/>
+<text x="760" y="278" fill="#7c3aed" font-size="20" font-weight="700">有 tool_calls</text>
+<path d="M 1120,410 L 975,540" stroke="#0891b2" stroke-width="4" marker-end="url(#ar)"/>
+<text x="1080" y="500" fill="#0891b2" font-size="20" font-weight="700">执行完工具</text>
+<path d="M 695,540 L 550,410" stroke="#059669" stroke-width="4" marker-end="url(#ar)"/>
+<text x="470" y="505" fill="#059669" font-size="20" font-weight="700">回到思考</text>
+<path d="M 580,410 L 715,610" stroke="#7c3aed" stroke-width="4" marker-end="url(#ar)"/>
+<text x="520" y="560" fill="#7c3aed" font-size="20" font-weight="700">只有结论(无工具)</text>
+<circle cx="520" cy="300" r="110" fill="#ede9fe" stroke="#7c3aed" stroke-width="3.5"/>
+<text x="520" y="310" text-anchor="middle" fill="#7c3aed" font-size="30" font-weight="800">Think</text>
+<circle cx="1150" cy="300" r="110" fill="#cffafe" stroke="#0891b2" stroke-width="3.5"/>
+<text x="1150" y="310" text-anchor="middle" fill="#0891b2" font-size="30" font-weight="800">Action</text>
+<circle cx="835" cy="640" r="110" fill="#dcfce7" stroke="#059669" stroke-width="3.5"/>
+<text x="835" y="650" text-anchor="middle" fill="#059669" font-size="30" font-weight="800">Observe</text>
+<rect x="180" y="90" width="330" height="150" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="198" y="120" fill="#0f172a" font-size="22" font-weight="700">Think 思考</text>
+<text x="198" y="146" fill="#475569" font-size="18">调 LLM（带 tools）</text>
+<text x="198" y="171" fill="#475569" font-size="18">判断走 action / observe</text>
+<text x="198" y="196" fill="#475569" font-size="18">轮数 &gt;10 → 强制汇总输出</text>
+<rect x="1320" y="90" width="360" height="150" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="1338" y="120" fill="#0f172a" font-size="22" font-weight="700">Action 行动</text>
+<text x="1338" y="146" fill="#475569" font-size="18">逐个执行只读工具</text>
+<text x="1338" y="171" fill="#475569" font-size="18">结果回灌为观察输出</text>
+<text x="1338" y="196" fill="#475569" font-size="18">发现飞书链接→自动查阅</text>
+<rect x="1320" y="560" width="360" height="180" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+<text x="1338" y="590" fill="#0f172a" font-size="22" font-weight="700">Observe 观察</text>
+<text x="1338" y="616" fill="#475569" font-size="18">上条是工具结果→继续think</text>
+<text x="1338" y="641" fill="#475569" font-size="18">工具失败→有限重试(仅1次)</text>
+<text x="1338" y="666" fill="#475569" font-size="18">否则→注入12项质检</text>
+<text x="1338" y="691" fill="#475569" font-size="18">FINISHED→返回报告</text>
+<text x="180" y="842" fill="#0f172a" font-size="25" font-weight="800">AgentState 状态机</text>
+<rect x="180" y="860" width="360" height="70" rx="35" fill="#ffffff" stroke="#94a3b8" stroke-width="2.6"/>
+<text x="360" y="905" text-anchor="middle" fill="#94a3b8" font-size="24" font-weight="700">IDLE</text>
+<line x1="540" y1="895" x2="598" y2="895" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="600" y="860" width="360" height="70" rx="35" fill="#ffffff" stroke="#2563eb" stroke-width="2.6"/>
+<text x="780" y="905" text-anchor="middle" fill="#2563eb" font-size="24" font-weight="700">RUNNING</text>
+<line x1="960" y1="895" x2="1018" y2="895" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="1020" y="860" width="360" height="70" rx="35" fill="#ffffff" stroke="#059669" stroke-width="2.6"/>
+<text x="1200" y="905" text-anchor="middle" fill="#059669" font-size="24" font-weight="700">FINISHED</text>
+<line x1="1380" y1="895" x2="1438" y2="895" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="1440" y="860" width="360" height="70" rx="35" fill="#ffffff" stroke="#dc2626" stroke-width="2.6"/>
+<text x="1620" y="905" text-anchor="middle" fill="#dc2626" font-size="24" font-weight="700">FAILED / ERROR</text>
+<text x="180" y="974" fill="#475569" font-size="19">terminate 工具 + 12项质检全通过 → FINISHED；唯一合法结束出口。get_summary 兜底取「故障根因/凭据/方案」结论。</text>
+</svg>

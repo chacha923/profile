@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2120 760" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="2120" height="760" fill="#ffffff"/>
+<text x="50" y="60" fill="#0f172a" font-size="34" font-weight="700">三类模型压缩：改什么 / 收益 / 风险</text>
+<rect x="50" y="100" width="653" height="600" rx="16" fill="#0891b2" fill-opacity="0.06" stroke="#0891b2" stroke-width="3"/>
+<text x="376" y="150" fill="#0891b2" font-size="26" font-weight="700" text-anchor="middle">量化 Quantization</text>
+<rect x="306" y="170" width="140" height="40" rx="10" fill="#0891b2"/>
+<text x="376" y="197" fill="#fff" font-size="20" font-weight="700" text-anchor="middle">改精度</text>
+<text x="80" y="260" fill="#64748b" font-size="18" font-weight="700">做什么</text>
+<text x="80" y="288" fill="#334155" font-size="20">FP16→INT8/FP8/INT4，不改结构</text>
+<text x="80" y="334" fill="#64748b" font-size="18" font-weight="700">收益</text>
+<text x="80" y="362" fill="#059669" font-size="20">显存近似减半~1/4；decode 省带宽提吞吐</text>
+<text x="80" y="408" fill="#64748b" font-size="18" font-weight="700">风险</text>
+<text x="80" y="436" fill="#dc2626" font-size="20">精度可能退化，要回归；受硬件/框架支持约束</text>
+<text x="80" y="670" fill="#0891b2" font-size="19" font-weight="700">→ 推理降本最主流</text>
+<rect x="733" y="100" width="653" height="600" rx="16" fill="#d97706" fill-opacity="0.06" stroke="#d97706" stroke-width="3"/>
+<text x="1060" y="150" fill="#d97706" font-size="26" font-weight="700" text-anchor="middle">剪枝 Pruning</text>
+<rect x="990" y="170" width="140" height="40" rx="10" fill="#d97706"/>
+<text x="1060" y="197" fill="#fff" font-size="20" font-weight="700" text-anchor="middle">改结构</text>
+<text x="763" y="260" fill="#64748b" font-size="18" font-weight="700">做什么</text>
+<text x="763" y="288" fill="#334155" font-size="20">去冗余权重/通道/头；结构化 vs 非结构化</text>
+<text x="763" y="334" fill="#64748b" font-size="18" font-weight="700">收益</text>
+<text x="763" y="362" fill="#059669" font-size="20">结构化/2:4 稀疏可被 Sparse Tensor Core 加</text>
+<text x="763" y="390" fill="#059669" font-size="20">速</text>
+<text x="763" y="436" fill="#64748b" font-size="18" font-weight="700">风险</text>
+<text x="763" y="464" fill="#dc2626" font-size="20">非结构化压缩率高但难加速；需微调恢复精度</text>
+<text x="763" y="670" fill="#d97706" font-size="19" font-weight="700">→ 更偏结构化/2:4</text>
+<rect x="1416" y="100" width="653" height="600" rx="16" fill="#7c3aed" fill-opacity="0.06" stroke="#7c3aed" stroke-width="3"/>
+<text x="1743" y="150" fill="#7c3aed" font-size="26" font-weight="700" text-anchor="middle">蒸馏 Distillation</text>
+<rect x="1673" y="170" width="140" height="40" rx="10" fill="#7c3aed"/>
+<text x="1743" y="197" fill="#fff" font-size="20" font-weight="700" text-anchor="middle">改规模</text>
+<text x="1446" y="260" fill="#64748b" font-size="18" font-weight="700">做什么</text>
+<text x="1446" y="288" fill="#334155" font-size="20">用 teacher 输出/特征训练更小 student</text>
+<text x="1446" y="334" fill="#64748b" font-size="18" font-weight="700">收益</text>
+<text x="1446" y="362" fill="#059669" font-size="20">得到更小模型，推理更省</text>
+<text x="1446" y="408" fill="#64748b" font-size="18" font-weight="700">风险</text>
+<text x="1446" y="436" fill="#dc2626" font-size="20">训练侧投入大；学生能力上限受 teacher 约束</text>
+<text x="1446" y="670" fill="#7c3aed" font-size="19" font-weight="700">→ 常配量化部署</text>
+</svg>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 836" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="2200" height="836" fill="#ffffff"/>
+<text x="50.0" y="94.0" text-anchor="start" fill="#0f172a" font-size="34" font-weight="700">GPU 利用率指标体系：四层模型（自底向上）</text>
+<text x="50.0" y="128.0" text-anchor="start" fill="#64748b" font-size="20" font-weight="400">低利用率根因可能落在任意一层；单看 GPU_UTIL 不能下结论，需跨层交叉验证</text>
+<rect x="50.0" y="146.0" width="2100.0" height="110.0" rx="16" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<rect x="68.0" y="164.0" width="342.0" height="74.0" rx="12" fill="#7c3aed" stroke="none" stroke-width="2"/>
+<text x="239.0" y="195.0" text-anchor="middle" fill="#ffffff" font-size="28" font-weight="700">业务层</text>
+<text x="239.0" y="227.0" text-anchor="middle" fill="#e2e8f0" font-size="17" font-weight="400">判断 GPU 用得值不值</text>
+<rect x="440.0" y="170.0" width="184.8" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="532.4" y="200.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">SLA / P99 目标</text>
+<rect x="638.8" y="170.0" width="188.0" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="732.8" y="200.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">错误率 / 超时率</text>
+<rect x="840.8" y="170.0" width="169.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="925.6" y="200.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">单位 GPU 吞吐</text>
+<rect x="1024.4" y="170.0" width="169.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1109.2" y="200.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">单位 GPU 成本</text>
+<rect x="1208.0" y="170.0" width="188.0" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1302.0" y="200.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">高峰 / 低峰容量</text>
+<rect x="50.0" y="278.0" width="2100.0" height="142.0" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<rect x="68.0" y="296.0" width="342.0" height="106.0" rx="12" fill="#2563eb" stroke="none" stroke-width="2"/>
+<text x="239.0" y="343.0" text-anchor="middle" fill="#ffffff" font-size="28" font-weight="700">框架层</text>
+<text x="239.0" y="375.0" text-anchor="middle" fill="#e2e8f0" font-size="17" font-weight="400">判断喂没喂满、效率高不高</text>
+<rect x="440.0" y="302.0" width="277.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="578.8" y="332.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">推理: QPS / 并发 / 队列</text>
+<rect x="731.6" y="302.0" width="286.8" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="875.0" y="332.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">推理: batch / 动态批命中</text>
+<rect x="1032.4" y="302.0" width="334.4" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1199.6" y="332.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">LLM: TTFT / TPOT / tokens/s</text>
+<rect x="1380.8" y="302.0" width="229.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1495.6" y="332.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">LLM: KV cache 占用</text>
+<rect x="1624.4" y="302.0" width="330.4" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1789.6" y="332.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">训练: samples/s / step time</text>
+<rect x="440.0" y="362.0" width="259.2" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="569.6" y="392.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">训练: dataloader 耗时</text>
+<rect x="713.2" y="362.0" width="248.0" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="837.2" y="392.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">训练: NCCL / PS 通信</text>
+<rect x="975.2" y="362.0" width="285.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1118.0" y="392.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">训练: checkpoint / eval</text>
+<rect x="50.0" y="442.0" width="2100.0" height="110.0" rx="16" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<rect x="68.0" y="460.0" width="342.0" height="74.0" rx="12" fill="#0891b2" stroke="none" stroke-width="2"/>
+<text x="239.0" y="491.0" text-anchor="middle" fill="#ffffff" font-size="28" font-weight="700">K8s 资源层</text>
+<text x="239.0" y="523.0" text-anchor="middle" fill="#e2e8f0" font-size="17" font-weight="400">判断分配、调度、容器是否正常</text>
+<rect x="440.0" y="466.0" width="278.4" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="579.2" y="496.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">nvidia.com/gpu request</text>
+<rect x="732.4" y="466.0" width="270.4" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="867.6" y="496.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">GPU 分配碎片 / Pending</text>
+<rect x="1016.8" y="466.0" width="345.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1189.6" y="496.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">Pod: Running / Restart / OOM</text>
+<rect x="1376.4" y="466.0" width="304.0" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1528.4" y="496.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">节点 Ready / taint / 驱动</text>
+<rect x="1694.4" y="466.0" width="375.2" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1882.0" y="496.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">TFJob 角色: chief / worker / ps</text>
+<rect x="50.0" y="574.0" width="2100.0" height="142.0" rx="16" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<rect x="68.0" y="592.0" width="342.0" height="106.0" rx="12" fill="#059669" stroke="none" stroke-width="2"/>
+<text x="239.0" y="639.0" text-anchor="middle" fill="#ffffff" font-size="28" font-weight="700">GPU 硬件层</text>
+<text x="239.0" y="671.0" text-anchor="middle" fill="#e2e8f0" font-size="17" font-weight="400">判断算力、显存、带宽、健康</text>
+<rect x="440.0" y="598.0" width="177.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="528.8" y="628.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">DCGM GPU_UTIL</text>
+<rect x="631.6" y="598.0" width="162.4" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="712.8" y="628.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">FB_USED 显存</text>
+<rect x="808.0" y="598.0" width="177.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="896.8" y="628.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">MEM_COPY_UTIL</text>
+<rect x="999.6" y="598.0" width="207.2" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1103.2" y="628.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">POWER_USAGE 功耗</text>
+<rect x="1220.8" y="598.0" width="173.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1307.6" y="628.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">SM_CLOCK 时钟</text>
+<rect x="1408.4" y="598.0" width="188.8" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1502.8" y="628.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">PROF_SM_ACTIVE</text>
+<rect x="1611.2" y="598.0" width="233.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1728.0" y="628.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">PIPE_TENSOR_ACTIVE</text>
+<rect x="1858.8" y="598.0" width="211.2" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1964.4" y="628.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">PROF_DRAM_ACTIVE</text>
+<rect x="440.0" y="658.0" width="177.6" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="528.8" y="688.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">NVLink / PCIe</text>
+<rect x="631.6" y="658.0" width="207.2" height="46.0" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="735.2" y="688.2" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">XID / ECC / 温度</text>
+<text x="50.0" y="774.0" text-anchor="start" fill="#dc2626" font-size="22" font-weight="700">交叉验证示例：</text>
+<text x="200.0" y="774.0" text-anchor="start" fill="#b91c1c" font-size="20" font-weight="400">GPU_UTIL 低 + 功耗低 → 没活干；显存高 + 功耗低 → 占着没算；DRAM_ACTIVE 高 + Tensor 低 → memory-bound</text>
+</svg>

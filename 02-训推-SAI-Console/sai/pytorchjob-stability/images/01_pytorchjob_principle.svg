@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 960" width="1600" height="960">
+<style>
+text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+</style>
+<defs>
+<marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+</marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+</marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/>
+</marker>
+<marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/>
+</marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/>
+</marker>
+<marker id="arrow-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#0891b2"/>
+</marker>
+<marker id="arrow-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+</marker>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+<feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.14"/>
+</filter>
+</defs>
+<rect width="1600" height="960" fill="#ffffff"/>
+<text x="60" y="62" fill="#111827" font-size="30" font-weight="800">PyTorchJob 运行原理与 SRE 观测边界</text>
+<text x="60" y="96" fill="#475569" font-size="17">从 SAI 控制面到底层 GPU/NCCL 的责任分层</text>
+<rect x="60" y="150" width="310" height="130" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="60" y="150" width="310" height="8" rx="4" fill="#2563eb"/>
+<text x="215.0" y="186" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">SAI 控制面</text>
+<text x="82" y="218" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 表单/模板</text>
+<text x="82" y="243" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• NodePool/配额</text>
+<text x="82" y="268" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 提交与状态同步</text>
+<rect x="460" y="150" width="310" height="130" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="460" y="150" width="310" height="8" rx="4" fill="#9333ea"/>
+<text x="615.0" y="186" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">PyTorchJob CRD</text>
+<text x="482" y="218" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• runPolicy</text>
+<text x="482" y="243" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• Master/Worker</text>
+<text x="482" y="268" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• elasticPolicy</text>
+<rect x="860" y="150" width="310" height="130" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="860" y="150" width="310" height="8" rx="4" fill="#ea580c"/>
+<text x="1015.0" y="186" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">Training Operator</text>
+<text x="882" y="218" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• reconcile</text>
+<text x="882" y="243" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 创建 Pods/Services</text>
+<text x="882" y="268" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 更新 conditions</text>
+<rect x="1250" y="150" width="290" height="130" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="1250" y="150" width="290" height="8" rx="4" fill="#16a34a"/>
+<text x="1395.0" y="186" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">K8s 调度器/队列</text>
+<text x="1272" y="218" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• Kueue/Volcano</text>
+<text x="1272" y="243" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• quota/gang</text>
+<text x="1272" y="268" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• suspend/admit</text>
+<path d="M 370 215 L 460 215" fill="none" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+<rect x="370.0" y="189.0" width="90" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="415.0" y="207.0" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">create</text>
+<path d="M 770 215 L 860 215" fill="none" stroke="#9333ea" stroke-width="2.2" marker-end="url(#arrow-purple)"/>
+<rect x="777.5" y="189.0" width="75" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="815.0" y="207.0" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">watch</text>
+<path d="M 1170 215 L 1250 215" fill="none" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+<rect x="1172.5" y="189.0" width="75" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="1210.0" y="207.0" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">admit</text>
+<rect x="160" y="405" width="360" height="170" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="160" y="405" width="360" height="8" rx="4" fill="#2563eb"/>
+<text x="340.0" y="441" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">Master / rank0 Pod</text>
+<text x="182" y="473" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• torchrun 启动</text>
+<text x="182" y="498" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• MASTER_ADDR/PORT</text>
+<text x="182" y="523" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 完成/失败信号常从 rank0 收敛</text>
+<rect x="620" y="405" width="360" height="170" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="620" y="405" width="360" height="8" rx="4" fill="#16a34a"/>
+<text x="800.0" y="441" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">Worker Pods</text>
+<text x="642" y="473" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 同构 ranks</text>
+<text x="642" y="498" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• requests/limits nvidia.com/gpu</text>
+<text x="642" y="523" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• nodeSelector/tolerations/affinity</text>
+<rect x="1080" y="405" width="360" height="170" rx="10" fill="#ffffff" stroke="#9333ea" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="1080" y="405" width="360" height="8" rx="4" fill="#9333ea"/>
+<text x="1260.0" y="441" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">Service / Rendezvous</text>
+<text x="1102" y="473" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• rank 发现</text>
+<text x="1102" y="498" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 端口可达</text>
+<text x="1102" y="523" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• elastic 时 min/max 重集合</text>
+<path d="M 1250 280 L 800 405" fill="none" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+<rect x="965.0" y="316.5" width="120" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="1025.0" y="334.5" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">schedule</text>
+<path d="M 520 490 L 620 490" fill="none" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+<rect x="502.5" y="464.0" width="135" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="570.0" y="482.0" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">all ranks</text>
+<path d="M 980 490 L 1080 490" fill="none" stroke="#9333ea" stroke-width="2.2" marker-end="url(#arrow-purple)"/>
+<rect x="955.0" y="464.0" width="150" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="1030.0" y="482.0" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">rendezvous</text>
+<rect x="160" y="710" width="360" height="130" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="160" y="710" width="360" height="8" rx="4" fill="#dc2626"/>
+<text x="340.0" y="746" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">GPU 节点与设备插件</text>
+<text x="182" y="778" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• NVIDIA/厂商 GPU 插件</text>
+<text x="182" y="803" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 显存/卡数/故障 XID</text>
+<text x="182" y="828" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 驱动/CUDA/NCCL 版本</text>
+<rect x="620" y="710" width="360" height="130" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="620" y="710" width="360" height="8" rx="4" fill="#0891b2"/>
+<text x="800.0" y="746" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">通信与拓扑</text>
+<text x="642" y="778" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• NVLink/PCIe/IB/RDMA</text>
+<text x="642" y="803" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• NCCL all-reduce</text>
+<text x="642" y="828" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 同 rack/同 RDMA 域</text>
+<rect x="1080" y="710" width="360" height="130" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="1080" y="710" width="360" height="8" rx="4" fill="#ea580c"/>
+<text x="1260.0" y="746" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">存储与 Checkpoint</text>
+<text x="1102" y="778" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• NAS/OSS/PVC</text>
+<text x="1102" y="803" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• checkpoint 保存/恢复</text>
+<text x="1102" y="828" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 日志与 TensorBoard</text>
+<path d="M 340 575 L 340 710" fill="none" stroke="#dc2626" stroke-width="2.2" marker-end="url(#arrow-red)"/>
+<rect x="298.0" y="688" width="84" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="340" y="706" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">device</text>
+<path d="M 800 575 L 800 710" fill="none" stroke="#0891b2" stroke-width="2.2" marker-end="url(#arrow-teal)"/>
+<rect x="760.0" y="688" width="80" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="800" y="706" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">NCCL</text>
+<path d="M 1260 575 L 1260 710" fill="none" stroke="#ea580c" stroke-width="2.2" marker-end="url(#arrow-orange)"/>
+<rect x="1220.0" y="688" width="80" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="1260" y="706" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">state</text>
+<text x="800" y="910" fill="#475569" font-size="17" font-weight="700" text-anchor="middle">SRE 观测要把 CRD 状态、Pod/Event、GPU 指标、rank 日志、checkpoint 统一到一个 Job 视角。</text>
+</svg>

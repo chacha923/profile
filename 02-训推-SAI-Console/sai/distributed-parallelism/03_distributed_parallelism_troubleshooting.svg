@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2120 976" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#94a3b8" stroke-width="2"/></marker></defs>
+<rect x="0" y="0" width="2120" height="976" fill="#ffffff"/>
+<text x="50" y="60" fill="#0f172a" font-size="34" font-weight="700">并行选型决策 + 排障路径</text>
+<rect x="50" y="92" width="2020" height="70" rx="13" fill="#1e293b"/>
+<text x="76" y="135" fill="#fff" font-size="22" font-weight="700">选型顺序：单卡放得下？ → 否则机内 TP → 还不够上 PP 跨机 → 扩吞吐叠 DP → 显存紧用 ZeRO/FSDP → 仍紧 offload（MoE→EP，长上下文→SP）</text>
+<text x="50" y="222" fill="#64748b" font-size="20">绿框=我真做过的排障；蓝框=社区通病我能排查</text>
+<text x="70" y="252" fill="#0f172a" font-size="22" font-weight="700">症状</text>
+<text x="540" y="252" fill="#0f172a" font-size="22" font-weight="700">根因定位</text>
+<text x="1230" y="252" fill="#0f172a" font-size="22" font-weight="700">排查 / 兜底</text>
+<rect x="70" y="260" width="420" height="140" rx="13" fill="#dc2626" fill-opacity="0.12" stroke="#dc2626" stroke-width="3"/>
+<text x="92" y="332" fill="#dc2626" font-size="22" font-weight="700">显存 OOM</text>
+<rect x="92" y="358" width="76" height="30" rx="8" fill="#059669"/>
+<text x="102" y="380" fill="#fff" font-size="17" font-weight="700">真做过</text>
+<rect x="540" y="260" width="640" height="140" rx="13" fill="#f8fafc" stroke="#dc2626" stroke-width="2.4"/>
+<text x="562" y="335" fill="#334155" font-size="20">参数/梯度/优化器状态/激活 哪块爆？</text>
+<rect x="1230" y="260" width="840" height="140" rx="13" fill="#dc2626" fill-opacity="0.06" stroke="#dc2626" stroke-width="2.4"/>
+<text x="1252" y="320" fill="#334155" font-size="20">加 TP/PP 或上 ZeRO-3/FSDP；降 micro-batch；开</text>
+<text x="1252" y="350" fill="#334155" font-size="20">激活重计算；必要时 offload</text>
+<path d="M 490 330 L 536 330" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1180 330 L 1226 330" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="424" width="420" height="140" rx="13" fill="#d97706" fill-opacity="0.12" stroke="#d97706" stroke-width="3"/>
+<text x="92" y="496" fill="#d97706" font-size="22" font-weight="700">扩展效率低 / 变慢</text>
+<rect x="92" y="522" width="76" height="30" rx="8" fill="#059669"/>
+<text x="102" y="544" fill="#fff" font-size="17" font-weight="700">真做过</text>
+<rect x="540" y="424" width="640" height="140" rx="13" fill="#f8fafc" stroke="#d97706" stroke-width="2.4"/>
+<text x="562" y="484" fill="#334155" font-size="20">TP 跨机？PP bubble 大？回退 Socket？</text>
+<text x="562" y="514" fill="#334155" font-size="20">通信没 overlap？</text>
+<rect x="1230" y="424" width="840" height="140" rx="13" fill="#d97706" fill-opacity="0.06" stroke="#d97706" stroke-width="2.4"/>
+<text x="1252" y="484" fill="#334155" font-size="20">TP 绑机内 NVLink；加 micro-batch 压 bubble；查</text>
+<text x="1252" y="514" fill="#334155" font-size="20"> NET/IB(见 nccl/gpu-rdma)</text>
+<path d="M 490 494 L 536 494" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1180 494 L 1226 494" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="588" width="420" height="140" rx="13" fill="#0891b2" fill-opacity="0.12" stroke="#0891b2" stroke-width="3"/>
+<text x="92" y="660" fill="#0891b2" font-size="22" font-weight="700">训练 hang</text>
+<rect x="92" y="686" width="95" height="30" rx="8" fill="#2563eb"/>
+<text x="102" y="708" fill="#fff" font-size="17" font-weight="700">社区通病</text>
+<rect x="540" y="588" width="640" height="140" rx="13" fill="#f8fafc" stroke="#0891b2" stroke-width="2.4"/>
+<text x="562" y="663" fill="#334155" font-size="20">NCCL 层某 rank 没到齐</text>
+<rect x="1230" y="588" width="840" height="140" rx="13" fill="#0891b2" fill-opacity="0.06" stroke="#0891b2" stroke-width="2.4"/>
+<text x="1252" y="648" fill="#334155" font-size="20">转 nccl 排障：DEBUG 看停在哪个 collective → rank → 超</text>
+<text x="1252" y="678" fill="#334155" font-size="20">时+watchdog</text>
+<path d="M 490 658 L 536 658" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1180 658 L 1226 658" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="752" width="420" height="140" rx="13" fill="#7c3aed" fill-opacity="0.12" stroke="#7c3aed" stroke-width="3"/>
+<text x="92" y="824" fill="#7c3aed" font-size="22" font-weight="700">不收敛 / 精度异常</text>
+<rect x="92" y="850" width="95" height="30" rx="8" fill="#2563eb"/>
+<text x="102" y="872" fill="#fff" font-size="17" font-weight="700">社区通病</text>
+<rect x="540" y="752" width="640" height="140" rx="13" fill="#f8fafc" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="562" y="812" fill="#334155" font-size="20">并行下梯度同步是否正确？global batch 因 DP 变</text>
+<text x="562" y="842" fill="#334155" font-size="20">了？混合精度？</text>
+<rect x="1230" y="752" width="840" height="140" rx="13" fill="#7c3aed" fill-opacity="0.06" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="1252" y="827" fill="#334155" font-size="20">核对梯度同步与等效 batch；检查混合精度配置；小规模复现</text>
+<path d="M 490 822 L 536 822" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1180 822 L 1226 822" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+</svg>

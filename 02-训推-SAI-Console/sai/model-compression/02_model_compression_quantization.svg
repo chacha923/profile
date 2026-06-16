@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2120 980" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="13" markerHeight="13" refX="6.5" refY="6.5" orient="auto"><path d="M2,2 L11,6.5 L2,11" fill="none" stroke="#475569" stroke-width="2.2"/></marker></defs>
+<rect x="0" y="0" width="2120" height="980" fill="#ffffff"/>
+<text x="50" y="60" fill="#0f172a" font-size="34" font-weight="700">量化谱系：精度 / 方式 / 对象 / 代表方法</text>
+<text x="50" y="120" fill="#475569" font-size="22" font-weight="700">精度等级（越右越省、越易掉精度）</text>
+<rect x="50" y="145" width="360" height="64" rx="11" fill="#64748b" fill-opacity="0.14" stroke="#64748b" stroke-width="2.6"/>
+<text x="230" y="187" fill="#64748b" font-size="22" font-weight="700" text-anchor="middle">FP32</text>
+<path d="M 410 177 L 438 177" stroke="#475569" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="440" y="145" width="360" height="64" rx="11" fill="#2563eb" fill-opacity="0.14" stroke="#2563eb" stroke-width="2.6"/>
+<text x="620" y="187" fill="#2563eb" font-size="22" font-weight="700" text-anchor="middle">FP16/BF16</text>
+<path d="M 800 177 L 828 177" stroke="#475569" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="830" y="145" width="360" height="64" rx="11" fill="#0891b2" fill-opacity="0.14" stroke="#0891b2" stroke-width="2.6"/>
+<text x="1010" y="187" fill="#0891b2" font-size="22" font-weight="700" text-anchor="middle">INT8</text>
+<path d="M 1190 177 L 1218 177" stroke="#475569" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="1220" y="145" width="360" height="64" rx="11" fill="#059669" fill-opacity="0.14" stroke="#059669" stroke-width="2.6"/>
+<text x="1400" y="187" fill="#059669" font-size="22" font-weight="700" text-anchor="middle">FP8(Hopper+)</text>
+<path d="M 1580 177 L 1608 177" stroke="#475569" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="1610" y="145" width="360" height="64" rx="11" fill="#dc2626" fill-opacity="0.14" stroke="#dc2626" stroke-width="2.6"/>
+<text x="1790" y="187" fill="#dc2626" font-size="22" font-weight="700" text-anchor="middle">INT4/INT3</text>
+<rect x="50" y="269" width="995" height="260" rx="14" fill="#ea580c" fill-opacity="0.06" stroke="#ea580c" stroke-width="3"/>
+<text x="74" y="313" fill="#ea580c" font-size="24" font-weight="700">按方式</text>
+<text x="74" y="355" fill="#0f172a" font-size="20" font-weight="700">PTQ 训练后</text>
+<text x="250" y="355" fill="#334155" font-size="20">用少量校准数据、不重训、快，可能掉精度（部署主流）</text>
+<text x="74" y="397" fill="#0f172a" font-size="20" font-weight="700">QAT 感知训练</text>
+<text x="250" y="397" fill="#334155" font-size="20">训练时模拟量化，精度更好，但要重训、成本高</text>
+<rect x="1075" y="269" width="995" height="260" rx="14" fill="#7c3aed" fill-opacity="0.06" stroke="#7c3aed" stroke-width="3"/>
+<text x="1099" y="313" fill="#7c3aed" font-size="24" font-weight="700">按对象</text>
+<text x="1099" y="355" fill="#0f172a" font-size="20" font-weight="700">Weight-only</text>
+<text x="1275" y="355" fill="#334155" font-size="20">只量化权重(W4/W8A16)，对 decode(memory-bound) 收</text>
+<text x="1275" y="383" fill="#334155" font-size="20">益大</text>
+<text x="1099" y="425" fill="#0f172a" font-size="20" font-weight="700">Weight+Act W8A8</text>
+<text x="1275" y="425" fill="#334155" font-size="20">权重+激活都量化用 INT8 算力；激活离群值难量化</text>
+<text x="50" y="579" fill="#475569" font-size="22" font-weight="700">代表方法（对标，知道定位即可）</text>
+<rect x="50" y="603" width="482" height="130" rx="13" fill="#0891b2" fill-opacity="0.10" stroke="#0891b2" stroke-width="2.6"/>
+<text x="72" y="645" fill="#0891b2" font-size="22" font-weight="700">GPTQ</text>
+<text x="72" y="677" fill="#334155" font-size="19">weight-only PTQ</text>
+<text x="72" y="703" fill="#334155" font-size="19">逐层二阶, 常做 INT4</text>
+<rect x="562" y="603" width="482" height="130" rx="13" fill="#2563eb" fill-opacity="0.10" stroke="#2563eb" stroke-width="2.6"/>
+<text x="584" y="645" fill="#2563eb" font-size="22" font-weight="700">AWQ</text>
+<text x="584" y="677" fill="#334155" font-size="19">weight-only PTQ</text>
+<text x="584" y="703" fill="#334155" font-size="19">激活感知, 保护重要权重</text>
+<rect x="1075" y="603" width="482" height="130" rx="13" fill="#ea580c" fill-opacity="0.10" stroke="#ea580c" stroke-width="2.6"/>
+<text x="1097" y="645" fill="#ea580c" font-size="22" font-weight="700">SmoothQuant</text>
+<text x="1097" y="677" fill="#334155" font-size="19">W8A8</text>
+<text x="1097" y="703" fill="#334155" font-size="19">平滑激活离群值</text>
+<rect x="1587" y="603" width="482" height="130" rx="13" fill="#dc2626" fill-opacity="0.10" stroke="#dc2626" stroke-width="2.6"/>
+<text x="1609" y="645" fill="#dc2626" font-size="22" font-weight="700">KV Cache 量化</text>
+<text x="1609" y="677" fill="#334155" font-size="19">KV 降 INT8/FP8</text>
+<text x="1609" y="703" fill="#334155" font-size="19">省长上下文显存</text>
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 1060" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1760" height="1060" fill="#ffffff"/>
+<defs>
+<marker id="ar" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L11,4 L0,8 Z" fill="#475569"/></marker>
+<marker id="arb" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L11,4 L0,8 Z" fill="#2563eb"/></marker>
+<marker id="arg" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L11,4 L0,8 Z" fill="#059669"/></marker>
+<marker id="aro" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L11,4 L0,8 Z" fill="#ea580c"/></marker>
+</defs>
+<text x="880.0" y="56.0" text-anchor="middle" fill="#0f172a" font-size="32" font-weight="700">Operator 排障决策树：症状 → 假设 → 验证 → 结论 / 优化</text>
+<rect x="60.0" y="100.0" width="400.0" height="96.0" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="260.0" y="140.0" text-anchor="middle" fill="#2563eb" font-size="18" font-weight="700">症状</text>
+<text x="260.0" y="174.0" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="700">CR 提交但子资源没出现</text>
+<rect x="60.0" y="240.0" width="400.0" height="90.0" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="82.0" y="270.0" text-anchor="start" fill="#2563eb" font-size="16" font-weight="700">假设</text>
+<text x="290.0" y="270.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">假设1 控制器没收到事件/没跑</text>
+<text x="260.0" y="300.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">假设2 reconcile 进来就 return</text>
+<rect x="60.0" y="380.0" width="400.0" height="172.0" rx="12" fill="#f8fafc" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="260.0" y="414.0" text-anchor="middle" fill="#2563eb" font-size="18" font-weight="700">验证 / 看指标</text>
+<text x="82.0" y="446.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· 验证：get application -o yaml 看 CR 在否</text>
+<text x="82.0" y="480.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· 控制器日志有无该 key、SetupWithManager 注册</text>
+<text x="82.0" y="514.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· spec 关键字段 WorkloadRef/Image 是否齐</text>
+<rect x="60.0" y="602.0" width="400.0" height="96.0" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="260.0" y="638.0" text-anchor="middle" fill="#2563eb" font-size="18" font-weight="700">结论 / 优化</text>
+<text x="260.0" y="672.0" text-anchor="middle" fill="#1f2937" font-size="16" font-weight="700">结论：触发或注册问题 / spec 不全</text>
+<path d="M 260.0,196.0 L 260.0,240.0" fill="none" stroke="#2563eb" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 260.0,330.0 L 260.0,380.0" fill="none" stroke="#2563eb" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 260.0,552.0 L 260.0,602.0" fill="none" stroke="#2563eb" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="480.0" y="100.0" width="400.0" height="96.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="680.0" y="140.0" text-anchor="middle" fill="#7c3aed" font-size="18" font-weight="700">症状</text>
+<text x="680.0" y="174.0" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="700">一直 Progressing 不到 Available</text>
+<rect x="480.0" y="240.0" width="400.0" height="90.0" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="502.0" y="270.0" text-anchor="start" fill="#7c3aed" font-size="16" font-weight="700">假设</text>
+<text x="710.0" y="270.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">假设 建子资源报错被吞</text>
+<text x="680.0" y="300.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">（createDeploy/createNetwork 只 log）</text>
+<rect x="480.0" y="380.0" width="400.0" height="172.0" rx="12" fill="#f8fafc" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="680.0" y="414.0" text-anchor="middle" fill="#7c3aed" font-size="18" font-weight="700">验证 / 看指标</text>
+<text x="502.0" y="446.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· 验证：控制器 error 日志</text>
+<text x="502.0" y="480.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· kubectl get deploy/svc/ingress</text>
+<text x="502.0" y="514.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· 查命名冲突 / namespace / RBAC 不足</text>
+<rect x="480.0" y="602.0" width="400.0" height="96.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="680.0" y="638.0" text-anchor="middle" fill="#7c3aed" font-size="18" font-weight="700">结论 / 优化</text>
+<text x="680.0" y="672.0" text-anchor="middle" fill="#1f2937" font-size="16" font-weight="700">结论：副作用失败但 status 没回退</text>
+<path d="M 680.0,196.0 L 680.0,240.0" fill="none" stroke="#7c3aed" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 680.0,330.0 L 680.0,380.0" fill="none" stroke="#7c3aed" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 680.0,552.0 L 680.0,602.0" fill="none" stroke="#7c3aed" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="900.0" y="100.0" width="400.0" height="96.0" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<text x="1100.0" y="140.0" text-anchor="middle" fill="#dc2626" font-size="18" font-weight="700">症状</text>
+<text x="1100.0" y="174.0" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="700">status 横跳 / 重复建资源</text>
+<rect x="900.0" y="240.0" width="400.0" height="90.0" rx="12" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="922.0" y="270.0" text-anchor="start" fill="#dc2626" font-size="16" font-weight="700">假设</text>
+<text x="1130.0" y="270.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">假设 幂等没兜住</text>
+<text x="1100.0" y="300.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">重复创建当失败再建</text>
+<rect x="900.0" y="380.0" width="400.0" height="172.0" rx="12" fill="#f8fafc" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="1100.0" y="414.0" text-anchor="middle" fill="#dc2626" font-size="18" font-weight="700">验证 / 看指标</text>
+<text x="922.0" y="446.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· 验证：是否依赖 AlreadyExists 当成功</text>
+<text x="922.0" y="480.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· 是否设了 owner reference</text>
+<text x="922.0" y="514.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· reconcile 是否每轮重算正确</text>
+<rect x="900.0" y="602.0" width="400.0" height="96.0" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<text x="1100.0" y="638.0" text-anchor="middle" fill="#dc2626" font-size="18" font-weight="700">结论 / 优化</text>
+<text x="1100.0" y="672.0" text-anchor="middle" fill="#1f2937" font-size="16" font-weight="700">结论：幂等护栏缺失 → 加 CreateOrUpdate/SSA</text>
+<path d="M 1100.0,196.0 L 1100.0,240.0" fill="none" stroke="#dc2626" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 1100.0,330.0 L 1100.0,380.0" fill="none" stroke="#dc2626" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 1100.0,552.0 L 1100.0,602.0" fill="none" stroke="#dc2626" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="1320.0" y="100.0" width="400.0" height="96.0" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="1520.0" y="140.0" text-anchor="middle" fill="#ea580c" font-size="18" font-weight="700">症状</text>
+<text x="1520.0" y="174.0" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="700">灰度权重不生效</text>
+<rect x="1320.0" y="240.0" width="400.0" height="60.0" rx="12" fill="#ffffff" stroke="#ea580c" stroke-width="2"/>
+<text x="1342.0" y="270.0" text-anchor="start" fill="#ea580c" font-size="16" font-weight="700">假设</text>
+<text x="1550.0" y="270.0" text-anchor="middle" fill="#334155" font-size="16" font-weight="400">假设 网关实际状态与 Rollout 漂移</text>
+<rect x="1320.0" y="350.0" width="400.0" height="172.0" rx="12" fill="#f8fafc" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="1520.0" y="384.0" text-anchor="middle" fill="#ea580c" font-size="18" font-weight="700">验证 / 看指标</text>
+<text x="1342.0" y="416.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· 验证：SoulGateway VerifyWeight 返回值</text>
+<text x="1342.0" y="450.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· 网关 admin 上 stable/canary 节点与权重</text>
+<text x="1342.0" y="484.0" text-anchor="start" fill="#334155" font-size="16" font-weight="400">· Pod rollouts-pod-template-hash 标签对账</text>
+<rect x="1320.0" y="572.0" width="400.0" height="96.0" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="1520.0" y="608.0" text-anchor="middle" fill="#ea580c" font-size="18" font-weight="700">结论 / 优化</text>
+<text x="1520.0" y="642.0" text-anchor="middle" fill="#1f2937" font-size="16" font-weight="700">结论：三层漂移 → UpNode/DownNode 对账</text>
+<path d="M 1520.0,196.0 L 1520.0,240.0" fill="none" stroke="#ea580c" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 1520.0,300.0 L 1520.0,350.0" fill="none" stroke="#ea580c" stroke-width="2.6" marker-end="url(#ar)"/>
+<path d="M 1520.0,522.0 L 1520.0,572.0" fill="none" stroke="#ea580c" stroke-width="2.6" marker-end="url(#ar)"/>
+<rect x="60.0" y="940.0" width="1640.0" height="86.0" rx="14" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="880.0" y="978.0" text-anchor="middle" fill="#059669" font-size="20" font-weight="700">共性结论</text>
+<text x="880.0" y="1010.0" text-anchor="middle" fill="#065f46" font-size="18" font-weight="400">多数问题落在「reconcile 幂等」与「CR → 子资源 → 网关 三层对账」；优化方向：CreateOrUpdate/SSA、owner reference 级联、副作用失败 requeue 而非只 log</text>
+</svg>

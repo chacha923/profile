@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1450" width="2400" height="1450">
+<style>
+text {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC',
+               'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif;
+}
+</style>
+<defs>
+  <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/>
+  </marker>
+  <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
+  </marker>
+  <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+    <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.10"/>
+  </filter>
+</defs>
+<rect width="2400" height="1450" fill="#ffffff"/>
+<rect x="40" y="28" width="2320" height="1370" rx="28" fill="#f8fafc" stroke="#e5e7eb" stroke-width="1.5"/>
+<text x="1200" y="74" fill="#0f172a" font-size="34" font-weight="800" text-anchor="middle">生成式大模型：从训练到上线推理的核心技术栈全景图</text>
+<text x="1200" y="111" fill="#475569" font-size="18" font-weight="500" text-anchor="middle">主线：PyTorch 负责建模与训练，DeepSpeed / FSDP / Megatron 解决分布式训练，vLLM / TensorRT-LLM / TGI 解决在线推理，KServe / Triton / 网关负责服务化。</text>
+<text x="1200" y="139" fill="#64748b" font-size="16" font-weight="500" text-anchor="middle">职责边界：训练框架管“模型怎么学”，推理引擎管“请求怎么跑得快”，服务治理管“怎么稳定上线、灰度和回滚”。</text>
+<rect x="70" y="165" width="2260" height="250" rx="18" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="94" y="194" fill="#1d4ed8" font-size="16" font-weight="800" text-anchor="start">训练与模型产物链路</text>
+<rect x="70" y="535" width="2260" height="285" rx="18" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.2"/>
+<text x="94" y="564" fill="#0f766e" font-size="16" font-weight="800" text-anchor="start">上线推理与业务调用链路</text>
+<rect x="70" y="905" width="2260" height="255" rx="18" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.2"/>
+<text x="94" y="934" fill="#c2410c" font-size="16" font-weight="800" text-anchor="start">治理闭环与运行保障</text>
+<rect x="95" y="205" width="310" height="180" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<rect x="95" y="205" width="8" height="180" rx="4" fill="#2563eb"/>
+<text x="250.0" y="245" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">1. 数据准备</text>
+<text x="117" y="281" fill="#374151" font-size="15" font-weight="400" text-anchor="start">语料/图片/音频/视频</text>
+<text x="117" y="303" fill="#374151" font-size="15" font-weight="400" text-anchor="start">清洗、去重、脱敏</text>
+<text x="117" y="325" fill="#374151" font-size="15" font-weight="400" text-anchor="start">质量打分、过滤</text>
+<text x="117" y="347" fill="#374151" font-size="15" font-weight="400" text-anchor="start">tokenizer 训练/选择</text>
+<text x="117" y="369" fill="#374151" font-size="15" font-weight="400" text-anchor="start">数据湖/对象存储</text>
+<rect x="465" y="205" width="310" height="180" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<rect x="465" y="205" width="8" height="180" rx="4" fill="#0284c7"/>
+<text x="620.0" y="245" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">2. 模型开发</text>
+<text x="487" y="281" fill="#374151" font-size="15" font-weight="400" text-anchor="start">PyTorch: Tensor/autograd</text>
+<text x="487" y="303" fill="#374151" font-size="15" font-weight="400" text-anchor="start">nn.Module 与 Transformers</text>
+<text x="487" y="325" fill="#374151" font-size="15" font-weight="400" text-anchor="start">模型结构 / tokenizer 配置</text>
+<text x="487" y="347" fill="#374151" font-size="15" font-weight="400" text-anchor="start">实验追踪: MLflow/W&amp;B/自研</text>
+<text x="487" y="369" fill="#374151" font-size="15" font-weight="400" text-anchor="start">上下文长度与参数规模</text>
+<rect x="835" y="205" width="310" height="180" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<rect x="835" y="205" width="8" height="180" rx="4" fill="#7c3aed"/>
+<text x="990.0" y="245" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">3. 预训练/微调</text>
+<text x="857" y="281" fill="#374151" font-size="15" font-weight="400" text-anchor="start">预训练: next-token prediction</text>
+<text x="857" y="303" fill="#374151" font-size="15" font-weight="400" text-anchor="start">SFT: 指令微调</text>
+<text x="857" y="325" fill="#374151" font-size="15" font-weight="400" text-anchor="start">对齐: RLHF/DPO/GRPO</text>
+<text x="857" y="347" fill="#374151" font-size="15" font-weight="400" text-anchor="start">PEFT: LoRA / QLoRA</text>
+<text x="857" y="369" fill="#374151" font-size="15" font-weight="400" text-anchor="start">数据配比与训练 recipe</text>
+<rect x="1205" y="205" width="310" height="180" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<rect x="1205" y="205" width="8" height="180" rx="4" fill="#d97706"/>
+<text x="1360.0" y="245" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">4. 分布式训练优化</text>
+<text x="1227" y="281" fill="#374151" font-size="15" font-weight="400" text-anchor="start">DeepSpeed ZeRO</text>
+<text x="1227" y="303" fill="#374151" font-size="15" font-weight="400" text-anchor="start">PyTorch FSDP / DDP</text>
+<text x="1227" y="325" fill="#374151" font-size="15" font-weight="400" text-anchor="start">Megatron-LM: TP/PP/DP</text>
+<text x="1227" y="347" fill="#374151" font-size="15" font-weight="400" text-anchor="start">混合精度: FP16 / BF16</text>
+<text x="1227" y="369" fill="#374151" font-size="15" font-weight="400" text-anchor="start">Checkpoint / Resume</text>
+<rect x="1575" y="205" width="310" height="180" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<rect x="1575" y="205" width="8" height="180" rx="4" fill="#dc2626"/>
+<text x="1730.0" y="245" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">5. 评测与安全</text>
+<text x="1597" y="281" fill="#374151" font-size="15" font-weight="400" text-anchor="start">离线评测: MMLU/CMMLU/业务集</text>
+<text x="1597" y="303" fill="#374151" font-size="15" font-weight="400" text-anchor="start">人评/红队/越狱测试</text>
+<text x="1597" y="325" fill="#374151" font-size="15" font-weight="400" text-anchor="start">幻觉、毒性、隐私泄露</text>
+<text x="1597" y="347" fill="#374151" font-size="15" font-weight="400" text-anchor="start">A/B 测试候选模型</text>
+<text x="1597" y="369" fill="#374151" font-size="15" font-weight="400" text-anchor="start">安全阈值与拒答策略</text>
+<rect x="1945" y="205" width="310" height="180" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="1945" y="205" width="8" height="180" rx="4" fill="#16a34a"/>
+<text x="2100.0" y="245" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">6. 模型产物管理</text>
+<text x="1967" y="281" fill="#374151" font-size="15" font-weight="400" text-anchor="start">权重: checkpoint / safetensors</text>
+<text x="1967" y="303" fill="#374151" font-size="15" font-weight="400" text-anchor="start">tokenizer / config / prompt 模板</text>
+<text x="1967" y="325" fill="#374151" font-size="15" font-weight="400" text-anchor="start">版本: Model Registry</text>
+<text x="1967" y="347" fill="#374151" font-size="15" font-weight="400" text-anchor="start">量化: INT8/INT4/AWQ/GPTQ</text>
+<text x="1967" y="369" fill="#374151" font-size="15" font-weight="400" text-anchor="start">发布审批 / 灰度策略</text>
+<line x1="417" y1="295.0" x2="453" y2="295.0" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+<line x1="787" y1="295.0" x2="823" y2="295.0" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+<line x1="1157" y1="295.0" x2="1193" y2="295.0" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+<line x1="1527" y1="295.0" x2="1563" y2="295.0" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+<line x1="1897" y1="295.0" x2="1933" y2="295.0" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+<rect x="100" y="600" width="365" height="185" rx="14" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+<rect x="100" y="600" width="8" height="185" rx="4" fill="#0d9488"/>
+<text x="282.5" y="640" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">7. 推理引擎 / Runtime</text>
+<text x="122" y="676" fill="#374151" font-size="15" font-weight="400" text-anchor="start">vLLM: PagedAttention、KV Cache</text>
+<text x="122" y="698" fill="#374151" font-size="15" font-weight="400" text-anchor="start">TensorRT-LLM: NVIDIA 高性能推理优化</text>
+<text x="122" y="720" fill="#374151" font-size="15" font-weight="400" text-anchor="start">TGI / SGLang / llama.cpp: 场景选择</text>
+<text x="122" y="742" fill="#374151" font-size="15" font-weight="400" text-anchor="start">连续批处理、并发、显存水位</text>
+<text x="122" y="764" fill="#374151" font-size="15" font-weight="400" text-anchor="start">核心指标: TTFT、TPOT、吞吐</text>
+<rect x="565" y="600" width="365" height="185" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<rect x="565" y="600" width="8" height="185" rx="4" fill="#2563eb"/>
+<text x="747.5" y="640" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">8. 模型服务化</text>
+<text x="587" y="676" fill="#374151" font-size="15" font-weight="400" text-anchor="start">OpenAI-compatible API / gRPC / HTTP</text>
+<text x="587" y="698" fill="#374151" font-size="15" font-weight="400" text-anchor="start">Triton Inference Server: 通用推理服务</text>
+<text x="587" y="720" fill="#374151" font-size="15" font-weight="400" text-anchor="start">KServe / Seldon / BentoML / 自研平台</text>
+<text x="587" y="742" fill="#374151" font-size="15" font-weight="400" text-anchor="start">多副本、滚动发布、自动扩缩容</text>
+<text x="587" y="764" fill="#374151" font-size="15" font-weight="400" text-anchor="start">镜像、资源规格、启动探针</text>
+<rect x="1030" y="600" width="365" height="185" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<rect x="1030" y="600" width="8" height="185" rx="4" fill="#d97706"/>
+<text x="1212.5" y="640" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">9. 流量治理</text>
+<text x="1052" y="676" fill="#374151" font-size="15" font-weight="400" text-anchor="start">API Gateway / Envoy / Ingress</text>
+<text x="1052" y="698" fill="#374151" font-size="15" font-weight="400" text-anchor="start">鉴权、限流、熔断、超时、重试</text>
+<text x="1052" y="720" fill="#374151" font-size="15" font-weight="400" text-anchor="start">模型路由: 按租户/场景/版本</text>
+<text x="1052" y="742" fill="#374151" font-size="15" font-weight="400" text-anchor="start">灰度、A/B、fallback、降级</text>
+<text x="1052" y="764" fill="#374151" font-size="15" font-weight="400" text-anchor="start">请求审计与配额管理</text>
+<rect x="1495" y="600" width="365" height="185" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<rect x="1495" y="600" width="8" height="185" rx="4" fill="#7c3aed"/>
+<text x="1677.5" y="640" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">10. 应用编排</text>
+<text x="1517" y="676" fill="#374151" font-size="15" font-weight="400" text-anchor="start">Prompt 模板与变量注入</text>
+<text x="1517" y="698" fill="#374151" font-size="15" font-weight="400" text-anchor="start">RAG: Embedding + Vector DB</text>
+<text x="1517" y="720" fill="#374151" font-size="15" font-weight="400" text-anchor="start">Agent / Workflow / Tool Calling</text>
+<text x="1517" y="742" fill="#374151" font-size="15" font-weight="400" text-anchor="start">会话记忆、上下文压缩</text>
+<text x="1517" y="764" fill="#374151" font-size="15" font-weight="400" text-anchor="start">结果解析与业务校验</text>
+<rect x="1960" y="600" width="365" height="185" rx="14" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
+<rect x="1960" y="600" width="8" height="185" rx="4" fill="#db2777"/>
+<text x="2142.5" y="640" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">11. 业务入口</text>
+<text x="1982" y="676" fill="#374151" font-size="15" font-weight="400" text-anchor="start">Chatbot / Copilot</text>
+<text x="1982" y="698" fill="#374151" font-size="15" font-weight="400" text-anchor="start">AIOps Agent / 代码助手</text>
+<text x="1982" y="720" fill="#374151" font-size="15" font-weight="400" text-anchor="start">搜索问答 / 客服 / 内容生成</text>
+<text x="1982" y="742" fill="#374151" font-size="15" font-weight="400" text-anchor="start">业务系统 SDK / Web / App</text>
+<text x="1982" y="764" fill="#374151" font-size="15" font-weight="400" text-anchor="start">用户体验与成本感知</text>
+<line x1="481" y1="692.5" x2="549" y2="692.5" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+<line x1="946" y1="692.5" x2="1014" y2="692.5" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+<line x1="1411" y1="692.5" x2="1479" y2="692.5" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+<line x1="1876" y1="692.5" x2="1944" y2="692.5" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+<rect x="100" y="970" width="455" height="165" rx="14" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<rect x="100" y="970" width="8" height="165" rx="4" fill="#64748b"/>
+<text x="327.5" y="1010" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">12. 观测与稳定性</text>
+<text x="122" y="1046" fill="#374151" font-size="15" font-weight="400" text-anchor="start">Metrics: GPU 利用率、显存、QPS、错误率、P95/P99</text>
+<text x="122" y="1068" fill="#374151" font-size="15" font-weight="400" text-anchor="start">Tracing: OpenTelemetry、端到端链路</text>
+<text x="122" y="1090" fill="#374151" font-size="15" font-weight="400" text-anchor="start">Logs: 请求、采样、异常、审计</text>
+<text x="122" y="1112" fill="#374151" font-size="15" font-weight="400" text-anchor="start">SLO: 可用性、时延、成本/千 token</text>
+<rect x="665" y="970" width="455" height="165" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<rect x="665" y="970" width="8" height="165" rx="4" fill="#16a34a"/>
+<text x="892.5" y="1010" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">13. 容量与成本</text>
+<text x="687" y="1046" fill="#374151" font-size="15" font-weight="400" text-anchor="start">容量规划: GPU 卡数、副本数、batch size</text>
+<text x="687" y="1068" fill="#374151" font-size="15" font-weight="400" text-anchor="start">弹性: HPA/KEDA/Karpenter/自研调度</text>
+<text x="687" y="1090" fill="#374151" font-size="15" font-weight="400" text-anchor="start">显存优化: KV Cache、量化、prefix cache</text>
+<text x="687" y="1112" fill="#374151" font-size="15" font-weight="400" text-anchor="start">成本治理: 空闲 GPU、冷热模型、混部</text>
+<rect x="1230" y="970" width="455" height="165" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<rect x="1230" y="970" width="8" height="165" rx="4" fill="#dc2626"/>
+<text x="1457.5" y="1010" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">14. 安全与合规</text>
+<text x="1252" y="1046" fill="#374151" font-size="15" font-weight="400" text-anchor="start">输入输出审核: 敏感词、PII、内容安全</text>
+<text x="1252" y="1068" fill="#374151" font-size="15" font-weight="400" text-anchor="start">租户隔离: Namespace/Quota/NetworkPolicy</text>
+<text x="1252" y="1090" fill="#374151" font-size="15" font-weight="400" text-anchor="start">模型权限: Registry ACL、密钥管理</text>
+<text x="1252" y="1112" fill="#374151" font-size="15" font-weight="400" text-anchor="start">审计: 请求留痕、数据使用边界</text>
+<rect x="1695" y="970" width="455" height="165" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+<rect x="1695" y="970" width="8" height="165" rx="4" fill="#7c3aed"/>
+<text x="1922.5" y="1010" fill="#111827" font-size="22" font-weight="700" text-anchor="middle">15. 反馈闭环</text>
+<text x="1717" y="1046" fill="#374151" font-size="15" font-weight="400" text-anchor="start">线上样本采集: 低置信/差评/异常案例</text>
+<text x="1717" y="1068" fill="#374151" font-size="15" font-weight="400" text-anchor="start">标注与数据回流: 构造 SFT/RL 数据</text>
+<text x="1717" y="1090" fill="#374151" font-size="15" font-weight="400" text-anchor="start">持续评测: 回归集、业务指标、红队集</text>
+<text x="1717" y="1112" fill="#374151" font-size="15" font-weight="400" text-anchor="start">重新训练/微调 -&gt; 新版本发布</text>
+<path d="M 2100.0,385 L 2100.0,500 L 282.5,500 L 282.5,584" fill="none" stroke="#ea580c" stroke-width="2.2" marker-end="url(#arrow-orange)"/>
+<rect x="1824.0" y="477" width="112" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+<text x="1880" y="492" fill="#ea580c" font-size="13" font-weight="600" text-anchor="middle">发布模型版本</text>
+<path d="M 282.5,793 L 282.5,870 L 327.5,870 L 327.5,956" fill="none" stroke="#7c3aed" stroke-width="1.9" marker-end="url(#arrow-purple)"/>
+<rect x="262.0" y="846" width="86" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+<text x="305.0" y="861" fill="#7c3aed" font-size="13" font-weight="600" text-anchor="middle">运行指标</text>
+<path d="M 747.5,793 L 747.5,870 L 892.5,870 L 892.5,956" fill="none" stroke="#7c3aed" stroke-width="1.9" marker-end="url(#arrow-purple)"/>
+<rect x="777.0" y="846" width="86" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+<text x="820.0" y="861" fill="#7c3aed" font-size="13" font-weight="600" text-anchor="middle">容量规格</text>
+<path d="M 1212.5,793 L 1212.5,870 L 1457.5,870 L 1457.5,956" fill="none" stroke="#7c3aed" stroke-width="1.9" marker-end="url(#arrow-purple)"/>
+<rect x="1292.0" y="846" width="86" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+<text x="1335.0" y="861" fill="#7c3aed" font-size="13" font-weight="600" text-anchor="middle">策略审计</text>
+<path d="M 2142.5,793 L 2142.5,870 L 1922.5,870 L 1922.5,956" fill="none" stroke="#7c3aed" stroke-width="1.9" marker-end="url(#arrow-purple)"/>
+<rect x="1989.5" y="846" width="86" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+<text x="2032.5" y="861" fill="#7c3aed" font-size="13" font-weight="600" text-anchor="middle">线上反馈</text>
+<path d="M 1922.5,1135 L 1922.5,1186 L 58,1186 L 58,297 L 77,297" fill="none" stroke="#7c3aed" stroke-width="2.0" marker-end="url(#arrow-purple)"/>
+<rect x="147.0" y="1163" width="126" height="22" rx="5" fill="#ffffff" opacity="0.96"/>
+<text x="210" y="1178" fill="#7c3aed" font-size="13" font-weight="600" text-anchor="middle">数据回流/再训练</text>
+<rect x="70" y="1225" width="2260" height="155" rx="16" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<text x="1200" y="1267" fill="#111827" font-size="24" font-weight="800" text-anchor="middle">底座基础设施层 Infrastructure</text>
+<text x="105" y="1307" fill="#374151" font-size="17" font-weight="400" text-anchor="start">GPU/加速卡：NVIDIA A100/H100/L40S/4090，或 AMD/国产卡 ｜ CPU/内存/本地 NVMe/云盘/NAS/对象存储</text>
+<text x="105" y="1336" fill="#374151" font-size="17" font-weight="400" text-anchor="start">驱动与算子：CUDA / ROCm / cuDNN / NCCL / TensorRT / CUTLASS / FlashAttention</text>
+<text x="105" y="1365" fill="#374151" font-size="17" font-weight="400" text-anchor="start">集群与调度：Kubernetes / Slurm / Ray / Volcano / Kueue ｜ CNI/CSI/镜像仓库/Secret/Quota/节点池/污点容忍</text>
+<line x1="327.5" y1="1225" x2="327.5" y2="1149" stroke="#059669" stroke-width="1.9" stroke-dasharray="5,4" marker-end="url(#arrow-green)"/>
+<line x1="892.5" y1="1225" x2="892.5" y2="1149" stroke="#059669" stroke-width="1.9" stroke-dasharray="5,4" marker-end="url(#arrow-green)"/>
+<line x1="1457.5" y1="1225" x2="1457.5" y2="1149" stroke="#059669" stroke-width="1.9" stroke-dasharray="5,4" marker-end="url(#arrow-green)"/>
+<line x1="1922.5" y1="1225" x2="1922.5" y2="1149" stroke="#059669" stroke-width="1.9" stroke-dasharray="5,4" marker-end="url(#arrow-green)"/>
+<rect x="1740" y="1240" width="545" height="112" rx="12" fill="#f8fafc" stroke="#e5e7eb" stroke-width="1"/>
+<text x="1760" y="1268" fill="#111827" font-size="15" font-weight="800" text-anchor="start">箭头语义</text>
+<line x1="1762" y1="1292" x2="1818" y2="1292" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+<text x="1830" y="1297" fill="#475569" font-size="13" font-weight="600" text-anchor="start">主链路</text>
+<line x1="1930" y1="1292" x2="1986" y2="1292" stroke="#ea580c" stroke-width="2.2" marker-end="url(#arrow-orange)"/>
+<text x="1998" y="1297" fill="#475569" font-size="13" font-weight="600" text-anchor="start">发布触发</text>
+<line x1="2102" y1="1292" x2="2158" y2="1292" stroke="#7c3aed" stroke-width="2.0" marker-end="url(#arrow-purple)"/>
+<text x="2170" y="1297" fill="#475569" font-size="13" font-weight="600" text-anchor="start">治理反馈</text>
+<line x1="1762" y1="1324" x2="1818" y2="1324" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arrow-green)"/>
+<text x="1830" y="1329" fill="#475569" font-size="13" font-weight="600" text-anchor="start">基础设施支撑</text>
+</svg>

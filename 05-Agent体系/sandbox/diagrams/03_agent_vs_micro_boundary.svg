@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 820" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1700" height="820" fill="#f8fafc"/>
+<text x="40" y="56" fill="#0f172a" font-size="30" font-weight="700">经验边界：哪些是真经验，哪些是理论对标</text>
+<rect x="60" y="120" width="760" height="620" rx="18" fill="#ecfdf5" stroke="#059669" stroke-width="2.4"/>
+<rect x="60" y="120" width="760" height="60" rx="18" fill="#059669" stroke="#059669" stroke-width="2.2"/>
+<text x="440" y="158.0" text-anchor="middle" fill="#ffffff" font-size="21" font-weight="700">真实生产经验（控制面 / 保障体系）</text>
+<rect x="90" y="210" width="700" height="72" rx="12" fill="#ffffff" stroke="#059669" stroke-width="1.8"/>
+<text x="106" y="252.0" text-anchor="start" fill="#065f46" font-size="17" font-weight="700">SAE：微服务运行底座 · 生命周期管理 · Reconcile · 灰度发布</text>
+<rect x="90" y="296" width="700" height="72" rx="12" fill="#ffffff" stroke="#059669" stroke-width="1.8"/>
+<text x="106" y="338.0" text-anchor="start" fill="#065f46" font-size="17" font-weight="700">SAE：CICD 镜像构建分发(Tekton+buildx+containerd)</text>
+<rect x="90" y="382" width="700" height="72" rx="12" fill="#ffffff" stroke="#059669" stroke-width="1.8"/>
+<text x="106" y="424.0" text-anchor="start" fill="#065f46" font-size="17" font-weight="700">SAI：多云 Runtime 抽象 · 状态同步 · 调度吞吐</text>
+<rect x="90" y="468" width="700" height="72" rx="12" fill="#ffffff" stroke="#059669" stroke-width="1.8"/>
+<text x="106" y="510.0" text-anchor="start" fill="#065f46" font-size="17" font-weight="700">Bigeyes：Runtime Event 状态机 · 报警→根因闭环</text>
+<rect x="90" y="554" width="700" height="72" rx="12" fill="#ffffff" stroke="#059669" stroke-width="1.8"/>
+<text x="106" y="596.0" text-anchor="start" fill="#065f46" font-size="17" font-weight="700">共性：生命周期 / 调度 / 状态同步 / 可观测 / 多租户治理</text>
+<rect x="880" y="120" width="760" height="620" rx="18" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.4"/>
+<rect x="880" y="120" width="760" height="60" rx="18" fill="#7c3aed" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="1260" y="158.0" text-anchor="middle" fill="#ffffff" font-size="21" font-weight="700">理论对标（隔离运行时本身）</text>
+<rect x="910" y="210" width="700" height="72" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="926" y="252.0" text-anchor="start" fill="#5b21b6" font-size="17" font-weight="700">gVisor / Kata / Firecracker 隔离内核</text>
+<rect x="910" y="296" width="700" height="72" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="926" y="338.0" text-anchor="start" fill="#5b21b6" font-size="17" font-weight="700">Sandbox Pool 预热 / Snapshot·Restore</text>
+<rect x="910" y="382" width="700" height="72" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="926" y="424.0" text-anchor="start" fill="#5b21b6" font-size="17" font-weight="700">Lazy Pull / Nydus / Dragonfly / microVM 快照</text>
+<rect x="910" y="468" width="700" height="72" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="926" y="510.0" text-anchor="start" fill="#5b21b6" font-size="17" font-weight="700">会话级 Sleep / Resume（CRIU / microVM 快照）</text>
+<rect x="910" y="554" width="700" height="72" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="926" y="596.0" text-anchor="start" fill="#5b21b6" font-size="17" font-weight="700">声明：没自建过隔离运行时，从 Runtime 平台视角对标</text>
+<rect x="520" y="760" width="660" height="46" rx="12" fill="#1e293b" stroke="#1e293b" stroke-width="2.2"/>
+<text x="850" y="788.5" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">桥接：把 Sandbox 当成一种特殊 Runtime，控制面/保障体系经验直接平移</text>
+</svg>

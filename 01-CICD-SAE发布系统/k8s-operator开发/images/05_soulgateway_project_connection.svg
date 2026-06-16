@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 720" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1320" height="720" fill="#ffffff"/>
+<defs>
+<marker id="ar" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#475569"/></marker>
+<marker id="arr" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#dc2626"/></marker>
+<marker id="arg" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#059669"/></marker>
+</defs>
+<text x="660.0" y="52" fill="#0f172a" font-size="29" font-weight="700" text-anchor="middle">控制面 Operator 与 Rollouts 二开在 SAE 发布链路的衔接</text>
+<rect x="20" y="180" width="192" height="150" rx="14" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+<rect x="20" y="180" width="192" height="46" rx="14" fill="#64748b"/>
+<rect x="20" y="204" width="192" height="22" fill="#64748b"/>
+<text x="116.0" y="210" fill="#ffffff" font-size="20" font-weight="700" text-anchor="middle">控制台/用户</text>
+<text x="116.0" y="254" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">提交应用表单</text>
+<rect x="237.6" y="180" width="192" height="150" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<rect x="237.6" y="180" width="192" height="46" rx="14" fill="#0891b2"/>
+<rect x="237.6" y="204" width="192" height="22" fill="#0891b2"/>
+<text x="333.6" y="210" fill="#ffffff" font-size="20" font-weight="700" text-anchor="middle">Application CR</text>
+<text x="333.6" y="254" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">spec 期望状态</text>
+<rect x="455.2" y="180" width="192" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<rect x="455.2" y="180" width="192" height="46" rx="14" fill="#2563eb"/>
+<rect x="455.2" y="204" width="192" height="22" fill="#2563eb"/>
+<text x="551.2" y="210" fill="#ffffff" font-size="20" font-weight="700" text-anchor="middle">SAE Operator</text>
+<text x="551.2" y="254" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">reconcile 翻译</text>
+<text x="551.2" y="280" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">建 stable + canary</text>
+<text x="551.2" y="306" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">两个 Service+Ingress</text>
+<rect x="672.8" y="180" width="192" height="150" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<rect x="672.8" y="180" width="192" height="46" rx="14" fill="#7c3aed"/>
+<rect x="672.8" y="204" width="192" height="22" fill="#7c3aed"/>
+<text x="768.8" y="210" fill="#ffffff" font-size="20" font-weight="700" text-anchor="middle">Rollout CR</text>
+<text x="768.8" y="254" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">canary steps</text>
+<text x="768.8" y="280" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">按权重推进</text>
+<rect x="890.4" y="180" width="192" height="150" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<rect x="890.4" y="180" width="192" height="46" rx="14" fill="#ea580c"/>
+<rect x="890.4" y="204" width="192" height="22" fill="#ea580c"/>
+<text x="986.4" y="210" fill="#ffffff" font-size="20" font-weight="700" text-anchor="middle">SoulGateway Provider</text>
+<text x="986.4" y="254" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">SetWeight 下发</text>
+<text x="986.4" y="280" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">VerifyWeight 对账</text>
+<rect x="1108.0" y="180" width="192" height="150" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<rect x="1108.0" y="180" width="192" height="46" rx="14" fill="#dc2626"/>
+<rect x="1108.0" y="204" width="192" height="22" fill="#dc2626"/>
+<text x="1204.0" y="210" fill="#ffffff" font-size="20" font-weight="700" text-anchor="middle">自研网关</text>
+<text x="1204.0" y="254" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">节点级权重切流</text>
+<line x1="216" y1="255.0" x2="233.6" y2="255.0" stroke="#475569" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="172.8" y="223.0" width="104" height="24" rx="4" fill="#ffffff" opacity="0.95"/>
+<text x="224.8" y="241.0" fill="#475569" font-size="16" font-weight="700" text-anchor="middle">表单</text>
+<line x1="433.6" y1="255.0" x2="451.2" y2="255.0" stroke="#475569" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="390.4" y="223.0" width="104" height="24" rx="4" fill="#ffffff" opacity="0.95"/>
+<text x="442.4" y="241.0" fill="#475569" font-size="16" font-weight="700" text-anchor="middle">CR</text>
+<line x1="651.2" y1="255.0" x2="668.8" y2="255.0" stroke="#475569" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="608.0" y="223.0" width="104" height="24" rx="4" fill="#ffffff" opacity="0.95"/>
+<text x="660.0" y="241.0" fill="#475569" font-size="16" font-weight="700" text-anchor="middle">stable/canary 入口</text>
+<line x1="868.8" y1="255.0" x2="886.4" y2="255.0" stroke="#475569" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="825.5999999999999" y="223.0" width="104" height="24" rx="4" fill="#ffffff" opacity="0.95"/>
+<text x="877.5999999999999" y="241.0" fill="#475569" font-size="16" font-weight="700" text-anchor="middle">Rollout</text>
+<line x1="1086.4" y1="255.0" x2="1104.0" y2="255.0" stroke="#475569" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="1043.2" y="223.0" width="104" height="24" rx="4" fill="#ffffff" opacity="0.95"/>
+<text x="1095.2" y="241.0" fill="#475569" font-size="16" font-weight="700" text-anchor="middle">权重→节点</text>
+<rect x="449.2" y="360" width="204" height="60" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<text x="551.2" y="388" fill="#a16207" font-size="18" font-weight="700" text-anchor="middle">衔接点①</text>
+<text x="551.2" y="412" fill="#713f12" font-size="15" font-weight="500" text-anchor="middle">createNetwork 预留双入口</text>
+<line x1="551.2" y1="360" x2="551.2" y2="332" stroke="#ca8a04" stroke-width="2.4" marker-end="url(#ar)"/>
+<rect x="884.4" y="360" width="204" height="60" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<text x="986.4" y="388" fill="#a16207" font-size="18" font-weight="700" text-anchor="middle">衔接点②</text>
+<text x="986.4" y="412" fill="#713f12" font-size="15" font-weight="500" text-anchor="middle">在双 Service 上节点级切流</text>
+<line x1="986.4" y1="360" x2="986.4" y2="332" stroke="#ca8a04" stroke-width="2.4" marker-end="url(#ar)"/>
+<text x="660.0" y="480" fill="#475569" font-size="18" font-weight="600" text-anchor="middle">两篇文档分工：k8s-operator.md 讲 CR 控制面与 Application Operator；argo-rollouts-soulgateway.md 讲 Rollouts 二开与流量路由 Provider</text>
+</svg>

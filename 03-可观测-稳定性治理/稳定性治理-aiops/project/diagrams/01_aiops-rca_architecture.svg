@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2360 1082" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="2360" height="1082" fill="#ffffff"/>
+<text x="1180" y="42" text-anchor="middle" fill="#0f172a" font-size="32" font-weight="800">AIOps 根因分析 Agent · 总体架构</text>
+<rect x="40" y="70" width="2280" height="120" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6" opacity="0.55"/>
+<text x="74" y="130" fill="#2563eb" font-size="25" font-weight="800" transform="rotate(-90 74 130)" text-anchor="middle">接入触发</text>
+<rect x="130" y="92" width="693" height="76" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2.2"/>
+<text x="476" y="126" text-anchor="middle" fill="#0f172a" font-size="24" font-weight="700">HTTP 同步触发</text>
+<text x="476" y="153" text-anchor="middle" fill="#334155" font-size="19">EventAnalysisView.post</text>
+<text x="476" y="178" text-anchor="middle" fill="#334155" font-size="19">拒绝 nuclio / qa- 服务</text>
+<rect x="853" y="92" width="693" height="76" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2.2"/>
+<text x="1199" y="126" text-anchor="middle" fill="#0f172a" font-size="24" font-weight="700">轮询拉取</text>
+<text x="1199" y="153" text-anchor="middle" fill="#334155" font-size="19">entrys.start</text>
+<text x="1199" y="178" text-anchor="middle" fill="#334155" font-size="19">alarm-gateway 近1分钟告警</text>
+<rect x="1576" y="92" width="693" height="76" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2.2"/>
+<text x="1922" y="126" text-anchor="middle" fill="#0f172a" font-size="24" font-weight="700">消息触发</text>
+<text x="1922" y="153" text-anchor="middle" fill="#334155" font-size="19">brain · RocketMQ</text>
+<text x="1922" y="178" text-anchor="middle" fill="#334155" font-size="19">PushConsumer(AI_ALERT_GROUP)</text>
+<rect x="40" y="236" width="2280" height="150" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.6" opacity="0.55"/>
+<text x="74" y="311" fill="#7c3aed" font-size="25" font-weight="800" transform="rotate(-90 74 311)" text-anchor="middle">推理内核</text>
+<rect x="130" y="258" width="693" height="106" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="476" y="292" text-anchor="middle" fill="#0f172a" font-size="24" font-weight="700">单 Agent ReAct（主力）</text>
+<text x="476" y="319" text-anchor="middle" fill="#334155" font-size="19">TAOPlayer · 拉普拉斯</text>
+<text x="476" y="344" text-anchor="middle" fill="#334155" font-size="19">解析→预取→读案例→ReAct</text>
+<text x="476" y="369" text-anchor="middle" fill="#334155" font-size="19">→ 12项质检 → 报告</text>
+<rect x="853" y="258" width="693" height="106" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="1199" y="292" text-anchor="middle" fill="#0f172a" font-size="24" font-weight="700">多 Agent 圆桌</text>
+<text x="1199" y="319" text-anchor="middle" fill="#334155" font-size="19">AsyncRoundTable · 5角色</text>
+<text x="1199" y="344" text-anchor="middle" fill="#334155" font-size="19">receiver→analyst→planner</text>
+<text x="1199" y="369" text-anchor="middle" fill="#334155" font-size="19">→k8s_engineer→examiner</text>
+<rect x="1576" y="258" width="693" height="106" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="1922" y="292" text-anchor="middle" fill="#0f172a" font-size="24" font-weight="700">assistant 协作（早期）</text>
+<text x="1922" y="319" text-anchor="middle" fill="#334155" font-size="19">brain.inquiry</text>
+<text x="1922" y="344" text-anchor="middle" fill="#334155" font-size="19">philosopher/k8s/prom</text>
+<text x="1922" y="369" text-anchor="middle" fill="#334155" font-size="19">/rocketmq 多专业助手</text>
+<rect x="40" y="432" width="2280" height="110" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="1.6" opacity="0.55"/>
+<text x="74" y="487" fill="#0891b2" font-size="25" font-weight="800" transform="rotate(-90 74 487)" text-anchor="middle">LLM 接入</text>
+<rect x="130" y="454" width="1070" height="66" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="2.2"/>
+<text x="665" y="488" text-anchor="middle" fill="#0f172a" font-size="24" font-weight="700">内部 AI Gateway（主）</text>
+<text x="665" y="515" text-anchor="middle" fill="#334155" font-size="19">doubao-seed-2.0 · temperature=0</text>
+<text x="665" y="540" text-anchor="middle" fill="#334155" font-size="19">响应转 OpenAI 兼容结构</text>
+<rect x="1230" y="454" width="1070" height="66" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="2.2"/>
+<text x="1765" y="488" text-anchor="middle" fill="#0f172a" font-size="24" font-weight="700">OpenAI SDK 多模型（备用）</text>
+<text x="1765" y="515" text-anchor="middle" fill="#334155" font-size="19">gpt-4o / doubao / deepseek-r1</text>
+<text x="1765" y="540" text-anchor="middle" fill="#334155" font-size="19">create_completion_openai</text>
+<rect x="40" y="588" width="2280" height="170" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="1.6" opacity="0.55"/>
+<text x="74" y="673" fill="#059669" font-size="25" font-weight="800" transform="rotate(-90 74 673)" text-anchor="middle">只读取证工具</text>
+<rect x="130" y="608" width="515" height="59" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2.2"/>
+<text x="387" y="642" text-anchor="middle" fill="#0f172a" font-size="21" font-weight="700">k8s</text>
+<text x="387" y="667" text-anchor="middle" fill="#334155" font-size="17">describe_pod·事件·日志·HPA·ingress·service</text>
+<rect x="667" y="608" width="515" height="59" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2.2"/>
+<text x="924" y="642" text-anchor="middle" fill="#0f172a" font-size="21" font-weight="700">prometheus</text>
+<text x="924" y="667" text-anchor="middle" fill="#334155" font-size="17">Pod/Node/NodePool/JVM/Service/通用 六维指标</text>
+<rect x="1204" y="608" width="515" height="59" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2.2"/>
+<text x="1461" y="642" text-anchor="middle" fill="#0f172a" font-size="21" font-weight="700">info</text>
+<text x="1461" y="667" text-anchor="middle" fill="#334155" font-size="17">get_pod_all_info · get_service_all_info</text>
+<rect x="1741" y="608" width="515" height="59" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2.2"/>
+<text x="1998" y="642" text-anchor="middle" fill="#0f172a" font-size="21" font-weight="700">log</text>
+<text x="1998" y="667" text-anchor="middle" fill="#334155" font-size="17">get_pod_history_log（ClickHouse）</text>
+<rect x="130" y="677" width="515" height="59" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2.2"/>
+<text x="387" y="711" text-anchor="middle" fill="#0f172a" font-size="21" font-weight="700">changes</text>
+<text x="387" y="736" text-anchor="middle" fill="#334155" font-size="17">get_service_change_history 变更记录</text>
+<rect x="667" y="677" width="515" height="59" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2.2"/>
+<text x="924" y="711" text-anchor="middle" fill="#0f172a" font-size="21" font-weight="700">nodepool</text>
+<text x="924" y="736" text-anchor="middle" fill="#334155" font-size="17">get_nodepool_status 节点池状态</text>
+<rect x="1204" y="677" width="515" height="59" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2.2"/>
+<text x="1461" y="711" text-anchor="middle" fill="#0f172a" font-size="21" font-weight="700">feishu</text>
+<text x="1461" y="736" text-anchor="middle" fill="#334155" font-size="17">read_feishu_document 读知识库</text>
+<rect x="1741" y="677" width="515" height="59" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2.2"/>
+<text x="1998" y="711" text-anchor="middle" fill="#0f172a" font-size="21" font-weight="700">memory / sniffer / terminate</text>
+<text x="1998" y="736" text-anchor="middle" fill="#334155" font-size="17">记忆 · 抓包 · 受控结束</text>
+<rect x="40" y="804" width="2280" height="92" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="1.6" opacity="0.55"/>
+<text x="74" y="850" fill="#ea580c" font-size="25" font-weight="800" transform="rotate(-90 74 850)" text-anchor="middle">知识约束</text>
+<rect x="130" y="824" width="1070" height="52" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2.2"/>
+<text x="665" y="858" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">飞书「故障案例分析」表</text>
+<text x="665" y="884" text-anchor="middle" fill="#334155" font-size="18">故障类型/现象/直接根因/解决方案/特别说明</text>
+<rect x="1230" y="824" width="1070" height="52" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2.2"/>
+<text x="1765" y="858" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">节点池资源配置要求文档</text>
+<text x="1765" y="884" text-anchor="middle" fill="#334155" font-size="18">CPU/存核比红线 · 解决方案引用</text>
+<rect x="40" y="942" width="2280" height="100" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6" opacity="0.55"/>
+<text x="74" y="992" fill="#dc2626" font-size="25" font-weight="800" transform="rotate(-90 74 992)" text-anchor="middle">输出留痕</text>
+<rect x="130" y="962" width="703" height="60" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2.2"/>
+<text x="481" y="996" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">结构化报告</text>
+<text x="481" y="1022" text-anchor="middle" fill="#334155" font-size="18">故障根因/分析凭据</text>
+<text x="481" y="1046" text-anchor="middle" fill="#334155" font-size="18">/解决方案/参考链接</text>
+<rect x="863" y="962" width="703" height="60" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2.2"/>
+<text x="1214" y="996" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">回贴飞书</text>
+<text x="1214" y="1022" text-anchor="middle" fill="#334155" font-size="18">send_clerk</text>
+<text x="1214" y="1046" text-anchor="middle" fill="#334155" font-size="18">原告警消息下挂分析</text>
+<rect x="1596" y="962" width="703" height="60" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2.2"/>
+<text x="1947" y="996" text-anchor="middle" fill="#0f172a" font-size="22" font-weight="700">落库</text>
+<text x="1947" y="1022" text-anchor="middle" fill="#334155" font-size="18">MySQL analysis_history</text>
+<text x="1947" y="1046" text-anchor="middle" fill="#334155" font-size="18">kind/target/result</text>
+<line x1="1180" y1="190" x2="1180" y2="236" stroke="#7c3aed" stroke-width="3" marker-end="url(#ar)"/>
+<text x="1194" y="219" fill="#64748b" font-size="17">▼ 触发分析</text>
+<line x1="1180" y1="386" x2="1180" y2="432" stroke="#0891b2" stroke-width="3" marker-end="url(#ar)"/>
+<text x="1194" y="415" fill="#64748b" font-size="17">▼ Function Calling 推理</text>
+<line x1="1180" y1="542" x2="1180" y2="588" stroke="#059669" stroke-width="3" marker-end="url(#ar)"/>
+<text x="1194" y="571" fill="#64748b" font-size="17">▼ 选择并执行只读工具取证</text>
+<line x1="1180" y1="758" x2="1180" y2="804" stroke="#ea580c" stroke-width="3" marker-end="url(#ar)"/>
+<text x="1194" y="787" fill="#64748b" font-size="17">▼ 对照案例逐项验证现象</text>
+<line x1="1180" y1="896" x2="1180" y2="942" stroke="#dc2626" stroke-width="3" marker-end="url(#ar)"/>
+<text x="1194" y="925" fill="#64748b" font-size="17">▼ 质检通过后输出</text>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2120 1322" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="13" markerHeight="13" refX="6.5" refY="6.5" orient="auto"><path d="M2,2 L11,6.5 L2,11" fill="none" stroke="#94a3b8" stroke-width="2.2"/></marker></defs>
+<rect x="0" y="0" width="2120" height="1322" fill="#ffffff"/>
+<text x="50" y="64" fill="#0f172a" font-size="34" font-weight="700">CUDA 推理栈排障决策路径（症状 → 根因 → 处置）</text>
+<text x="50" y="104" fill="#64748b" font-size="19">这些症状定位与平台侧兜底是我真做的；CUDA 内核/NCCL 算法实现为理论对标</text>
+<text x="80" y="160" fill="#0f172a" font-size="24" font-weight="700">症状</text>
+<text x="600" y="160" fill="#0f172a" font-size="24" font-weight="700">根因定位</text>
+<text x="1300" y="160" fill="#0f172a" font-size="24" font-weight="700">处置 / 兜底</text>
+<rect x="80" y="200" width="420" height="140" rx="13" fill="#7c3aed" fill-opacity="0.12" stroke="#7c3aed" stroke-width="3"/>
+<text x="102" y="278" fill="#7c3aed" font-size="22" font-weight="700">起不来 / Pod CrashLoop</text>
+<rect x="600" y="200" width="620" height="140" rx="13" fill="#f8fafc" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="622" y="260" fill="#334155" font-size="19">driver insufficient：镜像 CUDA 版</text>
+<text x="622" y="290" fill="#334155" font-size="19">本 > 宿主 driver 支持上限</text>
+<rect x="1300" y="200" width="760" height="140" rx="13" fill="#7c3aed" fill-opacity="0.07" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="1322" y="260" fill="#334155" font-size="19">升 driver / 降镜像 CUDA / 装 forward-compat 包</text>
+<text x="1322" y="290" fill="#334155" font-size="19">；准入阶段比对兼容矩阵</text>
+<path d="M 500 270 L 596 270" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<path d="M 1220 270 L 1296 270" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="362" width="420" height="140" rx="13" fill="#4f46e5" fill-opacity="0.12" stroke="#4f46e5" stroke-width="3"/>
+<text x="102" y="440" fill="#4f46e5" font-size="22" font-weight="700">起不来 / 无卡</text>
+<rect x="600" y="362" width="620" height="140" rx="13" fill="#f8fafc" stroke="#4f46e5" stroke-width="2.4"/>
+<text x="622" y="407" fill="#334155" font-size="19">no CUDA-capable device / NVML 初</text>
+<text x="622" y="437" fill="#334155" font-size="19">始化失败：device plugin 没分到卡或 toolkit 没</text>
+<text x="622" y="467" fill="#334155" font-size="19">注入驱动</text>
+<rect x="1300" y="362" width="760" height="140" rx="13" fill="#4f46e5" fill-opacity="0.07" stroke="#4f46e5" stroke-width="2.4"/>
+<text x="1322" y="422" fill="#334155" font-size="19">查 device plugin、runtimeClass、nvidia-container-toolkit；</text>
+<text x="1322" y="452" fill="#334155" font-size="19">确认 nvidia.com/gpu 已分配</text>
+<path d="M 500 432 L 596 432" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<path d="M 1220 432 L 1296 432" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="524" width="420" height="140" rx="13" fill="#d97706" fill-opacity="0.12" stroke="#d97706" stroke-width="3"/>
+<text x="102" y="602" fill="#d97706" font-size="22" font-weight="700">跑得慢（单卡）</text>
+<rect x="600" y="524" width="620" height="140" rx="13" fill="#f8fafc" stroke="#d97706" stroke-width="2.4"/>
+<text x="622" y="569" fill="#334155" font-size="19">compute-bound 还是 memory-bound？</text>
+<text x="622" y="599" fill="#334155" font-size="19">精度/Tensor Core 没走对，或 cuDNN/cuBLAS 版</text>
+<text x="622" y="629" fill="#334155" font-size="19">本不匹配</text>
+<rect x="1300" y="524" width="760" height="140" rx="13" fill="#d97706" fill-opacity="0.07" stroke="#d97706" stroke-width="2.4"/>
+<text x="1322" y="584" fill="#334155" font-size="19">看 Roofline 定位瓶颈；确认精度与 Tensor Core；</text>
+<text x="1322" y="614" fill="#334155" font-size="19">decode 慢多为显存带宽/KV Cache</text>
+<path d="M 500 594 L 596 594" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<path d="M 1220 594 L 1296 594" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="686" width="420" height="140" rx="13" fill="#0891b2" fill-opacity="0.12" stroke="#0891b2" stroke-width="3"/>
+<text x="102" y="764" fill="#0891b2" font-size="22" font-weight="700">多卡 hang / 卡死</text>
+<rect x="600" y="686" width="620" height="140" rx="13" fill="#f8fafc" stroke="#0891b2" stroke-width="2.4"/>
+<text x="622" y="761" fill="#334155" font-size="19">NCCL 通信阻塞：拓扑走错、超时、某卡掉了</text>
+<rect x="1300" y="686" width="760" height="140" rx="13" fill="#0891b2" fill-opacity="0.07" stroke="#0891b2" stroke-width="2.4"/>
+<text x="1322" y="746" fill="#334155" font-size="19">NCCL_DEBUG=INFO 看日志；核对 NVLink/PCIe/IB 拓</text>
+<text x="1322" y="776" fill="#334155" font-size="19">扑与超时；隔离掉卡</text>
+<path d="M 500 756 L 596 756" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<path d="M 1220 756 L 1296 756" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="848" width="420" height="140" rx="13" fill="#dc2626" fill-opacity="0.12" stroke="#dc2626" stroke-width="3"/>
+<text x="102" y="926" fill="#dc2626" font-size="22" font-weight="700">显存 OOM</text>
+<rect x="600" y="848" width="620" height="140" rx="13" fill="#f8fafc" stroke="#dc2626" stroke-width="2.4"/>
+<text x="622" y="908" fill="#334155" font-size="19">KV Cache / max len / 并发过高，</text>
+<text x="622" y="938" fill="#334155" font-size="19">显存碎片，或同卡多服务互挤</text>
+<rect x="1300" y="848" width="760" height="140" rx="13" fill="#dc2626" fill-opacity="0.07" stroke="#dc2626" stroke-width="2.4"/>
+<text x="1322" y="908" fill="#334155" font-size="19">限 max len 与并发、控 KV Cache 占比；评估碎片</text>
+<text x="1322" y="938" fill="#334155" font-size="19">；隔离共享显存邻居</text>
+<path d="M 500 918 L 596 918" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<path d="M 1220 918 L 1296 918" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="1010" width="420" height="140" rx="13" fill="#059669" fill-opacity="0.12" stroke="#059669" stroke-width="3"/>
+<text x="102" y="1088" fill="#059669" font-size="22" font-weight="700">升级后批量挂</text>
+<rect x="600" y="1010" width="620" height="140" rx="13" fill="#f8fafc" stroke="#059669" stroke-width="2.4"/>
+<text x="622" y="1070" fill="#334155" font-size="19">driver / CUDA / cuDNN / NCCL / 框</text>
+<text x="622" y="1100" fill="#334155" font-size="19">架某层版本变化</text>
+<rect x="1300" y="1010" width="760" height="140" rx="13" fill="#059669" fill-opacity="0.07" stroke="#059669" stroke-width="2.4"/>
+<text x="1322" y="1085" fill="#334155" font-size="19">定位变更层 → 回滚上一基线 → 复盘兼容矩阵 → 改灰度滚动</text>
+<path d="M 500 1080 L 596 1080" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<path d="M 1220 1080 L 1296 1080" stroke="#94a3b8" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="80" y="1192" width="1990" height="80" rx="13" fill="#1e293b"/>
+<text x="108" y="1242" fill="#ffffff" font-size="22" font-weight="700">收口：把底层信号翻译成平台/业务结论 —— 哪台机、哪张卡、哪个版本、是否已隔离/回滚，而不是甩一句 CUDA 报错</text>
+</svg>

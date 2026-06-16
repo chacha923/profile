@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 960" width="1600" height="960">
+<style>
+text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+</style>
+<defs>
+<marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+</marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+</marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/>
+</marker>
+<marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/>
+</marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/>
+</marker>
+<marker id="arrow-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#0891b2"/>
+</marker>
+<marker id="arrow-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+</marker>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+<feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.14"/>
+</filter>
+</defs>
+<rect width="1600" height="960" fill="#ffffff"/>
+<text x="60" y="62" fill="#111827" font-size="30" font-weight="800">PyTorchJob GPU 调度关键机制</text>
+<text x="60" y="96" fill="#475569" font-size="17">把平台资源意图落到 queue/gang/PodSpec/topology</text>
+<rect x="70" y="145" width="300" height="160" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="70" y="145" width="300" height="8" rx="4" fill="#2563eb"/>
+<text x="220.0" y="181" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">1. 准入与画像</text>
+<text x="92" y="213" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 任务规模：nodes × gpu/node</text>
+<text x="92" y="238" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 卡型/显存/优先级</text>
+<text x="92" y="263" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• checkpoint/可重试</text>
+<rect x="445" y="145" width="300" height="160" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="445" y="145" width="300" height="8" rx="4" fill="#16a34a"/>
+<text x="595.0" y="181" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">2. 队列与配额</text>
+<text x="467" y="213" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• Kueue queue label</text>
+<text x="467" y="238" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• runPolicy.suspend</text>
+<text x="467" y="263" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• ClusterQueue/ResourceFlavor</text>
+<rect x="820" y="145" width="300" height="160" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="820" y="145" width="300" height="8" rx="4" fill="#9333ea"/>
+<text x="970.0" y="181" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">3. Gang / PodGroup</text>
+<text x="842" y="213" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• all-or-nothing</text>
+<text x="842" y="238" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 避免部分 rank 占卡</text>
+<text x="842" y="263" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• Volcano/coscheduling</text>
+<rect x="1195" y="145" width="300" height="160" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="1195" y="145" width="300" height="8" rx="4" fill="#ea580c"/>
+<text x="1345.0" y="181" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">4. PodSpec 落地</text>
+<text x="1217" y="213" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• GPU limits</text>
+<text x="1217" y="238" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• nodeSelector/tolerations</text>
+<text x="1217" y="263" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• affinity/topology</text>
+<path d="M 370 225 L 445 225" fill="none" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+<path d="M 745 225 L 820 225" fill="none" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+<path d="M 1120 225 L 1195 225" fill="none" stroke="#9333ea" stroke-width="2.2" marker-end="url(#arrow-purple)"/>
+<rect x="170" y="425" width="330" height="170" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="170" y="425" width="330" height="8" rx="4" fill="#0891b2"/>
+<text x="335.0" y="461" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">资源池分层</text>
+<text x="192" y="493" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 稳定 GPU 池：关键训练/在线</text>
+<text x="192" y="518" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 共享显存池：小模型/低风险</text>
+<text x="192" y="543" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 抢占池：低 QoS 可恢复任务</text>
+<rect x="635" y="425" width="330" height="170" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="635" y="425" width="330" height="8" rx="4" fill="#dc2626"/>
+<text x="800.0" y="461" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">拓扑约束</text>
+<text x="657" y="493" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 单机多卡优先 NVLink/NVSwitch</text>
+<text x="657" y="518" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 多机优先同 rack/RDMA 域</text>
+<text x="657" y="543" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• 避免跨慢链路拼凑 ranks</text>
+<rect x="1100" y="425" width="330" height="170" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="1100" y="425" width="330" height="8" rx="4" fill="#ea580c"/>
+<text x="1265.0" y="461" fill="#111827" font-size="18" font-weight="800" text-anchor="middle">运行时兜底</text>
+<text x="1122" y="493" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• NCCL 超时</text>
+<text x="1122" y="518" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• rank 心跳</text>
+<text x="1122" y="543" fill="#475569" font-size="14" font-weight="400" text-anchor="start">• checkpoint 恢复/退避</text>
+<path d="M 1345 305 L 1345 365 L 335 365 L 335 425" fill="none" stroke="#ea580c" stroke-width="2.2" marker-end="url(#arrow-orange)"/>
+<rect x="272.0" y="343" width="126" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="335" y="361" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">placement</text>
+<path d="M 500 510 L 635 510" fill="none" stroke="#0891b2" stroke-width="2.2" marker-end="url(#arrow-teal)"/>
+<rect x="507.5" y="484.0" width="120" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="567.5" y="502.0" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">topology</text>
+<path d="M 965 510 L 1100 510" fill="none" stroke="#dc2626" stroke-width="2.2" marker-end="url(#arrow-red)"/>
+<rect x="980.0" y="484.0" width="105" height="24" rx="6" fill="#ffffff" opacity="0.96"/>
+<text x="1032.5" y="502.0" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">runtime</text>
+<rect x="260" y="725" width="1080" height="110" rx="10" fill="#111827" stroke="#111827" stroke-width="1.6" filter="url(#shadow)"/>
+<text x="800.0" y="761" fill="#ffffff" font-size="22" font-weight="800" text-anchor="middle">稳定性判断</text>
+<text x="282" y="793" fill="#cbd5e1" font-size="14" font-weight="400" text-anchor="start">• 不是“调度成功”就结束：必须确认所有 rank ready、rendezvous 完成、GPU/NCCL 正常、checkpoint 可落盘、训练 step 有推进。</text>
+</svg>

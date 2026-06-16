@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1080" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1600" height="1080" fill="#ffffff"/>
+<defs>
+<marker id="ar" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L11,4 L0,8 Z" fill="#475569"/></marker>
+<marker id="arb" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L11,4 L0,8 Z" fill="#2563eb"/></marker>
+<marker id="arg" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L11,4 L0,8 Z" fill="#059669"/></marker>
+<marker id="aro" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L11,4 L0,8 Z" fill="#ea580c"/></marker>
+</defs>
+<text x="800.0" y="56.0" text-anchor="middle" fill="#0f172a" font-size="32" font-weight="700">Operator 声明式分层原理：期望状态自上而下逐层翻译</text>
+<rect x="90.0" y="90.0" width="1420.0" height="92.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="800.0" y="124.0" text-anchor="middle" fill="#7c3aed" font-size="23" font-weight="700">① 用户 / 控制台层</text>
+<text x="800.0" y="154.0" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">控制台/CLI 把发布表单转成 Application 对象提交到 apiserver —— 用户只表达意图，不直接命令式操作资源</text>
+<rect x="90.0" y="210.0" width="1420.0" height="92.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="800.0" y="244.0" text-anchor="middle" fill="#2563eb" font-size="23" font-weight="700">② 存储与 API 层（etcd + apiserver）</text>
+<text x="800.0" y="274.0" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="400">CRD 注册后，CR 与原生资源同等存入 etcd；apiserver 提供统一 REST + Watch；声明式期望全部落在这一层</text>
+<rect x="90.0" y="330.0" width="1420.0" height="130.0" rx="16" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="118.0" y="366.0" text-anchor="start" fill="#0891b2" font-size="24" font-weight="700">③ 控制器框架层（controller-runtime）</text>
+<rect x="120.0" y="388.0" width="400.0" height="58.0" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+<text x="320.0" y="423.8" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">Manager + 共享 Cache/Informer</text>
+<rect x="560.0" y="388.0" width="360.0" height="58.0" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+<text x="740.0" y="423.8" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">Watch → Workqueue 去重</text>
+<rect x="960.0" y="388.0" width="520.0" height="58.0" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+<text x="1220.0" y="423.8" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">驱动 Reconcile(ctx, req) 水平触发不丢</text>
+<rect x="90.0" y="490.0" width="1420.0" height="150.0" rx="16" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<text x="118.0" y="526.0" text-anchor="start" fill="#dc2626" font-size="24" font-weight="700">④ 业务控制器层（我们的 Operator）</text>
+<rect x="120.0" y="548.0" width="640.0" height="76.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="440.0" y="579.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">ApplicationReconciler</text>
+<text x="440.0" y="606.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">按 status 阶段：Progressing → 建子资源 → Available</text>
+<rect x="800.0" y="548.0" width="680.0" height="76.0" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="1140.0" y="579.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">ClusterReconciler / Zone / Tenant</text>
+<text x="1140.0" y="606.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">多集群账本 + Ready/Offline；Zone/Tenant 预留</text>
+<rect x="90.0" y="670.0" width="1420.0" height="150.0" rx="16" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="118.0" y="706.0" text-anchor="start" fill="#059669" font-size="24" font-weight="700">⑤ 被管理的子资源层（原生 K8s 资源）</text>
+<rect x="120.0" y="728.0" width="420.0" height="76.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="330.0" y="759.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">Deployment</text>
+<text x="330.0" y="786.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">→ ReplicaSet → Pod</text>
+<rect x="580.0" y="728.0" width="400.0" height="76.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="780.0" y="759.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">Service</text>
+<text x="780.0" y="786.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">stable / canary</text>
+<rect x="1020.0" y="728.0" width="460.0" height="76.0" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="1250.0" y="759.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">Ingress</text>
+<text x="1250.0" y="786.3" text-anchor="middle" fill="#1f2937" font-size="19" font-weight="400">IngressHost 流量入口</text>
+<path d="M 470.0,182.0 L 470.0,210.0" fill="none" stroke="#2563eb" stroke-width="3.0" marker-end="url(#arb)"/>
+<path d="M 470.0,302.0 L 470.0,330.0" fill="none" stroke="#2563eb" stroke-width="3.0" marker-end="url(#arb)"/>
+<path d="M 470.0,460.0 L 470.0,490.0" fill="none" stroke="#2563eb" stroke-width="3.0" marker-end="url(#arb)"/>
+<path d="M 470.0,640.0 L 470.0,670.0" fill="none" stroke="#2563eb" stroke-width="3.0" marker-end="url(#arb)"/>
+<rect x="413.0" y="186.4" width="114.0" height="23.0" rx="5" fill="#ffffff" opacity="0.95"/>
+<text x="470.0" y="205.4" text-anchor="middle" fill="#2563eb" font-size="17" font-weight="600">期望向下翻译</text>
+<path d="M 1130.0,670.0 L 1130.0,640.0" fill="none" stroke="#059669" stroke-width="3.0" marker-end="url(#arg)"/>
+<path d="M 1130.0,490.0 L 1130.0,460.0" fill="none" stroke="#059669" stroke-width="3.0" marker-end="url(#arg)"/>
+<path d="M 1130.0,330.0 L 1130.0,302.0" fill="none" stroke="#059669" stroke-width="3.0" marker-end="url(#arg)"/>
+<path d="M 1130.0,210.0 L 1130.0,182.0" fill="none" stroke="#059669" stroke-width="3.0" marker-end="url(#arg)"/>
+<rect x="1057.0" y="456.4" width="146.0" height="23.0" rx="5" fill="#ffffff" opacity="0.95"/>
+<text x="1130.0" y="475.4" text-anchor="middle" fill="#059669" font-size="17" font-weight="600">status 观测回写</text>
+<rect x="90.0" y="850.0" width="1420.0" height="86.0" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4"/>
+<text x="800.0" y="899.8" text-anchor="middle" fill="#334155" font-size="19" font-weight="400">一句话：每一层都是「期望 — 观测 — 调和」同构结构；Operator 只负责「应用 / 集群」这层抽象，底层 Pod 编排交给 K8s 内建控制器，不重复造轮子</text>
+</svg>

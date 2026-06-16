@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1080" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="14" markerHeight="14" refX="7" refY="7" orient="auto"><path d="M2,2 L12,7 L2,12" fill="none" stroke="#475569" stroke-width="2.2"/></marker><marker id="arb" markerWidth="14" markerHeight="14" refX="7" refY="7" orient="auto"><path d="M2,2 L12,7 L2,12" fill="none" stroke="#0891b2" stroke-width="2.2"/></marker></defs>
+<rect x="0" y="0" width="2000" height="1080" fill="#ffffff"/>
+<text x="50" y="64" fill="#0f172a" font-size="34" font-weight="700">一次推理请求在 CUDA 栈中的下发主流程</text>
+<text x="50" y="104" fill="#64748b" font-size="19">框架不直接碰 GPU：算子经 Runtime API → Driver → SM 执行；多卡同步走 NCCL</text>
+<rect x="50" y="180" width="350" height="160" rx="14" fill="#2563eb" fill-opacity="0.10" stroke="#2563eb" stroke-width="3"/>
+<text x="74" y="224" fill="#2563eb" font-size="24" font-weight="700">① 推理框架</text>
+<text x="74" y="262" fill="#334155" font-size="19">vLLM / TRT-LLM</text>
+<text x="74" y="292" fill="#334155" font-size="19">batching · PagedAttention</text>
+<text x="74" y="322" fill="#334155" font-size="19">KV Cache 调度</text>
+<rect x="437" y="180" width="350" height="160" rx="14" fill="#0891b2" fill-opacity="0.10" stroke="#0891b2" stroke-width="3"/>
+<text x="461" y="224" fill="#0891b2" font-size="24" font-weight="700">② CUDA Runtime API</text>
+<text x="461" y="262" fill="#334155" font-size="19">libcudart.so</text>
+<text x="461" y="292" fill="#334155" font-size="19">提交 kernel / 显存操作</text>
+<text x="461" y="322" fill="#334155" font-size="19">stream / event</text>
+<path d="M 400 260 L 433 260" stroke="#475569" stroke-width="3.2" marker-end="url(#ar)"/>
+<rect x="825" y="180" width="350" height="160" rx="14" fill="#d97706" fill-opacity="0.10" stroke="#d97706" stroke-width="3"/>
+<text x="849" y="224" fill="#d97706" font-size="24" font-weight="700">③ 算子库 kernel</text>
+<text x="849" y="262" fill="#334155" font-size="19">cuBLAS(GEMM) / cuDNN</text>
+<text x="849" y="292" fill="#334155" font-size="19">TensorRT 融合 kernel</text>
+<text x="849" y="322" fill="#334155" font-size="19">选择最优实现</text>
+<path d="M 787 260 L 821 260" stroke="#475569" stroke-width="3.2" marker-end="url(#ar)"/>
+<rect x="1212" y="180" width="350" height="160" rx="14" fill="#7c3aed" fill-opacity="0.10" stroke="#7c3aed" stroke-width="3"/>
+<text x="1236" y="224" fill="#7c3aed" font-size="24" font-weight="700">④ Driver 下发</text>
+<text x="1236" y="262" fill="#334155" font-size="19">CUDA Driver API</text>
+<text x="1236" y="292" fill="#334155" font-size="19">libcuda.so → NVIDIA driver</text>
+<text x="1236" y="322" fill="#334155" font-size="19">内核态访问 GPU</text>
+<path d="M 1175 260 L 1208 260" stroke="#475569" stroke-width="3.2" marker-end="url(#ar)"/>
+<rect x="1600" y="180" width="350" height="160" rx="14" fill="#dc2626" fill-opacity="0.10" stroke="#dc2626" stroke-width="3"/>
+<text x="1624" y="224" fill="#dc2626" font-size="24" font-weight="700">⑤ GPU 执行</text>
+<text x="1624" y="262" fill="#334155" font-size="19">SM 计算 / Tensor Core</text>
+<text x="1624" y="292" fill="#334155" font-size="19">结果写回 HBM 显存</text>
+<text x="1624" y="322" fill="#334155" font-size="19">返回上层</text>
+<path d="M 1562 260 L 1596 260" stroke="#475569" stroke-width="3.2" marker-end="url(#ar)"/>
+<path d="M 1775 340 L 1775 456" stroke="#0891b2" stroke-width="3.2" marker-end="url(#arb)"/>
+<rect x="1390" y="460" width="560" height="150" rx="14" fill="#0891b2" fill-opacity="0.10" stroke="#0891b2" stroke-width="3"/>
+<text x="1414" y="506" fill="#0891b2" font-size="24" font-weight="700">多卡 / 张量并行：NCCL 集合通信</text>
+<text x="1414" y="544" fill="#334155" font-size="19">all-reduce / all-gather 同步</text>
+<text x="1414" y="574" fill="#334155" font-size="19">走 NVLink / PCIe / RDMA(IB)，对拓扑敏感</text>
+<text x="50" y="700" fill="#0f172a" font-size="24" font-weight="700">出问题时按阶段定位：</text>
+<rect x="50" y="740" width="452" height="130" rx="12" fill="#2563eb" fill-opacity="0.08" stroke="#2563eb" stroke-width="2.4"/>
+<text x="70" y="782" fill="#2563eb" font-size="21" font-weight="700">① 框架/显存</text>
+<text x="70" y="818" fill="#334155" font-size="18">OOM：KV Cache / max len / 并</text>
+<text x="70" y="846" fill="#334155" font-size="18">发 / 碎片</text>
+<rect x="532" y="740" width="452" height="130" rx="12" fill="#d97706" fill-opacity="0.08" stroke="#d97706" stroke-width="2.4"/>
+<text x="552" y="782" fill="#d97706" font-size="21" font-weight="700">②③ 单卡慢</text>
+<text x="552" y="818" fill="#334155" font-size="18">compute vs memory-bound · 精</text>
+<text x="552" y="846" fill="#334155" font-size="18">度/Tensor Core · cuDNN 版本</text>
+<rect x="1015" y="740" width="452" height="130" rx="12" fill="#7c3aed" fill-opacity="0.08" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="1035" y="782" fill="#7c3aed" font-size="21" font-weight="700">④ 起不来</text>
+<text x="1035" y="818" fill="#334155" font-size="18">CUDA runtime > driver 上限</text>
+<text x="1035" y="846" fill="#334155" font-size="18"> → driver insufficient</text>
+<rect x="1497" y="740" width="452" height="130" rx="12" fill="#0891b2" fill-opacity="0.08" stroke="#0891b2" stroke-width="2.4"/>
+<text x="1517" y="782" fill="#0891b2" font-size="21" font-weight="700">NCCL 卡死</text>
+<text x="1517" y="818" fill="#334155" font-size="18">NCCL_DEBUG=INFO 看拓扑/超时/掉</text>
+<text x="1517" y="846" fill="#334155" font-size="18">卡</text>
+</svg>

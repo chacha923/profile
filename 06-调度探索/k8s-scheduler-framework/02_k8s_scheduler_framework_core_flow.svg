@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 820" width="1500" height="820">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
+      <polygon points="0 0, 12 4.5, 0 9" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
+      <polygon points="0 0, 12 4.5, 0 9" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
+      <polygon points="0 0, 12 4.5, 0 9" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
+      <polygon points="0 0, 12 4.5, 0 9" fill="#9333ea"/>
+    </marker>
+  </defs>
+  <rect width="1500" height="820" fill="#ffffff"/>
+<text x="70" y="56" fill="#111827" font-size="34" font-weight="700" text-anchor="start">Scheduler Framework 核心主流程</text>
+<text x="70" y="90" fill="#6b7280" font-size="21" font-weight="400" text-anchor="start">主线：一个 Pending Pod 从队列进入 scheduling cycle，再进入 binding cycle；失败会进入 backoff/unschedulable，靠事件和 QueueingHint 重试。</text>
+<rect x="70" y="150" width="200" height="230" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+<text x="92" y="184" fill="#111827" font-size="24" font-weight="700" text-anchor="start">Pod 创建</text>
+<text x="92" y="218" fill="#374151" font-size="19" font-weight="400" text-anchor="start">nodeName 为空</text>
+<text x="92" y="246" fill="#374151" font-size="19" font-weight="400" text-anchor="start">schedulerName</text>
+<text x="92" y="274" fill="#374151" font-size="19" font-weight="400" text-anchor="start">匹配 profile</text>
+<rect x="310" y="150" width="200" height="230" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+<text x="332" y="184" fill="#111827" font-size="24" font-weight="700" text-anchor="start">调度队列</text>
+<text x="332" y="218" fill="#374151" font-size="19" font-weight="400" text-anchor="start">PreEnqueue</text>
+<text x="332" y="246" fill="#374151" font-size="19" font-weight="400" text-anchor="start">ActiveQ /</text>
+<text x="332" y="274" fill="#374151" font-size="19" font-weight="400" text-anchor="start">BackoffQ</text>
+<text x="332" y="302" fill="#374151" font-size="19" font-weight="400" text-anchor="start">Unschedulable</text>
+<text x="332" y="330" fill="#374151" font-size="19" font-weight="400" text-anchor="start">pool</text>
+<rect x="550" y="150" width="200" height="230" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+<text x="572" y="184" fill="#111827" font-size="24" font-weight="700" text-anchor="start">Filter 阶段</text>
+<text x="572" y="218" fill="#374151" font-size="19" font-weight="400" text-anchor="start">PreFilter 预计</text>
+<text x="572" y="246" fill="#374151" font-size="19" font-weight="400" text-anchor="start">算</text>
+<text x="572" y="274" fill="#374151" font-size="19" font-weight="400" text-anchor="start">Filter 并发过</text>
+<text x="572" y="302" fill="#374151" font-size="19" font-weight="400" text-anchor="start">滤节点</text>
+<text x="572" y="330" fill="#374151" font-size="19" font-weight="400" text-anchor="start">PostFilter 兜</text>
+<text x="572" y="358" fill="#374151" font-size="19" font-weight="400" text-anchor="start">底/抢占</text>
+<rect x="790" y="150" width="200" height="230" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+<text x="812" y="184" fill="#111827" font-size="24" font-weight="700" text-anchor="start">Score 阶段</text>
+<text x="812" y="218" fill="#374151" font-size="19" font-weight="400" text-anchor="start">PreScore 准备</text>
+<text x="812" y="246" fill="#374151" font-size="19" font-weight="400" text-anchor="start">Score 打分</text>
+<text x="812" y="274" fill="#374151" font-size="19" font-weight="400" text-anchor="start">Normalize + 权</text>
+<text x="812" y="302" fill="#374151" font-size="19" font-weight="400" text-anchor="start">重</text>
+<rect x="1030" y="150" width="200" height="230" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+<text x="1052" y="184" fill="#111827" font-size="24" font-weight="700" text-anchor="start">Reserve / Permit</text>
+<text x="1052" y="218" fill="#374151" font-size="19" font-weight="400" text-anchor="start">Reserve 假定资</text>
+<text x="1052" y="246" fill="#374151" font-size="19" font-weight="400" text-anchor="start">源</text>
+<text x="1052" y="274" fill="#374151" font-size="19" font-weight="400" text-anchor="start">Permit 等待或</text>
+<text x="1052" y="302" fill="#374151" font-size="19" font-weight="400" text-anchor="start">拒绝</text>
+<text x="1052" y="330" fill="#374151" font-size="19" font-weight="400" text-anchor="start">失败要</text>
+<text x="1052" y="358" fill="#374151" font-size="19" font-weight="400" text-anchor="start">Unreserve</text>
+<rect x="1270" y="150" width="200" height="230" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+<text x="1292" y="184" fill="#111827" font-size="24" font-weight="700" text-anchor="start">Binding Cycle</text>
+<text x="1292" y="218" fill="#374151" font-size="19" font-weight="400" text-anchor="start">PreBind</text>
+<text x="1292" y="246" fill="#374151" font-size="19" font-weight="400" text-anchor="start">Bind 写 API</text>
+<text x="1292" y="274" fill="#374151" font-size="19" font-weight="400" text-anchor="start">Server</text>
+<text x="1292" y="302" fill="#374151" font-size="19" font-weight="400" text-anchor="start">PostBind 清理</text>
+<path d="M 270,265 C 290.0,265 290.0,265 310,265" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+<path d="M 510,265 C 530.0,265 530.0,265 550,265" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+<path d="M 750,265 C 770.0,265 770.0,265 790,265" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+<path d="M 990,265 C 1010.0,265 1010.0,265 1030,265" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+<path d="M 1230,265 C 1250.0,265 1250.0,265 1270,265" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+<rect x="545" y="460" width="690" height="170" rx="14" fill="#fef2f2" stroke="#fecaca" stroke-width="2"/>
+<text x="585" y="500" fill="#b91c1c" font-size="25" font-weight="700" text-anchor="start">失败 / 不可调度路径</text>
+<text x="575" y="538" fill="#374151" font-size="20" font-weight="400" text-anchor="start">Unschedulable：约束不满足，通常等相关事件触发重试</text>
+<text x="575" y="570" fill="#374151" font-size="20" font-weight="400" text-anchor="start">Error：插件内部错误，Pod 进入 backoff 后重试</text>
+<text x="575" y="602" fill="#374151" font-size="20" font-weight="400" text-anchor="start">QueueingHint：判断某个 Node/Pod/资源事件是否真的可能让 Pod 可调度</text>
+<path d="M 650,380 C 650.0,380 650.0,460 650,460" fill="none" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/>
+<path d="M 545,585 C 477.5,585 477.5,380 410,380" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="8 7" marker-end="url(#arrow-red)"/>
+<text x="477.5" y="472.5" fill="#dc2626" font-size="18" font-weight="600" text-anchor="middle">重入队列</text>
+<rect x="70" y="690" width="1360" height="95" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<text x="92" y="724" fill="#334155" font-size="24" font-weight="700" text-anchor="start">开发入门顺序</text>
+<text x="92" y="758" fill="#374151" font-size="19" font-weight="400" text-anchor="start">先 Score（只影响偏好）→ 再 Filter（会导致 Pending）→ 再 Reserve/Permit（涉及状态回滚）→ 最后碰 Bind/抢占/队列</text>
+<text x="92" y="786" fill="#374151" font-size="19" font-weight="400" text-anchor="start">排序</text>
+</svg>

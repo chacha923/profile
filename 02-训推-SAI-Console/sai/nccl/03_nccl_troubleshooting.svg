@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2120 966" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#94a3b8" stroke-width="2"/></marker></defs>
+<rect x="0" y="0" width="2120" height="966" fill="#ffffff"/>
+<text x="50" y="64" fill="#0f172a" font-size="34" font-weight="700">NCCL hang / 变慢 排障决策路径</text>
+<text x="50" y="104" fill="#64748b" font-size="20">绿框=我真做过的排障；蓝框=社区通病我能排查。收口：定位到 rank/机器/传输/版本，给平台可懂结论</text>
+<text x="70" y="170" fill="#0f172a" font-size="23" font-weight="700">症状</text>
+<text x="560" y="170" fill="#0f172a" font-size="23" font-weight="700">根因定位</text>
+<text x="1250" y="170" fill="#0f172a" font-size="23" font-weight="700">排查 / 兜底</text>
+<rect x="70" y="200" width="440" height="140" rx="13" fill="#dc2626" fill-opacity="0.12" stroke="#dc2626" stroke-width="3"/>
+<text x="92" y="272" fill="#dc2626" font-size="22" font-weight="700">训练卡住不动 / hang</text>
+<rect x="92" y="298" width="76" height="30" rx="8" fill="#059669"/>
+<text x="102" y="320" fill="#fff" font-size="17" font-weight="700">真做过</text>
+<rect x="560" y="200" width="640" height="140" rx="13" fill="#f8fafc" stroke="#dc2626" stroke-width="2.4"/>
+<text x="582" y="260" fill="#334155" font-size="20">某 rank 没到齐：OOM / 进程挂 / 数据加载阻</text>
+<text x="582" y="290" fill="#334155" font-size="20">塞，collective 凑不齐→整组 hang</text>
+<rect x="1250" y="200" width="820" height="140" rx="13" fill="#dc2626" fill-opacity="0.06" stroke="#dc2626" stroke-width="2.4"/>
+<text x="1272" y="260" fill="#334155" font-size="20">NCCL_DEBUG=INFO 看停在哪个 collective、哪个 rank；</text>
+<text x="1272" y="290" fill="#334155" font-size="20">设超时+watchdog 让掉队 rank 报错而非无限挂</text>
+<path d="M 510 270 L 556 270" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1200 270 L 1246 270" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="364" width="440" height="140" rx="13" fill="#d97706" fill-opacity="0.12" stroke="#d97706" stroke-width="3"/>
+<text x="92" y="436" fill="#d97706" font-size="22" font-weight="700">多机变慢 / 扩展效率低</text>
+<rect x="92" y="462" width="76" height="30" rx="8" fill="#059669"/>
+<text x="102" y="484" fill="#fff" font-size="17" font-weight="700">真做过</text>
+<rect x="560" y="364" width="640" height="140" rx="13" fill="#f8fafc" stroke="#d97706" stroke-width="2.4"/>
+<text x="582" y="424" fill="#334155" font-size="20">静默回退 NET/Socket；跨 Socket/机柜拓</text>
+<text x="582" y="454" fill="#334155" font-size="20">扑差；通信没和计算 overlap</text>
+<rect x="1250" y="364" width="820" height="140" rx="13" fill="#d97706" fill-opacity="0.06" stroke="#d97706" stroke-width="2.4"/>
+<text x="1272" y="424" fill="#334155" font-size="20">nccl-tests 实测带宽；DEBUG 确认走 NET/IB+GDR 还</text>
+<text x="1272" y="454" fill="#334155" font-size="20">是 Socket；拓扑感知调度</text>
+<path d="M 510 434 L 556 434" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1200 434 L 1246 434" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="528" width="440" height="140" rx="13" fill="#0891b2" fill-opacity="0.12" stroke="#0891b2" stroke-width="3"/>
+<text x="92" y="594" fill="#0891b2" font-size="22" font-weight="700">偶发 collective 报</text>
+<text x="92" y="622" fill="#0891b2" font-size="22" font-weight="700">错</text>
+<rect x="92" y="626" width="95" height="30" rx="8" fill="#2563eb"/>
+<text x="102" y="648" fill="#fff" font-size="17" font-weight="700">社区通病</text>
+<rect x="560" y="528" width="640" height="140" rx="13" fill="#f8fafc" stroke="#0891b2" stroke-width="2.4"/>
+<text x="582" y="588" fill="#334155" font-size="20">CUDA sticky error 连带把 NCCL 拖</text>
+<text x="582" y="618" fill="#334155" font-size="20">挂；IB 链路抖动；重试/超时不当</text>
+<rect x="1250" y="528" width="820" height="140" rx="13" fill="#0891b2" fill-opacity="0.06" stroke="#0891b2" stroke-width="2.4"/>
+<text x="1272" y="588" fill="#334155" font-size="20">查是否 CUDA error 在先(见 cuda-inference-stack)；</text>
+<text x="1272" y="618" fill="#334155" font-size="20">看网卡计数器；调重试与超时</text>
+<path d="M 510 598 L 556 598" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1200 598 L 1246 598" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="692" width="440" height="140" rx="13" fill="#7c3aed" fill-opacity="0.12" stroke="#7c3aed" stroke-width="3"/>
+<text x="92" y="764" fill="#7c3aed" font-size="22" font-weight="700">起不来 / mismatch</text>
+<rect x="92" y="790" width="95" height="30" rx="8" fill="#2563eb"/>
+<text x="102" y="812" fill="#fff" font-size="17" font-weight="700">社区通病</text>
+<rect x="560" y="692" width="640" height="140" rx="13" fill="#f8fafc" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="582" y="752" fill="#334155" font-size="20">节点间 NCCL/CUDA/框架版本不一致；world_size/rank 配</text>
+<text x="582" y="782" fill="#334155" font-size="20">错；设备不可见</text>
+<rect x="1250" y="692" width="820" height="140" rx="13" fill="#7c3aed" fill-opacity="0.06" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="1272" y="752" fill="#334155" font-size="20">比对版本基线、保证全节点一致；核对 rank/world_size；查 device 可</text>
+<text x="1272" y="782" fill="#334155" font-size="20">见性</text>
+<path d="M 510 762 L 556 762" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1200 762 L 1246 762" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="866" width="2000" height="74" rx="13" fill="#1e293b"/>
+<text x="96" y="912" fill="#fff" font-size="22" font-weight="700">收口：集合通信要所有 rank 到齐才完成——一个掉队就 hang，所以超时+watchdog+拓扑调度+版本一致是稳定性前提</text>
+</svg>

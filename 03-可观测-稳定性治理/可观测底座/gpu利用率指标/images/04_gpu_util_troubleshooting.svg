@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2600 1410" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="2600" height="1410" fill="#ffffff"/>
+<text x="40.0" y="56.0" text-anchor="start" fill="#0f172a" font-size="34" font-weight="700">GPU 低利用率排障决策树（症状 → 判别 → 结论/优化）</text>
+<text x="40.0" y="92.0" text-anchor="start" fill="#64748b" font-size="19" font-weight="400">第一步永远是同时看 GPU_UTIL + 功耗 + 显存 + 吞吐/P99，再分叉；命令只是手段，关键是每步看什么、异常说明什么</text>
+<rect x="60.0" y="677.0" width="380.0" height="140.0" rx="16" fill="#1e293b" stroke="none" stroke-width="2"/>
+<text x="250.0" y="739.0" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="700">入口指标</text>
+<text x="250.0" y="773.0" text-anchor="middle" fill="#cbd5e1" font-size="20" font-weight="400">UTIL+功耗+显存+吞吐</text>
+<rect x="560.0" y="201.0" width="220.0" height="116.0" rx="14" fill="#16a34a" stroke="none" stroke-width="2"/>
+<text x="670.0" y="253.0" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="700">UTIL 高</text>
+<text x="670.0" y="287.0" text-anchor="middle" fill="#f1f5f9" font-size="18" font-weight="400">但要核对吞吐</text>
+<rect x="560.0" y="811.0" width="220.0" height="116.0" rx="14" fill="#b45309" stroke="none" stroke-width="2"/>
+<text x="670.0" y="863.0" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="700">UTIL 低</text>
+<text x="670.0" y="897.0" text-anchor="middle" fill="#f1f5f9" font-size="18" font-weight="400">逐条排查信号</text>
+<line x1="440.0" y1="717.0" x2="554.0" y2="259.0" stroke="#475569" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 554.0,259.0 L 556.8,274.8 L 544.1,271.6 Z" fill="#475569"/>
+<line x1="440.0" y1="777.0" x2="554.0" y2="869.0" stroke="#475569" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 554.0,869.0 L 538.5,864.9 L 546.7,854.7 Z" fill="#475569"/>
+<path d="M 780.0,259.0 C 870.0,259.0 910.0,198.0 994.0,198.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="150.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="205.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">吞吐 / P99 达标</text>
+<line x1="1604.0" y1="198.0" x2="1654.0" y2="198.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,198.0 L 1639.4,204.5 L 1639.4,191.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="150.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+<text x="2110.0" y="205.0" text-anchor="middle" fill="#059669" font-size="20" font-weight="700">健康：转向成本与吞吐治理</text>
+<path d="M 780.0,259.0 C 870.0,259.0 910.0,320.0 994.0,320.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="272.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="327.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">吞吐低 或 P99 高</text>
+<line x1="1604.0" y1="320.0" x2="1654.0" y2="320.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,320.0 L 1639.4,326.5 L 1639.4,313.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="272.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<text x="2110.0" y="327.0" text-anchor="middle" fill="#d97706" font-size="20" font-weight="700">batch 过大 / 通信 / 框架效率低 或 容量不足 → 按 SLA 扩容、拆分流量</text>
+<path d="M 780.0,869.0 C 870.0,869.0 910.0,442.0 994.0,442.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="394.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="449.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">功耗低 + 显存高 + 队列空 + P99 好</text>
+<line x1="1604.0" y1="442.0" x2="1654.0" y2="442.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,442.0 L 1639.4,448.5 L 1639.4,435.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="394.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="2110.0" y="449.0" text-anchor="middle" fill="#7c3aed" font-size="20" font-weight="700">容量过剩 → 副本治理、分时弹性、共卡</text>
+<path d="M 780.0,869.0 C 870.0,869.0 910.0,564.0 994.0,564.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="516.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="571.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">CPU 高 + forward 低</text>
+<line x1="1604.0" y1="564.0" x2="1654.0" y2="564.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,564.0 L 1639.4,570.5 L 1639.4,557.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="516.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+<text x="2110.0" y="571.0" text-anchor="middle" fill="#0891b2" font-size="20" font-weight="700">前处理 / dataloader 瓶颈 → 异步化、加 worker、缓存</text>
+<path d="M 780.0,869.0 C 870.0,869.0 910.0,686.0 994.0,686.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="638.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="693.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">MEM_COPY_UTIL 高</text>
+<line x1="1604.0" y1="686.0" x2="1654.0" y2="686.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,686.0 L 1639.4,692.5 L 1639.4,679.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="638.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+<text x="2110.0" y="693.0" text-anchor="middle" fill="#0891b2" font-size="20" font-weight="700">H2D / D2H 搬运瓶颈 → 减少拷贝、pin memory</text>
+<path d="M 780.0,869.0 C 870.0,869.0 910.0,808.0 994.0,808.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="760.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="815.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">DRAM_ACTIVE 高 + Tensor 低</text>
+<line x1="1604.0" y1="808.0" x2="1654.0" y2="808.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,808.0 L 1639.4,814.5 L 1639.4,801.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="760.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+<text x="2110.0" y="815.0" text-anchor="middle" fill="#dc2626" font-size="20" font-weight="700">memory-bound → 量化、算子融合、KV cache、换引擎</text>
+<path d="M 780.0,869.0 C 870.0,869.0 910.0,930.0 994.0,930.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="882.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="937.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">网络/all-reduce 高，单卡高多卡低</text>
+<line x1="1604.0" y1="930.0" x2="1654.0" y2="930.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,930.0 L 1639.4,936.5 L 1639.4,923.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="882.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="2110.0" y="937.0" text-anchor="middle" fill="#2563eb" font-size="20" font-weight="700">分布式通信瓶颈 → 拓扑亲和、NCCL 调优、控规模</text>
+<path d="M 780.0,869.0 C 870.0,869.0 910.0,1052.0 994.0,1052.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="1004.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="1059.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">GPU_UTIL 锯齿</text>
+<line x1="1604.0" y1="1052.0" x2="1654.0" y2="1052.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,1052.0 L 1639.4,1058.5 L 1639.4,1045.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="1004.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#ea580c" stroke-width="2"/>
+<text x="2110.0" y="1059.0" text-anchor="middle" fill="#ea580c" font-size="20" font-weight="700">数据加载 / checkpoint / eval → 看占比、异步 ckpt</text>
+<path d="M 780.0,869.0 C 870.0,869.0 910.0,1174.0 994.0,1174.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="1126.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="1181.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Tensor active 低</text>
+<line x1="1604.0" y1="1174.0" x2="1654.0" y2="1174.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,1174.0 L 1639.4,1180.5 L 1639.4,1167.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="1126.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+<text x="2110.0" y="1181.0" text-anchor="middle" fill="#4f46e5" font-size="20" font-weight="700">没吃 Tensor Core → 开 AMP/FP16/BF16、检查 shape</text>
+<path d="M 780.0,869.0 C 870.0,869.0 910.0,1296.0 994.0,1296.0" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1000.0" y="1248.0" width="600.0" height="96.0" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1300.0" y="1303.0" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">以上都正常但 P99 差</text>
+<line x1="1604.0" y1="1296.0" x2="1654.0" y2="1296.0" stroke="#94a3b8" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M 1654.0,1296.0 L 1639.4,1302.5 L 1639.4,1289.5 Z" fill="#94a3b8"/>
+<rect x="1660.0" y="1248.0" width="900.0" height="96.0" rx="12" fill="#ffffff" stroke="#db2777" stroke-width="2"/>
+<text x="2110.0" y="1303.0" text-anchor="middle" fill="#db2777" font-size="20" font-weight="700">瓶颈不在 GPU → 查队列、IO、网络、依赖服务</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2120 1006" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#94a3b8" stroke-width="2"/></marker></defs>
+<rect x="0" y="0" width="2120" height="1006" fill="#ffffff"/>
+<text x="50" y="60" fill="#0f172a" font-size="34" font-weight="700">量化模型上线排障路径</text>
+<text x="50" y="104" fill="#64748b" font-size="20">绿框=我真做过的排障；蓝框=社区通病我能排查。收口：是格式/硬件不支持、精度没过门禁，还是收益口径问题</text>
+<text x="70" y="170" fill="#0f172a" font-size="22" font-weight="700">症状</text>
+<text x="560" y="170" fill="#0f172a" font-size="22" font-weight="700">根因定位</text>
+<text x="1270" y="170" fill="#0f172a" font-size="22" font-weight="700">排查 / 兜底</text>
+<rect x="70" y="200" width="440" height="150" rx="13" fill="#dc2626" fill-opacity="0.12" stroke="#dc2626" stroke-width="3"/>
+<text x="92" y="277" fill="#dc2626" font-size="22" font-weight="700">量化模型加载失败 / 起不来</text>
+<rect x="92" y="308" width="76" height="30" rx="8" fill="#059669"/>
+<text x="102" y="330" fill="#fff" font-size="17" font-weight="700">真做过</text>
+<rect x="560" y="200" width="680" height="150" rx="13" fill="#f8fafc" stroke="#dc2626" stroke-width="2.4"/>
+<text x="582" y="250" fill="#334155" font-size="20">格式与 serving 框架不匹配；硬件/kernel 不支</text>
+<text x="582" y="280" fill="#334155" font-size="20">持该精度(FP8 需 Hopper)；TensorRT engine 版</text>
+<text x="582" y="310" fill="#334155" font-size="20">本/架构错配</text>
+<rect x="1270" y="200" width="800" height="150" rx="13" fill="#dc2626" fill-opacity="0.06" stroke="#dc2626" stroke-width="2.4"/>
+<text x="1292" y="280" fill="#334155" font-size="20">比对框架支持矩阵和目标硬件；换支持的量化格式；见 cuda-inference-stack</text>
+<path d="M 510 275 L 556 275" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1240 275 L 1266 275" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="374" width="440" height="150" rx="13" fill="#d97706" fill-opacity="0.12" stroke="#d97706" stroke-width="3"/>
+<text x="92" y="451" fill="#d97706" font-size="22" font-weight="700">精度异常 / 效果变差</text>
+<rect x="92" y="482" width="76" height="30" rx="8" fill="#059669"/>
+<text x="102" y="504" fill="#fff" font-size="17" font-weight="700">真做过</text>
+<rect x="560" y="374" width="680" height="150" rx="13" fill="#f8fafc" stroke="#d97706" stroke-width="2.4"/>
+<text x="582" y="439" fill="#334155" font-size="20">没做精度回归；长上下文/长尾退化；KV Cache 量化太激</text>
+<text x="582" y="469" fill="#334155" font-size="20">进；校准集无代表性</text>
+<rect x="1270" y="374" width="800" height="150" rx="13" fill="#d97706" fill-opacity="0.06" stroke="#d97706" stroke-width="2.4"/>
+<text x="1292" y="439" fill="#334155" font-size="20">回归评测(任务指标+perplexity+长尾)；回退 FP16 对比；</text>
+<text x="1292" y="469" fill="#334155" font-size="20">调 KV Cache 量化</text>
+<path d="M 510 449 L 556 449" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1240 449 L 1266 449" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="548" width="440" height="150" rx="13" fill="#0891b2" fill-opacity="0.12" stroke="#0891b2" stroke-width="3"/>
+<text x="92" y="625" fill="#0891b2" font-size="22" font-weight="700">没达到预期收益</text>
+<rect x="92" y="656" width="95" height="30" rx="8" fill="#2563eb"/>
+<text x="102" y="678" fill="#fff" font-size="17" font-weight="700">社区通病</text>
+<rect x="560" y="548" width="680" height="150" rx="13" fill="#f8fafc" stroke="#0891b2" stroke-width="2.4"/>
+<text x="582" y="628" fill="#334155" font-size="20">瓶颈不在带宽；batch/并发没提上去；框架没真用低比特 kernel</text>
+<rect x="1270" y="548" width="800" height="150" rx="13" fill="#0891b2" fill-opacity="0.06" stroke="#0891b2" stroke-width="2.4"/>
+<text x="1292" y="613" fill="#334155" font-size="20">实测显存/吞吐对比 FP16；确认是否 memory-bound；查 kernel 是</text>
+<text x="1292" y="643" fill="#334155" font-size="20">否生效</text>
+<path d="M 510 623 L 556 623" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1240 623 L 1266 623" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="722" width="440" height="150" rx="13" fill="#7c3aed" fill-opacity="0.12" stroke="#7c3aed" stroke-width="3"/>
+<text x="92" y="799" fill="#7c3aed" font-size="22" font-weight="700">显存仍 OOM</text>
+<rect x="92" y="830" width="95" height="30" rx="8" fill="#2563eb"/>
+<text x="102" y="852" fill="#fff" font-size="17" font-weight="700">社区通病</text>
+<rect x="560" y="722" width="680" height="150" rx="13" fill="#f8fafc" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="582" y="802" fill="#334155" font-size="20">量化省了权重，但 KV Cache / 激活仍大</text>
+<rect x="1270" y="722" width="800" height="150" rx="13" fill="#7c3aed" fill-opacity="0.06" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="1292" y="802" fill="#334155" font-size="20">结合 pd-separation、KV Cache 量化、并发控制</text>
+<path d="M 510 797 L 556 797" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<path d="M 1240 797 L 1266 797" stroke="#94a3b8" stroke-width="2.8" marker-end="url(#ar)"/>
+<rect x="70" y="906" width="2000" height="74" rx="13" fill="#1e293b"/>
+<text x="96" y="952" fill="#fff" font-size="22" font-weight="700">核心权衡：压缩 = 拿精度换显存/吞吐/成本，且受硬件与框架支持约束——精度回归做门禁、留 FP16 兜底</text>
+</svg>

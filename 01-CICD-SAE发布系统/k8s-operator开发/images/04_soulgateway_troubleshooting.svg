@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 1100" font-family="-apple-system, PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1320" height="1100" fill="#ffffff"/>
+<defs>
+<marker id="ar" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#475569"/></marker>
+<marker id="arg" markerWidth="11" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#059669"/></marker>
+</defs>
+<text x="660.0" y="52" fill="#0f172a" font-size="30" font-weight="700" text-anchor="middle">SoulGateway 灰度排障决策树</text>
+<rect x="450" y="80" width="420" height="60" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="660.0" y="112" fill="#7c3aed" font-size="23" font-weight="700" text-anchor="middle">症状：灰度异常</text>
+<line x1="660" y1="140" x2="660" y2="176" stroke="#475569" stroke-width="2.4" marker-end="url(#ar)"/>
+<line x1="660" y1="176" x2="180.0" y2="196" stroke="#475569" stroke-width="2.4" marker-end="url(#ar)"/>
+<rect x="30" y="200" width="300" height="150" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="180.0" y="232" fill="#2563eb" font-size="20" font-weight="700" text-anchor="middle">权重完全没切</text>
+<text x="180.0" y="262" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">soulGateway 字段配了没</text>
+<text x="180.0" y="287" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">日志有无 type='SoulGateway'</text>
+<text x="180.0" y="312" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">Weights==nil 未进加权阶段</text>
+<line x1="660" y1="176" x2="510.0" y2="196" stroke="#475569" stroke-width="2.4" marker-end="url(#ar)"/>
+<rect x="360" y="200" width="300" height="150" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="510.0" y="232" fill="#ea580c" font-size="20" font-weight="700" text-anchor="middle">下发了但流量没变</text>
+<text x="510.0" y="262" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">GET 网关节点 vs 实际 Pod IP</text>
+<text x="510.0" y="287" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">看 pod-template-hash 是否对应</text>
+<text x="510.0" y="312" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">慢路径 Up/DownNode 是否跑</text>
+<line x1="660" y1="176" x2="840.0" y2="196" stroke="#475569" stroke-width="2.4" marker-end="url(#ar)"/>
+<rect x="690" y="200" width="300" height="150" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<text x="840.0" y="232" fill="#dc2626" font-size="20" font-weight="700" text-anchor="middle">VerifyWeight 一直 false</text>
+<text x="840.0" y="262" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">desired-replicas vs ReadyReplicas</text>
+<text x="840.0" y="287" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">节点数 / 权重是否对得上</text>
+<text x="840.0" y="312" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">门控是否卡在 RetryVerify</text>
+<line x1="660" y1="176" x2="1170.0" y2="196" stroke="#475569" stroke-width="2.4" marker-end="url(#ar)"/>
+<rect x="1020" y="200" width="300" height="150" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="1170.0" y="232" fill="#059669" font-size="20" font-weight="700" text-anchor="middle">晋升后打回旧版本</text>
+<text x="1170.0" y="262" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">w==0 全量切特判是否生效</text>
+<text x="1170.0" y="287" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">stableNodes 是否换 canaryNodes</text>
+<text x="1170.0" y="312" fill="#334155" font-size="16" font-weight="500" text-anchor="middle">canaryNodes 是否非空</text>
+<line x1="660" y1="360" x2="660" y2="420" stroke="#475569" stroke-width="2.4" marker-end="url(#ar)"/>
+<rect x="330" y="424" width="660" height="72" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<text x="660.0" y="456" fill="#dc2626" font-size="21" font-weight="700" text-anchor="middle">根因多落在「网关实际节点 ↔ 实际 Ready Pod」对账</text>
+<text x="660.0" y="486" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">SetWeight 只下发当前快照，VerifyWeight 负责多轮收敛</text>
+<line x1="660" y1="496" x2="660" y2="544" stroke="#475569" stroke-width="2.4" marker-end="url(#ar)"/>
+<rect x="90" y="564" width="300" height="82" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="240" y="598" fill="#059669" font-size="19" font-weight="700" text-anchor="middle">确认 VerifyWeight 门控</text>
+<text x="240" y="626" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">在副本对齐后才触发对账</text>
+<line x1="660" y1="544" x2="240" y2="562" stroke="#059669" stroke-width="2.2" marker-end="url(#arg)"/>
+<rect x="510" y="564" width="300" height="82" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="660" y="598" fill="#059669" font-size="19" font-weight="700" text-anchor="middle">UpNode 异步多轮收敛</text>
+<text x="660" y="626" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">pod-hash 过滤要准确</text>
+<line x1="660" y1="544" x2="660" y2="562" stroke="#059669" stroke-width="2.2" marker-end="url(#arg)"/>
+<rect x="930" y="564" width="300" height="82" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+<text x="1080" y="598" fill="#059669" font-size="19" font-weight="700" text-anchor="middle">SaveRoute 护栏</text>
+<text x="1080" y="626" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">先以权重0建基线再灰度</text>
+<line x1="660" y1="544" x2="1080" y2="562" stroke="#059669" stroke-width="2.2" marker-end="url(#arg)"/>
+<line x1="660" y1="646" x2="660" y2="700" stroke="#059669" stroke-width="2.4" marker-end="url(#arg)"/>
+<rect x="350" y="704" width="620" height="72" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="660.0" y="736" fill="#0891b2" font-size="21" font-weight="700" text-anchor="middle">复测：触发一次扩容，观察 VerifyWeight 能否</text>
+<text x="660.0" y="766" fill="#334155" font-size="17" font-weight="500" text-anchor="middle">补进新节点、摘掉旧节点，最终 verified=true</text>
+</svg>
